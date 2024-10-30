@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Security.Cryptography;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class PlayerMove : Movement
+{
+    public LayerMask moveMask; // 이동을 위한 레이어 마스크
+    public LayerMask attackMask; // 공격을 위한 레이어 마스크
+    public UnityEvent<Vector2> moveAction; // 이동 방향 전달을 위한 이벤트
+    public UnityEvent<GameObject> attackAction; // 공격 대상 전달을 위한 이벤트
+
+    void Start()
+    {
+        moveSpeed = 5.0f; // 플레이어 이동 속도
+    }
+
+    void Update()
+    {
+        OnMove();
+        OnJump();
+        OnAttack();
+    }
+
+}
+
+
