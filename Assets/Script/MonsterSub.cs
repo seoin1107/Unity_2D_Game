@@ -6,7 +6,7 @@ public class MonsterSub : AIMovement
 {
     public enum State
     {
-        Create, Normal, Roaming, Battle, Death,asd
+        Create, Normal, Roaming, Battle, Death
     }
     public State myState = State.Create;
     Vector2 createPos;

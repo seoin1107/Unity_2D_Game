@@ -101,7 +101,10 @@ public class Movement : BattleSystem
         {
             transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
             myAnim.SetBool("IsMoving", true);
-            OnDodge(moveDirection);// a/d입력이 있는 경우에만 회피 작동
+            if (Input.GetKeyDown(KeyCode.Space))//스페이스와 a/d입력이 있는 경우에만 회피 작동
+            {
+                OnDodge(moveDirection);
+            }
         }
         else
         {
