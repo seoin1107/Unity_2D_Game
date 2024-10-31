@@ -131,7 +131,7 @@ public class Movement : BattleSystem
         {
             myAnim.SetBool(animData.IsDodge, true);
             myAnim.SetTrigger(animData.OnDodge);
-
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"));
             rid.gravityScale = 0.0f;//중력 삭제
             curSpaceCool = 0.0f; //스페이스 쿨타임 시작
 
@@ -143,6 +143,8 @@ public class Movement : BattleSystem
             }
             myAnim.SetBool(animData.IsDodge, false);
             rid.gravityScale = 1.0f; //중력 복구
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"), false);
+
         }
     }
     public void OnDodge(Vector2 rl) //회피 코루틴 동작
