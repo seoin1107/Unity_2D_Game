@@ -18,9 +18,10 @@ public class PlayerMove : Movement
 
     void Update()
     {
+        curSpaceCool += Time.deltaTime; //스페이스 쿨타임 계산
         OnMove();
         OnJump();
-        OnAttack();
+        OnAttack();       
     }
 
 }

@@ -23,7 +23,7 @@ public class Movement : BattleSystem
     // Update is called once per frame
     void Update()
     {
-    
+
     }
 
     protected void OnStop()
@@ -78,6 +78,9 @@ public class Movement : BattleSystem
     public float jumpForce = 1;
     public bool IsMoving = false;
     public float MoveSpeed = 3;
+    public float spaceCoolTime = 5.0f; // 회피 쿨타임
+    public float curSpaceCool = 5.0f; // 회피 쿨타임 계산
+    
 
     public void OnJump()
     {
@@ -98,6 +101,10 @@ public class Movement : BattleSystem
         {
             transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
             myAnim.SetBool("IsMoving", true);
+            if (Input.GetKeyDown(KeyCode.Space))//스페이스와 a/d입력이 있는 경우에만 회피 작동
+            {
+                OnDodge(moveDirection);
+            }
         }
         else
         {
@@ -112,5 +119,34 @@ public class Movement : BattleSystem
         {
             myAnim.SetTrigger("OnAttack");
         }
+    }
+
+
+    IEnumerator Dodging(Vector2 rl) //스페이스바 입력시 회피 코루틴
+    {
+       
+        float duration = 0.5f; // 이동 시간
+        float elapsed = 0f;  //이동 시간 계산
+        if (curSpaceCool>=5.0f) //현재 스페이스 쿨타임 계산
+        {
+            myAnim.SetBool(animData.IsDodge, true);
+            myAnim.SetTrigger(animData.OnDodge);
+
+            rid.gravityScale = 0.0f;//중력 삭제
+            curSpaceCool = 0.0f; //스페이스 쿨타임 시작
+
+            while (elapsed < duration)
+            {
+                transform.Translate(rl * 10 * Time.deltaTime);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+            myAnim.SetBool(animData.IsDodge, false);
+            rid.gravityScale = 1.0f; //중력 복구
+        }
+    }
+    public void OnDodge(Vector2 rl) //회피 코루틴 동작
+    {
+        StartCoroutine(Dodging(rl));
     }
 }
