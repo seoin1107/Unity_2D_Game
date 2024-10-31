@@ -115,10 +115,7 @@ public class Movement1 : MonoBehaviour
         if (rigid.velocity.y > 0.00f)
         {
             Physics2D.IgnoreLayerCollision(PlayerLayer, FloorLayer, true);
-
         }
-
-
 
         //하단점프시 충돌무시
         else if (rigid.velocity.y <= 0.00f && Input.GetKey(KeyCode.S))
