@@ -42,6 +42,7 @@ public class AIMovement : Movement
     {
         while (Vector2.Distance(transform.position, target) > 0.1f) // 목표 지점에 도달할 때까지 반복
         {
+            
             Vector2 dir = (target - (Vector2)transform.position).normalized; // 방향 정규화
             float delta = Time.deltaTime * moveSpeed; // 이동 거리 계산
 

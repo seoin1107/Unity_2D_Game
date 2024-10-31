@@ -247,6 +247,8 @@ MonoBehaviour:
   jumpForce: 5
   IsMoving: 0
   MoveSpeed: 3
+  spaceCoolTime: 5
+  curSpaceCool: 5
   moveMask:
     serializedVersion: 2
     m_Bits: 128
@@ -296,6 +298,8 @@ MonoBehaviour:
   jumpForce: 5
   IsMoving: 0
   MoveSpeed: 3
+  spaceCoolTime: 5
+  curSpaceCool: 5
 --- !u!114 &103071923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,6 +446,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeroKnight
       objectReference: {fileID: 0}
+    - target: {fileID: 6323719953710832613, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8413529789942519730, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -550,19 +558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackAction:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1828575725}
-        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
-        m_MethodName: OnAttack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   deadAction:
     m_PersistentCalls:
       m_Calls:
@@ -998,6 +994,8 @@ MonoBehaviour:
   jumpForce: 5
   IsMoving: 0
   MoveSpeed: 3
+  spaceCoolTime: 5
+  curSpaceCool: 5
   myState: 0
 --- !u!114 &1828575727
 MonoBehaviour:
@@ -1024,6 +1022,9 @@ MonoBehaviour:
   jumpForce: 1
   IsMoving: 0
   MoveSpeed: 3
+  spaceCoolTime: 5
+  curSpaceCool: 5
+  nextMove: 0
   myState: 0
 --- !u!50 &1828575728
 Rigidbody2D:
@@ -1084,7 +1085,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1095,7 +1096,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.7}
   m_EdgeRadius: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

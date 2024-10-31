@@ -7,6 +7,7 @@ public class AIMovementSub : Movement
 {
     private Coroutine aiMove;
     private Rigidbody2D rb2D;
+    public int nextMove;
 
     // Start is called before the first frame update
     void Start()
@@ -17,13 +18,13 @@ public class AIMovementSub : Movement
     // Update is called once per frame
     void Update()
     {
-        
+        rb2D.velocity = new Vector2(nextMove, rb2D.velocity.y);
     }
     public void OnMove(Vector2 pos, UnityAction act)
     {
         // 목표 위치까지의 방향을 계산하고 거리 점검
         Vector2 dir = pos - (Vector2)transform.position;
-        if (dir.magnitude < 0.1f) // 목표 지점이 가까운 경우
+        if (dir.magnitude < 1.0f) // 목표 지점이 가까운 경우
         {
             act?.Invoke(); // 완료 액션 호출
             return;
@@ -35,13 +36,14 @@ public class AIMovementSub : Movement
 
     private IEnumerator MovingTowards(Vector2 target, UnityAction act)
     {
-        while (Vector2.Distance(transform.position, target) > 0.1f) // 목표 지점에 도달할 때까지 반복
+        while (Vector2.Distance(transform.position, target) > 1.0f) // 목표 지점에 도달할 때까지 반복
         {
             Vector2 dir = (target - (Vector2)transform.position).normalized; // 방향 정규화
+            dir.y = 0;
+            dir.Normalize();
             float delta = Time.deltaTime * moveSpeed; // 이동 거리 계산
 
-            // Rigidbody2D로 이동
-            rb2D.MovePosition(rb2D.position + dir * delta);
+            transform.Translate(dir * delta);
 
             // 애니메이션 상태 업데이트
             if (myAnim != null) // myAnim이 null이 아닐 경우만
@@ -73,9 +75,10 @@ public class AIMovementSub : Movement
             Vector2 dir = target.position - transform.position; // 목표 위치와 현재 위치 간의 방향 벡터
             if (dir.magnitude > 0.1f) // 목표 지점이 가까운 경우
             {
+                dir.y = 0;
                 dir.Normalize(); // 방향 정규화
                 float delta = Time.deltaTime * moveSpeed; // 이동 거리 계산
-                rb2D.MovePosition(rb2D.position + dir * delta); // Rigidbody2D를 통해 이동
+                transform.Translate(dir * delta);
 
                 if (myAnim != null)
                 {

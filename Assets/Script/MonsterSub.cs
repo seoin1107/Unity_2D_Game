@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterSub : AIMovement
+public class MonsterSub : AIMovementSub
 {
     public enum State
     {
@@ -24,7 +24,7 @@ public class MonsterSub : AIMovement
                 {
                     OnStop();
                     Vector2 dir = Vector2.right;
-                    float dist = Random.Range(0.5f, 5.0f);
+                    float dist = Random.Range(1.0f, 0.5f);
                     dir = dir * dist;
                     Vector2 randomPos = createPos + dir;
 
