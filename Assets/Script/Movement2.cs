@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -24,32 +25,37 @@ public class Movement1 : MonoBehaviour
     bool IsDoubleJump;
     public byte JumpCount = 2;
 
-    public GameObject OB;
+    GameObject OB;
     public float disableTime = 0.7f;
 
-    ////하단점프
-    //public void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
-    //    {
-    //        OB = collision.gameObject;
-    //        StartCoroutine(SJump());
-    //    }
-    //}
-    //IEnumerator SJump()
-    //{
-    //    while (true)
-    //    {
-    //        if (Input.GetKeyDown(KeyCode.S))
-    //        {
-    //            OB.SetActive(false);
-    //            yield return new WaitForSeconds(disableTime);
-    //            OB.SetActive(true);
-    //        }
-    //        yield return null;
-    //    }
-    //}
-    ////여기까지
+    //하단점프
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        {
+            OB = collision.gameObject;
+            StartCoroutine(SJump());
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        StopCoroutine(SJump());
+    }
+
+    IEnumerator SJump()
+    {
+        while (true)
+        {
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                OB.SetActive(false);
+                yield return new WaitForSeconds(disableTime);                
+            }
+            yield return null;
+        }
+    }
+    //여기까지
 
     // Start is called before the first frame update
     void Start()
