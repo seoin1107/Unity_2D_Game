@@ -6,11 +6,13 @@ using UnityEngine.Events;
 public class AIMovement : Movement
 {
     private Coroutine aiMove;
+    private Rigidbody2D rb2D;
+    public int nextMove;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        rb2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -21,7 +23,7 @@ public class AIMovement : Movement
 
     public void OnMove(Vector2 pos)
     {
-        OnMove(pos, null);
+        rb2D.velocity = new Vector2(nextMove, rb2D.velocity.y);
     }
 
     public void OnMove(Vector2 pos, UnityAction act)
@@ -42,11 +44,14 @@ public class AIMovement : Movement
     {
         while (Vector2.Distance(transform.position, target) > 0.1f) // 목표 지점에 도달할 때까지 반복
         {
+
             Vector2 dir = (target - (Vector2)transform.position).normalized; // 방향 정규화
+            dir.y = 0.0f;
+            dir.Normalize();
             float delta = Time.deltaTime * moveSpeed; // 이동 거리 계산
 
             // 이동
-            transform.Translate(dir * delta, Space.World);
+            transform.Translate(dir * delta);
 
             // 애니메이션 상태 업데이트
             if (myAnim != null) // myAnim이 null이 아닐 경우만
@@ -80,7 +85,7 @@ public class AIMovement : Movement
             {
                 dir.Normalize(); // 방향 정규화
                 float delta = Time.deltaTime * moveSpeed; // 이동 거리 계산
-                transform.Translate(dir * delta, Space.World); // 이동
+                transform.Translate(dir * delta); // 이동
 
                 if (myAnim != null)
                 {
