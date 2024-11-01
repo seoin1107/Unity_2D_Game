@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public class Movement1 : MonoBehaviour
+public class Movement2 : MonoBehaviour
 {
     public Animator myani;
 
@@ -26,7 +26,7 @@ public class Movement1 : MonoBehaviour
     public byte JumpCount = 2;
 
     GameObject OB;
-    public float disableTime = 0.7f;
+    //public float disableTime = 0.7f;
 
     //하단점프
     public void OnTriggerEnter2D(Collider2D collision)
@@ -41,6 +41,7 @@ public class Movement1 : MonoBehaviour
     public void OnTriggerExit2D(Collider2D collision)
     {
         StopCoroutine(SJump());
+        OB.SetActive(true);
     }
 
     IEnumerator SJump()
@@ -50,7 +51,7 @@ public class Movement1 : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.S))
             {
                 OB.SetActive(false);
-                yield return new WaitForSeconds(disableTime);                
+                //yield return new WaitForSeconds(disableTime);                
             }
             yield return null;
         }
@@ -76,11 +77,11 @@ public class Movement1 : MonoBehaviour
         float delta = Time.deltaTime;
         if (rigid.velocity.y == 0.000000f) JumpCount = 2; //더블점프시 필요
 
-        if (!m_grounded && m_groundSensor.State())
-        {
-            m_grounded = true;
-            myani.SetBool("Grounded", m_grounded);
-        }
+        //if (!m_grounded && m_groundSensor.State())
+        //{
+        //    m_grounded = true;
+        //    myani.SetBool("Grounded", m_grounded);
+        //}
 
         //Check if character just started falling
         if (m_grounded && !m_groundSensor.State())

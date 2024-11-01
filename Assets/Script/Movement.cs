@@ -14,29 +14,29 @@ public class Movement : BattleSystem
     public float moveSpeed = 2.0f;  // 이동 속도
 
     Coroutine move = null;
-    int PlayerLayer, GroundLayer, FloorLayer;
+    //int PlayerLayer, GroundLayer, FloorLayer;
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerLayer = LayerMask.NameToLayer("Player");
-        GroundLayer = LayerMask.NameToLayer("Ground");
-        FloorLayer = LayerMask.NameToLayer("Floor");
+        //PlayerLayer = LayerMask.NameToLayer("Player");
+        //GroundLayer = LayerMask.NameToLayer("Ground");
+        //FloorLayer = LayerMask.NameToLayer("Floor");
     }
 
     // Update is called once per frame
     void Update()
     {
-        //점프시 플레이어&플로어 충돌무시
-        if (rid.velocity.y > 0.00f)
-        {
-            Physics2D.IgnoreLayerCollision(PlayerLayer, FloorLayer, true);
-        }
-        //평소에는 충돌
-        else
-        {
-            Physics2D.IgnoreLayerCollision(PlayerLayer, FloorLayer, false);
-        }
+        ////점프시 플레이어&플로어 충돌무시
+        //if (rid.velocity.y > 0.00f)
+        //{
+        //    Physics2D.IgnoreLayerCollision(PlayerLayer, FloorLayer, true);
+        //}
+        ////평소에는 충돌
+        //else
+        //{
+        //    Physics2D.IgnoreLayerCollision(PlayerLayer, FloorLayer, false);
+        //}
     }
 
     protected void OnStop()
