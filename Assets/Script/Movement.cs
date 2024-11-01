@@ -133,6 +133,7 @@ public class Movement : BattleSystem
             myAnim.SetTrigger(animData.OnDodge);
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"));
             rid.gravityScale = 0.0f;//중력 삭제
+            rid.velocity = Vector2.zero;
             curSpaceCool = 0.0f; //스페이스 쿨타임 시작
 
             while (elapsed < duration)
