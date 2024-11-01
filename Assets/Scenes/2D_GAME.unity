@@ -941,7 +941,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1828575720}
-  - component: {fileID: 1828575727}
   - component: {fileID: 1828575725}
   - component: {fileID: 1828575728}
   - component: {fileID: 1828575729}
@@ -976,7 +975,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828575719}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19875752a396f9642b3342af0ef53468, type: 3}
   m_Name: 
@@ -992,34 +991,6 @@ MonoBehaviour:
   rid: {fileID: 0}
   IsJumping: 0
   jumpForce: 5
-  IsMoving: 0
-  MoveSpeed: 3
-  spaceCoolTime: 5
-  curSpaceCool: 5
-  myState: 0
---- !u!114 &1828575727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1828575719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96f7d641ac221c440a7a1b75908a7705, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  battleStat:
-    AP: 0
-    AttackRange: 0
-    AttackDelay: 0
-    maxHP: 0
-    curHP: 0
-  myTarget: {fileID: 0}
-  moveSpeed: 2
-  rid: {fileID: 0}
-  IsJumping: 0
-  jumpForce: 1
   IsMoving: 0
   MoveSpeed: 3
   spaceCoolTime: 5
