@@ -42,8 +42,10 @@ public class Potal : FadeInOut
         {
             if (Input.GetKeyDown(KeyCode.G))
             {
+                yield return new WaitForSeconds(0.7f);
                 //Æ÷Å»ÀÌµ¿
                 targetObj.transform.position = toObj.transform.position + Vector3.down * 1.5f;
+                
             }
             yield return null;
         }
