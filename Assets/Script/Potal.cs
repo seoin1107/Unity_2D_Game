@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
 
-public class Potal : MonoBehaviour
+public class Potal : FadeInOut
 {
     public GameObject targetObj;
     public GameObject toObj;

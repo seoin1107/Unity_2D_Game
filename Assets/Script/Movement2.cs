@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class Movement1 : MonoBehaviour
+public class Movement2 : MonoBehaviour
 {
     public Animator myani;
 
