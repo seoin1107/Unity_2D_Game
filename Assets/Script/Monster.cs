@@ -13,7 +13,7 @@ public class Monster : AIMovement
         Create, Normal, Roaming, Battle, Death
     }
     public State myState = State.Create;
-    Vector3 createPos;
+    Vector2 createPos;
 
     Coroutine myCoro = null;
 
@@ -26,21 +26,17 @@ public class Monster : AIMovement
             case State.Normal:
                 {
                     OnStop();
-                    Vector3 dir = Vector3.forward;
-                    float angle = Random.Range(0.0f, 360.0f);
-                    //벡터회전. 쿼터니언X벡터 =벡터 회전 값
-                    Quaternion rot = Quaternion.Euler(0, angle, 0);
-                    dir = rot * dir;//각도
-                    float dist = Random.Range(0.5f, 5.0f);//길이
+                    Vector2 dir = Vector2.right;
+                    float dist = Random.Range(1.0f, 5.0f);
                     dir = dir * dist;
-                    Vector3 randomPos = createPos + dir;
-                    OnMove(randomPos, () => myCoro = StartCoroutine(DelayAction(Random.Range(1.0f, 3.0f), () => ChangeState(State.Normal)))); //이동을 끝내면 다시 normal상태로
+                    Vector2 randomPos = createPos + dir;
+                    OnMove(randomPos, () => myCoro = StartCoroutine(DelayAction(Random.Range(1.0f, 3.0f), () => ChangeState(State.Normal))));
                     ChangeState(State.Roaming);
                 }
                 break;
             case State.Battle:
-                base.OnStop();
-                base.OnFollow(myTarget.transform);
+                OnStop();
+                OnFollow(myTarget.transform);
                 break;
             case State.Death:
                 StopAllCoroutines();
@@ -119,12 +115,10 @@ public class Monster : AIMovement
         while (dist > 0.0f)
         {
             float delta = 0.5f * Time.deltaTime;
-            transform.Translate(Vector3.down * delta, Space.World);
+            transform.Translate(Vector2.down * delta, Space.World);
             dist -= delta;
             yield return null;
         }
         Destroy(gameObject);
     }
 }
-
-
