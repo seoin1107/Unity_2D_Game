@@ -94,7 +94,8 @@ public class Movement : BattleSystem
     public float MoveSpeed = 3;
     public float spaceCoolTime = 5.0f; // 회피 쿨타임
     public float curSpaceCool = 5.0f; // 회피 쿨타임 계산
-    
+    public LayerMask enemMask;
+
 
     public void OnJump()
     {
@@ -129,11 +130,31 @@ public class Movement : BattleSystem
 
     public new void OnAttack()
     {
-        if(Input.GetMouseButtonDown(0) && !myAnim.GetBool(animData.IsAttack))
+        // 마우스 좌클릭 시 공격 애니메이션 트리거 설정
+        if (Input.GetMouseButtonDown(0) && !myAnim.GetBool(animData.IsAttack))
         {
             myAnim.SetTrigger("OnAttack");
+
+            // 공격 범위 내의 적 탐지 및 데미지 적용
+            Vector2 attackPosition = (Vector2)transform.position + (Vector2)transform.right; // 공격 범위 중심
+            float attackRadius = 1.0f; // 공격 범위 반지름
+            Collider2D[] list = Physics2D.OverlapCircleAll(attackPosition, attackRadius, enemMask);
+
+            // 탐지된 적들에게 데미지 적용
+            if (list.Length > 0)
+            {
+                foreach (Collider2D col in list)
+                {
+                    IBattle ibat = col.GetComponent<IBattle>();
+                    if (ibat != null && ibat.IsLive)
+                    {
+                        ibat.OnDamage(30.0f);
+                    }
+                }
+            }
         }
     }
+
 
 
     IEnumerator Dodging(Vector2 rl) //스페이스바 입력시 회피 코루틴

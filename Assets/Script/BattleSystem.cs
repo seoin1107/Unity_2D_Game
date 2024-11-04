@@ -37,7 +37,6 @@ public struct BattleStat
 }
 public class BattleSystem : AnimatorProperty, IBattle
 {
-    /*public Animator myAnim; //Áö¿ì±â*/
     public BattleStat battleStat;
     protected float playTime = 0.0f;
     public GameObject myTarget;

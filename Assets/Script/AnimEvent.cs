@@ -22,12 +22,4 @@ public class AnimEvent : MonoBehaviour
     {
         skillAction?.Invoke();
     }
-    public void OncomboAttack1()
-    {
-        attackAction?.Invoke();
-    }
-    public void OncomboAttack2()
-    {
-        attackAction?.Invoke();
-    }
 }
