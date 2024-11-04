@@ -8,6 +8,7 @@ public class Picking : MonoBehaviour
 {
     public SpriteRenderer myCharacter;
     public Transform tf;
+    public Vector2 mousePos;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,15 +18,20 @@ public class Picking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 mousePos = Input.mousePosition;
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);//마우스 위치
 
-        if (mousePos.x < tf.position.x)
+        if (mousePos.x < tf.position.x)     //오른쪽 보기
         {
             myCharacter.flipX = true;
         }
-        else
+        else           //왼쪽 보기
         {
             myCharacter.flipX = false;
         }
+
+
     }
+
+
+
 }
