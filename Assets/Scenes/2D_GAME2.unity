@@ -351,7 +351,7 @@ MonoBehaviour:
     curHP: 0
   myTarget: {fileID: 0}
   moveSpeed: 5
-  rid: {fileID: 684970825}
+  rid: {fileID: 0}
   IsJumping: 0
   jumpForce: 5
   IsMoving: 0
@@ -402,7 +402,7 @@ MonoBehaviour:
     curHP: 0
   myTarget: {fileID: 0}
   moveSpeed: 2
-  rid: {fileID: 684970825}
+  rid: {fileID: 0}
   IsJumping: 0
   jumpForce: 5
   IsMoving: 0
@@ -658,6 +658,8 @@ PrefabInstance:
     - {fileID: 8942925490989933264, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
     - {fileID: 9117128348835321587, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
     - {fileID: 9043920546160527475, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
+    - {fileID: 8426147322050418737, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
+    - {fileID: 4190160909419603854, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7967423529762950208, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
     - {fileID: 9013660374251658338, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
@@ -1045,11 +1047,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e478a058530b34a98fa8fcb4369499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &684970825 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 8426147322050418737, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
-  m_PrefabInstance: {fileID: 329451128}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &717835008
 GameObject:
   m_ObjectHideFlags: 0
