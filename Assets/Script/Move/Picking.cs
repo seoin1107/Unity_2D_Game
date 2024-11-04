@@ -6,27 +6,32 @@ using UnityEngine.Events;
 
 public class Picking : MonoBehaviour
 {
-    Transform tf;
+    public SpriteRenderer myCharacter;
+    public Transform tf;
+    public Vector2 mousePos;
     // Start is called before the first frame update
     void Start()
     {
-        tf = transform;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 mousePos = Input.mousePosition;
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);//마우스 위치
 
-        Vector2 target = mousePos;
+        if (mousePos.x < tf.position.x)     //오른쪽 보기
+        {
+            myCharacter.flipX = true;
+        }
+        else           //왼쪽 보기
+        {
+            myCharacter.flipX = false;
+        }
 
-        if (target.x < tf.position.x)
-        {
-            tf.localScale = new Vector2(-1, 1);
-        }
-        else
-        {
-            tf.localScale = new Vector2(1, 1);
-        }
+
     }
+
+
+
 }
