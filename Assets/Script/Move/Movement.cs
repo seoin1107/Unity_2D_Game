@@ -7,23 +7,37 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.XR;
+using UnityEditor;
 
 public class Movement : BattleSystem
 {
     public float moveSpeed = 2.0f;  // 이동 속도
 
     Coroutine move = null;
+    int PlayerLayer, GroundLayer, FloorLayer;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        rid = GetComponent<Rigidbody2D>();
+        PlayerLayer = LayerMask.NameToLayer("Player");
+        GroundLayer = LayerMask.NameToLayer("Ground");
+        FloorLayer = LayerMask.NameToLayer("Floor");
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //평소에는 충돌
+        if (IsJumping == true)
+        {
+            //점프시 플레이어&플로어 충돌무시
+            Physics2D.IgnoreLayerCollision(PlayerLayer, FloorLayer, true);
+        }
+        else
+        { 
+            Physics2D.IgnoreLayerCollision(PlayerLayer, FloorLayer, false);
+        }
     }
 
     protected void OnStop()
