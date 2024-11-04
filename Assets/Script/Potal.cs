@@ -56,4 +56,5 @@ public class Potal : MonoBehaviour
     {
         SceneManager.LoadScene("Base");
     }
+    //
 }
