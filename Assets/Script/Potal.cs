@@ -42,8 +42,10 @@ public class Potal : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.G))
             {
+                yield return new WaitForSeconds(0.7f);
                 //Æ÷Å»ÀÌµ¿
-                targetObj.transform.position = toObj.transform.position + Vector3.down * 1.5f;
+                targetObj.transform.position = toObj.transform.position;
+
             }
             yield return null;
         }
@@ -54,4 +56,5 @@ public class Potal : MonoBehaviour
     {
         SceneManager.LoadScene("Base");
     }
+    //
 }

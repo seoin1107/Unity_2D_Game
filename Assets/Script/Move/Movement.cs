@@ -7,23 +7,37 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.XR;
+using UnityEditor;
 
 public class Movement : BattleSystem
 {
     public float moveSpeed = 2.0f;  // 이동 속도
 
     Coroutine move = null;
+    int PlayerLayer, GroundLayer, FloorLayer;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        rid = GetComponent<Rigidbody2D>();
+        PlayerLayer = LayerMask.NameToLayer("Player");
+        GroundLayer = LayerMask.NameToLayer("Ground");
+        FloorLayer = LayerMask.NameToLayer("Floor");
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //평소에는 충돌
+        if (IsJumping == true)
+        {
+            //점프시 플레이어&플로어 충돌무시
+            Physics2D.IgnoreLayerCollision(PlayerLayer, FloorLayer, true);
+        }
+        else
+        { 
+            Physics2D.IgnoreLayerCollision(PlayerLayer, FloorLayer, false);
+        }
     }
 
     protected void OnStop()
@@ -80,7 +94,8 @@ public class Movement : BattleSystem
     public float MoveSpeed = 3;
     public float spaceCoolTime = 5.0f; // 회피 쿨타임
     public float curSpaceCool = 5.0f; // 회피 쿨타임 계산
-    
+    public LayerMask enemMask;
+
 
     public void OnJump()
     {
@@ -115,11 +130,31 @@ public class Movement : BattleSystem
 
     public new void OnAttack()
     {
-        if(Input.GetMouseButtonDown(0) && !myAnim.GetBool(animData.IsAttack))
+        // 마우스 좌클릭 시 공격 애니메이션 트리거 설정
+        if (Input.GetMouseButtonDown(0) && !myAnim.GetBool(animData.IsAttack))
         {
             myAnim.SetTrigger("OnAttack");
+
+            // 공격 범위 내의 적 탐지 및 데미지 적용
+            Vector2 attackPosition = (Vector2)transform.position + (Vector2)transform.right; // 공격 범위 중심
+            float attackRadius = 1.0f; // 공격 범위 반지름
+            Collider2D[] list = Physics2D.OverlapCircleAll(attackPosition, attackRadius, enemMask);
+
+            // 탐지된 적들에게 데미지 적용
+            if (list.Length > 0)
+            {
+                foreach (Collider2D col in list)
+                {
+                    IBattle ibat = col.GetComponent<IBattle>();
+                    if (ibat != null && ibat.IsLive)
+                    {
+                        ibat.OnDamage(30.0f);
+                    }
+                }
+            }
         }
     }
+
 
 
     IEnumerator Dodging(Vector2 rl) //스페이스바 입력시 회피 코루틴

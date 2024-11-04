@@ -29,7 +29,7 @@ public class CharacterStatus : MonoBehaviour
 
         public float drain;
         public float dodgeTime;
-        public float dodgeCool; 
+        public float dodgeCool;
         public float parryingTime;
         public float parryingCool;
 
@@ -40,12 +40,12 @@ public class CharacterStatus : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

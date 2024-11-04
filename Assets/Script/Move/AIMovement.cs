@@ -81,7 +81,9 @@ public class AIMovement : Movement
         while (target != null)
         {
             Vector2 dir = target.position - transform.position; // 목표 위치와 현재 위치 간의 방향 벡터
-            if (dir.magnitude > 0.1f) // 목표 지점이 가까운 경우
+            dir.y = 0.0f;
+
+            if (dir.magnitude > 1.0f) // 목표 지점이 가까운 경우
             {
                 dir.Normalize(); // 방향 정규화
                 float delta = Time.deltaTime * moveSpeed; // 이동 거리 계산

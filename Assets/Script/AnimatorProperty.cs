@@ -14,10 +14,7 @@ public struct AnimParameterData
     public int IsSkill;
     public int OnDodge; //회피 동작 트리거
     public int IsDodge; // 회피 동작 구분 
-    public int OncomboAttack1;
-    public int OncomboAttack2;
-    public int IscomboAttack1;
-    public int IscomboAttack2;
+
     public void Initialize()
     {
         IsMove = Animator.StringToHash("IsMoving");
@@ -30,10 +27,6 @@ public struct AnimParameterData
         IsSkill = Animator.StringToHash("IsSkill");
         OnDodge = Animator.StringToHash("OnDodge");
         IsDodge = Animator.StringToHash("IsDodge");
-        OncomboAttack1 = Animator.StringToHash("OncomboAttack1");
-        OncomboAttack2 = Animator.StringToHash("OncomboAttack2");
-        IscomboAttack1 = Animator.StringToHash("IscomboAttack1");
-        IscomboAttack2 = Animator.StringToHash("IscomboAttack2");
     }
 }
 

@@ -11,6 +11,7 @@ public class PlayerMove : Movement
     public UnityEvent<Vector2> moveAction; // 이동 방향 전달을 위한 이벤트
     public UnityEvent<GameObject> attackAction; // 공격 대상 전달을 위한 이벤트
 
+
     void Start()
     {
         moveSpeed = 5.0f; // 플레이어 이동 속도
@@ -21,7 +22,7 @@ public class PlayerMove : Movement
         curSpaceCool += Time.deltaTime; //스페이스 쿨타임 계산
         OnMove();
         OnJump();
-        OnAttack();       
+        OnAttack();
     }
 
 }
