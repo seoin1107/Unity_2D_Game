@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
 
-public class Potal : FadeInOut
+public class Potal : MonoBehaviour
 {
     public GameObject targetObj;
     public GameObject toObj;
@@ -44,8 +44,8 @@ public class Potal : FadeInOut
             {
                 yield return new WaitForSeconds(0.7f);
                 //Æ÷Å»ÀÌµ¿
-                targetObj.transform.position = toObj.transform.position + Vector3.down * 1.5f;
-                
+                targetObj.transform.position = toObj.transform.position;
+
             }
             yield return null;
         }

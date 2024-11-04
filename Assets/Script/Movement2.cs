@@ -36,6 +36,7 @@ public class Movement2 : MonoBehaviour
             OB = collision.gameObject;
             StartCoroutine(SJump());
         }
+        else return;
     }
 
     public void OnTriggerExit2D(Collider2D collision)
