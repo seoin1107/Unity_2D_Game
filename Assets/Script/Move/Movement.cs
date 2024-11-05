@@ -50,6 +50,8 @@ public class Movement : BattleSystem
     [SerializeField] Rigidbody2D rid;
     public bool IsJumping = false;
     public float jumpForce = 1;
+    public bool IsDoubleJump = false;
+    public byte JumpCount;
     public bool IsMoving = false;
     public float MoveSpeed = 3;
     public float spaceCoolTime = 5.0f; // È¸ÇÇ ÄðÅ¸ÀÓ
@@ -64,6 +66,17 @@ public class Movement : BattleSystem
             IsJumping = true;
             rid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             myAnim.SetTrigger("OnJump");
+
+            JumpCount++;
+            IsDoubleJump = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.W) && JumpCount >= 1 && IsJumping == true)
+        {
+            JumpCount++;
+            rid.velocity = Vector2.zero;
+            rid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
         }
     }
 
