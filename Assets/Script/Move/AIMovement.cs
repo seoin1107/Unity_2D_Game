@@ -6,13 +6,11 @@ using UnityEngine.Events;
 public class AIMovement : Movement
 {
     private Coroutine aiMove;
-    private Rigidbody2D rb2D;
-    public int nextMove;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb2D = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
@@ -20,22 +18,8 @@ public class AIMovement : Movement
     {
         // 필요에 따라 업데이트 로직 추가
     }
-
-    public void OnMove(Vector2 pos)
-    {
-        rb2D.velocity = new Vector2(nextMove, rb2D.velocity.y);
-    }
-
     public void OnMove(Vector2 pos, UnityAction act)
     {
-        // 현재 위치에서 목표 위치까지의 경로를 계산하고, 경로를 점검합니다.
-        Vector2 dir = pos - (Vector2)transform.position;
-        if (dir.magnitude < 0.1f) // 목표 지점이 가까운 경우
-        {
-            act?.Invoke(); // 완료 액션 호출
-            return;
-        }
-
         if (aiMove != null) StopCoroutine(aiMove); // 기존 이동 중지
         aiMove = StartCoroutine(MovingTowards(pos, act)); // 새로운 이동 시작
     }
@@ -47,7 +31,6 @@ public class AIMovement : Movement
 
             Vector2 dir = (target - (Vector2)transform.position).normalized; // 방향 정규화
             dir.y = 0.0f;
-            dir.Normalize();
             float delta = Time.deltaTime * moveSpeed; // 이동 거리 계산
 
             // 이동
@@ -69,8 +52,7 @@ public class AIMovement : Movement
         act?.Invoke(); // 완료 액션 호출
         aiMove = null; // 현재 이동 코루틴 참조 해제
     }
-
-    protected new void OnFollow(Transform target)
+    protected void OnFollow(Transform target)
     {
         if (aiMove != null) StopCoroutine(aiMove); // 기존 이동 중지
         aiMove = StartCoroutine(Following(target)); // 새로운 추적 시작
@@ -109,5 +91,7 @@ public class AIMovement : Movement
             myAnim.SetBool(animData.IsMove, false); // 추적 중지 시 애니메이션 종료
         }
         aiMove = null; // 현재 추적 코루틴 참조 해제
+        OnMove();
     }
+    
 }
