@@ -15,7 +15,7 @@ public class Stat : MonoBehaviour
     public int baseAtk = 10;
     public int totalAtk = 0;
 
-
+    public int totalStat = 0;
     public int statAtk = 0;
     public int statHp = 0;
     public int statUtil = 0;
@@ -45,8 +45,8 @@ public class Stat : MonoBehaviour
 
 public class CharacterStatus : Stat
 {
-    
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +61,12 @@ public class CharacterStatus : Stat
 
     public void LevelUp()
     {
-        
+        curExp -= needExp;
+        level++;       
+        needExp += 5;
+        totalStat += 1;
     }
+
+
 
 }
