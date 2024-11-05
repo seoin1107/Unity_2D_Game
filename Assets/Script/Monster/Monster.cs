@@ -30,7 +30,12 @@ public class Monster : AIMovement
                     float dist = Random.Range(1.0f, 5.0f);
                     dir = dir * dist;
                     Vector2 randomPos = createPos + dir;
-                    OnMove(randomPos, () => myCoro = StartCoroutine(DelayAction(Random.Range(1.0f, 3.0f), () => ChangeState(State.Normal))));
+                    OnMove(randomPos, () =>
+                    {
+                        myCoro = StartCoroutine(DelayAction(Random.Range(1.0f, 3.0f),
+                            () => ChangeState(State.Normal)));
+
+                    });
                     ChangeState(State.Roaming);
                 }
                 break;
@@ -51,6 +56,7 @@ public class Monster : AIMovement
             case State.Normal:
                 break;
             case State.Battle:
+                playTime += Time.deltaTime;
                 break;
         }
     }
