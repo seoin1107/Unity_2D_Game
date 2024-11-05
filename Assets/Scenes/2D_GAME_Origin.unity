@@ -278,7 +278,6 @@ GameObject:
   m_Component:
   - component: {fileID: 103071918}
   - component: {fileID: 103071921}
-  - component: {fileID: 103071922}
   - component: {fileID: 103071919}
   - component: {fileID: 103071923}
   - component: {fileID: 103071924}
@@ -371,7 +370,7 @@ MonoBehaviour:
   moveAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 103071922}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Movement, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 1
@@ -386,36 +385,6 @@ MonoBehaviour:
   attackAction:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &103071922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103071914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1f90dec7a71ae3408e24cce15267ef1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  battleStat:
-    AP: 0
-    AttackRange: 0
-    AttackDelay: 0
-    maxHP: 0
-    curHP: 0
-  myTarget: {fileID: 0}
-  moveSpeed: 2
-  rid: {fileID: 0}
-  IsJumping: 0
-  jumpForce: 5
-  IsMoving: 0
-  MoveSpeed: 3
-  spaceCoolTime: 5
-  curSpaceCool: 5
-  enemMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!70 &103071923
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -46,46 +46,6 @@ public class Movement : BattleSystem
         move = null;
     }
 
-    public void OnFollow(Transform target)
-    {
-        OnStop();
-        move = StartCoroutine(Following(target)); // 추적 시작
-    }
-
-    private IEnumerator Following(Transform target)
-    {
-        while (target != null)
-        {
-            playTime += Time.deltaTime; // 시간 누적
-            Vector2 dir = target.position - transform.position; // 목표 위치 방향 계산
-            float dist = dir.magnitude; // 목표까지의 거리
-
-
-            if (dist > battleStat.AttackRange && !myAnim.GetBool(animData.IsAttack)) // 공격 범위 이내가 아닐 때
-            {
-                myAnim.SetBool(animData.IsMove, true); // 이동 애니메이션 설정
-                dir.Normalize(); // 방향 정규화
-
-                float delta = Time.deltaTime * moveSpeed; // 이동 거리 계산
-                if (delta > dist) delta = dist; // 남은 거리보다 클 경우 조정
-                transform.Translate(dir * delta, Space.World); // 이동
-            }
-            else
-            {
-                if (myAnim != null) myAnim.SetBool(animData.IsMove, false); // 이동 애니메이션 종료
-                if (playTime >= battleStat.AttackDelay)
-                {
-                    playTime = 0.0f; // 재설정
-                    if (myAnim != null) myAnim.SetTrigger(animData.OnAttack); // 공격 트리거 설정
-                }
-            }
-
-            yield return null; // 다음 프레임까지 대기
-        }
-
-        if (myAnim != null) myAnim.SetBool(animData.IsMove, false); // 추적 중지 시 애니메이션 종료
-
-    }
 
     [SerializeField] Rigidbody2D rid;
     public bool IsJumping = false;
