@@ -58,26 +58,27 @@ public class Movement : BattleSystem
     public float curSpaceCool = 5.0f; // 회피 쿨타임 계산
     public LayerMask enemMask;
 
-
+    //처음부터 더블점프가 포함된 코드
     public void OnJump()
     {
-        if (Input.GetKeyDown(KeyCode.W) )
+        if (Input.GetKeyDown(KeyCode.W) && JumpCount < 2)
         {
             IsJumping = true;
-            rid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            myAnim.SetTrigger("OnJump");
-
-            JumpCount++;
-            IsDoubleJump = true;
-        }
-
-        if (Input.GetKeyDown(KeyCode.W) && JumpCount >= 1 && IsJumping == true)
-        {
-            JumpCount++;
             rid.velocity = Vector2.zero;
             rid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-
+            myAnim.SetTrigger("OnJump");
+            JumpCount++;
         }
+    }
+
+    //착지시 점프카운트 초기화
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            JumpCount = 0;
+        }
+
     }
 
     public void OnMove()
