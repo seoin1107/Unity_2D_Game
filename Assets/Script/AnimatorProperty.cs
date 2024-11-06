@@ -14,6 +14,7 @@ public struct AnimParameterData
     public int IsSkill;
     public int OnDodge; //회피 동작 트리거
     public int IsDodge; // 회피 동작 구분 
+    public int IsDead;
 
     public void Initialize()
     {
@@ -27,6 +28,7 @@ public struct AnimParameterData
         IsSkill = Animator.StringToHash("IsSkill");
         OnDodge = Animator.StringToHash("OnDodge");
         IsDodge = Animator.StringToHash("IsDodge");
+        IsDead = Animator.StringToHash("IsDead");
     }
 }
 
