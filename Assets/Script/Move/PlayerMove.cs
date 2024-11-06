@@ -6,10 +6,10 @@ using UnityEngine.Events;
 
 public class PlayerMove : Movement
 {
-    public LayerMask moveMask; // 이동을 위한 레이어 마스크
-    public LayerMask attackMask; // 공격을 위한 레이어 마스크
-    public UnityEvent<Vector2> moveAction; // 이동 방향 전달을 위한 이벤트
-    public UnityEvent<GameObject> attackAction; // 공격 대상 전달을 위한 이벤트
+    //public LayerMask moveMask; // 이동을 위한 레이어 마스크
+    //public LayerMask attackMask; // 공격을 위한 레이어 마스크
+    //public UnityEvent<Vector2> moveAction; // 이동 방향 전달을 위한 이벤트
+   // public UnityEvent<GameObject> attackAction; // 공격 대상 전달을 위한 이벤트
 
 
     void Start()
@@ -23,6 +23,7 @@ public class PlayerMove : Movement
         OnMove();
         OnJump();
         OnAttack();
+        LevelUp();////임시
     }
 
 }
