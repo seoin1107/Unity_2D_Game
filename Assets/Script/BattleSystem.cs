@@ -35,7 +35,7 @@ public struct BattleStat
     public float maxHP;
     public float curHP;
 }
-public class BattleSystem : AnimatorProperty, IBattle
+public class BattleSystem : CharacterStatus, IBattle
 {
     public BattleStat battleStat;
     protected float playTime = 0.0f;

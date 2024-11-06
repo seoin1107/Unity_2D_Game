@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Stat : MonoBehaviour
+public class Stat : AnimatorProperty
 {
     public int level = 1;
 
-    public int baseHp = 20;
-    public int maxHp;
-    public int curHp;
+    public float baseHp = 20;
+    public float maxHp;
+    public float curHp;
 
 
-    public int baseAtk = 10;
-    public int totalAtk = 0;
+    public float baseAtk = 10;
+    public float totalAtk = 0;
 
-    public int totalStat = 0;
-    public int statAtk = 0;
-    public int statHp = 0;
-    public int statUtil = 0;
+    public float totalStat = 0;
+    public float statAtk = 0;
+    public float statHp = 0;
+    public float statUtil = 0;
 
     public float moveSpeed = 1.0f;
     public float atkSpeed = 0;
@@ -61,12 +61,14 @@ public class CharacterStatus : Stat
 
     public void LevelUp()
     {
-        curExp -= needExp;
-        level++;       
-        needExp += 5;
-        totalStat += 1;
+        while (needExp < curExp)
+        {
+            curExp -= needExp;
+            level++;
+            needExp += 5;
+            totalStat += 1;
+        }
     }
 
-
-
+   
 }
