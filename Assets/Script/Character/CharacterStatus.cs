@@ -20,7 +20,7 @@ public class Stat : AnimatorProperty
     public float statHp = 0;
     public float statUtil = 0;
 
-    public float moveSpeed = 1.0f;
+    public float moveSpeed = 5.0f;
     public float atkSpeed = 0;
     public float hpRegen = 0;
 
