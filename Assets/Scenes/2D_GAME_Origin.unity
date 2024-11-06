@@ -349,10 +349,10 @@ MonoBehaviour:
   curHp: 0
   baseAtk: 10
   totalAtk: 0
-  totalStat: 0
-  statAtk: 0
-  statHp: 0
-  statUtil: 0
+  totalPoint: 1
+  atkPoint: 0
+  hpPoint: 0
+  utilPoint: 0
   moveSpeed: 5
   atkSpeed: 0
   hpRegen: 0
@@ -366,14 +366,8 @@ MonoBehaviour:
   parryingCool: 2
   needExp: 10
   curExp: 0
-  battleStat:
-    AP: 0
-    AttackRange: 0
-    AttackDelay: 0
-    maxHP: 0
-    curHP: 0
+  battleStat: {fileID: 0}
   myTarget: {fileID: 0}
-  moveSpeed: 5
   rid: {fileID: 103071919}
   IsJumping: 0
   jumpForce: 5
@@ -384,30 +378,6 @@ MonoBehaviour:
   enemMask:
     serializedVersion: 2
     m_Bits: 0
-  moveMask:
-    serializedVersion: 2
-    m_Bits: 128
-  attackMask:
-    serializedVersion: 2
-    m_Bits: 0
-  moveAction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
-        m_MethodName: OnMove
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 1
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  attackAction:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!70 &103071923
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1425,7 +1395,7 @@ PrefabInstance:
     - target: {fileID: 8068589428734277747, guid: 27bf31f6833d5b742a6b7841e983dd6b, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: e9db1085bfbf87c49b168d24fe80c453, type: 2}
+      objectReference: {fileID: 9100000, guid: 83d132fa63193af40acabb0b9ae7cdd3, type: 2}
     - target: {fileID: 8068589428734277748, guid: 27bf31f6833d5b742a6b7841e983dd6b, type: 3}
       propertyPath: m_Name
       value: Green Idle
@@ -1610,10 +1580,10 @@ MonoBehaviour:
   curHp: 0
   baseAtk: 10
   totalAtk: 0
-  totalStat: 0
-  statAtk: 0
-  statHp: 0
-  statUtil: 0
+  totalPoint: 1
+  atkPoint: 0
+  hpPoint: 0
+  utilPoint: 0
   moveSpeed: 1
   atkSpeed: 0
   hpRegen: 0
@@ -1627,14 +1597,8 @@ MonoBehaviour:
   parryingCool: 2
   needExp: 10
   curExp: 0
-  battleStat:
-    AP: 10
-    AttackRange: 1
-    AttackDelay: 3
-    maxHP: 100
-    curHP: 100
+  battleStat: {fileID: 0}
   myTarget: {fileID: 0}
-  moveSpeed: 1
   rid: {fileID: 0}
   IsJumping: 0
   jumpForce: 5
