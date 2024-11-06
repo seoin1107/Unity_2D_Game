@@ -343,6 +343,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 889364b7e10dfb448b4e28785f901e77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 10
+  baseHp: 20
+  maxHp: 0
+  curHp: 0
+  baseAtk: 10
+  totalAtk: 0
+  totalStat: 0
+  statAtk: 0
+  statHp: 0
+  statUtil: 0
+  moveSpeed: 5
+  atkSpeed: 0
+  hpRegen: 0
+  hitRecover: 0.5
+  skillCool: 1
+  skillDamage: 1
+  drain: 0
+  dodgeTime: 0.2
+  dodgeCool: 5
+  parryingTime: 0.2
+  parryingCool: 2
+  needExp: 10
+  curExp: 0
   battleStat:
     AP: 0
     AttackRange: 0
@@ -1038,8 +1061,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e478a058530b34a98fa8fcb4369499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myCharacter: {fileID: 0}
-  tf: {fileID: 0}
+  myCharacter: {fileID: 684970824}
+  tf: {fileID: 103071918}
   mousePos: {x: 0, y: 0}
 --- !u!212 &684970824 stripped
 SpriteRenderer:
@@ -1581,6 +1604,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19875752a396f9642b3342af0ef53468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 1
+  baseHp: 20
+  maxHp: 0
+  curHp: 0
+  baseAtk: 10
+  totalAtk: 0
+  totalStat: 0
+  statAtk: 0
+  statHp: 0
+  statUtil: 0
+  moveSpeed: 1
+  atkSpeed: 0
+  hpRegen: 0
+  hitRecover: 0.5
+  skillCool: 1
+  skillDamage: 1
+  drain: 0
+  dodgeTime: 0.2
+  dodgeCool: 5
+  parryingTime: 0.2
+  parryingCool: 2
+  needExp: 10
+  curExp: 0
   battleStat:
     AP: 10
     AttackRange: 1
@@ -1599,7 +1645,6 @@ MonoBehaviour:
   enemMask:
     serializedVersion: 2
     m_Bits: 0
-  nextMove: 0
   myState: 0
 --- !u!50 &1828575728
 Rigidbody2D:
