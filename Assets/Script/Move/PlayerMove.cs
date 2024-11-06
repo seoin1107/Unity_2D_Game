@@ -14,7 +14,7 @@ public class PlayerMove : Movement
 
     void Start()
     {
-        moveSpeed = 5.0f; // 플레이어 이동 속도
+
     }
 
     void Update()
