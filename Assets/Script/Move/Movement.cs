@@ -19,7 +19,6 @@ public class Movement : BattleSystem
     // Start is called before the first frame update
     void Start()
     {
-        rid = GetComponent<Rigidbody2D>();
         PlayerLayer = LayerMask.NameToLayer("Player");
         GroundLayer = LayerMask.NameToLayer("Ground");
         FloorLayer = LayerMask.NameToLayer("Floor");
@@ -28,16 +27,7 @@ public class Movement : BattleSystem
     // Update is called once per frame
     void Update()
     {
-        //평소에는 충돌
-        if (IsJumping == true)
-        {
-            //점프시 플레이어&플로어 충돌무시
-            Physics2D.IgnoreLayerCollision(PlayerLayer, FloorLayer, true);
-        }
-        else
-        { 
-            Physics2D.IgnoreLayerCollision(PlayerLayer, FloorLayer, false);
-        }
+        
     }
 
     protected void OnStop()

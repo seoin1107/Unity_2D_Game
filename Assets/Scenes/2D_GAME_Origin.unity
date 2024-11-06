@@ -354,7 +354,6 @@ MonoBehaviour:
   rid: {fileID: 103071919}
   IsJumping: 0
   jumpForce: 5
-  IsDoubleJump: 0
   JumpCount: 0
   IsMoving: 0
   MoveSpeed: 3
@@ -1594,7 +1593,6 @@ MonoBehaviour:
   rid: {fileID: 0}
   IsJumping: 0
   jumpForce: 5
-  IsDoubleJump: 0
   JumpCount: 0
   IsMoving: 0
   MoveSpeed: 3
