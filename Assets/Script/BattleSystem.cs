@@ -45,9 +45,15 @@ public class BattleSystem : AnimatorProperty, IBattle
 
     public bool IsLive
     {
-        get
+        get => battleStat.curHP > 0.0f;
+    }
+
+    public float curHp
+    {
+        get => battleStat.curHP;
+        set
         {
-            return battleStat.curHP > 0.0f;
+            battleStat.curHP = value;
         }
     }
 
@@ -64,8 +70,8 @@ public class BattleSystem : AnimatorProperty, IBattle
 
     public void OnDamage(float dmg)
     {
-        battleStat.curHP -= dmg;
-        if (battleStat.curHP <= 0.0f)
+        curHp -= dmg;
+        if (curHp <= 0.0f)
         {
             myAnim.SetTrigger(animData.OnDead);
             OnDead();

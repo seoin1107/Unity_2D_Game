@@ -91,7 +91,6 @@ public class AIMovement : Movement
             myAnim.SetBool(animData.IsMove, false); // 추적 중지 시 애니메이션 종료
         }
         aiMove = null; // 현재 추적 코루틴 참조 해제
-        OnMove();
     }
     
 }
