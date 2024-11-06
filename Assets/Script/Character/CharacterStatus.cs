@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Stat : AnimatorProperty
 {
-    public int level = 1;
+    public int level ;
 
     public float baseHp = 20;
     public float maxHp;
