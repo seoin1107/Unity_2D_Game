@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d464efd76c9f08f4db5c041b96fd33dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cover: {fileID: 0}
   targetObj: {fileID: 103071914}
   toObj: {fileID: 717835008}
   delay: 0.5
@@ -371,6 +372,7 @@ MonoBehaviour:
   rid: {fileID: 103071919}
   IsJumping: 0
   jumpForce: 5
+  JumpCount: 0
   IsMoving: 0
   MoveSpeed: 3
   spaceCoolTime: 5
@@ -803,6 +805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d464efd76c9f08f4db5c041b96fd33dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cover: {fileID: 0}
   targetObj: {fileID: 103071914}
   toObj: {fileID: 62499757}
   delay: 0.5
@@ -1338,7 +1341,7 @@ Animator:
   m_GameObject: {fileID: 1747080084}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 05f86ec26b087ca45995f703b245973a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 263355c27f5c67c4b80dba0e3a3ff18b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
