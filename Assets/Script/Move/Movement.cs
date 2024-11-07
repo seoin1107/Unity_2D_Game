@@ -11,7 +11,6 @@ using UnityEditor;
 
 public class Movement : BattleSystem
 {
-    public float moveSpeed = 2.0f;  // 이동 속도
 
     Coroutine move = null;
     int PlayerLayer, GroundLayer, FloorLayer;

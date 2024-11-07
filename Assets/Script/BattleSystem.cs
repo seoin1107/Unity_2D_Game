@@ -26,18 +26,9 @@ interface IBattle : ILive, IDamage, IDeathAlarm
 }
 
 // 직렬화은 파일로저장한다는 의미
-[System.Serializable]
-public struct BattleStat
+public class BattleSystem : CharacterStatus, IBattle
 {
-    public float AP;
-    public float AttackRange;
-    public float AttackDelay;
-    public float maxHP;
-    public float curHP;
-}
-public class BattleSystem : AnimatorProperty, IBattle
-{
-    public BattleStat battleStat;
+    public CharacterStatus battleStat;
     protected float playTime = 0.0f;
     public GameObject myTarget;
 
@@ -47,14 +38,14 @@ public class BattleSystem : AnimatorProperty, IBattle
     {
         get
         {
-            return battleStat.curHP > 0.0f;
+            return battleStat.curHp > 0.0f;
         }
     }
 
     protected void OnReset()
     {
 
-        battleStat.curHP = battleStat.maxHP;
+        battleStat.curHp = battleStat.maxHp;
     }
 
     protected virtual void OnDead()
@@ -64,8 +55,8 @@ public class BattleSystem : AnimatorProperty, IBattle
 
     public void OnDamage(float dmg)
     {
-        battleStat.curHP -= dmg;
-        if (battleStat.curHP <= 0.0f)
+        battleStat.curHp -= dmg;
+        if (battleStat.curHp <= 0.0f)
         {
             myAnim.SetTrigger(animData.OnDead);
             OnDead();
@@ -83,7 +74,7 @@ public class BattleSystem : AnimatorProperty, IBattle
 
     public void OnAttack()
     {
-        myTarget.GetComponent<IDamage>().OnDamage(battleStat.AP);
+        myTarget.GetComponent<IDamage>().OnDamage(battleStat.atkSpeed);
     }
 
 }
