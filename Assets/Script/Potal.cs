@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
 
-public class Potal : MonoBehaviour
+public class Potal : FadeInOut
 {
     public GameObject targetObj;
     public GameObject toObj;
@@ -16,16 +16,9 @@ public class Potal : MonoBehaviour
         {
             targetObj = collision.gameObject;
             StartCoroutine(PotalRoutine());
+            
         }
     }
-
-    //public void PotalSystem()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.G))
-    //    {
-    //        StartCoroutine(PotalRoutine());
-    //    }
-    //}
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -45,10 +38,16 @@ public class Potal : MonoBehaviour
                 yield return new WaitForSeconds(0.7f);
                 //Æ÷Å»ÀÌµ¿
                 targetObj.transform.position = toObj.transform.position;
-
+                if (Input.GetKeyDown(KeyCode.G))
+                {
+                    Fade();
+                }
             }
+            
             yield return null;
+            
         }
+        
     }
 
     //¾À°£ÀÇ ÀÌµ¿
@@ -56,5 +55,4 @@ public class Potal : MonoBehaviour
     {
         SceneManager.LoadScene("Base");
     }
-    //
 }
