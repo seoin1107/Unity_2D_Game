@@ -18,7 +18,6 @@ public class Movement : BattleSystem
     // Start is called before the first frame update
     void Start()
     {
-        rid = GetComponent<Rigidbody2D>();
         PlayerLayer = LayerMask.NameToLayer("Player");
         GroundLayer = LayerMask.NameToLayer("Ground");
         FloorLayer = LayerMask.NameToLayer("Floor");
@@ -27,16 +26,7 @@ public class Movement : BattleSystem
     // Update is called once per frame
     void Update()
     {
-        //평소에는 충돌
-        if (IsJumping == true)
-        {
-            //점프시 플레이어&플로어 충돌무시
-            Physics2D.IgnoreLayerCollision(PlayerLayer, FloorLayer, true);
-        }
-        else
-        { 
-            Physics2D.IgnoreLayerCollision(PlayerLayer, FloorLayer, false);
-        }
+        
     }
 
     protected void OnStop()
@@ -49,21 +39,36 @@ public class Movement : BattleSystem
     [SerializeField] Rigidbody2D rid;
     public bool IsJumping = false;
     public float jumpForce = 1;
+    public byte JumpCount;
     public bool IsMoving = false;
     public float MoveSpeed = 3;
     public float spaceCoolTime = 5.0f; // 회피 쿨타임
     public float curSpaceCool = 5.0f; // 회피 쿨타임 계산
     public LayerMask enemMask;
 
-
+    //처음부터 더블점프가 포함된 코드
+    //이후 조건 충족하면 JumpConunt를 -1로 초기화 하여 2단점프 가능하게
     public void OnJump()
     {
-        if (Input.GetKeyDown(KeyCode.W) )
+        if (Input.GetKeyDown(KeyCode.W) && JumpCount < 2)
         {
             IsJumping = true;
+            rid.velocity = Vector2.zero;
             rid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             myAnim.SetTrigger("OnJump");
+            JumpCount++;
         }
+    }
+
+    //착지시 점프카운트 초기화
+    //여기는 if에 &&으로 조건 추가해서 메인 JumpCount를 -1로 초기화하고 else로 0으로 초기화
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            JumpCount = 0;
+        }
+
     }
 
     public void OnMove()

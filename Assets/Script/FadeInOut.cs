@@ -8,10 +8,12 @@ public class FadeInOut : MonoBehaviour
     public Image Cover;
     float time = 0.0f;
     float F_time = 0.7f;
-    public void Fade()
-    {
+
+    protected void Fade()
+    {        
         StartCoroutine(FadeFlow());
     }
+
     IEnumerator FadeFlow()
     {
         Cover.gameObject.SetActive(true);

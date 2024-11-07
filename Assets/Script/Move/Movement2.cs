@@ -22,7 +22,6 @@ public class Movement2 : MonoBehaviour
     public bool m_grounded = false;
     public bool m_rolling = false;
     public Sensor_HeroKnight m_groundSensor;
-    bool IsDoubleJump;
     public byte JumpCount = 2;
 
     GameObject OB;
@@ -135,13 +134,6 @@ public class Movement2 : MonoBehaviour
         else
         {
             Physics2D.IgnoreLayerCollision(PlayerLayer, FloorLayer, false);
-        }
-
-        //더블점프 활성화시
-        if (IsDoubleJump == true && JumpCount > 0 && rigid.velocity.y != 0.0000f && Input.GetKeyDown(KeyCode.W))
-        {
-            --JumpCount;
-            rigid.AddForce(Vector2.up * moveStat.JumpSpeed, ForceMode2D.Force);
         }
 
     }
