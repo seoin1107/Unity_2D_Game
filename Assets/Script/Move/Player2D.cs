@@ -19,9 +19,14 @@ public class Player2D : BattleSystem2D
     {
         moveDir.x = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetKeyDown(KeyCode.Space) && !myAnim.GetBool("IsAir"))
+        if (Input.GetKeyDown(KeyCode.W) && !myAnim.GetBool("IsAir"))
         {
             OnJump();
+        }
+
+        if(Input.GetKeyDown(KeyCode.S) && !myAnim.GetBool("IsAir"))
+        {
+            OnDownJump();
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -31,7 +36,7 @@ public class Player2D : BattleSystem2D
         base.OnUpdate();
     }
 
-    public void OnAttack()
+    public void OnAttack() // 공격범위 설정
     {
         Vector2 dir = new Vector2(myRenderer.flipX ? -1.0f : 1.0f, 0.0f);
         Collider2D[] list = Physics2D.OverlapCircleAll((Vector2)transform.position + dir, 1.0f, myEnemy);

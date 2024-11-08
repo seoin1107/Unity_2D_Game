@@ -29,13 +29,26 @@ public class Movement2D : SpriteProperty
         }
     }
     public float moveSpeed = 2.0f;
+    public float jumpSpeed;
+    int PlayerLayer, GroundLayer, FloorLayer;
+    public bool m_grounded = false;
+    public bool m_rolling = false;
+    public Sensor_HeroKnight m_groundSensor;
+    public byte JumpCount = 2;
+
+    GameObject OB;
 
     protected Vector2 moveDir;
     protected float deltaDist;
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_HeroKnight>();
+
+        PlayerLayer = LayerMask.NameToLayer("Player");
+        GroundLayer = LayerMask.NameToLayer("Ground");
+        FloorLayer = LayerMask.NameToLayer("Floor");
+
     }
 
     protected virtual void OnCheckGround(Transform tr)
@@ -50,6 +63,14 @@ public class Movement2D : SpriteProperty
         myAnim.SetBool(animData.IsMove, moveDir.x != 0.0f ? true : false);
         deltaDist = Time.deltaTime * moveSpeed;
         transform.Translate(moveDir * deltaDist);
+
+        float delta = Time.deltaTime;
+        if (myRigid.velocity.y == 0.000000f) JumpCount = 2; //더블점프시 필요
+        if (m_grounded && !m_groundSensor.State())
+        {
+            m_grounded = false;
+            myAnim.SetBool("Grounded", m_grounded);
+        }
     }
 
     protected void OnJump()
@@ -69,6 +90,13 @@ public class Movement2D : SpriteProperty
             yield return null;
         }
         myColider.isTrigger = false;
+
+/*        if (myRigid.velocity.y == 0.0f)
+        {
+            --JumpCount;
+            myRigid.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Force);
+            m_grounded = false;
+        }*/
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -90,4 +118,39 @@ public class Movement2D : SpriteProperty
             myAnim.SetBool("IsAir", true);
         }
     }
+
+    protected void OnDownJump()
+    {
+        StopAllCoroutines();
+        StartCoroutine(DownJumping());
+    }
+    IEnumerator DownJumping()
+    {
+        while (true)
+        {
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                OB.SetActive(false);
+                //yield return new WaitForSeconds(disableTime);                
+            }
+            yield return null;
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        {
+            OB = collision.gameObject;
+            StartCoroutine(DownJumping());
+        }
+        else return;
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        StopCoroutine(DownJumping());
+        OB.SetActive(true);
+    }
+
 }
