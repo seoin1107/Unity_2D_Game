@@ -65,12 +65,11 @@ public class Movement2D : SpriteProperty
         transform.Translate(moveDir * deltaDist);
 
         float delta = Time.deltaTime;
-        if (myRigid.velocity.y == 0.000000f) JumpCount = 2; //더블점프시 필요
+        /*if (myRigid.velocity.y == 0.000000f) JumpCount = 2; //더블점프시 필요
         if (m_grounded && !m_groundSensor.State())
         {
             m_grounded = false;
-            myAnim.SetBool("Grounded", m_grounded);
-        }
+        }*/
     }
 
     protected void OnJump()
@@ -91,12 +90,6 @@ public class Movement2D : SpriteProperty
         }
         myColider.isTrigger = false;
 
-/*        if (myRigid.velocity.y == 0.0f)
-        {
-            --JumpCount;
-            myRigid.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Force);
-            m_grounded = false;
-        }*/
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -126,31 +119,32 @@ public class Movement2D : SpriteProperty
     }
     IEnumerator DownJumping()
     {
-        while (true)
+        myRigid.AddForce(Vector2.down * -1.0f);
+        yield return new WaitForFixedUpdate();
+
+        myColider.isTrigger = false;
+        while (myRigid.velocity.y < 0.0f) //내려가기
         {
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                OB.SetActive(false);
-                //yield return new WaitForSeconds(disableTime);                
-            }
             yield return null;
         }
+        myColider.isTrigger = true;
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            OB = collision.gameObject;
-            StartCoroutine(DownJumping());
+            myAnim.SetBool("IsAir", false);
+            OnCheckGround(collision.transform);
         }
-        else return;
     }
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        StopCoroutine(DownJumping());
-        OB.SetActive(true);
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            myAnim.SetBool("IsAir", true);
+        }
     }
 
 }
