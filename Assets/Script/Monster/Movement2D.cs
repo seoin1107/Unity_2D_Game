@@ -29,25 +29,13 @@ public class Movement2D : SpriteProperty
         }
     }
     public float moveSpeed = 2.0f;
-    public float jumpSpeed;
-    int PlayerLayer, GroundLayer, FloorLayer;
-    public bool m_grounded = false;
-    public bool m_rolling = false;
-    public Sensor_HeroKnight m_groundSensor;
-    public byte JumpCount = 2;
 
-    GameObject OB;
 
     protected Vector2 moveDir;
     protected float deltaDist;
     // Start is called before the first frame update
     void Start()
     {
-        m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_HeroKnight>();
-
-        PlayerLayer = LayerMask.NameToLayer("Player");
-        GroundLayer = LayerMask.NameToLayer("Ground");
-        FloorLayer = LayerMask.NameToLayer("Floor");
 
     }
 
@@ -64,12 +52,6 @@ public class Movement2D : SpriteProperty
         deltaDist = Time.deltaTime * moveSpeed;
         transform.Translate(moveDir * deltaDist);
 
-        float delta = Time.deltaTime;
-        /*if (myRigid.velocity.y == 0.000000f) JumpCount = 2; //더블점프시 필요
-        if (m_grounded && !m_groundSensor.State())
-        {
-            m_grounded = false;
-        }*/
     }
 
     protected void OnJump()
@@ -92,11 +74,32 @@ public class Movement2D : SpriteProperty
 
     }
 
+    protected void OnDownJump()
+    {
+        StopAllCoroutines();
+        StartCoroutine(DownJumping());
+        myAnim.SetBool("IsAir", false);
+    }
+    IEnumerator DownJumping()
+    {
+        myRigid.AddForce(Vector2.down * -1.0f);
+        yield return new WaitForFixedUpdate();
+
+        myColider.isTrigger = true;
+        yield return new WaitForSeconds(0.5f); 
+        myColider.isTrigger = false;
+        while (myRigid.velocity.y < 0.0f) //내려가기
+        {
+            yield return null;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             myAnim.SetBool("IsAir", false);
+            myAnim.SetBool("IsDowning", false);
             OnCheckGround(collision.transform);
         }
     }
@@ -109,42 +112,27 @@ public class Movement2D : SpriteProperty
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             myAnim.SetBool("IsAir", true);
+            myAnim.SetBool("IsDowning", true);
         }
     }
 
-    protected void OnDownJump()
-    {
-        StopAllCoroutines();
-        StartCoroutine(DownJumping());
-    }
-    IEnumerator DownJumping()
-    {
-        myRigid.AddForce(Vector2.down * -1.0f);
-        yield return new WaitForFixedUpdate();
 
-        myColider.isTrigger = false;
-        while (myRigid.velocity.y < 0.0f) //내려가기
-        {
-            yield return null;
-        }
-        myColider.isTrigger = true;
-    }
-
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            myAnim.SetBool("IsAir", false);
-            OnCheckGround(collision.transform);
-        }
-    }
 
     public void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             myAnim.SetBool("IsAir", true);
+            myAnim.SetBool("IsDowning", true);
         }
     }
 
+/*    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            myAnim.SetBool("IsAir", false);
+            OnCheckGround(collision.transform);
+        }
+    }*/
 }
