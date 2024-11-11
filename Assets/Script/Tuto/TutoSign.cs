@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TutoSign1AD : MonoBehaviour
+public class TutoSign : MonoBehaviour
 {
     public GameObject tatgetOB;
     public Image myImage;

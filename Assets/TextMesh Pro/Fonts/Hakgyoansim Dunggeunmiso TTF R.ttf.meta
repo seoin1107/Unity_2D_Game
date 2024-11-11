@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2b84dac0471acba43aae52e3b3d6d26f
+guid: 65c81dd9e25f9834b8101931bcda7199
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Hakgyoansim Santteutdotumthic
+  - Hakgyoansim Dunggeunmiso TTF
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
