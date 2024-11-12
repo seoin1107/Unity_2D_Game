@@ -30,12 +30,15 @@ public class Movement2D : SpriteProperty
     }
     public float moveSpeed = 2.0f;
 
+
     protected Vector2 moveDir;
     protected float deltaDist;
+
+    private bool isFloor = false; // floor에있을때만 호출
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     protected virtual void OnCheckGround(Transform tr)
@@ -50,6 +53,7 @@ public class Movement2D : SpriteProperty
         myAnim.SetBool(animData.IsMove, moveDir.x != 0.0f ? true : false);
         deltaDist = Time.deltaTime * moveSpeed;
         transform.Translate(moveDir * deltaDist);
+
     }
 
     protected void OnJump()
@@ -69,12 +73,41 @@ public class Movement2D : SpriteProperty
             yield return null;
         }
         myColider.isTrigger = false;
+
+    }
+
+    protected void OnDownJump()
+    {
+        if(isFloor)
+        {
+            StopAllCoroutines();
+            StartCoroutine(DownJumping());
+        }
+    }
+    IEnumerator DownJumping()
+    {
+        myRigid.AddForce(Vector2.up * 50.0f);
+        yield return new WaitForFixedUpdate();
+
+        myColider.isTrigger = true;
+        yield return new WaitForSeconds(0.7f); 
+        myColider.isTrigger = false;
+        while (myRigid.velocity.y < 0.0f) //내려가기
+        {
+            yield return null;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
+            myAnim.SetBool("IsAir", false);
+            OnCheckGround(collision.transform);
+        }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        {
+            isFloor = true;     //floor에있을때
             myAnim.SetBool("IsAir", false);
             OnCheckGround(collision.transform);
         }
@@ -89,5 +122,21 @@ public class Movement2D : SpriteProperty
         {
             myAnim.SetBool("IsAir", true);
         }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        {
+            isFloor = false;
+            myAnim.SetBool("IsAir", true);
+        }
     }
+
+
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            myAnim.SetBool("IsAir", true);
+        }
+    }
+
 }
