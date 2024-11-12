@@ -24,7 +24,7 @@ public class Player2D : BattleSystem2D
             OnJump();
         }
 
-        if(Input.GetKeyDown(KeyCode.S) && !myAnim.GetBool("IsDowning"))
+        if (Input.GetKeyDown(KeyCode.S) && !myAnim.GetBool("IsAir"))
         {
             OnDownJump();
         }
