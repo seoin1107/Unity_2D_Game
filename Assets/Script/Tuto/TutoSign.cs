@@ -6,13 +6,15 @@ using UnityEngine.UI;
 public class TutoSign : MonoBehaviour
 {
     public GameObject tatgetOB;
-    public Image myImage;
+    public Image myImage1;
+    public Image myImage2;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            myImage.gameObject.SetActive(true);
+            myImage1.gameObject.SetActive(true);
+            myImage2.gameObject.SetActive(true);
         }
     }
 
@@ -20,7 +22,8 @@ public class TutoSign : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            myImage.gameObject.SetActive(false);
+            myImage1.gameObject.SetActive(false);
+            myImage2.gameObject.SetActive(false);
         }
     }
 

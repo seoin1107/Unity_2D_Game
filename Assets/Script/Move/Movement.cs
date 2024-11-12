@@ -68,6 +68,7 @@ public class Movement : BattleSystem
             collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
         {
             JumpCount = 0;
+            IsJumping = false;
         }
 
     }
