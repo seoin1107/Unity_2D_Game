@@ -64,9 +64,11 @@ public class Movement : BattleSystem
     //여기는 if에 &&으로 조건 추가해서 메인 JumpCount를 -1로 초기화하고 else로 0으로 초기화
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") ||
+            collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
         {
             JumpCount = 0;
+            IsJumping = false;
         }
 
     }
