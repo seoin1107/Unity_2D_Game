@@ -15,6 +15,8 @@ public struct AnimParameterData
     public int OnDodge; //회피 동작 트리거
     public int IsDodge; // 회피 동작 구분 
     public int IsDead;
+    public int OnParry; //패링 트리거
+    public int IsParry; //패링 동작구분
 
     public void Initialize()
     {
@@ -29,6 +31,8 @@ public struct AnimParameterData
         OnDodge = Animator.StringToHash("OnDodge");
         IsDodge = Animator.StringToHash("IsDodge");
         IsDead = Animator.StringToHash("IsDead");
+        OnParry = Animator.StringToHash("OnParry");
+        IsParry = Animator.StringToHash("IsParry");
     }
 }
 

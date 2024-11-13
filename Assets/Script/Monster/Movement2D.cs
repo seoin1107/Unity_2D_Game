@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Movement2D : SpriteProperty
@@ -28,8 +29,10 @@ public class Movement2D : SpriteProperty
             return _rigid;
         }
     }
-    public float moveSpeed = 2.0f;
 
+    [SerializeField] Rigidbody2D rid;
+    public float moveSpeed = 2.0f;
+    public float curSpaceCool = 5.0f; // 회피 쿨타임 계산
 
     protected Vector2 moveDir;
     protected float deltaDist;
@@ -98,6 +101,36 @@ public class Movement2D : SpriteProperty
         }
     }
 
+
+
+    protected void OnDodge()
+    {
+        StopAllCoroutines();
+        StartCoroutine(Dodging());
+    }
+
+    IEnumerator Dodging() //스페이스바 입력시 회피 코루틴
+    {
+
+        float duration = 0.5f; // 이동 시간
+        float elapsed = 0f;  //이동 시간 계산
+
+        Vector2 rl = myRenderer.flipX ? Vector2.left : Vector2.right;
+
+        myAnim.SetTrigger(animData.OnDodge);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"), true);
+
+            while (elapsed < duration)
+            {
+                transform.Translate(rl * 5 * Time.deltaTime);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"), false);
+    }
+
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
@@ -109,7 +142,7 @@ public class Movement2D : SpriteProperty
         {
             isFloor = true;     //floor에있을때
             myAnim.SetBool("IsAir", false);
-            OnCheckGround(collision.transform);
+/*            OnCheckGround(collision.transform);*/
         }
     }
     private void OnCollisionStay2D(Collision2D collision)

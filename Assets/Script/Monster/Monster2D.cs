@@ -28,10 +28,12 @@ public class Monster2D : BattleSystem2D
                 {
                     moveDir.x = -1.0f;
                 }
+                OnCheckGround(curGround);
                 break;
             case State.Battle:
                 break;
             case State.Dead:
+                StopAllCoroutines();
                 myRigid.gravityScale = 0.0f;
                 break;
         }
@@ -81,11 +83,11 @@ public class Monster2D : BattleSystem2D
     }
 
     protected override void OnCheckGround(Transform tr)
-    {
+    {        
         curGround = tr;
         float halfDist = tr.localScale.x * 0.5f; // 발판의절반거리
         float dist = tr.position.x - transform.position.x;
-        if (myRenderer.flipX)
+        if (moveDir.x < 0.0f)
         {
             maxDist = halfDist - dist;
         }
