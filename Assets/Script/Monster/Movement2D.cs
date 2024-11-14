@@ -32,7 +32,8 @@ public class Movement2D : SpriteProperty
 
     [SerializeField] Rigidbody2D rid;
     public float moveSpeed = 2.0f;
-    public float curSpaceCool = 5.0f; // 회피 쿨타임 계산
+    public float curSpaceCool = 0.0f; // 회피 쿨타임 계산
+    public float spaceCoolDown = 5.0f;
 
     protected Vector2 moveDir;
     protected float deltaDist;
@@ -57,6 +58,11 @@ public class Movement2D : SpriteProperty
         deltaDist = Time.deltaTime * moveSpeed;
         transform.Translate(moveDir * deltaDist);
 
+        // 구르기 쿨타임이 지나면 증가
+        if (curSpaceCool < spaceCoolDown)
+        {
+            curSpaceCool += Time.deltaTime;
+        }
     }
 
     protected void OnJump()
@@ -111,18 +117,23 @@ public class Movement2D : SpriteProperty
 
     IEnumerator Dodging() //스페이스바 입력시 회피 코루틴
     {
-        myColider.isTrigger = false;
-        float duration = 0.5f; // 이동 시간
-        float elapsed = 0f;  //이동 시간 계산
-        Vector2 rl = myRenderer.flipX ? Vector2.left : Vector2.right;
-
-        myAnim.SetTrigger(animData.OnDodge);
-            while (elapsed < duration)
-            {
-                transform.Translate(rl * 5 * Time.deltaTime);
-                elapsed += Time.deltaTime;
-                yield return null;
-            }
+        if(curSpaceCool >= spaceCoolDown)
+        {
+            myColider.isTrigger = false;
+            float duration = 0.5f; // 이동 시간
+            float elapsed = 0f;  //이동 시간 계산
+            Vector2 rl = myRenderer.flipX ? Vector2.left : Vector2.right;
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"));
+            myAnim.SetTrigger(animData.OnDodge);
+            curSpaceCool = 0.0f;
+                while (elapsed < duration)
+                {
+                    transform.Translate(rl * 10 * Time.deltaTime);
+                    elapsed += Time.deltaTime;
+                    yield return null;
+                }
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"), false);
+        }
     }
 
 
