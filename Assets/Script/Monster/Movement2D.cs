@@ -135,12 +135,17 @@ public class Movement2D : SpriteProperty
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"), false);
         }
     }
-
+    protected void OnParry()
+    {
+        StopAllCoroutines();
+        StartCoroutine(Parring());
+    }
     IEnumerator Parring()
     {
         myAnim.SetBool("IsParry", true);
         myAnim.SetTrigger("OnParry");
         yield return new WaitForSeconds(0.1f);
+        myAnim.SetBool("IsParry", false);
     }
 
 
