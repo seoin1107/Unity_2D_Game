@@ -111,22 +111,18 @@ public class Movement2D : SpriteProperty
 
     IEnumerator Dodging() //스페이스바 입력시 회피 코루틴
     {
-
+        myColider.isTrigger = false;
         float duration = 0.5f; // 이동 시간
         float elapsed = 0f;  //이동 시간 계산
-
         Vector2 rl = myRenderer.flipX ? Vector2.left : Vector2.right;
 
         myAnim.SetTrigger(animData.OnDodge);
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"), true);
-
             while (elapsed < duration)
             {
                 transform.Translate(rl * 5 * Time.deltaTime);
                 elapsed += Time.deltaTime;
                 yield return null;
             }
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"), false);
     }
 
 
