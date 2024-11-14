@@ -37,5 +37,9 @@ public class BattleSystem2D : Movement2D, IDamage
             OnDead();
         }
     }
+    public void IsParry()
+    {
+        myAnim.SetBool(animData.IsParry, true);
+    }
 }
 

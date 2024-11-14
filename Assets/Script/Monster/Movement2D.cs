@@ -136,6 +136,12 @@ public class Movement2D : SpriteProperty
         }
     }
 
+    IEnumerator Parring()
+    {
+        myAnim.SetBool("IsParry", true);
+        myAnim.SetTrigger("OnParry");
+        yield return new WaitForSeconds(0.1f);
+    }
 
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -42,6 +42,7 @@ public class Player2D : BattleSystem2D
         if(Input.GetMouseButtonDown(1))                                              // ÆÐ¸µÅ°
         {
             myAnim.SetTrigger(animData.OnParry);
+            myAnim.SetBool(animData.IsParry,true); 
         }
 
         base.OnUpdate();
