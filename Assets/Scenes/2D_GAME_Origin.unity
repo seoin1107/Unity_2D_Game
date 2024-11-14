@@ -1415,6 +1415,7 @@ MonoBehaviour:
   rid: {fileID: 0}
   moveSpeed: 1.5
   curSpaceCool: 5
+  spaceCoolDown: 5
   battleStat:
     AP: 10
     AttackRange: 1
@@ -2154,7 +2155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rid: {fileID: 0}
   moveSpeed: 3
-  curSpaceCool: 1
+  curSpaceCool: 5
+  spaceCoolDown: 5
   battleStat:
     AP: 1000
     AttackRange: 1
