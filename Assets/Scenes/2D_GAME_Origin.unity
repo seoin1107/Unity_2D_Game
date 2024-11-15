@@ -1412,7 +1412,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efc19e01e380cd4ebd961dc27f3940b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rid: {fileID: 0}
   moveSpeed: 1.5
+  curSpaceCool: 5
+  spaceCoolDown: 5
   battleStat:
     AP: 10
     AttackRange: 1
@@ -2068,6 +2071,7 @@ GameObject:
   - component: {fileID: 2106439375}
   - component: {fileID: 2106439380}
   - component: {fileID: 2106439379}
+  - component: {fileID: 2106439381}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -2149,7 +2153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc338b4a812f347ab02107d446685d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rid: {fileID: 0}
   moveSpeed: 3
+  curSpaceCool: 5
+  spaceCoolDown: 5
   battleStat:
     AP: 1000
     AttackRange: 1
@@ -2248,6 +2255,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2106439381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106439374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74e478a058530b34a98fa8fcb4369499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCharacter: {fileID: 2106439380}
+  tf: {fileID: 2106439378}
+  mousePos: {x: 0, y: 0}
 --- !u!1 &2108579429
 GameObject:
   m_ObjectHideFlags: 0

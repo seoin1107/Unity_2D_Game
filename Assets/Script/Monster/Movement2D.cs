@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Movement2D : SpriteProperty
@@ -28,8 +29,11 @@ public class Movement2D : SpriteProperty
             return _rigid;
         }
     }
-    public float moveSpeed = 2.0f;
 
+    [SerializeField] Rigidbody2D rid;
+    public float moveSpeed = 2.0f;
+    public float curSpaceCool = 0.0f; // 회피 쿨타임 계산
+    public float spaceCoolDown = 5.0f;
 
     protected Vector2 moveDir;
     protected float deltaDist;
@@ -54,6 +58,11 @@ public class Movement2D : SpriteProperty
         deltaDist = Time.deltaTime * moveSpeed;
         transform.Translate(moveDir * deltaDist);
 
+        // 구르기 쿨타임이 지나면 증가
+        if (curSpaceCool < spaceCoolDown)
+        {
+            curSpaceCool += Time.deltaTime;
+        }
     }
 
     protected void OnJump()
@@ -98,6 +107,46 @@ public class Movement2D : SpriteProperty
         }
     }
 
+
+
+    protected void OnDodge()
+    {
+        StopAllCoroutines();
+        StartCoroutine(Dodging());
+    }
+
+    IEnumerator Dodging() //스페이스바 입력시 회피 코루틴
+    {
+        if(curSpaceCool >= spaceCoolDown)
+        {
+            myColider.isTrigger = false;
+            float duration = 0.5f; // 이동 시간
+            float elapsed = 0f;  //이동 시간 계산
+            Vector2 rl = myRenderer.flipX ? Vector2.left : Vector2.right;
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"));
+            myAnim.SetTrigger(animData.OnDodge);
+            curSpaceCool = 0.0f;
+                while (elapsed < duration)
+                {
+                    transform.Translate(rl * 10 * Time.deltaTime);
+                    elapsed += Time.deltaTime;
+                    yield return null;
+                }
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"), false);
+        }
+    }
+    protected void OnParry()
+    {
+        StopAllCoroutines();
+        StartCoroutine(Parring());
+    }
+    IEnumerator Parring()
+    {
+        myAnim.SetTrigger("OnParry");
+        yield return new WaitForSeconds(0.1f);
+    }
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
@@ -109,7 +158,7 @@ public class Movement2D : SpriteProperty
         {
             isFloor = true;     //floor에있을때
             myAnim.SetBool("IsAir", false);
-            OnCheckGround(collision.transform);
+/*            OnCheckGround(collision.transform);*/
         }
     }
     private void OnCollisionStay2D(Collision2D collision)
@@ -130,6 +179,15 @@ public class Movement2D : SpriteProperty
     }
 
 
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        // 만약 몬스터의 공격이 들어오면 패링 타이밍을 맞춰서 반응
+        if (other.gameObject.layer == LayerMask.NameToLayer("Monster"))
+        {
+            // 패링 성공: 공격을 막는 로직
+            myAnim.SetBool("IsParry", true);
+        }
+    }
 
     public void OnTriggerExit2D(Collider2D other)
     {

@@ -17,6 +17,7 @@ public class Monster2D : BattleSystem2D
     {
         if (myState == s) return;
         myState = s;
+
         switch (myState)
         {
             case State.Normal:
@@ -28,10 +29,12 @@ public class Monster2D : BattleSystem2D
                 {
                     moveDir.x = -1.0f;
                 }
+                OnCheckGround(curGround);
                 break;
             case State.Battle:
                 break;
             case State.Dead:
+                StopAllCoroutines();
                 myRigid.gravityScale = 0.0f;
                 break;
         }
@@ -42,6 +45,7 @@ public class Monster2D : BattleSystem2D
         switch (myState)
         {
             case State.Normal:
+                myAnim.SetBool("IsAir", false);
                 maxDist -= deltaDist;
                 if (!myAnim.GetBool("IsAir") && maxDist <= 0.0f)
                 {
@@ -85,7 +89,7 @@ public class Monster2D : BattleSystem2D
         curGround = tr;
         float halfDist = tr.localScale.x * 0.5f; // 발판의절반거리
         float dist = tr.position.x - transform.position.x;
-        if (myRenderer.flipX)
+        if (moveDir.x < 0.0f)
         {
             maxDist = halfDist - dist;
         }
@@ -108,7 +112,6 @@ public class Monster2D : BattleSystem2D
         myTarget = null;
         ChangeState(State.Normal);
     }
-
     public void OnAttack()
     {
         myTarget.GetComponent<IDamage>()?.OnDamage(battleStat.AP);
@@ -116,6 +119,7 @@ public class Monster2D : BattleSystem2D
 
     protected override void OnDead()
     {
+        base.OnDead();
         ChangeState(State.Dead);
         OnDisApear();
     }

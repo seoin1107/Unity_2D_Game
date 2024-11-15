@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-interface IDeathAlarm
-{
-    UnityAction deathAlarm { get; set; }
-}
 
 
 interface ILive
@@ -15,10 +11,6 @@ interface ILive
 }
 
 
-interface IDamage // 추상함수만을 가지는 = 부모로만 존재
-{
-    void OnDamage(float dmg);
-}
 
 interface IBattle : ILive, IDamage, IDeathAlarm
 {

@@ -17,22 +17,33 @@ public class Player2D : BattleSystem2D
     // Update is called once per frame
     void Update()
     {
-        moveDir.x = Input.GetAxisRaw("Horizontal");
+        moveDir.x = Input.GetAxisRaw("Horizontal");                                     // 좌우이동
 
-        if (Input.GetKeyDown(KeyCode.W) && !myAnim.GetBool("IsAir"))
+        if (Input.GetKeyDown(KeyCode.W) && !myAnim.GetBool("IsAir"))          // 윗점프
         {
             OnJump();
         }
 
-        if (Input.GetKeyDown(KeyCode.S) && !myAnim.GetBool("IsAir"))
+        if (Input.GetKeyDown(KeyCode.S) && !myAnim.GetBool("IsAir"))          // 아랫점프
         {
             OnDownJump();
         }
-
-        if (Input.GetMouseButtonDown(0))
+                    
+        if (Input.GetMouseButtonDown(0))                                                // 공격키
         {
             myAnim.SetTrigger(animData.OnAttack);
         }
+
+        if(Input.GetKeyDown(KeyCode.Space))                                          // 회피(구르기&대쉬)
+        {
+            OnDodge();
+        }
+
+        if(Input.GetMouseButtonDown(1))                                              // 패링키
+        {
+            myAnim.SetTrigger(animData.OnParry);
+        }
+
         base.OnUpdate();
     }
 
@@ -44,5 +55,9 @@ public class Player2D : BattleSystem2D
         {
             col.GetComponent<IDamage>()?.OnDamage(battleStat.AP);
         }
+    }
+    public void OnParry()
+    {
+
     }
 }
