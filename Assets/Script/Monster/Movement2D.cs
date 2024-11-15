@@ -142,10 +142,8 @@ public class Movement2D : SpriteProperty
     }
     IEnumerator Parring()
     {
-        myAnim.SetBool("IsParry", true);
         myAnim.SetTrigger("OnParry");
         yield return new WaitForSeconds(0.1f);
-        myAnim.SetBool("IsParry", false);
     }
 
 
@@ -181,6 +179,15 @@ public class Movement2D : SpriteProperty
     }
 
 
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        // 만약 몬스터의 공격이 들어오면 패링 타이밍을 맞춰서 반응
+        if (other.gameObject.layer == LayerMask.NameToLayer("Monster"))
+        {
+            // 패링 성공: 공격을 막는 로직
+            myAnim.SetBool("IsParry", true);
+        }
+    }
 
     public void OnTriggerExit2D(Collider2D other)
     {

@@ -41,7 +41,7 @@ public class Player2D : BattleSystem2D
 
         if(Input.GetMouseButtonDown(1))                                              // ÆÐ¸µÅ°
         {
-            OnParry();
+            myAnim.SetTrigger(animData.OnParry);
         }
 
         base.OnUpdate();
@@ -55,5 +55,9 @@ public class Player2D : BattleSystem2D
         {
             col.GetComponent<IDamage>()?.OnDamage(battleStat.AP);
         }
+    }
+    public void OnParry()
+    {
+
     }
 }

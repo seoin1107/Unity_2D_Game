@@ -119,6 +119,7 @@ public class Monster2D : BattleSystem2D
 
     protected override void OnDead()
     {
+        base.OnDead();
         ChangeState(State.Dead);
         OnDisApear();
     }
