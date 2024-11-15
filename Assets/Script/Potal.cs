@@ -16,7 +16,6 @@ public class Potal : FadeInOut
         {
             targetObj = collision.gameObject;
             StartCoroutine(PotalRoutine());
-            
         }
     }
 
@@ -48,11 +47,5 @@ public class Potal : FadeInOut
             
         }
         
-    }
-
-    //æ¿∞£¿« ¿Ãµø
-    public void ScenesCtrl()
-    {
-        SceneManager.LoadScene("Base");
     }
 }

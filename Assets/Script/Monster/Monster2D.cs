@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Monster2D : Movement2D
+public class Monster2D : BattleSystem2D
 {
+    Transform myTarget;
     public enum State
     {
-        Create, Normal, Battle
+        Create, Normal, Battle, Dead
     }
     public State myState = State.Create;
     float maxDist = 0.0f;
@@ -15,6 +17,7 @@ public class Monster2D : Movement2D
     {
         if (myState == s) return;
         myState = s;
+
         switch (myState)
         {
             case State.Normal:
@@ -26,8 +29,13 @@ public class Monster2D : Movement2D
                 {
                     moveDir.x = -1.0f;
                 }
+                OnCheckGround(curGround);
                 break;
             case State.Battle:
+                break;
+            case State.Dead:
+                StopAllCoroutines();
+                myRigid.gravityScale = 0.0f;
                 break;
         }
     }
@@ -37,6 +45,7 @@ public class Monster2D : Movement2D
         switch (myState)
         {
             case State.Normal:
+                myAnim.SetBool("IsAir", false);
                 maxDist -= deltaDist;
                 if (!myAnim.GetBool("IsAir") && maxDist <= 0.0f)
                 {
@@ -46,6 +55,19 @@ public class Monster2D : Movement2D
                 }
                 break;
             case State.Battle:
+                playTime += Time.deltaTime;
+                moveDir.x = myTarget.position.x > transform.position.x ? 1.0f :
+                    myTarget.position.x < transform.position.x ? -1.0f : 0.0f;
+
+                if (Vector2.Distance(myTarget.position, transform.position) <= battleStat.AttackRange)
+                {
+                    moveDir.x = 0.0f;
+                    if (playTime >= battleStat.AttackDelay)
+                    {
+                        playTime = 0.0f;
+                        myAnim.SetTrigger(animData.OnAttack);
+                    }
+                }
                 break;
         }
     }
@@ -67,7 +89,7 @@ public class Monster2D : Movement2D
         curGround = tr;
         float halfDist = tr.localScale.x * 0.5f; // 발판의절반거리
         float dist = tr.position.x - transform.position.x;
-        if (myRenderer.flipX)
+        if (moveDir.x < 0.0f)
         {
             maxDist = halfDist - dist;
         }
@@ -75,5 +97,49 @@ public class Monster2D : Movement2D
         {
             maxDist = halfDist + dist;
         }
+    }
+
+    public void OnFindTarget(Transform tr)
+    {
+        if (myState == State.Dead) return;
+        myTarget = tr;
+        ChangeState(State.Battle);
+    }
+
+    public void OnLostTarget()
+    {
+        if (myState == State.Dead) return;
+        myTarget = null;
+        ChangeState(State.Normal);
+    }
+    public void OnAttack()
+    {
+        myTarget.GetComponent<IDamage>()?.OnDamage(battleStat.AP);
+    }
+
+    protected override void OnDead()
+    {
+        base.OnDead();
+        ChangeState(State.Dead);
+        OnDisApear();
+    }
+
+    public void OnDisApear()
+    {
+        StartCoroutine(DisApearing());
+    }
+    IEnumerator DisApearing()
+    {
+        yield return new WaitForSeconds(3.0f);
+
+        Color color = myRenderer.color;
+        while (color.a > 0.0f)
+        {
+            color.a -= Time.deltaTime;
+            myRenderer.color = color;
+            transform.Translate(Vector2.up * Time.deltaTime * 0.3f);
+            yield return null;
+        }
+        Destroy(gameObject);
     }
 }

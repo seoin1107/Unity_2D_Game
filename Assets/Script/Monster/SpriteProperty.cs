@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpriteProperty : AnimatorProperty
+public class SpriteProperty : Stat
 {
     SpriteRenderer _render = null;
     protected SpriteRenderer myRenderer
