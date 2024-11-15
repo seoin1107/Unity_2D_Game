@@ -50,9 +50,9 @@ public class BattleSystem2D : Movement2D, IDamage, IDeathAlarm
         }
     }
 
-/*    public void OnParry() 
-    { 
-
-    }*/
+    public void OnParrying()
+    {
+        myAnim.SetBool(animData.IsParry, true);
+    }
 }
 

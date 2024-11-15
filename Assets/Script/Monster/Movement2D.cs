@@ -135,7 +135,7 @@ public class Movement2D : SpriteProperty
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"), false);
         }
     }
-    protected void OnParry()
+/*    protected void OnParry()
     {
         StopAllCoroutines();
         StartCoroutine(Parring());
@@ -144,7 +144,7 @@ public class Movement2D : SpriteProperty
     {
         myAnim.SetTrigger("OnParry");
         yield return new WaitForSeconds(0.1f);
-    }
+    }*/
 
 
     private void OnCollisionEnter2D(Collision2D collision)
