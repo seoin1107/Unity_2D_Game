@@ -12,7 +12,8 @@ public class NPC : MonoBehaviour
 
     public void Commu()
     {
-
+        List<string> commu = new List<string>();
+        
     }
 
     // Start is called before the first frame update

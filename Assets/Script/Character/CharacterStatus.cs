@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class Stat : AnimatorProperty
 {
-    public int level=1;
+
+
+    public int level = 1;
 
     public float baseHp = 20;
     public float maxHp;
@@ -39,13 +41,11 @@ public class Stat : AnimatorProperty
     public int curExp = 0;
 
 
-
-
 }
 
 public class CharacterStatus : Stat
 {
-
+   
     
     // Start is called before the first frame update
     void Start()
@@ -59,6 +59,12 @@ public class CharacterStatus : Stat
 
     }
 
+    public void UpdateStatus()
+    {
+        totalAtk = baseAtk + atkPoint;
+        maxHp = baseHp + hpPoint *2;
+
+    }
     public void LevelUp()
     {
         while (needExp <= curExp)
@@ -67,7 +73,7 @@ public class CharacterStatus : Stat
             level++;
             needExp += 5;
             totalPoint += 1;
-        }
+        }       
     }
 
    
