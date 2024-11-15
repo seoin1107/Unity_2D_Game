@@ -11832,7 +11832,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efc19e01e380cd4ebd961dc27f3940b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 1
+  baseHp: 20
+  maxHp: 0
+  curHp: 0
+  baseAtk: 10
+  totalAtk: 0
+  totalPoint: 1
+  atkPoint: 0
+  hpPoint: 0
+  utilPoint: 0
   moveSpeed: 2
+  atkSpeed: 0
+  hpRegen: 0
+  hitRecover: 0.5
+  skillCool: 1
+  skillDamage: 1
+  drain: 0
+  dodgeTime: 0.2
+  dodgeCool: 5
+  parryingTime: 0.2
+  parryingCool: 2
+  needExp: 10
+  curExp: 0
+  rid: {fileID: 0}
+  moveSpeed: 2
+  curSpaceCool: 0
+  spaceCoolDown: 5
   battleStat:
     AP: 0
     AttackRange: 0
@@ -13428,7 +13454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1575476960
 MonoBehaviour:
   m_ObjectHideFlags: 0
