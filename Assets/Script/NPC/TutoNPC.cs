@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NPC : MonoBehaviour
+public class TutoNPC : MonoBehaviour
 {
     public Image Textimage;
     public Canvas myCanvas;
-
-    
+        
 
     public void Commu()
     {
