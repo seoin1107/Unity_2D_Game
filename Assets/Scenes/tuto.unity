@@ -948,8 +948,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -5}
-  m_SizeDelta: {x: -20, y: -10}
+  m_AnchoredPosition: {x: 0, y: -4}
+  m_SizeDelta: {x: -20, y: -8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &367654033
 MonoBehaviour:
@@ -971,7 +971,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBAA8\uB4E0 \uD6C8\uB828\uC744 \uB9C8\uCE58\uC168\uAD70\uC694!"
+  m_text: "\uC5EC\uAE30\uB294 \uC608\uC2DC\uC6A9\n\uC2E4\uC81C\uB294 script\uC5D0\uC11C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a311f5ee3640d9d49b58d9f68b96aa08, type: 2}
   m_sharedMaterial: {fileID: -3310280749204094352, guid: a311f5ee3640d9d49b58d9f68b96aa08, type: 2}
@@ -1010,7 +1010,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 10
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -11856,7 +11856,6 @@ MonoBehaviour:
   needExp: 10
   curExp: 0
   rid: {fileID: 0}
-  moveSpeed: 2
   curSpaceCool: 0
   spaceCoolDown: 5
   battleStat:
@@ -14206,6 +14205,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1833494171}
   - component: {fileID: 1833494173}
+  - component: {fileID: 1833494175}
+  - component: {fileID: 1833494174}
   - component: {fileID: 1833494172}
   m_Layer: 5
   m_Name: 'NPC Text1 '
@@ -14231,8 +14232,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 93}
-  m_SizeDelta: {x: 0, y: 93}
+  m_AnchoredPosition: {x: 0, y: 120}
+  m_SizeDelta: {x: -70, y: 93}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1833494172
 MonoBehaviour:
@@ -14272,6 +14273,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833494170}
   m_CullTransparentMesh: 1
+--- !u!114 &1833494174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833494170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cf2ea6e03a58284abc78b019ad7e41a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typewriterSpeed: 4
+--- !u!114 &1833494175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833494170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72658627ef46dcd43846901d35a2aa98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBox: {fileID: 1833494170}
+  textLabel: {fileID: 367654033}
+  testDialogue: {fileID: 11400000, guid: 5c35f819d806ef04895e8cbac7b502d8, type: 2}
 --- !u!1 &1833784651
 GameObject:
   m_ObjectHideFlags: 0

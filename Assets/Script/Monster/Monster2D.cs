@@ -84,20 +84,20 @@ public class Monster2D : BattleSystem2D
         base.OnUpdate();
     }
 
-    protected override void OnCheckGround(Transform tr)
-    {
-        curGround = tr;
-        float halfDist = tr.localScale.x * 0.5f; // 발판의절반거리
-        float dist = tr.position.x - transform.position.x;
-        if (moveDir.x < 0.0f)
-        {
-            maxDist = halfDist - dist;
-        }
-        else
-        {
-            maxDist = halfDist + dist;
-        }
-    }
+    //protected override void OnCheckGround(Transform tr)
+    //{
+    //    curGround = tr;
+    //    float halfDist = tr.localScale.x * 0.5f; // 발판의절반거리
+    //    float dist = tr.position.x - transform.position.x;
+    //    if (moveDir.x < 0.0f)
+    //    {
+    //        maxDist = halfDist - dist;
+    //    }
+    //    else
+    //    {
+    //        maxDist = halfDist + dist;
+    //    }
+    //}
 
     public void OnFindTarget(Transform tr)
     {
