@@ -112,25 +112,25 @@ public class StatusUI : MonoBehaviour
         player.UpdateStatus();
         UpdateStatusUI();
     }
-    public  void AddUtil()
+    public void AddUtil()
     {
         player.utilPoint++;
         player.UpdateStatus();
         UpdateStatusUI();
     }
-    public  void SubHp()
+    public void SubHp()
     {
         player.hpPoint--;
         player.UpdateStatus();
         UpdateStatusUI();
     }
-    public  void SubAtk()
+    public void SubAtk()
     {
         player.atkPoint--;
         player.UpdateStatus();
         UpdateStatusUI();
     }
-    public  void SubUtil()
+    public void SubUtil()
     {
         player.utilPoint--;
         player.UpdateStatus();

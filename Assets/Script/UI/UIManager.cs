@@ -21,8 +21,12 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            StatusUI.Instance.gameObject.SetActive(!StatusUI.Instance.gameObject.activeSelf);
-            myStatusUI.UpdateStatusUI();
+            OnOffStatusUI();
         }
+    }
+    public void OnOffStatusUI()
+    {
+        StatusUI.Instance.gameObject.SetActive(!StatusUI.Instance.gameObject.activeSelf);
+        myStatusUI.UpdateStatusUI();
     }
 }

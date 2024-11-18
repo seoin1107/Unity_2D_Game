@@ -31,7 +31,7 @@ public class Movement2D : SpriteProperty
     }
 
     [SerializeField] Rigidbody2D rid;
-    public float moveSpeed = 2.0f;
+/*    public float moveSpeed = 2.0f;*/
     public float curSpaceCool = 0.0f; // 회피 쿨타임 계산
     public float spaceCoolDown = 5.0f;
 
@@ -142,8 +142,12 @@ public class Movement2D : SpriteProperty
     }
     IEnumerator Parring()
     {
-        myAnim.SetTrigger("OnParry");
-        yield return new WaitForSeconds(0.1f);
+        if (myAnim.GetBool(animData.IsParry)) yield break; // 이미 활성화된 경우 무시
+
+        myAnim.SetTrigger(animData.OnParry);
+        myAnim.SetBool(animData.IsParry, true);
+        yield return new WaitForSeconds(1.0f); // 1초 대기
+        myAnim.SetBool(animData.IsParry, false); // IsParry 비활성화
     }
 
 
@@ -179,7 +183,7 @@ public class Movement2D : SpriteProperty
     }
 
 
-    public void OnTriggerEnter2D(Collider2D other)
+/*    public void OnTriggerEnter2D(Collider2D other)
     {
         // 만약 몬스터의 공격이 들어오면 패링 타이밍을 맞춰서 반응
         if (other.gameObject.layer == LayerMask.NameToLayer("Monster"))
@@ -187,7 +191,7 @@ public class Movement2D : SpriteProperty
             // 패링 성공: 공격을 막는 로직
             myAnim.SetBool("IsParry", true);
         }
-    }
+    }*/
 
     public void OnTriggerExit2D(Collider2D other)
     {

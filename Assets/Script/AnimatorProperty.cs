@@ -17,6 +17,7 @@ public struct AnimParameterData
     public int IsDead;
     public int OnParry; //패링 트리거
     public int IsParry; //패링 동작구분
+    public int OnParring;
 
     public void Initialize()
     {
@@ -33,6 +34,7 @@ public struct AnimParameterData
         IsDead = Animator.StringToHash("IsDead");
         OnParry = Animator.StringToHash("OnParry");
         IsParry = Animator.StringToHash("IsParry");
+        OnParring = Animator.StringToHash("OnParring");
     }
 }
 

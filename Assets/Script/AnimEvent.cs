@@ -8,7 +8,6 @@ public class AnimEvent : MonoBehaviour
     public UnityEvent attackAction;
     public UnityEvent deadAction;
     public UnityEvent skillAction;
-    public UnityEvent comboAction;
 
     public void OnAttack()
     {

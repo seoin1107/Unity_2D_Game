@@ -81,7 +81,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4167077798734128711}
         m_TargetAssemblyTypeName: StatusUI, Assembly-CSharp
         m_MethodName: AddHp
         m_Mode: 1
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4167077798734128711}
         m_TargetAssemblyTypeName: StatusUI, Assembly-CSharp
         m_MethodName: SubHp
         m_Mode: 1
