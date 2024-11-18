@@ -33,8 +33,6 @@ public class DialogueUI : MonoBehaviour
             yield return typewriterEffect.Run(dialouge, textLabel);
             //G눌러야 다음대화
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.G));
-
-            yield return typewriterEffect.Run(dialouge, textLabel);
         }
 
         CloseDialogueBox();
