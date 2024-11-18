@@ -12,7 +12,7 @@ public class Monster2D : BattleSystem2D
     }
     public State myState = State.Create;
     float maxDist = 0.0f;
-    Transform curGround;
+    Transform curGround = null;
     void ChangeState(State s)
     {
         if (myState == s) return;
@@ -29,7 +29,10 @@ public class Monster2D : BattleSystem2D
                 {
                     moveDir.x = -1.0f;
                 }
-                OnCheckGround(curGround);
+                if (curGround != null)
+                {
+                    OnCheckGround(curGround);
+                }
                 break;
             case State.Battle:
                 break;
@@ -86,6 +89,11 @@ public class Monster2D : BattleSystem2D
 
     protected override void OnCheckGround(Transform tr)
     {
+        if (tr == null)
+        {
+            Debug.LogWarning("Ground transform is null.");
+            return;
+        }
         curGround = tr;
         float halfDist = tr.localScale.x * 0.5f; // 발판의절반거리
         float dist = tr.position.x - transform.position.x;
