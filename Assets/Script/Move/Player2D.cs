@@ -7,6 +7,11 @@ using UnityEngine;
 
 public class Player2D : BattleSystem2D
 {
+    //다이얼로그UI 사용할 수 있게
+    [SerializeField] private DialogueUI dialogueUI;
+    public DialogueUI DialogueUI => dialogueUI;
+    public IInteractable interactable { get; set; }
+
     public LayerMask myEnemy;
     // Start is called before the first frame update
     void Start()
@@ -28,6 +33,7 @@ public class Player2D : BattleSystem2D
         {
             OnDownJump();
         }
+
                     
         if (Input.GetMouseButtonDown(0))                                                // 공격키
         {
@@ -42,6 +48,12 @@ public class Player2D : BattleSystem2D
         if(Input.GetMouseButtonDown(1))                                              // 패링키
         {
             OnParry();
+        }
+
+        //상호작용키 G로, 이동은 아니지만 플레이어 관련인데 다른데 혼자 놓기는 애매해서
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            interactable?.Interact(this);
         }
 
         base.OnUpdate();
