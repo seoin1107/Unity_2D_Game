@@ -31,7 +31,7 @@ public class Movement2D : SpriteProperty
     }
 
     [SerializeField] Rigidbody2D rid;
-    //public float moveSpeed = 2.0f;
+    public float moveSpeed = 2.0f;
     public float curSpaceCool = 0.0f; // 회피 쿨타임 계산
     public float spaceCoolDown = 5.0f;
 

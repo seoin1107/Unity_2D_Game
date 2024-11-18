@@ -56,8 +56,8 @@ public class Player2D : BattleSystem2D
             col.GetComponent<IDamage>()?.OnDamage(battleStat.AP);
         }
     }
-    //public void OnParry()
-    //{
+    public void OnParry()
+    {
 
-    //}
+    }
 }
