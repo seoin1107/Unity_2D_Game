@@ -7,7 +7,7 @@ public class TypewriterEffect : MonoBehaviour
 {
     //NPC대화 타이핑하듯 보이는 효과
     [SerializeField]
-    private float typewriterSpeed = 4.0f;
+    private float typewriterSpeed = 1.0f;
 
     public Coroutine Run(string textToType, TMP_Text textLabel)
     {
