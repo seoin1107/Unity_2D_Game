@@ -56,13 +56,16 @@ public class Player2D : BattleSystem2D
             col.GetComponent<IDamage>()?.OnDamage(battleStat.AP);
         }
     }
-    public void OnParryRange()
+/*    public void OnParryRange()
     {
         Vector2 dir = new Vector2(myRenderer.flipX ? -1.0f : 1.0f, 0.0f);
         Collider2D[] list = Physics2D.OverlapCircleAll((Vector2)transform.position + dir, 1.0f, myEnemy);
         foreach (Collider2D col in list)
         {
-            // 패링시 데미지 안받고 반격데미지
+            // 패링 성공 애니메이션 실행
+            myAnim.SetTrigger(animData.OnParring);
+            *//* // 패링 상태 초기화 (필요시)
+             myAnim.SetBool(animData.IsParry, false);*//*
         }
-    }
+    }*/
 }

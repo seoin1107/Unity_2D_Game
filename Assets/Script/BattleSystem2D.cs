@@ -40,8 +40,8 @@ public class BattleSystem2D : Movement2D, IDamage, IDeathAlarm
         // IsParry가 true인 경우 데미지 무효화
         if (myAnim.GetBool(animData.IsParry))
         {
-            myAnim.SetTrigger(animData.OnParring);
             Debug.Log("Parried! Damage avoided.");
+            myAnim.SetTrigger(animData.OnParring);
             return;
         }
         battleStat.curHP -= dmg;

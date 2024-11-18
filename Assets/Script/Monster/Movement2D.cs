@@ -142,6 +142,7 @@ public class Movement2D : SpriteProperty
     }
     IEnumerator Parring()
     {
+        myColider.isTrigger = false;
         if (myAnim.GetBool(animData.IsParry)) yield break; // 이미 활성화된 경우 무시
 
         myAnim.SetTrigger(animData.OnParry);
