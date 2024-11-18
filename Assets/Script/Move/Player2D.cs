@@ -41,7 +41,7 @@ public class Player2D : BattleSystem2D
 
         if(Input.GetMouseButtonDown(1))                                              // 패링키
         {
-            myAnim.SetTrigger(animData.OnParry);
+            OnParry();
         }
 
         base.OnUpdate();
@@ -56,8 +56,13 @@ public class Player2D : BattleSystem2D
             col.GetComponent<IDamage>()?.OnDamage(battleStat.AP);
         }
     }
-    public void OnParry()
+    public void OnParryRange()
     {
-
+        Vector2 dir = new Vector2(myRenderer.flipX ? -1.0f : 1.0f, 0.0f);
+        Collider2D[] list = Physics2D.OverlapCircleAll((Vector2)transform.position + dir, 1.0f, myEnemy);
+        foreach (Collider2D col in list)
+        {
+            // 패링시 데미지 안받고 반격데미지
+        }
     }
 }

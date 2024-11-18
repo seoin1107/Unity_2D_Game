@@ -1412,8 +1412,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efc19e01e380cd4ebd961dc27f3940b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rid: {fileID: 0}
+  level: 1
+  baseHp: 20
+  maxHp: 0
+  curHp: 0
+  baseAtk: 10
+  totalAtk: 0
+  totalPoint: 1
+  atkPoint: 0
+  hpPoint: 0
+  utilPoint: 0
   moveSpeed: 1.5
+  atkSpeed: 0
+  hpRegen: 0
+  hitRecover: 0.5
+  skillCool: 1
+  skillDamage: 1
+  drain: 0
+  dodgeTime: 0.2
+  dodgeCool: 5
+  parryingTime: 0.2
+  parryingCool: 2
+  needExp: 10
+  curExp: 0
+  rid: {fileID: 0}
   curSpaceCool: 5
   spaceCoolDown: 5
   battleStat:
@@ -1732,9 +1754,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   skillAction:
-    m_PersistentCalls:
-      m_Calls: []
-  comboAction:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1747080084
@@ -2153,8 +2172,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc338b4a812f347ab02107d446685d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rid: {fileID: 0}
+  level: 1
+  baseHp: 20
+  maxHp: 0
+  curHp: 0
+  baseAtk: 10
+  totalAtk: 0
+  totalPoint: 1
+  atkPoint: 0
+  hpPoint: 0
+  utilPoint: 0
   moveSpeed: 3
+  atkSpeed: 0
+  hpRegen: 0
+  hitRecover: 0.5
+  skillCool: 1
+  skillDamage: 1
+  drain: 0
+  dodgeTime: 0.2
+  dodgeCool: 5
+  parryingTime: 0.2
+  parryingCool: 2
+  needExp: 10
+  curExp: 0
+  rid: {fileID: 0}
   curSpaceCool: 5
   spaceCoolDown: 5
   battleStat:
@@ -2162,7 +2203,7 @@ MonoBehaviour:
     AttackRange: 1
     AttackDelay: 1
     maxHP: 1000
-    curHP: 30
+    curHP: 1000
   myEnemy:
     serializedVersion: 2
     m_Bits: 512
