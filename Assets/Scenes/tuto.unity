@@ -1774,17 +1774,6 @@ PolygonCollider2D:
       - {x: 0.34375, y: 0.3125}
       - {x: 0.21875, y: 0.4375}
   m_UseDelaunayMesh: 0
---- !u!114 &774255918 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5110200321557849272, guid: 4d3932f152d171742800784ed230f340, type: 3}
-  m_PrefabInstance: {fileID: 2053808683202207877}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &783460434
 GameObject:
   m_ObjectHideFlags: 0
@@ -13316,7 +13305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1575476960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15074,10 +15063,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1029348974}
-    - target: {fileID: 7499159916318820951, guid: 4d3932f152d171742800784ed230f340, type: 3}
-      propertyPath: utilDownButton
-      value: 
-      objectReference: {fileID: 774255918}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
