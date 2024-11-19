@@ -8,6 +8,7 @@ using UnityEngine;
 public class Player2D : BattleSystem2D
 {
     public LayerMask myEnemy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,20 +30,24 @@ public class Player2D : BattleSystem2D
             OnDownJump();
         }
                     
-        if (Input.GetMouseButtonDown(0))                                                // 공격키
+        if(Input.GetMouseButtonDown(1) && !myAnim.GetBool("IsAir"))           // 패링                                   // 패링키
+        {
+            OnParry();
+        }
+
+        if (Input.GetMouseButtonDown(0) && !myAnim.GetBool("IsAir"))          // 공격                                        // 공격키
         {
             myAnim.SetTrigger(animData.OnAttack);
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))                                          // 회피(구르기&대쉬)
+        if(Input.GetKeyDown(KeyCode.Space))                                   // 회피(구르기&대쉬)
         {
-            OnDodge();
+            if (curSpaceCool >= spaceCoolDown)
+            {
+                OnDodge();
+            }
         }
 
-        if(Input.GetMouseButtonDown(1))                                              // 패링키
-        {
-            OnParry();
-        }
 
         base.OnUpdate();
     }
@@ -56,16 +61,5 @@ public class Player2D : BattleSystem2D
             col.GetComponent<IDamage>()?.OnDamage(battleStat.AP);
         }
     }
-/*    public void OnParryRange()
-    {
-        Vector2 dir = new Vector2(myRenderer.flipX ? -1.0f : 1.0f, 0.0f);
-        Collider2D[] list = Physics2D.OverlapCircleAll((Vector2)transform.position + dir, 1.0f, myEnemy);
-        foreach (Collider2D col in list)
-        {
-            // 패링 성공 애니메이션 실행
-            myAnim.SetTrigger(animData.OnParring);
-            *//* // 패링 상태 초기화 (필요시)
-             myAnim.SetBool(animData.IsParry, false);*//*
-        }
-    }*/
+
 }

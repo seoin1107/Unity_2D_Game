@@ -3,15 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
-
-interface ILive
-{
-    bool IsLive { get; }
-}
-
-
-
 interface IBattle : ILive, IDamage, IDeathAlarm
 {
 
@@ -25,14 +16,14 @@ public class BattleSystem : CharacterStatus, IBattle
     public GameObject myTarget;
 
     public UnityAction deathAlarm { get; set; }
-
+    
     public bool IsLive
     {
         get
         {
             return battleStat.curHp > 0.0f;
         }
-    }
+    }    
 
     protected void OnReset()
     {

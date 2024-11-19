@@ -1392,7 +1392,7 @@ Transform:
   m_GameObject: {fileID: 1122623107}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.1, y: 0, z: 0}
+  m_LocalPosition: {x: 5, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2203,7 +2203,7 @@ MonoBehaviour:
     AttackRange: 1
     AttackDelay: 1
     maxHP: 1000
-    curHP: 1000
+    curHP: 10
   myEnemy:
     serializedVersion: 2
     m_Bits: 512

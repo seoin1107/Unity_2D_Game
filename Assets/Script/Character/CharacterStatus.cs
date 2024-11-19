@@ -75,6 +75,4 @@ public class CharacterStatus : Stat
             totalPoint += 1;
         }       
     }
-
-   
 }
