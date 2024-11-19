@@ -14,8 +14,8 @@ public class DialogueUI : MonoBehaviour
 
     private void Start()
     {
-        //if(Input.GetKeyDown(KeyCode.G))
         typewriterEffect = GetComponent<TypewriterEffect>();
+
         CloseDialogueBox();
     }
 
