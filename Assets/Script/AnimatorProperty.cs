@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[System.Serializable]
 
 public struct AnimParameterData
 {
@@ -18,6 +19,7 @@ public struct AnimParameterData
     public int OnParry; //패링 트리거
     public int IsParry; //패링 동작구분
     public int OnParring;
+
 
     public void Initialize()
     {

@@ -23,6 +23,7 @@ public class Stat : AnimatorProperty
 
 }
 
+
 public class CharacterStatus : Stat
 {
     public int level = 1;
