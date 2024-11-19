@@ -7,6 +7,11 @@ using UnityEngine;
 
 public class Player2D : BattleSystem2D
 {
+/*    //다이얼로그UI 사용할 수 있게
+    [SerializeField] private DialogueUI dialogueUI;
+    public DialogueUI DialogueUI => dialogueUI;
+    public IInteractable Interactable { get; set; }*/
+
     public LayerMask myEnemy;
 
     // Start is called before the first frame update
@@ -18,6 +23,10 @@ public class Player2D : BattleSystem2D
     // Update is called once per frame
     void Update()
     {
+/*        if(DialogueUI.IsOpen == false) //대화중이 아닐때만 움직임 가능
+        {
+
+        }*/
         moveDir.x = Input.GetAxisRaw("Horizontal");                                     // 좌우이동
 
         if (Input.GetKeyDown(KeyCode.W) && !myAnim.GetBool("IsAir"))          // 윗점프
