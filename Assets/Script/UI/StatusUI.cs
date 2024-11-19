@@ -97,7 +97,7 @@ public class StatusUI : MonoBehaviour
         textAtk.text = player.atkPoint.ToString();
         textUtil.text = player.utilPoint.ToString();
         textTotalAtk.text = $"Total Atk : {player.totalAtk}";
-        textMaxHp.text = $"Max Hp : {player.maxHp}";
+        textMaxHp.text = $"Max Hp : {player.maxHP}";
     }
 
     public  void AddHp()

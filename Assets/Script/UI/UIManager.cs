@@ -23,10 +23,29 @@ public class UIManager : MonoBehaviour
         {
             OnOffStatusUI();
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnOffMenuUI();
+        }
     }
     public void OnOffStatusUI()
     {
-        StatusUI.Instance.gameObject.SetActive(!StatusUI.Instance.gameObject.activeSelf);
-        myStatusUI.UpdateStatusUI();
+        if (StatusUI.Instance != null)
+        {
+            StatusUI.Instance.gameObject.SetActive(!StatusUI.Instance.gameObject.activeSelf);
+            myStatusUI.UpdateStatusUI();
+        }
+        
     }
+
+    public void OnOffMenuUI()
+    {
+        if (MenuUI.Instance != null)
+        {
+            StatusUI.Instance.gameObject.SetActive(!StatusUI.Instance.gameObject.activeSelf);
+            myStatusUI.UpdateStatusUI();
+        }
+    }
+
+
 }
