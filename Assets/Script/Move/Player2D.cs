@@ -7,10 +7,7 @@ using UnityEngine;
 
 public class Player2D : BattleSystem2D
 {
-    //다이얼로그UI 사용할 수 있게
-    [SerializeField] private DialogueUI dialogueUI;
-    public DialogueUI DialogueUI => dialogueUI;
-    public IInteractable Interactable { get; set; }
+
 
     public LayerMask myEnemy;
     // Start is called before the first frame update
@@ -22,43 +19,36 @@ public class Player2D : BattleSystem2D
     // Update is called once per frame
     void Update()
     {
-        if (DialogueUI.IsOpen == false) //대화중이 아닐때만 움직임 가능
+
+        moveDir.x = Input.GetAxisRaw("Horizontal");                                     // 좌우이동
+
+        if (Input.GetKeyDown(KeyCode.W) && !myAnim.GetBool("IsAir"))          // 윗점프
         {
-            moveDir.x = Input.GetAxisRaw("Horizontal");                                     // 좌우이동
-
-            if (Input.GetKeyDown(KeyCode.W) && !myAnim.GetBool("IsAir"))          // 윗점프
-            {
-                OnJump();
-            }
-
-            if (Input.GetKeyDown(KeyCode.S) && !myAnim.GetBool("IsAir"))          // 아랫점프
-            {
-                OnDownJump();
-            }
-
-            if (Input.GetMouseButtonDown(0))                                                // 공격키
-            {
-                myAnim.SetTrigger(animData.OnAttack);
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space))                                          // 회피(구르기&대쉬)
-            {
-                OnDodge();
-            }
-
-            if (Input.GetMouseButtonDown(1))                                              // 패링키
-            {
-                OnParry();
-            }
-
-            //상호작용키 G로, 이동은 아니지만 플레이어 관련인데 다른데 혼자 놓기는 애매해서
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                Interactable?.Interact(this);
-            }
-
-            base.OnUpdate();
+            OnJump();
         }
+
+        if (Input.GetKeyDown(KeyCode.S) && !myAnim.GetBool("IsAir"))          // 아랫점프
+        {
+            OnDownJump();
+        }
+
+        if (Input.GetMouseButtonDown(0))                                                // 공격키
+        {
+            myAnim.SetTrigger(animData.OnAttack);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))                                          // 회피(구르기&대쉬)
+        {
+            OnDodge();
+        }
+
+        if (Input.GetMouseButtonDown(1))                                              // 패링키
+        {
+            OnParry();
+        }
+
+        base.OnUpdate();
+        
     }
 
     public void OnAttack() // 공격범위 설정
