@@ -42,8 +42,7 @@ public class UIManager : MonoBehaviour
     {
         if (MenuUI.Instance != null)
         {
-            StatusUI.Instance.gameObject.SetActive(!StatusUI.Instance.gameObject.activeSelf);
-            myStatusUI.UpdateStatusUI();
+            MenuUI.Instance.gameObject.SetActive(!MenuUI.Instance.gameObject.activeSelf);
         }
     }
 
