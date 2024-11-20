@@ -31,7 +31,7 @@ public class Movement2D : SpriteProperty
     }
 
     [SerializeField] Rigidbody2D rid;
-    /*    public float moveSpeed = 2.0f;*/
+/*    public float moveSpeed = 2.0f;*/
     public float curSpaceCool = 0.0f; // 회피 쿨타임 계산
     public float spaceCoolDown = 5.0f;
 
@@ -87,7 +87,7 @@ public class Movement2D : SpriteProperty
 
     protected void OnDownJump()
     {
-        if (isFloor)
+        if(isFloor)
         {
             StopAllCoroutines();
             StartCoroutine(DownJumping());
@@ -99,7 +99,7 @@ public class Movement2D : SpriteProperty
         yield return new WaitForFixedUpdate();
 
         myColider.isTrigger = true;
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.7f); 
         myColider.isTrigger = false;
         while (myRigid.velocity.y < 0.0f) //내려가기
         {
@@ -117,7 +117,7 @@ public class Movement2D : SpriteProperty
 
     IEnumerator Dodging() //스페이스바 입력시 회피 코루틴
     {
-        if (curSpaceCool >= spaceCoolDown)
+        if(curSpaceCool >= spaceCoolDown)
         {
             myColider.isTrigger = false;
             float duration = 0.5f; // 이동 시간
@@ -126,12 +126,12 @@ public class Movement2D : SpriteProperty
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"));
             myAnim.SetTrigger(animData.OnDodge);
             curSpaceCool = 0.0f;
-            while (elapsed < duration)
-            {
-                transform.Translate(rl * 10 * Time.deltaTime);
-                elapsed += Time.deltaTime;
-                yield return null;
-            }
+                while (elapsed < duration)
+                {
+                    transform.Translate(rl * 10 * Time.deltaTime);
+                    elapsed += Time.deltaTime;
+                    yield return null;
+                }
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"), false);
         }
     }
@@ -177,7 +177,7 @@ public class Movement2D : SpriteProperty
         {
             isFloor = true;     //floor에있을때
             myAnim.SetBool("IsAir", false);
-            /*            OnCheckGround(collision.transform);*/
+/*            OnCheckGround(collision.transform);*/
         }
     }
     private void OnCollisionStay2D(Collision2D collision)
@@ -198,15 +198,15 @@ public class Movement2D : SpriteProperty
     }
 
 
-    /*    public void OnTriggerEnter2D(Collider2D other)
+/*    public void OnTriggerEnter2D(Collider2D other)
+    {
+        // 만약 몬스터의 공격이 들어오면 패링 타이밍을 맞춰서 반응
+        if (other.gameObject.layer == LayerMask.NameToLayer("Monster"))
         {
-            // 만약 몬스터의 공격이 들어오면 패링 타이밍을 맞춰서 반응
-            if (other.gameObject.layer == LayerMask.NameToLayer("Monster"))
-            {
-                // 패링 성공: 공격을 막는 로직
-                myAnim.SetBool("IsParry", true);
-            }
-        }*/
+            // 패링 성공: 공격을 막는 로직
+            myAnim.SetBool("IsParry", true);
+        }
+    }*/
 
     public void OnTriggerExit2D(Collider2D other)
     {

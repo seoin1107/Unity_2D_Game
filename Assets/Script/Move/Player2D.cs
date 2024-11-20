@@ -7,10 +7,10 @@ using UnityEngine;
 
 public class Player2D : BattleSystem2D
 {
-    /*    //다이얼로그UI 사용할 수 있게
-        [SerializeField] private DialogueUI dialogueUI;
-        public DialogueUI DialogueUI => dialogueUI;
-        public IInteractable Interactable { get; set; }*/
+/*    //다이얼로그UI 사용할 수 있게
+    [SerializeField] private DialogueUI dialogueUI;
+    public DialogueUI DialogueUI => dialogueUI;
+    public IInteractable Interactable { get; set; }*/
 
     public LayerMask myEnemy;
 
@@ -23,12 +23,12 @@ public class Player2D : BattleSystem2D
     // Update is called once per frame
     void Update()
     {
-        /*        if(DialogueUI.IsOpen == false) //대화중이 아닐때만 움직임 가능
-                {
+/*        if(DialogueUI.IsOpen == false) //대화중이 아닐때만 움직임 가능
+        {
 
-                }*/
+        }*/
 
-        if (!myAnim.GetBool("IsParry") && !myAnim.GetBool("IsAttack"))
+        if(!myAnim.GetBool("IsParry") && !myAnim.GetBool("IsAttack"))
         {
             moveDir.x = Input.GetAxisRaw("Horizontal");                                     // 좌우이동
             if (Input.GetKeyDown(KeyCode.W) && !myAnim.GetBool("IsAir"))          // 윗점프
@@ -45,21 +45,21 @@ public class Player2D : BattleSystem2D
         {
             moveDir.x = 0;
         }
-        if (!myAnim.GetBool("IsParry"))
+        if(!myAnim.GetBool("IsParry"))
         {
             if (Input.GetMouseButtonDown(0) && !myAnim.GetBool("IsAir"))          // 공격                                        // 공격키
             {
-                OnPlayerAttack();
+                    OnPlayerAttack();
             }
         }
-
-        if (Input.GetMouseButtonDown(1) && !myAnim.GetBool("IsAir"))           // 패링                                   // 패링키
+                    
+        if(Input.GetMouseButtonDown(1) && !myAnim.GetBool("IsAir"))           // 패링                                   // 패링키
         {
             OnParry();
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Space))                                   // 회피(구르기&대쉬)
+        if(Input.GetKeyDown(KeyCode.Space))                                   // 회피(구르기&대쉬)
         {
             if (curSpaceCool >= spaceCoolDown)
             {
