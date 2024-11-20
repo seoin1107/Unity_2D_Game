@@ -4,15 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-[System.Serializable]
-public struct BattleStat
-{
-    public float AP;
-    public float AttackRange;
-    public float AttackDelay;
-    public float maxHP;
-    public float curHP;
-}
+
+
 
 interface IDeathAlarm
 {
@@ -30,14 +23,14 @@ interface ILive
 
 public class BattleSystem2D : Movement2D, IDamage, IDeathAlarm, ILive
 {
-    public BattleStat battleStat;
+    public CharacterStatus characterStatus;
     protected float playTime;
 
     public UnityAction deathAlarm { get; set; }
     
     public bool IsLive
     {
-        get => battleStat.curHP > 0 ? true : false;        
+        get => characterStatus.curHP > 0 ? true : false;        
     }
     protected virtual void OnDead()
     {
@@ -54,8 +47,8 @@ public class BattleSystem2D : Movement2D, IDamage, IDeathAlarm, ILive
             myAnim.SetTrigger(animData.OnParring);
             return;
         }
-        battleStat.curHP -= dmg;
-        if (battleStat.curHP > 0.0f)
+        characterStatus.curHP -= dmg;
+        if (characterStatus.curHP > 0.0f)
         {
             myAnim.SetTrigger(animData.OnDamage);
         }

@@ -1,16 +1,16 @@
 {
     "baseHP": 20.0,
-    "maxHP": 22.0,
+    "maxHP": 20.0,
     "curHP": 0.0,
     "baseAtk": 10.0,
-    "totalAtk": 10.0,
-    "moveSpeed": 5.0,
+    "totalAtk": 11.0,
+    "moveSpeed": 3.0,
     "atkSpeed": 0.0,
     "level": 1,
     "hpRegen": 0.0,
     "totalPoint": 1.0,
-    "atkPoint": 0.0,
-    "hpPoint": 1.0,
+    "atkPoint": 1.0,
+    "hpPoint": 0.0,
     "utilPoint": 0.0,
     "hitRecover": 0.5,
     "skillCool": 1.0,
@@ -22,24 +22,20 @@
     "parryingCool": 2.0,
     "needExp": 10,
     "curExp": 0,
-    "battleStat": {
-        "instanceID": 0
-    },
-    "myTarget": {
-        "instanceID": 0
-    },
     "rid": {
-        "instanceID": 26198
+        "instanceID": 0
     },
-    "IsJumping": false,
-    "jumpForce": 7.0,
-    "JumpCount": 0,
-    "IsMoving": false,
-    "MoveSpeed": 3.0,
-    "spaceCoolTime": 5.0,
-    "curSpaceCool": 14.773510932922364,
-    "enemMask": {
+    "curSpaceCool": 5.0,
+    "spaceCoolDown": 5.0,
+    "battleStat": {
+        "AP": 1000.0,
+        "AttackRange": 1.0,
+        "AttackDelay": 1.0,
+        "maxHP": 1000.0,
+        "curHP": 10.0
+    },
+    "myEnemy": {
         "serializedVersion": "2",
-        "m_Bits": 0
+        "m_Bits": 512
     }
 }

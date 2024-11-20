@@ -7,17 +7,17 @@ using UnityEngine;
 
 public class Player2D : BattleSystem2D
 {
-/*    //다이얼로그UI 사용할 수 있게
+    //다이얼로그UI 사용할 수 있게
     [SerializeField] private DialogueUI dialogueUI;
     public DialogueUI DialogueUI => dialogueUI;
-    public IInteractable Interactable { get; set; }*/
+    public IInteractable Interactable { get; set; }
 
     public LayerMask myEnemy;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        UpdateStatus();
     }
 
     // Update is called once per frame
@@ -67,6 +67,11 @@ public class Player2D : BattleSystem2D
             }
         }
 
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            Interactable?.Interact(this);
+        }
+
 
         base.OnUpdate();
     }
@@ -77,7 +82,7 @@ public class Player2D : BattleSystem2D
         Collider2D[] list = Physics2D.OverlapCircleAll((Vector2)transform.position + dir, 1.0f, myEnemy);
         foreach (Collider2D col in list)
         {
-            col.GetComponent<IDamage>()?.OnDamage(battleStat.AP);
+            col.GetComponent<IDamage>()?.OnDamage(characterStatus.totalAtk);
         }
     }
 

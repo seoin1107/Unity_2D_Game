@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpriteProperty : Stat
+public class SpriteProperty : CharacterStatus
 {
     SpriteRenderer _render = null;
     protected SpriteRenderer myRenderer

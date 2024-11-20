@@ -33,7 +33,7 @@ public class StatusUI : MonoBehaviour
 
 
     public UnityAction closeAlram;
-    public CharacterStatus player;
+    public Player2D player;
 
 
     private void Start()

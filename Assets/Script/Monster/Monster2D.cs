@@ -65,10 +65,10 @@ public class Monster2D : BattleSystem2D
                 moveDir.x = myTarget.position.x > transform.position.x ? 1.0f :
                     myTarget.position.x < transform.position.x ? -1.0f : 0.0f;
 
-                if (Vector2.Distance(myTarget.position, transform.position) <= battleStat.AttackRange)
+                if (Vector2.Distance(myTarget.position, transform.position) <= characterStatus.attackRange)
                 {
                     moveDir.x = 0.0f;
-                    if (playTime >= battleStat.AttackDelay)
+                    if (playTime >= characterStatus.atkSpeed)
                     {
                         playTime = 0.0f;
                         myAnim.SetTrigger(animData.OnAttack);
@@ -129,7 +129,7 @@ public class Monster2D : BattleSystem2D
     }
     public void OnAttack()
     {
-        myTarget.GetComponent<IDamage>()?.OnDamage(battleStat.AP);
+        myTarget.GetComponent<IDamage>()?.OnDamage(characterStatus.totalAtk);
     }
 
     protected override void OnDead()

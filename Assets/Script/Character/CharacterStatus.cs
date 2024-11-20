@@ -18,6 +18,7 @@ public class Stat : AnimatorProperty
 
     public float moveSpeed = 5.0f;
     public float atkSpeed = 0;
+    public float attackRange = 1.0f;
 
 
 
@@ -65,7 +66,7 @@ public class CharacterStatus : Stat
     {
         totalAtk = baseAtk + atkPoint;
         maxHP = baseHP+ hpPoint *2;
-
+        curHP = maxHP;
     }
     public void LevelUp()
     {
