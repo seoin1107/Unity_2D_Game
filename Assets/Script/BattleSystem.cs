@@ -3,15 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
-
-interface ILive
-{
-    bool IsLive { get; }
-}
-
-
-
 interface IBattle : ILive, IDamage, IDeathAlarm
 {
 
@@ -25,19 +16,19 @@ public class BattleSystem : CharacterStatus, IBattle
     public GameObject myTarget;
 
     public UnityAction deathAlarm { get; set; }
-
+    
     public bool IsLive
     {
         get
         {
-            return battleStat.curHp > 0.0f;
+            return battleStat.curHP > 0.0f;
         }
-    }
+    }    
 
     protected void OnReset()
     {
 
-        battleStat.curHp = battleStat.maxHp;
+        battleStat.curHP = battleStat.maxHP;
     }
 
     protected virtual void OnDead()
@@ -47,8 +38,8 @@ public class BattleSystem : CharacterStatus, IBattle
 
     public void OnDamage(float dmg)
     {
-        battleStat.curHp -= dmg;
-        if (battleStat.curHp <= 0.0f)
+        battleStat.curHP -= dmg;
+        if (battleStat.curHP <= 0.0f)
         {
             myAnim.SetTrigger(animData.OnDead);
             OnDead();

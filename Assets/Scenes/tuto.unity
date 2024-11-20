@@ -1814,17 +1814,6 @@ PolygonCollider2D:
       - {x: 0.34375, y: 0.3125}
       - {x: 0.21875, y: 0.4375}
   m_UseDelaunayMesh: 0
---- !u!114 &774255918 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5110200321557849272, guid: 4d3932f152d171742800784ed230f340, type: 3}
-  m_PrefabInstance: {fileID: 2053808683202207877}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &783460434
 GameObject:
   m_ObjectHideFlags: 0
@@ -11235,19 +11224,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 889364b7e10dfb448b4e28785f901e77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
-  baseHp: 20
-  maxHp: 0
-  curHp: 0
+  baseHP: 20
+  maxHP: 0
+  curHP: 0
   baseAtk: 10
   totalAtk: 0
+  moveSpeed: 5
+  atkSpeed: 0
+  level: 1
+  hpRegen: 0
   totalPoint: 1
   atkPoint: 0
   hpPoint: 0
   utilPoint: 0
-  moveSpeed: 5
-  atkSpeed: 0
-  hpRegen: 0
   hitRecover: 0.5
   skillCool: 1
   skillDamage: 1
@@ -11520,29 +11509,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efc19e01e380cd4ebd961dc27f3940b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
-  baseHp: 20
-  maxHp: 0
-  curHp: 0
+  baseHP: 20
+  maxHP: 0
+  curHP: 0
   baseAtk: 10
   totalAtk: 0
-  totalPoint: 1
-  atkPoint: 0
-  hpPoint: 0
-  utilPoint: 0
   moveSpeed: 2
   atkSpeed: 0
-  hpRegen: 0
-  hitRecover: 0.5
-  skillCool: 1
-  skillDamage: 1
-  drain: 0
-  dodgeTime: 0.2
-  dodgeCool: 5
-  parryingTime: 0.2
-  parryingCool: 2
-  needExp: 10
-  curExp: 0
   rid: {fileID: 0}
   curSpaceCool: 0
   spaceCoolDown: 5
@@ -12812,7 +12785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1575476960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14247,14 +14220,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6684597630235944978, guid: 4d3932f152d171742800784ed230f340, type: 3}
+      propertyPath: mySave
+      value: 
+      objectReference: {fileID: 1029348974}
     - target: {fileID: 7499159916318820951, guid: 4d3932f152d171742800784ed230f340, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1029348974}
-    - target: {fileID: 7499159916318820951, guid: 4d3932f152d171742800784ed230f340, type: 3}
-      propertyPath: utilDownButton
-      value: 
-      objectReference: {fileID: 774255918}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
