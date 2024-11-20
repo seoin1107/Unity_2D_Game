@@ -27,16 +27,30 @@ public class Player2D : BattleSystem2D
         {
 
         }*/
-        moveDir.x = Input.GetAxisRaw("Horizontal");                                     // 좌우이동
 
-        if (Input.GetKeyDown(KeyCode.W) && !myAnim.GetBool("IsAir"))          // 윗점프
+        if(!myAnim.GetBool("IsParry") && !myAnim.GetBool("IsAttack"))
         {
-            OnJump();
+            moveDir.x = Input.GetAxisRaw("Horizontal");                                     // 좌우이동
+            if (Input.GetKeyDown(KeyCode.W) && !myAnim.GetBool("IsAir"))          // 윗점프
+            {
+                OnJump();
+            }
+
+            if (Input.GetKeyDown(KeyCode.S) && !myAnim.GetBool("IsAir"))          // 아랫점프
+            {
+                OnDownJump();
+            }
         }
-
-        if (Input.GetKeyDown(KeyCode.S) && !myAnim.GetBool("IsAir"))          // 아랫점프
+        else
         {
-            OnDownJump();
+            moveDir.x = 0;
+        }
+        if(!myAnim.GetBool("IsParry"))
+        {
+            if (Input.GetMouseButtonDown(0) && !myAnim.GetBool("IsAir"))          // 공격                                        // 공격키
+            {
+                    OnPlayerAttack();
+            }
         }
                     
         if(Input.GetMouseButtonDown(1) && !myAnim.GetBool("IsAir"))           // 패링                                   // 패링키
@@ -44,10 +58,6 @@ public class Player2D : BattleSystem2D
             OnParry();
         }
 
-        if (Input.GetMouseButtonDown(0) && !myAnim.GetBool("IsAir"))          // 공격                                        // 공격키
-        {
-            myAnim.SetTrigger(animData.OnAttack);
-        }
 
         if(Input.GetKeyDown(KeyCode.Space))                                   // 회피(구르기&대쉬)
         {
