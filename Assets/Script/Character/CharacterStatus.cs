@@ -6,25 +6,35 @@ using UnityEngine;
 public class Stat : AnimatorProperty
 {
 
-
-    public int level = 1;
-
-    public float baseHp = 20;
-    public float maxHp;
-    public float curHp;
+    public float baseHP = 20;
+    public float maxHP;
+    public float curHP;
 
 
     public float baseAtk = 10;
     public float totalAtk = 0;
 
+   
+
+    public float moveSpeed = 5.0f;
+    public float atkSpeed = 0;
+    public float attackRange = 1.0f;
+
+
+
+}
+
+
+public class CharacterStatus : Stat
+{
+    public int level = 1;
+
+    public float hpRegen = 0;
+
     public float totalPoint = 1;
     public float atkPoint = 0;
     public float hpPoint = 0;
     public float utilPoint = 0;
-
-    public float moveSpeed = 5.0f;
-    public float atkSpeed = 0;
-    public float hpRegen = 0;
 
     public float hitRecover = 0.5f;
     public float skillCool = 1.0f;
@@ -40,13 +50,6 @@ public class Stat : AnimatorProperty
     public int needExp = 10;
     public int curExp = 0;
 
-
-}
-
-public class CharacterStatus : Stat
-{
-   
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -62,8 +65,8 @@ public class CharacterStatus : Stat
     public void UpdateStatus()
     {
         totalAtk = baseAtk + atkPoint;
-        maxHp = baseHp + hpPoint *2;
-
+        maxHP = baseHP+ hpPoint *2;
+        curHP = maxHP;
     }
     public void LevelUp()
     {
@@ -75,6 +78,4 @@ public class CharacterStatus : Stat
             totalPoint += 1;
         }       
     }
-
-   
 }

@@ -142,12 +142,27 @@ public class Movement2D : SpriteProperty
     }
     IEnumerator Parring()
     {
+        myColider.isTrigger = false;
         if (myAnim.GetBool(animData.IsParry)) yield break; // 이미 활성화된 경우 무시
 
         myAnim.SetTrigger(animData.OnParry);
         myAnim.SetBool(animData.IsParry, true);
-        yield return new WaitForSeconds(1.0f); // 1초 대기
+        yield return new WaitForSeconds(0.75f); // 1초 대기
         myAnim.SetBool(animData.IsParry, false); // IsParry 비활성화
+    }
+    protected void OnPlayerAttack()
+    {
+        StopAllCoroutines();
+        StartCoroutine(Attacking());
+    }
+    IEnumerator Attacking()
+    {
+        if (myAnim.GetBool(animData.IsAttack)) yield break; // 이미 활성화된 경우 무시
+
+        myAnim.SetTrigger(animData.OnAttack);
+        myAnim.SetBool(animData.IsAttack, true);
+        yield return new WaitForSeconds(0.5f); // 1초 대기
+        myAnim.SetBool(animData.IsAttack, false);
     }
 
 

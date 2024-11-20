@@ -39,6 +39,9 @@ public class Monster2D : BattleSystem2D
             case State.Dead:
                 StopAllCoroutines();
                 myRigid.gravityScale = 0.0f;
+                myRigid.velocity = Vector2.zero;
+                moveDir = Vector2.zero;
+                gameObject.layer = default;
                 break;
         }
     }
@@ -62,10 +65,10 @@ public class Monster2D : BattleSystem2D
                 moveDir.x = myTarget.position.x > transform.position.x ? 1.0f :
                     myTarget.position.x < transform.position.x ? -1.0f : 0.0f;
 
-                if (Vector2.Distance(myTarget.position, transform.position) <= battleStat.AttackRange)
+                if (Vector2.Distance(myTarget.position, transform.position) <= characterStatus.attackRange)
                 {
                     moveDir.x = 0.0f;
-                    if (playTime >= battleStat.AttackDelay)
+                    if (playTime >= characterStatus.atkSpeed)
                     {
                         playTime = 0.0f;
                         myAnim.SetTrigger(animData.OnAttack);
@@ -109,9 +112,13 @@ public class Monster2D : BattleSystem2D
 
     public void OnFindTarget(Transform tr)
     {
-        if (myState == State.Dead) return;
-        myTarget = tr;
-        ChangeState(State.Battle);
+        if (myState == State.Dead) return;        
+        if (tr.GetComponent<ILive>().IsLive)
+        {
+            myTarget = tr;
+            myTarget.GetComponent<IDeathAlarm>().deathAlarm += () => ChangeState(State.Normal);
+            ChangeState(State.Battle);
+        }
     }
 
     public void OnLostTarget()
@@ -122,7 +129,7 @@ public class Monster2D : BattleSystem2D
     }
     public void OnAttack()
     {
-        myTarget.GetComponent<IDamage>()?.OnDamage(battleStat.AP);
+        myTarget.GetComponent<IDamage>()?.OnDamage(characterStatus.totalAtk);
     }
 
     protected override void OnDead()
