@@ -3,29 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct Save
-{
-    public CharacterStatus myCharacter;
 
-
-
-
-
-}
-public class MenuUI : MonoBehaviour
+public class MenuUI : CharacterStatus
 {
 
-    public Save mySave;
+    public CharacterStatus mySave;
     public static MenuUI Instance
     {
-        get; set;
+        get;  set;
     }
     // Start is called before the first frame update
     void Start()
     {
         Instance = this;
         gameObject.SetActive(false);
-        mySave = FileManager.LoadFromJson<Save>(Application.dataPath+"/Data/Save/PlayerSave.dat");
+        mySave = FileManager.LoadFromJson<CharacterStatus>(Application.dataPath+"/Data/Save/PlayerSave.dat");
     }
 
     // Update is called once per frame
@@ -35,6 +27,6 @@ public class MenuUI : MonoBehaviour
     }
     public void SaveData()
     {
-        FileManager.SaveToJson<Save>(Application.dataPath+"/Data/Save/PlayerSave.dat", mySave);
+        FileManager.SaveToJson<CharacterStatus>(Application.dataPath+"/Data/Save/PlayerSave.dat", mySave);
     }
 }
