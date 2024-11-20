@@ -8,7 +8,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
     {
         if(collider.gameObject.layer == LayerMask.NameToLayer("Player") && collider.TryGetComponent(out Player2D player2D))
         {
-            player2D.Interactable = this;
+            //player2D.Interactable = this;
         }
     }
 
@@ -19,6 +19,6 @@ public class DialogueActivator : MonoBehaviour, IInteractable
 
     public void Interact(Player2D player2D)
     {
-        player2D.DialogueUI.ShowDialogue(dialogueObject);
+        //player2D.DialogueUI.ShowDialogue(dialogueObject);
     }
 }
