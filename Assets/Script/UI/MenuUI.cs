@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public struct Save
 {
-    public Stat myStat;
+    public CharacterStatus myCharacter;
 
 
 
@@ -25,7 +25,7 @@ public class MenuUI : MonoBehaviour
     {
         Instance = this;
         gameObject.SetActive(false);
-        mySave = FileManager.LoadFormBinary<Save>(Application.dataPath+"/Data/Save/PlayerSave.dat");
+        mySave = FileManager.LoadFromJson<Save>(Application.dataPath+"/Data/Save/PlayerSave.dat");
     }
 
     // Update is called once per frame
@@ -35,6 +35,6 @@ public class MenuUI : MonoBehaviour
     }
     public void SaveData()
     {
-        FileManager.SaveToBinary<Save>(Application.dataPath+"/Data/Save/PlayerSave.dat", mySave);
+        FileManager.SaveToJson<Save>(Application.dataPath+"/Data/Save/PlayerSave.dat", mySave);
     }
 }
