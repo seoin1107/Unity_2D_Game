@@ -39,6 +39,9 @@ public class Monster2D : BattleSystem2D
             case State.Dead:
                 StopAllCoroutines();
                 myRigid.gravityScale = 0.0f;
+                myRigid.velocity = Vector2.zero;
+                moveDir = Vector2.zero;
+                gameObject.layer = default;
                 break;
         }
     }
@@ -109,9 +112,13 @@ public class Monster2D : BattleSystem2D
 
     public void OnFindTarget(Transform tr)
     {
-        if (myState == State.Dead) return;
-        myTarget = tr;
-        ChangeState(State.Battle);
+        if (myState == State.Dead) return;        
+        if (tr.GetComponent<ILive>().IsLive)
+        {
+            myTarget = tr;
+            myTarget.GetComponent<IDeathAlarm>().deathAlarm += () => ChangeState(State.Normal);
+            ChangeState(State.Battle);
+        }
     }
 
     public void OnLostTarget()
