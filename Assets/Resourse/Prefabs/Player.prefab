@@ -50,38 +50,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc338b4a812f347ab02107d446685d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
-  baseHp: 20
-  maxHp: 0
-  curHp: 0
-  baseAtk: 10
-  totalAtk: 0
-  totalPoint: 1
-  atkPoint: 0
-  hpPoint: 0
-  utilPoint: 0
-  moveSpeed: 3
-  atkSpeed: 0
-  hpRegen: 0
-  hitRecover: 0.5
-  skillCool: 1
-  skillDamage: 1
-  drain: 0
-  dodgeTime: 0.2
-  dodgeCool: 5
-  parryingTime: 0.2
-  parryingCool: 2
-  needExp: 10
-  curExp: 0
   rid: {fileID: 0}
   curSpaceCool: 5
   spaceCoolDown: 5
-  battleStat:
-    AP: 1000
-    AttackRange: 1
-    AttackDelay: 1
-    maxHP: 1000
-    curHP: 10
+  characterStatus: {fileID: 5829452816660466416}
+  dialogueUI: {fileID: 0}
   myEnemy:
     serializedVersion: 2
     m_Bits: 512
