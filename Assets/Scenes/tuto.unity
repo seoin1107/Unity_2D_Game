@@ -445,11 +445,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4378380278815144764, guid: 657b18d83635449449ccd618c7fdc887, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4569534882105735296, guid: 657b18d83635449449ccd618c7fdc887, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.99
+      value: 22.21
       objectReference: {fileID: 0}
     - target: {fileID: 4569534882105735296, guid: 657b18d83635449449ccd618c7fdc887, type: 3}
       propertyPath: m_LocalPosition.y
@@ -490,6 +490,42 @@ PrefabInstance:
     - target: {fileID: 7584236381206534913, guid: 657b18d83635449449ccd618c7fdc887, type: 3}
       propertyPath: baseHP
       value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584236381206534913, guid: 657b18d83635449449ccd618c7fdc887, type: 3}
+      propertyPath: battleStat.atkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584236381206534913, guid: 657b18d83635449449ccd618c7fdc887, type: 3}
+      propertyPath: battleStat.totalAtk
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584236381206534913, guid: 657b18d83635449449ccd618c7fdc887, type: 3}
+      propertyPath: characterStat.curHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584236381206534913, guid: 657b18d83635449449ccd618c7fdc887, type: 3}
+      propertyPath: characterStat.maxHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584236381206534913, guid: 657b18d83635449449ccd618c7fdc887, type: 3}
+      propertyPath: battleStat.moveSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584236381206534913, guid: 657b18d83635449449ccd618c7fdc887, type: 3}
+      propertyPath: battleStat.attackRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584236381206534913, guid: 657b18d83635449449ccd618c7fdc887, type: 3}
+      propertyPath: characterStat.atkSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584236381206534913, guid: 657b18d83635449449ccd618c7fdc887, type: 3}
+      propertyPath: characterStat.totalAtk
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584236381206534913, guid: 657b18d83635449449ccd618c7fdc887, type: 3}
+      propertyPath: characterStat.moveSpeed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1548,6 +1584,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1.90625}
   m_EdgeRadius: 0
+--- !u!1 &705905215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1568400016338163528, guid: d499738d4c8a64c41bf750e5a69a7de5, type: 3}
+  m_PrefabInstance: {fileID: 1753732938}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &735233375
 GameObject:
   m_ObjectHideFlags: 0
@@ -11277,12 +11318,49 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5829452816660466416, guid: d499738d4c8a64c41bf750e5a69a7de5, type: 3}
   m_PrefabInstance: {fileID: 1753732938}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 705905215}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fffc338b4a812f347ab02107d446685d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1209932537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705905215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55b395d2d7c1ec8418b86a660ddc5c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterStat:
+    baseHP: 0
+    maxHP: 0
+    curHP: 0
+    baseAtk: 0
+    totalAtk: 0
+    moveSpeed: 0
+    atkSpeed: 0
+    attackRange: 0
+    level: 0
+    hpRegen: 0
+    totalPoint: 0
+    atkPoint: 0
+    hpPoint: 0
+    utilPoint: 0
+    hitRecover: 0
+    skillCool: 0
+    skillDamage: 0
+    drain: 0
+    dodgeTime: 0
+    dodgeCool: 0
+    parryingTime: 0
+    parryingCool: 0
+    needExp: 0
+    curExp: 0
 --- !u!1 &1240130046
 GameObject:
   m_ObjectHideFlags: 0
@@ -12811,6 +12889,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5829452816660466416, guid: d499738d4c8a64c41bf750e5a69a7de5, type: 3}
+<<<<<<< Updated upstream
+=======
+      propertyPath: dialogueUI
+      value: 
+      objectReference: {fileID: 1833494175}
+    - target: {fileID: 5829452816660466416, guid: d499738d4c8a64c41bf750e5a69a7de5, type: 3}
+      propertyPath: playerStatus
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5829452816660466416, guid: d499738d4c8a64c41bf750e5a69a7de5, type: 3}
+>>>>>>> Stashed changes
       propertyPath: battleStat.AP
       value: 10
       objectReference: {fileID: 0}
@@ -12821,7 +12910,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1568400016338163528, guid: d499738d4c8a64c41bf750e5a69a7de5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1209932537}
   m_SourcePrefab: {fileID: 100100000, guid: d499738d4c8a64c41bf750e5a69a7de5, type: 3}
 --- !u!1 &1833494170
 GameObject:
