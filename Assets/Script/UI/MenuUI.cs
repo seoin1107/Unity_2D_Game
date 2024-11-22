@@ -17,7 +17,7 @@ public class MenuUI : CharacterStatus
     {
         Instance = this;
         gameObject.SetActive(false);
-        mySave = FileManager.LoadFromJson<CharacterStatus>(Application.dataPath+"/Data/Save/PlayerSave.dat");
+        //mySave = FileManager.LoadFromJson<CharacterStatus>(Application.dataPath+"/Data/Save/PlayerSave.dat");
     }
 
     // Update is called once per frame
