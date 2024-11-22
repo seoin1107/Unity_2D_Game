@@ -14,64 +14,104 @@ public class Player2D : BattleSystem2D
 
     public LayerMask myEnemy;
 
+    public CharacterStatus playerStatus;
+
     // Start is called before the first frame update
     void Start()
     {
+        playerStatus = this;
+
+        playerStatus.characterStat.baseHP = 20;
+        playerStatus.characterStat.baseAtk = 10;
+
+
+
+        playerStatus.characterStat.moveSpeed = 5.0f;
+        playerStatus.characterStat.atkSpeed = 0;
+        playerStatus.characterStat.attackRange = 1.0f;
+
+
+        playerStatus.characterStat.level = 1;
+
+        playerStatus.characterStat.hpRegen = 0;
+
+        playerStatus.characterStat.totalPoint = 1;
+        playerStatus.characterStat.atkPoint = 0;
+        playerStatus.characterStat.hpPoint = 0;
+        playerStatus.characterStat.utilPoint = 0;
+
+        playerStatus.characterStat.hitRecover = 0.5f;
+        playerStatus.characterStat.skillCool = 1.0f;
+        playerStatus.characterStat.skillDamage = 1.0f;
+
+        playerStatus.characterStat.drain = 0;
+
+        playerStatus.characterStat.dodgeTime = 0.2f;
+        playerStatus.characterStat.dodgeCool = 5.0f;
+        playerStatus.characterStat.parryingTime = 0.2f;
+        playerStatus.characterStat.parryingCool = 2.0f;
+
+        playerStatus.characterStat.needExp = 10;
+        playerStatus.characterStat.curExp = 0;
         UpdateStatus();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (DialogueUI.IsOpen == false) //대화중이 아닐때만 움직임 가능
-        //{
-
-            if (!myAnim.GetBool("IsParry") && !myAnim.GetBool("IsAttack"))
-            {
-                moveDir.x = Input.GetAxisRaw("Horizontal");                                     // 좌우이동
-                if (Input.GetKeyDown(KeyCode.W) && !myAnim.GetBool("IsAir"))          // 윗점프
+        
+        /*        if(DialogueUI.IsOpen == false) //대화중이 아닐때만 움직임 가능
                 {
-                    OnJump();
-                }
 
-                if (Input.GetKeyDown(KeyCode.S) && !myAnim.GetBool("IsAir"))          // 아랫점프
-                {
-                    OnDownJump();
-                }
-            }
-            else
+                }*/
+
+        if (!myAnim.GetBool("IsParry") && !myAnim.GetBool("IsAttack"))
+        {
+            moveDir.x = Input.GetAxisRaw("Horizontal");                                     // 좌우이동
+            if (Input.GetKeyDown(KeyCode.W) && !myAnim.GetBool("IsAir"))          // 윗점프
             {
-                moveDir.x = 0;
+                OnJump();
             }
-            if (!myAnim.GetBool("IsParry"))
+
+            if (Input.GetKeyDown(KeyCode.S) && !myAnim.GetBool("IsAir"))          // 아랫점프
             {
-                if (Input.GetMouseButtonDown(0) && !myAnim.GetBool("IsAir"))          // 공격                                        // 공격키
-                {
-                    OnPlayerAttack();
-                }
+                OnDownJump();
             }
-
-            if (Input.GetMouseButtonDown(1) && !myAnim.GetBool("IsAir"))           // 패링                                   // 패링키
+        }
+        else
+        {
+            moveDir.x = 0;
+        }
+        if (!myAnim.GetBool("IsParry"))
+        {
+            if (Input.GetMouseButtonDown(0) && !myAnim.GetBool("IsAir"))          // 공격                                        // 공격키
             {
-                OnParry();
+                OnPlayerAttack();
             }
+        }
+
+        if (Input.GetMouseButtonDown(1) && !myAnim.GetBool("IsAir"))           // 패링                                   // 패링키
+        {
+            OnParry();
+        }
 
 
-            if (Input.GetKeyDown(KeyCode.Space))                                   // 회피(구르기&대쉬)
+        if (Input.GetKeyDown(KeyCode.Space))                                   // 회피(구르기&대쉬)
+        {
+            if (curSpaceCool >= spaceCoolDown)
             {
-                if (curSpaceCool >= spaceCoolDown)
-                {
-                    OnDodge();
-                }
+                OnDodge();
             }
+        }
 
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                Interactable?.Interact(this);
-            }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Interactable?.Interact(this);
+        }
 
-
-            base.OnUpdate();
+    
+        base.OnUpdate();
     }
 
     public void OnAttack() // 공격범위 설정
@@ -80,7 +120,7 @@ public class Player2D : BattleSystem2D
         Collider2D[] list = Physics2D.OverlapCircleAll((Vector2)transform.position + dir, 1.0f, myEnemy);
         foreach (Collider2D col in list)
         {
-            col.GetComponent<IDamage>()?.OnDamage(characterStatus.totalAtk);
+            col.GetComponent<IDamage>()?.OnDamage(characterStat.totalAtk);
         }
     }
 
