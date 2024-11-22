@@ -19,6 +19,8 @@ public class Player2D : BattleSystem2D
     // Start is called before the first frame update
     void Start()
     {
+        playerStatus = this;
+
         playerStatus.characterStat.baseHP = 20;
         playerStatus.characterStat.baseAtk = 10;
 
