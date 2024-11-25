@@ -12,9 +12,9 @@ public class DialogueActivator : MonoBehaviour, IInteractable
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collider)
     {
-        
+
     }
 
     public void Interact(Player2D player2D)

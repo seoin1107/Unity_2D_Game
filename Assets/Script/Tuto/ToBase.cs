@@ -19,7 +19,9 @@ public class ToBase : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.G))
             {
-                SceneManager.LoadScene("2D_GAME_Origin");
+                yield return new WaitForSeconds(0.7f);
+                Loading.nScene = 2;
+                SceneManager.LoadScene(1);
             }
             yield return null;
         }
