@@ -13,7 +13,7 @@ public class Monster2D : BattleSystem2D
         Create, Normal, Battle, Dead
     }
     public State myState = State.Create;
-    float maxDist = 0.0f;
+    //float maxDist = 0.0f;
     Transform curGround = null;
     void ChangeState(State s)
     {
@@ -54,20 +54,20 @@ public class Monster2D : BattleSystem2D
                     Vector2 direction = new Vector2(originalPosition.x - transform.position.x, 0).normalized;
                     moveDir = direction;
                 }
-                else
-                {
-                    moveDir = Vector2.zero;
-                }
+                    else
+                    {
+                        moveDir = Vector2.zero;
+                    }
 
-            }
+                }
             break;
             case State.Battle:
-            if (myTarget == null)
+/*            if (myTarget == null)
             {
                 Debug.LogWarning("myTarget이 null입니다.");
                 ChangeState(State.Normal);
                 return;
-            }
+            }*/
 
             playTime += Time.deltaTime;
             moveDir.x = myTarget.position.x > transform.position.x ? 1.0f :
@@ -106,7 +106,7 @@ public class Monster2D : BattleSystem2D
             Debug.LogWarning("Ground transform is null.");
             return;
         }
-        curGround = tr;
+/*        curGround = tr;
         float halfDist = tr.localScale.x * 0.5f; // 발판의절반거리
         float dist = tr.position.x - transform.position.x;
         if (moveDir.x < 0.0f)
@@ -116,7 +116,7 @@ public class Monster2D : BattleSystem2D
         else
         {
             maxDist = halfDist + dist;
-        }
+        }*/
     }
 
     public void OnFindTarget(Transform tr)
