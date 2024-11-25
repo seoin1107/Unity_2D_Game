@@ -20,41 +20,7 @@ public class Player2D : BattleSystem2D
     void Start()
     {
         playerStatus = this;
-
-        playerStatus.characterStat.baseHP = 20;
-        playerStatus.characterStat.baseAtk = 10;
-
-
-
-        playerStatus.characterStat.moveSpeed = 5.0f;
-        playerStatus.characterStat.atkSpeed = 0;
-        playerStatus.characterStat.attackRange = 1.0f;
-
-
-        playerStatus.characterStat.level = 1;
-
-        playerStatus.characterStat.hpRegen = 0;
-
-        playerStatus.characterStat.totalPoint = 1;
-        playerStatus.characterStat.atkPoint = 0;
-        playerStatus.characterStat.hpPoint = 0;
-        playerStatus.characterStat.utilPoint = 0;
-
-        playerStatus.characterStat.hitRecover = 0.5f;
-        playerStatus.characterStat.skillCool = 1.0f;
-        playerStatus.characterStat.skillDamage = 1.0f;
-
-        playerStatus.characterStat.drain = 0;
-
-        playerStatus.characterStat.dodgeTime = 0.2f;
-        playerStatus.characterStat.dodgeCool = 5.0f;
-        playerStatus.characterStat.parryingTime = 0.2f;
-        playerStatus.characterStat.parryingCool = 2.0f;
-
-        playerStatus.characterStat.needExp = 10;
-        playerStatus.characterStat.curExp = 0;
         UpdateStatus();
-
     }
 
     // Update is called once per frame
