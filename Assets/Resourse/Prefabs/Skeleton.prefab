@@ -173,14 +173,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStat:
-    baseHP: 0
-    maxHP: 0
-    curHP: 0
-    baseAtk: 0
-    totalAtk: 0
-    moveSpeed: 0
-    atkSpeed: 0
-    attackRange: 0
+    baseHP: 100
+    maxHP: 100
+    curHP: 100
+    baseAtk: 8
+    totalAtk: 8
+    moveSpeed: 2
+    atkSpeed: 2
+    attackRange: 1
     level: 0
     hpRegen: 0
     totalPoint: 0
