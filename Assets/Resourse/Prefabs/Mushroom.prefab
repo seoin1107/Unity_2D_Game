@@ -137,12 +137,12 @@ GameObject:
   - component: {fileID: 3175706962891907730}
   - component: {fileID: 6103359976641070283}
   m_Layer: 9
-  m_Name: Skeleton
+  m_Name: Mushroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4569534882105735296
 Transform:
   m_ObjectHideFlags: 0
@@ -173,11 +173,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStat:
-    baseHP: 100
-    maxHP: 100
-    curHP: 100
-    baseAtk: 8
-    totalAtk: 8
+    baseHP: 30
+    maxHP: 30
+    curHP: 30
+    baseAtk: 2
+    totalAtk: 2
     moveSpeed: 2
     atkSpeed: 2
     attackRange: 1
@@ -339,7 +339,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4723107735738678597, guid: 1018b0ba13578bf459bd254ae1a2be99, type: 3}
+  m_Sprite: {fileID: 4723107735738678597, guid: f8b30c2afe165d645b54d500a9c30862, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -360,7 +360,7 @@ Animator:
   m_GameObject: {fileID: 8011667632399547014}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4ec83cae5463ecc4fa2595431e49ac47, type: 2}
+  m_Controller: {fileID: 22100000, guid: 3737e59b37edfa84883ee618787f40e5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

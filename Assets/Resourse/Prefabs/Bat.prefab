@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6527595066360351045}
+  - component: {fileID: 6785614714962313124}
   - component: {fileID: 122214910582122343}
   - component: {fileID: 2634813153602994988}
   m_Layer: 9
@@ -33,8 +34,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4569534882105735296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &122214910582122343
-BoxCollider2D:
+--- !u!58 &6785614714962313124
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -65,7 +66,42 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.9}
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
+--- !u!61 &122214910582122343
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642643744378439359}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.67}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -97,7 +133,7 @@ MonoBehaviour:
   findAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7584236381206534913}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Monster2D, Assembly-CSharp
         m_MethodName: OnFindTarget
         m_Mode: 0
@@ -112,7 +148,7 @@ MonoBehaviour:
   lostAtion:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7584236381206534913}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Monster2D, Assembly-CSharp
         m_MethodName: OnLostTarget
         m_Mode: 1
@@ -133,16 +169,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4569534882105735296}
-  - component: {fileID: 7584236381206534913}
+  - component: {fileID: 6380704080580727352}
   - component: {fileID: 3175706962891907730}
   - component: {fileID: 6103359976641070283}
   m_Layer: 9
-  m_Name: Skeleton
+  m_Name: Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4569534882105735296
 Transform:
   m_ObjectHideFlags: 0
@@ -160,7 +196,7 @@ Transform:
   - {fileID: 6527595066360351045}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7584236381206534913
+--- !u!114 &6380704080580727352
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,17 +205,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4378380278815144764}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6efc19e01e380cd4ebd961dc27f3940b, type: 3}
+  m_Script: {fileID: 11500000, guid: b60727c8909f2ed45bed66cf7f15febf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterStat:
-    baseHP: 100
-    maxHP: 100
-    curHP: 100
-    baseAtk: 8
-    totalAtk: 8
+    baseHP: 10
+    maxHP: 10
+    curHP: 10
+    baseAtk: 2
+    totalAtk: 2
     moveSpeed: 2
-    atkSpeed: 2
+    atkSpeed: 1
     attackRange: 1
     level: 0
     hpRegen: 0
@@ -198,9 +234,9 @@ MonoBehaviour:
     needExp: 0
     curExp: 0
   rid: {fileID: 0}
-  curSpaceCool: 5
+  curSpaceCool: 0
   spaceCoolDown: 5
-  monsterStatus: {fileID: 7584236381206534913}
+  monsterStatus: {fileID: 0}
   myState: 0
 --- !u!70 &3175706962891907730
 CapsuleCollider2D:
@@ -235,7 +271,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1.3}
+  m_Size: {x: 0.7, y: 0.7}
   m_Direction: 0
 --- !u!50 &6103359976641070283
 Rigidbody2D:
@@ -339,7 +375,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4723107735738678597, guid: 1018b0ba13578bf459bd254ae1a2be99, type: 3}
+  m_Sprite: {fileID: -4795363162621231457, guid: 6d7cd4f7505dc674c891ca8946cfd98b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -360,7 +396,7 @@ Animator:
   m_GameObject: {fileID: 8011667632399547014}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4ec83cae5463ecc4fa2595431e49ac47, type: 2}
+  m_Controller: {fileID: 22100000, guid: 2396fbf748c61e74ebe696057e4f3e46, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -386,7 +422,7 @@ MonoBehaviour:
   attackAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7584236381206534913}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Monster2D, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 1
@@ -401,7 +437,7 @@ MonoBehaviour:
   deadAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7584236381206534913}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Monster2D, Assembly-CSharp
         m_MethodName: OnDisApear
         m_Mode: 1
