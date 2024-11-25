@@ -106,7 +106,7 @@ public class Monster2D : BattleSystem2D
             Debug.LogWarning("Ground transform is null.");
             return;
         }
-        curGround = tr;
+/*        curGround = tr;
         float halfDist = tr.localScale.x * 0.5f; // 발판의절반거리
         float dist = tr.position.x - transform.position.x;
         if (moveDir.x < 0.0f)
@@ -116,7 +116,7 @@ public class Monster2D : BattleSystem2D
         else
         {
             maxDist = halfDist + dist;
-        }
+        }*/
     }
 
     public void OnFindTarget(Transform tr)
