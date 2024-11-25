@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/tuto.unity
     guid: d42aa5503fb60324b87fde47740bf8d7
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Loading.unity
     guid: f1ab2241ed204f14191f131633ecf609
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Base.unity
     guid: 5adc95af9f9f04148854e5c04bc1a22b
   - enabled: 1

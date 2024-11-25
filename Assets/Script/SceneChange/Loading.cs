@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Londing : MonoBehaviour
+public class Loading : MonoBehaviour
 {
     public static int nScene;
     public UnityEngine.UI.Slider mySlider;
