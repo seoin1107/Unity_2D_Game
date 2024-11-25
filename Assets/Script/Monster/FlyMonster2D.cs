@@ -23,20 +23,20 @@ public class FlyMonster2D : BattleSystem2D
         switch (myState)
         {
             case State.Normal:
-            if (curGround != null)
-            {
-                OnCheckGround(curGround);
-            }
-            break;
+                if (curGround != null)
+                {
+                    OnCheckGround(curGround);
+                }
+                break;
             case State.Battle:
-            break;
+                break;
             case State.Dead:
-            StopAllCoroutines();
-            myRigid.gravityScale = 0.0f;
-            myRigid.velocity = Vector2.zero;
-            moveDir = Vector2.zero;
-            gameObject.layer = default;
-            break;
+                StopAllCoroutines();
+                myRigid.gravityScale = 0.0f;
+                myRigid.velocity = Vector2.zero;
+                moveDir = Vector2.zero;
+                gameObject.layer = default;
+                break;
         }
     }
 
@@ -45,44 +45,44 @@ public class FlyMonster2D : BattleSystem2D
         switch (myState)
         {
             case State.Normal:
-            myAnim.SetBool("IsAir", false);
-            if (!myAnim.GetBool("IsAir"))
-            {
-                if (Mathf.Abs(transform.position.x - originalPosition.x) > 0.1f)
+                myAnim.SetBool("IsAir", false);
+                if (!myAnim.GetBool("IsAir"))
                 {
-                    // X축 방향만 계산 (y 값은 무시)
-                    Vector2 direction = new Vector2(originalPosition.x - transform.position.x, 0).normalized;
-                    moveDir = direction;
-                }
+                    if (Mathf.Abs(transform.position.x - originalPosition.x) > 0.1f)
+                    {
+                        // X축 방향만 계산 (y 값은 무시)
+                        Vector2 direction = new Vector2(originalPosition.x - transform.position.x, 0).normalized;
+                        moveDir = direction;
+                    }
                     else
                     {
                         moveDir = Vector2.zero;
                     }
 
                 }
-            break;
+                break;
             case State.Battle:
-/*            if (myTarget == null)
-            {
-                Debug.LogWarning("myTarget이 null입니다.");
-                ChangeState(State.Normal);
-                return;
-            }*/
+                /*            if (myTarget == null)
+                            {
+                                Debug.LogWarning("myTarget이 null입니다.");
+                                ChangeState(State.Normal);
+                                return;
+                            }*/
 
-            playTime += Time.deltaTime;
-            moveDir.x = myTarget.position.x > transform.position.x ? 1.0f :
-                myTarget.position.x < transform.position.x ? -1.0f : 0.0f;
+                playTime += Time.deltaTime;
+                moveDir.x = myTarget.position.x > transform.position.x ? 1.0f :
+                    myTarget.position.x < transform.position.x ? -1.0f : 0.0f;
 
-            if (Vector2.Distance(myTarget.position, transform.position) <=  monsterStatus.characterStat.attackRange)
-            {
-                moveDir.x = 0.0f;
-                if (playTime >= monsterStatus.characterStat.atkSpeed)
+                if (Vector2.Distance(myTarget.position, transform.position) <= monsterStatus.characterStat.attackRange)
                 {
-                    playTime = 0.0f;
-                    myAnim.SetTrigger(animData.OnAttack);
+                    moveDir.x = 0.0f;
+                    if (playTime >= monsterStatus.characterStat.atkSpeed)
+                    {
+                        playTime = 0.0f;
+                        myAnim.SetTrigger(animData.OnAttack);
+                    }
                 }
-            }
-            break;
+                break;
         }
     }
     // Start is called before the first frame update
@@ -106,17 +106,17 @@ public class FlyMonster2D : BattleSystem2D
             Debug.LogWarning("Ground transform is null.");
             return;
         }
-/*        curGround = tr;
-        float halfDist = tr.localScale.x * 0.5f; // 발판의절반거리
-        float dist = tr.position.x - transform.position.x;
-        if (moveDir.x < 0.0f)
-        {
-            maxDist = halfDist - dist;
-        }
-        else
-        {
-            maxDist = halfDist + dist;
-        }*/
+        /*        curGround = tr;
+                float halfDist = tr.localScale.x * 0.5f; // 발판의절반거리
+                float dist = tr.position.x - transform.position.x;
+                if (moveDir.x < 0.0f)
+                {
+                    maxDist = halfDist - dist;
+                }
+                else
+                {
+                    maxDist = halfDist + dist;
+                }*/
     }
 
     public void OnFindTarget(Transform tr)
