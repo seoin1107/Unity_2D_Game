@@ -27,6 +27,10 @@ public class UIManager : MonoBehaviour
         {
             OnOffMenuUI();
         }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            OnOffInvenUI();
+        }
     }
     public void OnOffStatusUI()
     {
@@ -46,5 +50,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void OnOffInvenUI()
+    {
+        if (InvenUI.Instance != null)
+        {
+            InvenUI.Instance.gameObject.SetActive(!InvenUI.Instance.gameObject.activeSelf);
+        }
+    }
 
 }
