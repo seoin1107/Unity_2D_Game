@@ -1156,53 +1156,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367654031}
   m_CullTransparentMesh: 1
---- !u!1 &415172666 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4378380278815144764, guid: d978912135161c949b070ccd25ace8d8, type: 3}
-  m_PrefabInstance: {fileID: 2130153011}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &415172671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 415172666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b60727c8909f2ed45bed66cf7f15febf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterStat:
-    baseHP: 10
-    maxHP: 10
-    curHP: 10
-    baseAtk: 2
-    totalAtk: 2
-    moveSpeed: 2
-    atkSpeed: 2
-    attackRange: 1
-    level: 0
-    hpRegen: 0
-    totalPoint: 0
-    atkPoint: 0
-    hpPoint: 0
-    utilPoint: 0
-    hitRecover: 0
-    skillCool: 0
-    skillDamage: 0
-    drain: 0
-    dodgeTime: 0
-    dodgeCool: 0
-    parryingTime: 0
-    parryingCool: 0
-    needExp: 0
-    curExp: 0
-  rid: {fileID: 0}
-  curSpaceCool: 0
-  spaceCoolDown: 5
-  monsterStatus: {fileID: 0}
-  myState: 0
 --- !u!1 &479293033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,10 +1343,6 @@ PrefabInstance:
     - target: {fileID: 4378380278815144764, guid: 857242079fc163743aea74ed88a5f6a3, type: 3}
       propertyPath: m_Name
       value: Mushroom
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378380278815144764, guid: 857242079fc163743aea74ed88a5f6a3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4569534882105735296, guid: 857242079fc163743aea74ed88a5f6a3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12904,26 +12853,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1568400016338163528, guid: d499738d4c8a64c41bf750e5a69a7de5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5829452816660466416, guid: d499738d4c8a64c41bf750e5a69a7de5, type: 3}
       propertyPath: dialogueUI
       value: 
       objectReference: {fileID: 1833494175}
-    - target: {fileID: 5829452816660466416, guid: d499738d4c8a64c41bf750e5a69a7de5, type: 3}
-      propertyPath: playerStatus
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5829452816660466416, guid: d499738d4c8a64c41bf750e5a69a7de5, type: 3}
-      propertyPath: battleStat.AP
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5829452816660466416, guid: d499738d4c8a64c41bf750e5a69a7de5, type: 3}
-      propertyPath: characterStatus
-      value: 
-      objectReference: {fileID: 1209932530}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13779,29 +13712,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 122214910582122343, guid: d978912135161c949b070ccd25ace8d8, type: 3}
-      propertyPath: m_Size.x
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 122214910582122343, guid: d978912135161c949b070ccd25ace8d8, type: 3}
-      propertyPath: m_Size.y
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 122214910582122343, guid: d978912135161c949b070ccd25ace8d8, type: 3}
-      propertyPath: m_Offset.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4378380278815144764, guid: d978912135161c949b070ccd25ace8d8, type: 3}
       propertyPath: m_Name
       value: Bat
       objectReference: {fileID: 0}
     - target: {fileID: 4569534882105735296, guid: d978912135161c949b070ccd25ace8d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.13
+      value: 22.72
       objectReference: {fileID: 0}
     - target: {fileID: 4569534882105735296, guid: d978912135161c949b070ccd25ace8d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.9
+      value: 2.34
       objectReference: {fileID: 0}
     - target: {fileID: 4569534882105735296, guid: d978912135161c949b070ccd25ace8d8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13835,41 +13756,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7584236381206534913, guid: d978912135161c949b070ccd25ace8d8, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7584236381206534913, guid: d978912135161c949b070ccd25ace8d8, type: 3}
-      propertyPath: characterStat.curHP
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7584236381206534913, guid: d978912135161c949b070ccd25ace8d8, type: 3}
-      propertyPath: characterStat.maxHP
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7584236381206534913, guid: d978912135161c949b070ccd25ace8d8, type: 3}
-      propertyPath: characterStat.baseHP
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7584236381206534913, guid: d978912135161c949b070ccd25ace8d8, type: 3}
-      propertyPath: characterStat.baseAtk
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7584236381206534913, guid: d978912135161c949b070ccd25ace8d8, type: 3}
-      propertyPath: characterStat.atkSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7584236381206534913, guid: d978912135161c949b070ccd25ace8d8, type: 3}
-      propertyPath: characterStat.totalAtk
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4378380278815144764, guid: d978912135161c949b070ccd25ace8d8, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 415172671}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d978912135161c949b070ccd25ace8d8, type: 3}
 --- !u!1001 &2053808683202207877
 PrefabInstance:

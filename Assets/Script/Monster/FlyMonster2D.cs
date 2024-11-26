@@ -27,6 +27,7 @@ public class FlyMonster2D : BattleSystem2D
                 {
                     OnCheckGround(curGround);
                 }
+                myRigid.gravityScale = 0.0f;
                 break;
             case State.Battle:
                 break;
@@ -48,10 +49,10 @@ public class FlyMonster2D : BattleSystem2D
                 myAnim.SetBool("IsAir", false);
                 if (!myAnim.GetBool("IsAir"))
                 {
-                    if (Mathf.Abs(transform.position.x - originalPosition.x) > 0.1f)
+                    if (Vector2.Distance(transform.position, originalPosition) > 0.1f)
                     {
-                        // X축 방향만 계산 (y 값은 무시)
-                        Vector2 direction = new Vector2(originalPosition.x - transform.position.x, 0).normalized;
+                        // X축과 Y축을 모두 포함한 방향 계산
+                        Vector2 direction = (originalPosition - (Vector2)transform.position).normalized;
                         moveDir = direction;
                     }
                     else
@@ -62,24 +63,18 @@ public class FlyMonster2D : BattleSystem2D
                 }
                 break;
             case State.Battle:
-                /*            if (myTarget == null)
-                            {
-                                Debug.LogWarning("myTarget이 null입니다.");
-                                ChangeState(State.Normal);
-                                return;
-                            }*/
-
                 playTime += Time.deltaTime;
-                moveDir.x = myTarget.position.x > transform.position.x ? 1.0f :
-                    myTarget.position.x < transform.position.x ? -1.0f : 0.0f;
+                Vector2 targetDirection = (myTarget.position - transform.position).normalized;
+                moveDir = targetDirection;
 
                 if (Vector2.Distance(myTarget.position, transform.position) <= monsterStatus.characterStat.attackRange)
                 {
-                    moveDir.x = 0.0f;
+                    moveDir = Vector2.zero; // 멈춤
+
                     if (playTime >= monsterStatus.characterStat.atkSpeed)
                     {
                         playTime = 0.0f;
-                        myAnim.SetTrigger(animData.OnAttack);
+                        myAnim.SetTrigger(animData.OnAttack); // 공격 애니메이션 실행
                     }
                 }
                 break;
