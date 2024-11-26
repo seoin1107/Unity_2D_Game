@@ -10,7 +10,7 @@ public class Potal : MonoBehaviour
     public GameObject toObj;
     public Image Cover;
     float time = 0.0f;
-    float F_time = 1.0f;
+    float F_time = 0.7f;
     bool IsTeleport = false;
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -22,6 +22,11 @@ public class Potal : MonoBehaviour
         }
     }
 
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        StopAllCoroutines();
+    }
+
     //ÇÑ ¾À ³»ÀÇ Æ÷Å» ½Ã½ºÅÛ
     IEnumerator PotalRoutine()
     {
@@ -30,10 +35,11 @@ public class Potal : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.G))
             {
                 yield return StartCoroutine(FadeIn());
-                //Æ÷Å»ÀÌµ¿
-                targetObj.transform.position = toObj.transform.position;
-
                 yield return StartCoroutine(FadeOut());
+                //Æ÷Å»ÀÌµ¿
+                targetObj.transform.position = toObj.transform.position ;
+
+                
             }
             yield return null;
         }

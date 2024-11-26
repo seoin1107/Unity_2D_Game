@@ -153,10 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d464efd76c9f08f4db5c041b96fd33dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cover: {fileID: 0}
   targetObj: {fileID: 0}
   toObj: {fileID: 717835008}
-  delay: 0.5
+  Cover: {fileID: 1158022520}
 --- !u!61 &62499759
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -816,10 +815,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d464efd76c9f08f4db5c041b96fd33dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cover: {fileID: 0}
   targetObj: {fileID: 0}
   toObj: {fileID: 62499757}
-  delay: 0.5
+  Cover: {fileID: 1158022520}
 --- !u!61 &717835010
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1228,7 +1226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27252e479389727479a2726dd4709620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cover: {fileID: 1158022520}
 --- !u!114 &2108579431
 MonoBehaviour:
   m_ObjectHideFlags: 0
