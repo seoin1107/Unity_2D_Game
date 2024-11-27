@@ -11,7 +11,7 @@ public class Potal : MonoBehaviour
     public Image Cover;
     float time = 0.0f;
     float F_time = 0.7f;
-    private bool IsTeleport = false;
+    public bool IsTeleport = false;
     private bool Inpotal = false;
 
     public void OnTriggerEnter2D(Collider2D collision)
