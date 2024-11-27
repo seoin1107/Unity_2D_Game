@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
-[System.Serializable]
-public struct BattleStat
-{
-    public float AP;
-    public float AttackRange;
-    public float AttackDelay;
-    public float maxHP;
-    public float curHP;
-}
+//[System.Serializable]
+//public struct BattleStat
+//{
+//    public float totalAtk;
+//    public float attackRange;
+//    public float atkSpeed;
+//    public float maxHP;
+//    public float curHP;
+//}
 
 interface IDeathAlarm
 {
@@ -30,14 +29,15 @@ interface ILive
 
 public class BattleSystem2D : Movement2D, IDamage, IDeathAlarm, ILive
 {
-    public BattleStat battleStat;
+    //public Stat battleStat;
+    /*    public CharacterStatus characterStatus;*/
     protected float playTime;
 
     public UnityAction deathAlarm { get; set; }
-    
+
     public bool IsLive
     {
-        get => battleStat.curHP > 0 ? true : false;        
+        get => characterStat.curHP > 0 ? true : false;
     }
     protected virtual void OnDead()
     {
@@ -50,12 +50,13 @@ public class BattleSystem2D : Movement2D, IDamage, IDeathAlarm, ILive
         // IsParry가 true인 경우 데미지 무효화
         if (myAnim.GetBool(animData.IsParry))
         {
-            Debug.Log("Parried! Damage avoided.");
+            Debug.Log("패링성공");
             myAnim.SetTrigger(animData.OnParring);
+            //작동엔 문제가 없으나 작은오류가 발생 이후 코루틴형식으로 변경해야할듯
             return;
         }
-        battleStat.curHP -= dmg;
-        if (battleStat.curHP > 0.0f)
+        characterStat.curHP -= dmg;
+        if (characterStat.curHP > 0.0f)
         {
             myAnim.SetTrigger(animData.OnDamage);
         }
@@ -69,7 +70,7 @@ public class BattleSystem2D : Movement2D, IDamage, IDeathAlarm, ILive
             {
                 playerScript.enabled = false; // Player2D 스크립트 비활성화
             }
-            if(pickingScript != null)
+            if (pickingScript != null)
             {
                 pickingScript.enabled = false;
             }
@@ -77,5 +78,10 @@ public class BattleSystem2D : Movement2D, IDamage, IDeathAlarm, ILive
             myRigid.gravityScale = 0.0f;
         }
     }
+    //public void UpdateBattleStat()
+    //{
+    //    battleStat = characterStat;
+        
+    //}
 }
 

@@ -14,8 +14,9 @@ public class DialogueUI : MonoBehaviour
 
     private void Start()
     {
+        //타이핑 효과를 쓴다
         typewriterEffect = GetComponent<TypewriterEffect>();
-
+        //시작할 때는 대화UI 안보이는 상태
         CloseDialogueBox();
     }
 

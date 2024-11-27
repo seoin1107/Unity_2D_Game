@@ -9,12 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/2D_GAME_Origin.unity
-    guid: 8af1c8dd8a6597d4c91178b95d8bfb22
-  - enabled: 1
     path: Assets/Scenes/tuto.unity
     guid: d42aa5503fb60324b87fde47740bf8d7
   - enabled: 0
+    path: Assets/Scenes/Loading.unity
+    guid: f1ab2241ed204f14191f131633ecf609
+  - enabled: 0
     path: Assets/Scenes/Base.unity
     guid: 5adc95af9f9f04148854e5c04bc1a22b
+  - enabled: 1
+    path: Assets/Scenes/2D_GAME_Origin.unity
+    guid: 8af1c8dd8a6597d4c91178b95d8bfb22
+  - enabled: 1
+    path: Assets/Scenes/Stage1.unity
+    guid: 3b33255d4a7f0f84ba6be792059c5f93
   m_configObjects: {}

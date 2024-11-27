@@ -2,77 +2,83 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Stat : AnimatorProperty
+[System.Serializable]
+public struct Stat
 {
 
-
-    public int level = 1;
-
-    public float baseHp = 20;
-    public float maxHp;
-    public float curHp;
+    public float baseHP;
+    public float maxHP;
+    public float curHP;
 
 
-    public float baseAtk = 10;
-    public float totalAtk = 0;
-
-    public float totalPoint = 1;
-    public float atkPoint = 0;
-    public float hpPoint = 0;
-    public float utilPoint = 0;
-
-    public float moveSpeed = 5.0f;
-    public float atkSpeed = 0;
-    public float hpRegen = 0;
-
-    public float hitRecover = 0.5f;
-    public float skillCool = 1.0f;
-    public float skillDamage = 1.0f;
-
-    public float drain = 0;
-
-    public float dodgeTime = 0.2f;
-    public float dodgeCool = 5.0f;
-    public float parryingTime = 0.2f;
-    public float parryingCool = 2.0f;
-
-    public int needExp = 10;
-    public int curExp = 0;
+    public float baseAtk;
+    public float totalAtk;
 
 
+    public float moveSpeed;
+    public float atkSpeed;
+    public float attackRange;
+
+
+    public int level;
+
+    public float hpRegen;
+
+    public float totalPoint;
+    public float atkPoint;
+    public float hpPoint;
+    public float utilPoint;
+
+    public float hitRecover;
+    public float skillCool;
+    public float skillDamage;
+
+    public float drain;
+
+    public float dodgeTime;
+    public float dodgeCool;
+    public float parryingTime;
+    public float parryingCool;
+
+    public int needExp;
+    public int curExp;
+
+    public int[] eqiupCard;
 }
 
-public class CharacterStatus : Stat
+
+public class CharacterStatus : AnimatorProperty
 {
-   
-    
+    public Stat characterStat;
+
+ 
+
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+       
     }
 
     public void UpdateStatus()
     {
-        totalAtk = baseAtk + atkPoint;
-        maxHp = baseHp + hpPoint *2;
-
+        characterStat.totalAtk = characterStat.baseAtk + characterStat.atkPoint;
+        characterStat.maxHP = characterStat.baseHP+ characterStat.hpPoint *2;
+        characterStat.curHP = characterStat.maxHP;
     }
-    public void LevelUp()
+    public void LevelUp(Stat stat)
     {
-        while (needExp <= curExp)
+        while (stat.needExp <= stat.curExp)
         {
-            curExp -= needExp;
-            level++;
-            needExp += 5;
-            totalPoint += 1;
+            stat.curExp -= stat.needExp;
+            stat.level++;
+            stat.needExp += 5;
+            stat.totalPoint += 1;
         }       
     }
 }

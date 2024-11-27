@@ -142,7 +142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4569534882105735296
 Transform:
   m_ObjectHideFlags: 0
@@ -172,38 +172,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efc19e01e380cd4ebd961dc27f3940b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
-  baseHp: 20
-  maxHp: 0
-  curHp: 0
-  baseAtk: 10
-  totalAtk: 0
-  totalPoint: 1
-  atkPoint: 0
-  hpPoint: 0
-  utilPoint: 0
-  moveSpeed: 1.5
-  atkSpeed: 0
-  hpRegen: 0
-  hitRecover: 0.5
-  skillCool: 1
-  skillDamage: 1
-  drain: 0
-  dodgeTime: 0.2
-  dodgeCool: 5
-  parryingTime: 0.2
-  parryingCool: 2
-  needExp: 10
-  curExp: 0
+  characterStat:
+    baseHP: 100
+    maxHP: 100
+    curHP: 100
+    baseAtk: 8
+    totalAtk: 8
+    moveSpeed: 2
+    atkSpeed: 2
+    attackRange: 1
+    level: 0
+    hpRegen: 0
+    totalPoint: 0
+    atkPoint: 0
+    hpPoint: 0
+    utilPoint: 0
+    hitRecover: 0
+    skillCool: 0
+    skillDamage: 0
+    drain: 0
+    dodgeTime: 0
+    dodgeCool: 0
+    parryingTime: 0
+    parryingCool: 0
+    needExp: 0
+    curExp: 0
   rid: {fileID: 0}
   curSpaceCool: 5
   spaceCoolDown: 5
-  battleStat:
-    AP: 10
-    AttackRange: 1
-    AttackDelay: 2
-    maxHP: 100
-    curHP: 100
+  monsterStatus: {fileID: 7584236381206534913}
   myState: 0
 --- !u!70 &3175706962891907730
 CapsuleCollider2D:
