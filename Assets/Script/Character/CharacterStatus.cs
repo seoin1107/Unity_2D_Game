@@ -43,7 +43,7 @@ public struct Stat
     public int needExp;
     public int curExp;
 
-
+    public int[] eqiupCard;
 }
 
 

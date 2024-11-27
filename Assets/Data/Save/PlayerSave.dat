@@ -22,5 +22,6 @@
     "parryingTime": 0.20000000298023225,
     "parryingCool": 2.0,
     "needExp": 10,
-    "curExp": 0
+    "curExp": 0,
+    "eqiupCard": []
 }
