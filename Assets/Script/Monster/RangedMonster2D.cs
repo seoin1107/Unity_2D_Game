@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : BattleSystem2D
+public class RangedMonster2D : BattleSystem2D
 {
     Transform myTarget;
     public CharacterStatus monsterStatus;
@@ -43,8 +43,19 @@ public class NewBehaviourScript : BattleSystem2D
         switch (myState)
         {
             case State.Normal:
+                myAnim.SetBool("IsAir", false);
+                if (!myAnim.GetBool("IsAir"))
+                {
+                    moveDir = Vector2.zero;
+                }
                 break;
             case State.Battle:
+                playTime += Time.deltaTime;
+                if(playTime >= monsterStatus.characterStat.atkSpeed)
+                {
+                    playTime = 0.0f;
+                    myAnim.SetTrigger(animData.OnAttack);
+                }
                 //제자리에서 원거리 공격
                 break;
         }
@@ -106,16 +117,7 @@ public class NewBehaviourScript : BattleSystem2D
     }
     IEnumerator DisApearing()
     {
-        yield return new WaitForSeconds(3.0f);
-
-/*        Color color = myRenderer.color;
-        while (color.a > 0.0f)
-        {
-            color.a -= Time.deltaTime;
-            myRenderer.color = color;
-            transform.Translate(Vector2.up * Time.deltaTime * 0.3f);
-            yield return null;
-        }*/
+        yield return new WaitForSeconds(0.8f);
         Destroy(gameObject);
     }
 }
