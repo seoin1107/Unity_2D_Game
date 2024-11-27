@@ -11,44 +11,55 @@ public class Potal : MonoBehaviour
     public Image Cover;
     float time = 0.0f;
     float F_time = 0.7f;
-    bool IsTeleport = false;
+    private bool IsTeleport = false;
+    private bool Inpotal = false;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             targetObj = collision.gameObject;
-            StartCoroutine(PotalRoutine());
+            Inpotal = true;
         }
     }
 
-    public void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        StopAllCoroutines();
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            Inpotal = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (Inpotal && !IsTeleport && Input.GetKeyDown(KeyCode.G))
+        {
+            StartCoroutine(PotalRoutine());
+        }
     }
 
     //ÇÑ ¾À ³»ÀÇ Æ÷Å» ½Ã½ºÅÛ
     IEnumerator PotalRoutine()
     {
-        while (true)
-        {
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                yield return StartCoroutine(FadeIn());
-                yield return StartCoroutine(FadeOut());
-                //Æ÷Å»ÀÌµ¿
-                targetObj.transform.position = toObj.transform.position ;
+        IsTeleport = true;
+        yield return StartCoroutine(FadeOut());
 
-                
-            }
-            yield return null;
-        }
+        //Æ÷Å»ÀÌµ¿
+        targetObj.transform.position = toObj.transform.position ;
+
+        yield return new WaitForSeconds(1.0f);
+
+        yield return StartCoroutine(FadeIn());
+
+        yield return new WaitForSeconds(F_time);
+
+        IsTeleport = false;
     }
 
-    IEnumerator FadeIn()
+    IEnumerator FadeOut()
     {
         Cover.gameObject.SetActive(true);
-        IsTeleport = true;
         time = 0f;
         Color alpha = Cover.color;
         while (alpha.a < 1f)
@@ -60,7 +71,7 @@ public class Potal : MonoBehaviour
         }
         time = 0f;
     }
-    IEnumerator FadeOut() 
+    IEnumerator FadeIn() 
     {
         Color alpha = Cover.color;
         while (alpha.a > 0f)
@@ -69,10 +80,7 @@ public class Potal : MonoBehaviour
             alpha.a = Mathf.Lerp(1, 0, time);
             Cover.color = alpha;
             yield return null;
-
         }
         Cover.gameObject.SetActive(false);
-        IsTeleport = false;
-        yield return null;
     }
 }
