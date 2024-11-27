@@ -142,7 +142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4569534882105735296
 Transform:
   m_ObjectHideFlags: 0
@@ -197,6 +197,7 @@ MonoBehaviour:
     parryingCool: 0
     needExp: 0
     curExp: 0
+    eqiupCard: 
   rid: {fileID: 0}
   curSpaceCool: 0
   spaceCoolDown: 5
