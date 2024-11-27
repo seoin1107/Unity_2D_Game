@@ -6,6 +6,9 @@ public class RangedMonster2D : BattleSystem2D
 {
     Transform myTarget;
     public CharacterStatus monsterStatus;
+    public GameObject orgFireBall;
+    public FireBall myFireBall;
+    public Transform myfirePoint;
     public enum State
     {
         Create, Normal, Battle, Dead
@@ -51,12 +54,13 @@ public class RangedMonster2D : BattleSystem2D
                 break;
             case State.Battle:
                 playTime += Time.deltaTime;
-                if(playTime >= monsterStatus.characterStat.atkSpeed)
+                if (playTime >= monsterStatus.characterStat.atkSpeed)
                 {
                     playTime = 0.0f;
                     myAnim.SetTrigger(animData.OnAttack);
+                    GameObject obj = Instantiate(orgFireBall, myfirePoint);
+                    myFireBall = obj.GetComponent<FireBall>();
                 }
-                //제자리에서 원거리 공격
                 break;
         }
     }
