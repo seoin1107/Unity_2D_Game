@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[System.Serializable]
 
 public class InvenUI : MonoBehaviour
 {
+    public CharacterStatus characterStatus;
 
     public static InvenUI Instance
     {
@@ -15,6 +15,13 @@ public class InvenUI : MonoBehaviour
 
     public Card[] equipCard = new Card[3];
 
+    public CardInventory cardInven;
+
+
+    public void GetEqiupCard()
+    {
+         
+    }
 
     // Start is called before the first frame update
     void Start()
