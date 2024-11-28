@@ -40,6 +40,7 @@ public class StatusUI : MonoBehaviour
     {
         Instance = this;
         gameObject.SetActive(false);
+        PlayerInitialize();
         player.UpdateStatus();
 
     }
@@ -136,6 +137,32 @@ public class StatusUI : MonoBehaviour
         player.characterStat.utilPoint--;
         player.UpdateStatus();
         UpdateStatusUI();
+    }
+
+    public void PlayerInitialize() //플레이어 스텟 초기화
+    {
+        player.characterStat.baseHP = 20;
+        player.characterStat.baseAtk = 10;
+        player.characterStat.moveSpeed = 5.0f;
+        player.characterStat.atkSpeed = 0;
+        player.characterStat.attackRange = 1.0f;
+        player.characterStat.level = 1;
+        player.characterStat.hpRegen = 0;
+        player.characterStat.totalPoint = 1;
+        player.characterStat.atkPoint = 0;
+        player.characterStat.hpPoint = 0;
+        player.characterStat.utilPoint = 0;
+        player.characterStat.hitRecover = 0.5f;
+        player.characterStat.skillCool = 1.0f;
+        player.characterStat.skillDamage = 1.0f;
+        player.characterStat.drain = 0;
+        player.characterStat.dodgeTime = 0.2f;
+        player.characterStat.dodgeCool = 5.0f;
+        player.characterStat.parryingTime = 0.2f;
+        player.characterStat.parryingCool = 2.0f;
+        player.characterStat.needExp = 10;
+        player.characterStat.curExp = 0;
+        player.characterStat.eqiupCard = new int[3] { 0, 0, 0 };
     }
 
 

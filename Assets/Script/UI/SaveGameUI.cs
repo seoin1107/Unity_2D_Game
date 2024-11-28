@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class SaveGameUI : UIManager
 {
-    public CharacterStatus mySave;
-    public string filePath = Application.dataPath + "/Data/Save/"; //세이브 파일 경로
+   public CharacterStatus mySave;
+   public string filePath = Application.dataPath + "/Data/Save/"; //세이브 파일 경로
 
     public static SaveGameUI Instance;
     public Button saveButton1;
