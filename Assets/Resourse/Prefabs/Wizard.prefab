@@ -134,7 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3716020485787937}
   m_Layer: 0
-  m_Name: Hand
+  m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 1728696146959992631}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalPosition: {x: -0.05, y: -0.2, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -236,8 +236,7 @@ MonoBehaviour:
   spaceCoolDown: 5
   monsterStatus: {fileID: 7448527844357373509}
   orgFireBall: {fileID: 6739554344506732936}
-  myFireBall: {fileID: 7181678556511526385}
-  myfirePoint: {fileID: 3716020485787937}
+  myFirePoint: {fileID: 3716020485787937}
   myState: 0
 --- !u!70 &3175706962891907730
 CapsuleCollider2D:
@@ -378,7 +377,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0c95faed3aa5a43d3b19f112f0843c87, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -466,12 +465,24 @@ PrefabInstance:
       value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 958920157970502834, guid: d6974511cc46bc5459e4ac11587f7e07, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 958920157970502834, guid: d6974511cc46bc5459e4ac11587f7e07, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 958920157970502834, guid: d6974511cc46bc5459e4ac11587f7e07, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 958920157970502834, guid: d6974511cc46bc5459e4ac11587f7e07, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 958920157970502834, guid: d6974511cc46bc5459e4ac11587f7e07, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.57
       objectReference: {fileID: 0}
     - target: {fileID: 958920157970502834, guid: d6974511cc46bc5459e4ac11587f7e07, type: 3}
       propertyPath: m_LocalPosition.z
@@ -505,21 +516,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1347575475402657808, guid: d6974511cc46bc5459e4ac11587f7e07, type: 3}
+      propertyPath: m_Constraints
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3656916899101977401, guid: d6974511cc46bc5459e4ac11587f7e07, type: 3}
       propertyPath: m_Name
       value: FireBall
       objectReference: {fileID: 0}
     - target: {fileID: 3763076593532321176, guid: d6974511cc46bc5459e4ac11587f7e07, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8579786767809115330, guid: d6974511cc46bc5459e4ac11587f7e07, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8579786767809115330, guid: d6974511cc46bc5459e4ac11587f7e07, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -536,14 +551,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 958920157970502834, guid: d6974511cc46bc5459e4ac11587f7e07, type: 3}
   m_PrefabInstance: {fileID: 8014241833818987185}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7181678556511526385 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 905853426132567872, guid: d6974511cc46bc5459e4ac11587f7e07, type: 3}
-  m_PrefabInstance: {fileID: 8014241833818987185}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6739554344506732936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fac0a88b52dfbe4fa67244cacaf723a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
