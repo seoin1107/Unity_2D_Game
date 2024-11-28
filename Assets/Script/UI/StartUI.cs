@@ -26,7 +26,7 @@ public class StartUI : MonoBehaviour
 
     public void OnStartNewGame()
     {
-        PlayerInitialize();
+      //신변경 -> 플레이어초기화
 
     }
 

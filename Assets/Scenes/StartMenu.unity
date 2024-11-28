@@ -399,6 +399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 329852301}
   - component: {fileID: 329852302}
+  - component: {fileID: 329852303}
   m_Layer: 5
   m_Name: StartMenu
   m_TagString: Untagged
@@ -444,6 +445,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySave: {fileID: 0}
   filePath: "F:/\uBC29\uC120\uC6C5/Unity_2D_Game/Assets/Data/Save/PlayerSave.dat"
+--- !u!114 &329852303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329852300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a402d700d3290448a6dd5d19f87db5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &353216548
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,7 +1608,7 @@ MonoBehaviour:
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
+    m_ColorMultiplier: 2.85
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
@@ -1613,9 +1626,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 329852302}
-        m_TargetAssemblyTypeName: StartUI, Assembly-CSharp
-        m_MethodName: OnStartNewGame
+      - m_Target: {fileID: 329852303}
+        m_TargetAssemblyTypeName: Totuto, Assembly-CSharp
+        m_MethodName: GameStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
