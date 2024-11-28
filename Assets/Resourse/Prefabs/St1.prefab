@@ -138,10 +138,10 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2151847734668109608}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 326fe50e514a6684d938c03a3f829871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerLayerName: Player
-  parallaxFactor: {x: 0.5, y: 1}
+  parallaxFactor: {x: 0.5, y: 0.3}
