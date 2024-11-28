@@ -144,4 +144,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLayerName: Player
-  parallaxFactor: {x: 0.5, y: 0.05}
+  parallaxFactor: {x: 0.5, y: 1}
