@@ -31,7 +31,7 @@ public class Player2D : BattleSystem2D
 
         //if (DialogueUI.IsOpen == false) //대화중, 포탈중이 아닐때만 움직임 가능
         //{
-            if (!myAnim.GetBool("IsParry") || !myAnim.GetBool("IsAttack"))
+            if (!myAnim.GetBool("IsParry") && !myAnim.GetBool("IsAttack"))
             {
                 moveDir.x = Input.GetAxisRaw("Horizontal");                                     // 좌우이동
                 if (Input.GetKeyDown(KeyCode.W) && !myAnim.GetBool("IsAir"))          // 윗점프
@@ -49,7 +49,7 @@ public class Player2D : BattleSystem2D
                 moveDir.x = 0;
             }
 
-            if (!myAnim.GetBool("IsParry") || !myAnim.GetBool("IsAttack"))
+            if (!myAnim.GetBool("IsParry") && !myAnim.GetBool("IsAttack"))
             {
                 if (Input.GetMouseButtonDown(0) && !myAnim.GetBool("IsAir"))          // 공격                                        // 공격키
                 {
