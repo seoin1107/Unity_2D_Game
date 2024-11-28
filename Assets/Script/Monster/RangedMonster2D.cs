@@ -6,9 +6,9 @@ public class RangedMonster2D : BattleSystem2D
 {
     Transform myTarget;
     public CharacterStatus monsterStatus;
+
     public GameObject orgFireBall;
-    public FireBall myFireBall;
-    public Transform myfirePoint;
+    public Transform myFirePoint;
     public enum State
     {
         Create, Normal, Battle, Dead
@@ -54,12 +54,33 @@ public class RangedMonster2D : BattleSystem2D
                 break;
             case State.Battle:
                 playTime += Time.deltaTime;
-                if (playTime >= monsterStatus.characterStat.atkSpeed)
+
+                // 타겟이 오른쪽에 있으면 오른쪽을 바라보고, 왼쪽에 있으면 왼쪽을 바라보도록 설정
+                if (myTarget != null)
                 {
-                    playTime = 0.0f;
-                    myAnim.SetTrigger(animData.OnAttack);
-                    GameObject obj = Instantiate(orgFireBall, myfirePoint);
-                    myFireBall = obj.GetComponent<FireBall>();
+                    if (myTarget.position.x > transform.position.x)
+                    {
+                        // 타겟이 오른쪽에 있으면 몬스터가 오른쪽을 바라봄
+                        transform.localScale = new Vector3(1.0f, transform.localScale.y, transform.localScale.z);
+                    }
+                    else if (myTarget.position.x < transform.position.x)
+                    {
+                        // 타겟이 왼쪽에 있으면 몬스터가 왼쪽을 바라봄
+                        transform.localScale = new Vector3(-1.0f, transform.localScale.y, transform.localScale.z);
+                    }
+                }
+
+                // 타겟과의 거리 계산
+                if (Vector2.Distance(myTarget.position, transform.position) <= monsterStatus.characterStat.attackRange)
+                {
+                    moveDir.x = 0.0f; // 공격 범위 내에서는 이동하지 않음
+
+                    // 공격 준비 및 실행
+                    if (playTime >= monsterStatus.characterStat.atkSpeed)
+                    {
+                        playTime = 0.0f;
+                        myAnim.SetTrigger(animData.OnAttack); // 공격 애니메이션 트리거
+                    }
                 }
                 break;
         }
@@ -105,7 +126,17 @@ public class RangedMonster2D : BattleSystem2D
     }
     public void OnAttack()
     {
-        myTarget.GetComponent<IDamage>()?.OnDamage(monsterStatus.characterStat.totalAtk);
+        if (myTarget == null) return; //타겟이있어야 공격
+        //파이어볼생성
+        GameObject obj = Instantiate(orgFireBall, myFirePoint.position, Quaternion.identity);
+        FireBall fireBall = obj.GetComponent<FireBall>();
+        if (fireBall != null)
+        {
+            // 몬스터의 방향에 따라 파이어볼의 이동 방향 설정
+            Vector2 direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
+            fireBall.OnFire(direction); // 발사
+            fireBall.damage = monsterStatus.characterStat.totalAtk; // 데미지 설정
+        }
     }
 
     protected override void OnDead()
