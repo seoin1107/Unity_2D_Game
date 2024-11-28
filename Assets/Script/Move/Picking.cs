@@ -28,10 +28,5 @@ public class Picking : MonoBehaviour
         {
             myCharacter.flipX = false;
         }
-
-
     }
-
-
-
 }

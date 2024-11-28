@@ -10,7 +10,7 @@ EditorBuildSettings:
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/tuto.unity
-    guid: d42aa5503fb60324b87fde47740bf8d7
+    guid: 77379a4501167a249a06f627edccf101
   - enabled: 1
     path: Assets/Scenes/Loading.unity
     guid: f1ab2241ed204f14191f131633ecf609
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage1.unity
     guid: 3b33255d4a7f0f84ba6be792059c5f93
+  - enabled: 1
+    path: Assets/Scenes/StartMenu.unity
+    guid: 1118b6f4bdbd0ce4caf6b7a2112b5a89
   m_configObjects: {}
