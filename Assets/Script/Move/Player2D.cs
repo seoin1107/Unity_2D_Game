@@ -71,13 +71,16 @@ public class Player2D : BattleSystem2D
                 }
             }
 
+
             if (Input.GetKeyDown(KeyCode.G))
             {
                 Interactable?.Interact(this);
             }
 
+        
             base.OnUpdate();
         }
+    
     
 
     public void OnAttack() // 공격범위 설정

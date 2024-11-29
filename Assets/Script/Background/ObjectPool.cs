@@ -4,7 +4,7 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     public GameObject prefab; // 복제할 프리팹
-    public int poolSize = 3; // 초기 생성할 오브젝트 개수
+    public int poolSize = 5; // 초기 생성할 오브젝트 개수
 
     private Queue<GameObject> poolQueue = new Queue<GameObject>();
 

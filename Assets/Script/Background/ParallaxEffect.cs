@@ -1,52 +1,31 @@
 using UnityEngine;
 
-public class ParallaxBackground : MonoBehaviour
+public class ParallaxEffect : MonoBehaviour
 {
-    public string playerLayerName = "Player"; // Player가 속한 Layer 이름
-    public Vector2 parallaxFactor = new Vector2(1.0f, 1.0f); // X, Y축에 대한 Parallax 비율
+    public Transform player; // 플레이어 Transform
+    public float xParallaxFactor = 0.5f; // X축 Parallax 비율
+    public float yParallaxFactor = 0.1f; // Y축 감쇠 비율
 
-    private Transform player;
-    private Vector3 lastPlayerPosition;
+    private Vector3 previousPlayerPosition;
 
     void Start()
     {
-        // Player Layer에 속한 오브젝트를 찾아 설정
-        int playerLayer = LayerMask.NameToLayer(playerLayerName);
-
-        if (playerLayer >= 0)
-        {
-            GameObject playerObject = FindObjectOfType<GameObject>();
-            foreach (var obj in FindObjectsOfType<GameObject>())
-            {
-                if (obj.layer == playerLayer)
-                {
-                    player = obj.transform;
-                    break;
-                }
-            }
-        }
-
-        if (player != null)
-        {
-            lastPlayerPosition = player.position;
-        }
-        else
-        {
-            Debug.LogWarning($"Player Layer '{playerLayerName}'에 속한 오브젝트를 찾을 수 없습니다.");
-        }
+        // 플레이어의 초기 위치 저장
+        previousPlayerPosition = player.position;
     }
 
     void Update()
     {
-        if (player == null) return;
+        Vector3 playerDelta = player.position - previousPlayerPosition;
 
-        // 플레이어 이동량 계산
-        Vector3 deltaMovement = player.position - lastPlayerPosition;
+        // Parallax 효과 계산
+        float targetX = transform.position.x + playerDelta.x * xParallaxFactor;
+        float targetY = Mathf.Lerp(transform.position.y, transform.position.y + playerDelta.y, yParallaxFactor);
 
-        // 배경을 플레이어 이동량에 따라 조절 (X, Y축에 각각 Parallax Factor 적용)
-        transform.position += new Vector3(0, deltaMovement.y * parallaxFactor.y, 0);
+        // 위치 적용
+        transform.position = new Vector3(targetX, targetY, transform.position.z);
 
-        // 플레이어의 현재 위치 업데이트
-        lastPlayerPosition = player.position;
+        // 플레이어 위치 갱신
+        previousPlayerPosition = player.position;
     }
 }
