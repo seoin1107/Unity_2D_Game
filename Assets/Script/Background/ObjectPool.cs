@@ -4,7 +4,7 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     public GameObject prefab; // 복제할 프리팹
-    public int poolSize = 3; // 초기 생성할 오브젝트 개수
+    public int poolSize = 5; // 초기 생성할 오브젝트 개수
 
     private Queue<GameObject> poolQueue = new Queue<GameObject>();
 
@@ -14,7 +14,7 @@ public class ObjectPool : MonoBehaviour
         for (int i = 0; i < poolSize; i++)
         {
             GameObject obj = Instantiate(prefab);
-            obj.SetActive(false);
+            obj.SetActive(false); // 처음엔 비활성화
             poolQueue.Enqueue(obj);
         }
     }
@@ -25,8 +25,7 @@ public class ObjectPool : MonoBehaviour
         if (poolQueue.Count > 0)
         {
             GameObject obj = poolQueue.Dequeue();
-
-            obj.SetActive(true);
+            obj.SetActive(true); // 오브젝트를 활성화
             return obj;
         }
 
