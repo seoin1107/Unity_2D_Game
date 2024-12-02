@@ -77,11 +77,36 @@ public class Boss2D : BattleSystem2D
                     if (playTime >= monsterStatus.characterStat.atkSpeed)
                     {
                         playTime = 0.0f;
-                        myAnim.SetTrigger(animData.OnAttack); // 공격 애니메이션 트리거
+
+                        //랜덤기믹
+                        int randomAction = Random.Range(0, 2);
+                        if(randomAction == 0)
+                        {
+                            myAnim.SetTrigger(animData.OnAttack); // 공격 애니메이션 트리거
+                        }
+                        if(randomAction == 1)
+                        {
+                            StopAllCoroutines();
+                            myAnim.SetTrigger(animData.OnJump);
+                            StartCoroutine(Jumping());
+                        }
                     }
                 }
                 break;
         }
+    }
+    IEnumerator Jumping()
+    {
+        myRigid.AddForce(Vector2.up * 400.0f);
+        yield return new WaitForFixedUpdate();
+
+        myColider.isTrigger = true;
+        while (myRigid.velocity.y >= 0.0f) //위로올라가는중
+        {
+            yield return null;
+        }
+        myColider.isTrigger = false;
+
     }
     // Start is called before the first frame update
     void Start()
@@ -104,17 +129,6 @@ public class Boss2D : BattleSystem2D
             Debug.LogWarning("Ground transform is null.");
             return;
         }
-        /*        curGround = tr;
-                float halfDist = tr.localScale.x * 0.5f; // 발판의절반거리
-                float dist = tr.position.x - transform.position.x;
-                if (moveDir.x < 0.0f)
-                {
-                    maxDist = halfDist - dist;
-                }
-                else
-                {
-                    maxDist = halfDist + dist;
-                }*/
     }
 
     public void OnFindTarget(Transform tr)
