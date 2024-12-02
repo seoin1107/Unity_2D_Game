@@ -24,6 +24,8 @@ public class StatusUI : MonoBehaviour
     [SerializeField] public TMPro.TMP_Text textUtil;
     [SerializeField] public TMPro.TMP_Text textTotalAtk;
     [SerializeField] public TMPro.TMP_Text textMaxHp;
+    [SerializeField] public TMPro.TMP_Text textPointOption;
+
 
     public float leftPoint;
     public Button hpUpButton;
@@ -32,6 +34,9 @@ public class StatusUI : MonoBehaviour
     public Button atkDownButton;
     public Button utilUpButton;
     public Button utilDownButton;
+
+
+    bool hpMaxPoint = false;
 
 
     public UnityAction closeAlram;
@@ -95,12 +100,13 @@ public class StatusUI : MonoBehaviour
         else utilDownButton.interactable = true;
 
 
-        
+
     }
 
 
     public void UpdateStatusUI()
     {
+        checkStatPoint();
         leftPoint = player.characterStat.totalPoint - player.characterStat.hpPoint - player.characterStat.atkPoint - player.characterStat.utilPoint;
         textLeft.text = $"Left Point : {leftPoint}";
         textHp.text = player.characterStat.hpPoint.ToString();
@@ -173,6 +179,70 @@ public class StatusUI : MonoBehaviour
         player.characterStat.eqiupCard = new int[3] { 0, 0, 0 };
     }
 
+
+    private string[] HPOptions = new string[]
+    {
+        "최대 체력 +20",
+        "체력 재생 +1%, 피격시 무적 +1s",
+        "3번째 공격마다 최대체력 25% 추가 데미지"
+    };
+    private string[] ATKOptions = new string[]
+    {
+        "추가 공격력 +20%",
+        "공격/이동 속도 +20%",
+        "5회 공격 명중 시 공격력 +10 / 공격 속도 +20%"
+    };
+    private string[] UtilOptions = new string[]
+    {
+        "이동 속도 +50%",
+        "더블 점프",
+        "회피 무적 시간 +0.1s / 패링, 회피 쿨타임 -50%"
+    };
+
+    public void checkStatPoint()
+    {
+        if (player.characterStat.hpPoint >= 10)
+        {
+            player.characterStat.maxHP += 20;
+            player.characterStat.curHP = player.characterStat.maxHP;
+            ////////////
+           textPointOption.text += HPOptions[0] + "\n";
+
+            if (player.characterStat.hpPoint >= 20)
+            {
+                textPointOption.text += HPOptions[1] + "\n";
+                player.characterStat.hpRegen += 0.1f;
+                player.characterStat.hitRecover += 1;
+                if (player.characterStat.hpPoint >= 30)
+                {
+                    textPointOption.text += HPOptions[2] + "\n";
+                    hpMaxPoint = true;
+                }
+            }
+        }
+
+        if (player.characterStat.atkPoint >= 10)
+        {
+            if (player.characterStat.atkPoint >= 20)
+            {
+                if (player.characterStat.atkPoint >= 30)
+                {
+
+                }
+            }
+        }
+
+        if (player.characterStat.utilPoint >= 10)
+        {
+            if (player.characterStat.utilPoint >= 20)
+            {
+                if (player.characterStat.utilPoint >= 30)
+                {
+
+                }
+            }
+        }
+    }
 
 }
 

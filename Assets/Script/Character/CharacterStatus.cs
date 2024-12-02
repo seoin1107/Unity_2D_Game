@@ -50,7 +50,6 @@ public struct Stat
 public class CharacterStatus : AnimatorProperty
 {
     public Stat characterStat;
-
  
 
     // Start is called before the first frame update
@@ -71,6 +70,8 @@ public class CharacterStatus : AnimatorProperty
         characterStat.maxHP = characterStat.baseHP+ characterStat.hpPoint *2;
         characterStat.curHP = characterStat.maxHP;
     }
+
+    
     public void LevelUp(Stat stat)
     {
         while (stat.needExp <= stat.curExp)
