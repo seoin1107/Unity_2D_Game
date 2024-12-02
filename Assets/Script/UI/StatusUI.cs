@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.IO;
+
 
 
 public class StatusUI : MonoBehaviour
@@ -40,7 +42,13 @@ public class StatusUI : MonoBehaviour
     {
         Instance = this;
         gameObject.SetActive(false);
-        PlayerInitialize();
+        if (!File.Exists(Application.dataPath + "/Data/Save/tempSave.dat")) {
+            PlayerInitialize();
+        }
+        else
+        {
+            player.characterStat = FileManager.LoadFromJson<Stat>(Application.dataPath + "/Data/Save/tempSave.dat");
+        }
         player.UpdateStatus();
 
     }
