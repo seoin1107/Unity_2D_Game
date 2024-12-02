@@ -4900,7 +4900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textLeft: {fileID: 3912289101318247329}
-  textHp: {fileID: 4886860994928718166}
+  textHp: {fileID: 6201038241216537574}
   textAtk: {fileID: 1041666407315016163}
   textUtil: {fileID: 3930928394325191122}
   textTotalAtk: {fileID: 6100768366823823915}
@@ -5774,7 +5774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d72d15167e648741bc8550308b7d4f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myStatusUI: {fileID: 0}
+  myStatusUI: {fileID: 8066983806883802932}
 --- !u!1 &6977813709703142461
 GameObject:
   m_ObjectHideFlags: 0

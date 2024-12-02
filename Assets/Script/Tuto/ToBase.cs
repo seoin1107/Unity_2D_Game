@@ -12,7 +12,6 @@ public class ToBase : MonoBehaviour
             StartCoroutine(ChangeScene());
         }
     }
-
     IEnumerator ChangeScene()
     {
         while (true)
@@ -24,6 +23,13 @@ public class ToBase : MonoBehaviour
                 SceneManager.LoadScene(1);
             }
             yield return null;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            StopAllCoroutines();
         }
     }
 }
