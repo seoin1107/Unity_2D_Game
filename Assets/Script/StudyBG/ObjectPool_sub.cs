@@ -31,7 +31,9 @@ public class ObjectPool_sub : MonoBehaviour
         else
         {
             // 풀에 오브젝트가 없으면 새로운 오브젝트 생성
-            return Instantiate(prefab);
+            GameObject obj = Instantiate(prefab);
+            obj.SetActive(true);
+            return obj;
         }
     }
 

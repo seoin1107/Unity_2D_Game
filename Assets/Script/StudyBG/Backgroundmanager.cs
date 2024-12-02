@@ -4,7 +4,7 @@ public class Backgroundmanager : MonoBehaviour
 {
     public Transform player; // 플레이어
     public ObjectPool_sub objectPool; // 배경을 관리할 오브젝트 풀
-    public float backgroundWidth = 20.48f; // 배경의 가로 크기
+    public float backgroundWidth = 17.92f; // 배경의 가로 크기
 
     private float leftBoundaryX;
     private float rightBoundaryX;
