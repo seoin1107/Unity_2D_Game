@@ -47,38 +47,37 @@ public class Boss2D : BattleSystem2D
                 myAnim.SetBool("IsAir", false);
                 if (!myAnim.GetBool("IsAir"))
                 {
-                    if (Mathf.Abs(transform.position.x - originalPosition.x) > 0.1f)
-                    {
-                        // X축 방향만 계산 (y 값은 무시)
-                        Vector2 direction = new Vector2(originalPosition.x - transform.position.x, 0).normalized;
-                        moveDir = direction;
-                    }
-                    else
-                    {
-                        moveDir = Vector2.zero;
-                    }
-
+                    moveDir = Vector2.zero;
                 }
                 break;
             case State.Battle:
-                /*            if (myTarget == null)
-                            {
-                                Debug.LogWarning("myTarget이 null입니다.");
-                                ChangeState(State.Normal);
-                                return;
-                            }*/
-
                 playTime += Time.deltaTime;
-                moveDir.x = myTarget.position.x > transform.position.x ? 1.0f :
-                    myTarget.position.x < transform.position.x ? -1.0f : 0.0f;
 
+                // 타겟이 오른쪽에 있으면 오른쪽을 바라보고, 왼쪽에 있으면 왼쪽을 바라보도록 설정
+                if (myTarget != null)
+                {
+                    if (myTarget.position.x > transform.position.x)
+                    {
+                        // 타겟이 오른쪽에 있으면 몬스터가 오른쪽을 바라봄
+                        transform.localScale = new Vector3(1.0f, transform.localScale.y, transform.localScale.z);
+                    }
+                    else if (myTarget.position.x < transform.position.x)
+                    {
+                        // 타겟이 왼쪽에 있으면 몬스터가 왼쪽을 바라봄
+                        transform.localScale = new Vector3(-1.0f, transform.localScale.y, transform.localScale.z);
+                    }
+                }
+
+                // 타겟과의 거리 계산
                 if (Vector2.Distance(myTarget.position, transform.position) <= monsterStatus.characterStat.attackRange)
                 {
-                    moveDir.x = 0.0f;
+                    moveDir.x = 0.0f; // 공격 범위 내에서는 이동하지 않음
+
+                    // 공격 준비 및 실행
                     if (playTime >= monsterStatus.characterStat.atkSpeed)
                     {
                         playTime = 0.0f;
-                        myAnim.SetTrigger(animData.OnAttack);
+                        myAnim.SetTrigger(animData.OnAttack); // 공격 애니메이션 트리거
                     }
                 }
                 break;

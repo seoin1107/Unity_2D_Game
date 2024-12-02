@@ -133,6 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4569534882105735296}
+  - component: {fileID: 7498088306867702604}
   - component: {fileID: 3175706962891907730}
   - component: {fileID: 6103359976641070283}
   m_Layer: 9
@@ -159,6 +160,49 @@ Transform:
   - {fileID: 6527595066360351045}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7498088306867702604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4378380278815144764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f48f53b156a9aa34ba20d2d5ba58f8b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterStat:
+    baseHP: 1000
+    maxHP: 1000
+    curHP: 1000
+    baseAtk: 30
+    totalAtk: 30
+    moveSpeed: 1
+    atkSpeed: 2
+    attackRange: 3
+    level: 0
+    hpRegen: 0
+    totalPoint: 0
+    atkPoint: 0
+    hpPoint: 0
+    utilPoint: 0
+    hitRecover: 0
+    skillCool: 0
+    skillDamage: 0
+    drain: 0
+    dodgeTime: 0
+    dodgeCool: 0
+    parryingTime: 0
+    parryingCool: 0
+    needExp: 0
+    curExp: 0
+    eqiupCard: 
+  rid: {fileID: 0}
+  curSpaceCool: 0
+  spaceCoolDown: 5
+  monsterStatus: {fileID: 7498088306867702604}
+  myState: 0
 --- !u!70 &3175706962891907730
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -317,7 +361,7 @@ Animator:
   m_GameObject: {fileID: 8011667632399547014}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 3737e59b37edfa84883ee618787f40e5, type: 2}
+  m_Controller: {fileID: 22100000, guid: 03feb045641b4eb41816c93f2ad3c864, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -343,7 +387,7 @@ MonoBehaviour:
   attackAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4378380278815144764}
         m_TargetAssemblyTypeName: Monster2D, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 1
@@ -358,7 +402,7 @@ MonoBehaviour:
   deadAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4378380278815144764}
         m_TargetAssemblyTypeName: Monster2D, Assembly-CSharp
         m_MethodName: OnDisApear
         m_Mode: 1
