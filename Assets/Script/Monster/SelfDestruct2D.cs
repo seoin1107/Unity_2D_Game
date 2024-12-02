@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss2D : BattleSystem2D
+public class SelfDestruct2D : BattleSystem2D
 {
     Transform myTarget;
     Vector2 originalPosition; // 몬스터의 원래 위치를 저장할 변수
@@ -47,72 +47,35 @@ public class Boss2D : BattleSystem2D
                 myAnim.SetBool("IsAir", false);
                 if (!myAnim.GetBool("IsAir"))
                 {
-                    moveDir = Vector2.zero;
+                    if (Mathf.Abs(transform.position.x - originalPosition.x) > 0.1f)
+                    {
+                        // X축 방향만 계산 (y 값은 무시)
+                        Vector2 direction = new Vector2(originalPosition.x - transform.position.x, 0).normalized;
+                        moveDir = direction;
+                    }
+                    else
+                    {
+                        moveDir = Vector2.zero;
+                    }
+
                 }
                 break;
             case State.Battle:
                 playTime += Time.deltaTime;
+                moveDir.x = myTarget.position.x > transform.position.x ? 1.0f :
+                    myTarget.position.x < transform.position.x ? -1.0f : 0.0f;
 
-                // 타겟이 오른쪽에 있으면 오른쪽을 바라보고, 왼쪽에 있으면 왼쪽을 바라보도록 설정
-                if (myTarget != null)
-                {
-                    if (myTarget.position.x > transform.position.x)
-                    {
-                        // 타겟이 오른쪽에 있으면 몬스터가 오른쪽을 바라봄
-                        transform.localScale = new Vector3(1.0f, transform.localScale.y, transform.localScale.z);
-                    }
-                    else if (myTarget.position.x < transform.position.x)
-                    {
-                        // 타겟이 왼쪽에 있으면 몬스터가 왼쪽을 바라봄
-                        transform.localScale = new Vector3(-1.0f, transform.localScale.y, transform.localScale.z);
-                    }
-                }
-
-                // 타겟과의 거리 계산
                 if (Vector2.Distance(myTarget.position, transform.position) <= monsterStatus.characterStat.attackRange)
                 {
-                    moveDir.x = 0.0f; // 공격 범위 내에서는 이동하지 않음
-
-                    // 공격 준비 및 실행
+                    moveDir.x = 0.0f;
                     if (playTime >= monsterStatus.characterStat.atkSpeed)
                     {
                         playTime = 0.0f;
-
-                        //랜덤기믹
-                        int randomAction = Random.Range(0, 4);
-                        if(randomAction == 0) // 일반공격패턴
-                        {
-                            myAnim.SetTrigger(animData.OnAttack); 
-                        }
-                        if(randomAction == 1) // 점프 위치변경 패턴
-                        {
-                            if(!myAnim.GetBool("IsAir"))
-                            {
-                                StopAllCoroutines();
-                                StartCoroutine(Jumping());
-                            }
-                        }
-                        if(randomAction == 2) // 구울 소환
-                        {
-                                                       
-                        }
+                        myAnim.SetTrigger(animData.OnAttack);
                     }
                 }
                 break;
         }
-    }
-    IEnumerator Jumping()
-    {
-        myRigid.AddForce(Vector2.up * 400.0f);
-        yield return new WaitForFixedUpdate();
-
-        myColider.isTrigger = true;
-        while (myRigid.velocity.y >= 0.0f) //위로올라가는중
-        {
-            yield return null;
-        }
-        myColider.isTrigger = false;
-
     }
     // Start is called before the first frame update
     void Start()
@@ -172,16 +135,7 @@ public class Boss2D : BattleSystem2D
     }
     IEnumerator DisApearing()
     {
-        yield return new WaitForSeconds(3.0f);
-
-        Color color = myRenderer.color;
-        while (color.a > 0.0f)
-        {
-            color.a -= Time.deltaTime;
-            myRenderer.color = color;
-            transform.Translate(Vector2.up * Time.deltaTime * 0.3f);
-            yield return null;
-        }
+        yield return new WaitForSeconds(0.8f);
         Destroy(gameObject);
     }
 }
