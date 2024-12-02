@@ -2,111 +2,100 @@ using UnityEngine;
 
 public class Backgroundmanager : MonoBehaviour
 {
-    public Transform player; // 플레이어
-    public ObjectPool_sub objectPool; // 배경을 관리할 오브젝트 풀
-    public float backgroundWidth = 17.92f; // 배경의 가로 크기
+    public ObjectPool_sub objectPool; // 오브젝트 풀
+    public float backgroundWidth = 21.504f; // 배경 이미지의 가로 크기
+    public Transform player; // 플레이어 위치
+    public int initialBackgroundCount = 3; // 초기 배경 개수
+    public float yPosition = 1.2f; // 원하는 Y값을 설정
 
-    private float leftBoundaryX;
-    private float rightBoundaryX;
-    private GameObject[] activeBackgrounds; // 현재 활성화된 배경들
+    private BackgroundNode head;  // 링크드 리스트의 첫 번째 배경
+    private BackgroundNode tail;  // 링크드 리스트의 마지막 배경
 
-    void Start()
+    private void Start()
     {
-        // 초기 배경 생성
-        CreateInitialBackgrounds();
-    }
-
-    void Update()
-    {
-        // 플레이어가 왼쪽, 오른쪽 경계를 넘었을 때 배경 생성
-        if (player.position.x > rightBoundaryX - backgroundWidth)
+        // 초기 배경 설정
+        for (int i = 0; i < initialBackgroundCount; i++)
         {
-            SpawnBackgroundToRight();
+            SpawnBackground(i * backgroundWidth); // 배경 배치
         }
-        if (player.position.x < leftBoundaryX + backgroundWidth)
+    }
+
+    private void Update()
+    {
+        // 배경을 양쪽으로 스크롤하기 위해 플레이어의 위치에 따라 배경을 이동
+        if (player.position.x > tail.background.transform.position.x)
         {
-            SpawnBackgroundToLeft();
+            MoveBackgroundToRight();
         }
-
-        // 배경의 위치를 관리하여 화면에 맞게 스크롤
-        ManageActiveBackgrounds();
-    }
-
-    // 초기 배경 생성
-    private void CreateInitialBackgrounds()
-    {
-        float initialX = Mathf.Floor(player.position.x / backgroundWidth) * backgroundWidth;
-        activeBackgrounds = new GameObject[3]; // 왼쪽, 중간, 오른쪽 배경을 관리
-
-        for (int i = -1; i <= 1; i++)
+        else if (player.position.x < head.background.transform.position.x)
         {
-            GameObject bg = objectPool.GetObject();
-            bg.transform.position = new Vector3(initialX + i * backgroundWidth, transform.position.y, transform.position.z);
-            bg.SetActive(true);
-            activeBackgrounds[i + 1] = bg; // 인덱스 -1, 0, 1에 맞게 저장
+            MoveBackgroundToLeft();
         }
-
-        leftBoundaryX = initialX - backgroundWidth;
-        rightBoundaryX = initialX + backgroundWidth;
     }
 
-    // 배경을 오른쪽으로 생성
-    private void SpawnBackgroundToRight()
+    private void SpawnBackground(float xPosition)
     {
-        // 가장 왼쪽 배경을 풀에 반환
-        objectPool.ReturnObject(activeBackgrounds[0]);
+        GameObject background = objectPool.GetObject();
 
-        // 나머지 배경들 이동
-        activeBackgrounds[0] = activeBackgrounds[1];
-        activeBackgrounds[1] = activeBackgrounds[2];
 
-        // 새로운 배경 생성
-        GameObject bg = objectPool.GetObject();
-        bg.transform.position = new Vector3(rightBoundaryX + backgroundWidth, transform.position.y, transform.position.z);
-        bg.SetActive(true);
+        background.transform.position = new Vector3(xPosition, yPosition, 0); // x와 y 위치 설정
 
-        // 새로 생성된 배경을 배열에 추가
-        activeBackgrounds[2] = bg;
-
-        // 오른쪽 경계 업데이트
-        rightBoundaryX += backgroundWidth;
-    }
-
-    // 배경을 왼쪽으로 생성
-    private void SpawnBackgroundToLeft()
-    {
-        // 가장 오른쪽 배경을 풀에 반환
-        objectPool.ReturnObject(activeBackgrounds[2]);
-
-        // 나머지 배경들 이동
-        activeBackgrounds[2] = activeBackgrounds[1];
-        activeBackgrounds[1] = activeBackgrounds[0];
-
-        // 새로운 배경 생성
-        GameObject bg = objectPool.GetObject();
-        bg.transform.position = new Vector3(leftBoundaryX - backgroundWidth, transform.position.y, transform.position.z);
-        bg.SetActive(true);
-
-        // 새로 생성된 배경을 배열에 추가
-        activeBackgrounds[0] = bg;
-
-        // 왼쪽 경계 업데이트
-        leftBoundaryX -= backgroundWidth;
-    }
-
-    // 화면 밖으로 나간 배경을 풀로 반환
-    private void ManageActiveBackgrounds()
-    {
-        // 배경들이 화면 밖으로 나갔을 때 자동으로 풀로 반환될 수 있도록 관리
-        for (int i = 0; i < activeBackgrounds.Length; i++)
+        // 새 노드를 링크드 리스트에 추가
+        BackgroundNode newNode = new BackgroundNode { background = background };
+        if (head == null)
         {
-            GameObject bg = activeBackgrounds[i];
-            if (bg != null && (bg.transform.position.x < player.position.x - backgroundWidth * 2 ||
-                bg.transform.position.x > player.position.x + backgroundWidth * 2))
-            {
-                objectPool.ReturnObject(bg); // 화면 밖으로 나간 배경을 풀로 반환
-                activeBackgrounds[i] = null; // 배열에서 해당 배경을 null로 설정
-            }
+            head = tail = newNode; // 첫 번째 배경
         }
+        else
+        {
+            tail.next = newNode;
+            newNode.prev = tail;
+            tail = newNode;
+        }
+    }
+
+    private void MoveBackgroundToRight()
+    {
+        // 링크드 리스트에서 head 배경을 제거하고 tail로 이동
+        BackgroundNode oldHead = head;
+        head = head.next;
+        head.prev = null;
+
+        // 배경을 오른쪽 끝으로 재배치
+        float newXPosition = tail.background.transform.position.x + backgroundWidth;
+        float newYPosition = tail.background.transform.position.y;
+        oldHead.background.transform.position = new Vector3(newXPosition, newYPosition, 0);
+
+        // tail에 추가
+        tail.next = oldHead;
+        oldHead.prev = tail;
+        tail = oldHead;
+        tail.next = null;
+    }
+
+    private void MoveBackgroundToLeft()
+    {
+        // 링크드 리스트에서 tail 배경을 제거하고 head로 이동
+        BackgroundNode oldTail = tail;
+        tail = tail.prev;
+        tail.next = null;
+
+        // 배경을 왼쪽 끝으로 재배치
+        float newXPosition = head.background.transform.position.x - backgroundWidth;
+        float newYPosition = tail.background.transform.position.y;
+        oldTail.background.transform.position = new Vector3(newXPosition, newYPosition, 0);
+
+        // head에 추가
+        oldTail.next = head;
+        head.prev = oldTail;
+        head = oldTail;
+    }
+
+    // 배경을 위한 노드 클래스
+    private class BackgroundNode
+    {
+        public GameObject background; // 배경 오브젝트
+        public BackgroundNode next;   // 다음 노드
+        public BackgroundNode prev;   // 이전 노드
     }
 }

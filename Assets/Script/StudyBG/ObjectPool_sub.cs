@@ -4,7 +4,7 @@ using UnityEngine;
 public class ObjectPool_sub : MonoBehaviour
 {
     public GameObject prefab; // 배경 프리팹
-    public int poolSize = 5; // 오브젝트 풀의 초기 크기
+    public int poolSize = 3; // 오브젝트 풀의 초기 크기
 
     private Queue<GameObject> poolQueue = new Queue<GameObject>();
 
