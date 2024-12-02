@@ -73,10 +73,15 @@ public class Player2D : BattleSystem2D
 
             if (Input.GetKeyDown(KeyCode.G))
             {
+            
+                FileManager.SaveToJson<Stat>(Application.dataPath + "/Data/Save/tempSave.dat", playerStatus.characterStat);
                 Interactable?.Interact(this);
             }
 
             base.OnUpdate();
+
+
+            
         }
     
 
