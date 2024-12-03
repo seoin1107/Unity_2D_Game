@@ -14,6 +14,7 @@ public class SelfDestruct2D : BattleSystem2D
     public State myState = State.Create;
     //float maxDist = 0.0f;
     Transform curGround = null;
+    
     void ChangeState(State s)
     {
         if (myState == s) return;
@@ -80,7 +81,6 @@ public class SelfDestruct2D : BattleSystem2D
     // Start is called before the first frame update
     void Start()
     {
-        originalPosition = transform.position; // 시작 위치를 저장
         ChangeState(State.Normal);
     }
 
@@ -120,6 +120,7 @@ public class SelfDestruct2D : BattleSystem2D
     public void OnAttack()
     {
         myTarget.GetComponent<IDamage>()?.OnDamage(monsterStatus.characterStat.totalAtk);
+        OnDead();
     }
 
     protected override void OnDead()
@@ -135,7 +136,7 @@ public class SelfDestruct2D : BattleSystem2D
     }
     IEnumerator DisApearing()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.7f);
         Destroy(gameObject);
     }
 }

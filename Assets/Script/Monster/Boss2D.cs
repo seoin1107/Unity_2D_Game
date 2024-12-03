@@ -7,6 +7,9 @@ public class Boss2D : BattleSystem2D
     Transform myTarget;
     Vector2 originalPosition; // 몬스터의 원래 위치를 저장할 변수
     public CharacterStatus monsterStatus;
+
+    public GameObject GhoulPrefab; // 구울 프리펩
+    public Transform summonPoint; // 구울 소환위치
     public enum State
     {
         Create, Normal, Battle, Dead
@@ -84,36 +87,34 @@ public class Boss2D : BattleSystem2D
                         {
                             myAnim.SetTrigger(animData.OnAttack); 
                         }
-                        if(randomAction == 1) // 점프 위치변경 패턴
+                        if(randomAction == 1) // 구울소환
                         {
-                            if(!myAnim.GetBool("IsAir"))
-                            {
-                                StopAllCoroutines();
-                                StartCoroutine(Jumping());
-                            }
+                            SummonGhoul();
                         }
-                        if(randomAction == 2) // 구울 소환
+                        if(randomAction == 2)
                         {
-                                                       
+                            //장판 아래서 위로 쏘는 불기둥?
                         }
+                        if(randomAction == 3)
+                        {
+                            //스프라이트 순간 사라지면서 랜덤한 위치로 텔레포트?
+                        }
+                        // 추가로 체력이 30퍼 가되면 플레이어가 닿을수없는 위치로 이동해서 천천히 체력회복
+                        // 중간에 망령스프라이트 생성하여 처치시, 보스가 밟고있는 지반 스프라이트 제거후 약간의 프리딜타임 후, 일반배틀상태로 변경
                     }
                 }
                 break;
         }
     }
-    IEnumerator Jumping()
+    void SummonGhoul()
     {
-        myRigid.AddForce(Vector2.up * 400.0f);
-        yield return new WaitForFixedUpdate();
-
-        myColider.isTrigger = true;
-        while (myRigid.velocity.y >= 0.0f) //위로올라가는중
+        if(GhoulPrefab != null && summonPoint != null)
         {
-            yield return null;
+            //구울소환
+            Instantiate(GhoulPrefab, summonPoint.position, Quaternion.identity);
         }
-        myColider.isTrigger = false;
-
     }
+
     // Start is called before the first frame update
     void Start()
     {

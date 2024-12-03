@@ -56,7 +56,7 @@ MonoBehaviour:
     curHP: 0
     baseAtk: 0
     totalAtk: 0
-    moveSpeed: 0
+    moveSpeed: 5
     atkSpeed: 0
     attackRange: 0
     level: 0
@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 4372366006383633131}
   - component: {fileID: 1008745086347125661}
   - component: {fileID: 7982348611332186828}
-  - component: {fileID: 4702274949784544290}
+  - component: {fileID: 6391231372758766935}
   m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -264,7 +264,7 @@ Transform:
   m_GameObject: {fileID: 5742439689403939997}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.01537627, y: 2.5, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -337,7 +337,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5742439689403939997}
   m_Enabled: 1
---- !u!114 &4702274949784544290
+--- !u!114 &6391231372758766935
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

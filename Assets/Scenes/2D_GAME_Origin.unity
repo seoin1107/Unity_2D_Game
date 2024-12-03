@@ -1839,17 +1839,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 249456f9063d9db41b76d74ad54d549b, type: 3}
---- !u!114 &1497976635 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7498088306867702604, guid: 259036dbd49ed8a409a972daef82316e, type: 3}
-  m_PrefabInstance: {fileID: 1685425529}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f48f53b156a9aa34ba20d2d5ba58f8b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1669675165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1919,34 +1908,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 122214910582122343, guid: 259036dbd49ed8a409a972daef82316e, type: 3}
-      propertyPath: m_Size.x
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 122214910582122343, guid: 259036dbd49ed8a409a972daef82316e, type: 3}
-      propertyPath: m_Size.y
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 122214910582122343, guid: 259036dbd49ed8a409a972daef82316e, type: 3}
-      propertyPath: m_Offset.y
-      value: 2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2634813153602994988, guid: 259036dbd49ed8a409a972daef82316e, type: 3}
-      propertyPath: lostAtion.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1497976635}
-    - target: {fileID: 2634813153602994988, guid: 259036dbd49ed8a409a972daef82316e, type: 3}
-      propertyPath: findAction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1497976635}
-    - target: {fileID: 2634813153602994988, guid: 259036dbd49ed8a409a972daef82316e, type: 3}
-      propertyPath: lostAtion.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Boss2D, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2634813153602994988, guid: 259036dbd49ed8a409a972daef82316e, type: 3}
-      propertyPath: findAction.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Boss2D, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 4378380278815144764, guid: 259036dbd49ed8a409a972daef82316e, type: 3}
       propertyPath: m_Name
       value: DarkBoss
@@ -1990,26 +1951,6 @@ PrefabInstance:
     - target: {fileID: 4569534882105735296, guid: 259036dbd49ed8a409a972daef82316e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7454366527421338564, guid: 259036dbd49ed8a409a972daef82316e, type: 3}
-      propertyPath: deadAction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1497976635}
-    - target: {fileID: 7454366527421338564, guid: 259036dbd49ed8a409a972daef82316e, type: 3}
-      propertyPath: attackAction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1497976635}
-    - target: {fileID: 7454366527421338564, guid: 259036dbd49ed8a409a972daef82316e, type: 3}
-      propertyPath: deadAction.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Boss2D, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7454366527421338564, guid: 259036dbd49ed8a409a972daef82316e, type: 3}
-      propertyPath: attackAction.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Boss2D, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7498088306867702604, guid: 259036dbd49ed8a409a972daef82316e, type: 3}
-      propertyPath: characterStat.attackRange
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

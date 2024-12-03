@@ -198,6 +198,7 @@ MonoBehaviour:
     needExp: 0
     curExp: 0
     eqiupCard: 
+  lookDir: 1
   rid: {fileID: 0}
   curSpaceCool: 5
   spaceCoolDown: 5

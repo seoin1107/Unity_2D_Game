@@ -57,7 +57,7 @@ public class Player2D : BattleSystem2D
                 }
             }
 
-            if (Input.GetMouseButtonDown(1) && !myAnim.GetBool("IsAir"))           // 패링                                   // 패링키
+            if (Input.GetMouseButtonDown(1) && !myAnim.GetBool("IsAir") && !myAnim.GetBool("IsAttack"))           // 패링                                   // 패링키
             {
                 OnParry();
             }
