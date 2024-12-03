@@ -106,7 +106,7 @@ public class StatusUI : MonoBehaviour
 
     public void UpdateStatusUI()
     {
-        checkStatPoint();
+        OnOffHpOption();
         leftPoint = player.characterStat.totalPoint - player.characterStat.hpPoint - player.characterStat.atkPoint - player.characterStat.utilPoint;
         textLeft.text = $"Left Point : {leftPoint}";
         textHp.text = player.characterStat.hpPoint.ToString();
@@ -177,27 +177,65 @@ public class StatusUI : MonoBehaviour
         player.characterStat.needExp = 10;
         player.characterStat.curExp = 0;
         player.characterStat.eqiupCard = new int[3] { 0, 0, 0 };
-    }
+
+        player.characterStat.hpOption1 = false;
+        player.characterStat.hpOption2 = false;
+        player.characterStat.hpOption3 = false;
+
+        player.characterStat.atkOption1 = false;
+        player.characterStat.atkOption2 = false;
+        player.characterStat.atkOption3 = false;
+
+        player.characterStat.utilOption1 = false;
+        player.characterStat.utilOption2 = false;
+        player.characterStat.utilOption3 = false;
+}
 
 
     private string[] HPOptions = new string[]
     {
-        "최대 체력 +20",
-        "체력 재생 +1%, 피격시 무적 +1s",
-        "3번째 공격마다 최대체력 25% 추가 데미지"
+        "최대 체력 +20",//0
+        "체력 재생 +1%, 피격시 무적 +1s",//1
+        "3번째 공격마다 최대체력 25% 추가 데미지"//2
     };
     private string[] ATKOptions = new string[]
     {
-        "추가 공격력 +20%",
-        "공격/이동 속도 +20%",
-        "5회 공격 명중 시 공격력 +10 / 공격 속도 +20%"
+        "추가 공격력 +20%",//3
+        "공격/이동 속도 +20%",//4
+        "5회 공격 명중 시 공격력 +10 / 공격 속도 +20%"//5
     };
     private string[] UtilOptions = new string[]
     {
-        "이동 속도 +50%",
-        "더블 점프",
-        "회피 무적 시간 +0.1s / 패링, 회피 쿨타임 -50%"
+        "이동 속도 +50%",//6
+        "더블 점프",//7
+        "회피 무적 시간 +0.1s / 패링, 회피 쿨타임 -50%"//8
     };
+    private string[] Options = new string[9];
+
+    public void OnOffHpOption()
+    {
+        if(player.characterStat.hpPoint == 10 && player.characterStat.hpOption1 == false)
+        {
+            player.characterStat.hpOption1 = true;
+            player.UpdateStatus();
+            Options[0] += HPOptions[0] + "\n";
+        }
+        if (player.characterStat.hpPoint == 20 && player.characterStat.hpOption2 == false)
+        {
+            textPointOption.text += HPOptions[1] + "\n";
+            player.characterStat.hpRegen += 0.1f;
+            player.characterStat.hitRecover += 1;
+        }
+        if (player.characterStat.hpPoint == 30 && player.characterStat.hpOption3 == false)
+        {
+            hpMaxPoint = true;
+            textPointOption.text += HPOptions[2] + "\n";
+        }
+        foreach (var option in Options)
+        {
+            textPointOption.text += Options;
+        }
+    }
 
     public void checkStatPoint()
     {
@@ -205,8 +243,9 @@ public class StatusUI : MonoBehaviour
         {
             player.characterStat.maxHP += 20;
             player.characterStat.curHP = player.characterStat.maxHP;
-            ////////////
+            player.UpdateStatus();
            textPointOption.text += HPOptions[0] + "\n";
+
 
             if (player.characterStat.hpPoint >= 20)
             {

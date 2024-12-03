@@ -44,6 +44,18 @@ public struct Stat
     public int curExp;
 
     public int[] eqiupCard;
+
+    public bool hpOption1;
+    public bool hpOption2;
+    public bool hpOption3;
+
+    public bool atkOption1;
+    public bool atkOption2;
+    public bool atkOption3;
+
+    public bool utilOption1;
+    public bool utilOption2;
+    public bool utilOption3;
 }
 
 
@@ -68,7 +80,12 @@ public class CharacterStatus : AnimatorProperty
     {
         characterStat.totalAtk = characterStat.baseAtk + characterStat.atkPoint;
         characterStat.maxHP = characterStat.baseHP+ characterStat.hpPoint *2;
+        if (characterStat.hpOption1 == true)
+        {
+            characterStat.maxHP += 20;
+        }
         characterStat.curHP = characterStat.maxHP;
+        
     }
 
     
