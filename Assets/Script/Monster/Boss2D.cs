@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Boss2D : BattleSystem2D
@@ -10,6 +9,8 @@ public class Boss2D : BattleSystem2D
 
     public GameObject GhoulPrefab; // 구울 프리펩
     public Transform summonPoint; // 구울 소환위치
+    public GameObject LightingPrefab; //번개 프리펩
+    public Transform effectPoint; // 번개 생성위치
     public enum State
     {
         Create, Normal, Battle, Dead
@@ -94,6 +95,7 @@ public class Boss2D : BattleSystem2D
                         if(randomAction == 2)
                         {
                             //장판 아래서 위로 쏘는 불기둥?
+                            EffectLighting();
                         }
                         if(randomAction == 3)
                         {
@@ -112,6 +114,14 @@ public class Boss2D : BattleSystem2D
         {
             //구울소환
             Instantiate(GhoulPrefab, summonPoint.position, Quaternion.identity);
+        }
+    }
+    void EffectLighting()
+    {
+        if(GhoulPrefab != null && effectPoint != null)
+        {
+            //번개소환
+            Instantiate(LightingPrefab, effectPoint.position, Quaternion.identity);
         }
     }
 
