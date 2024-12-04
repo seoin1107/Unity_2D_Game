@@ -125,6 +125,19 @@ public class Boss2D : BattleSystem2D
         }
     }
 
+    IEnumerator TP()
+    {
+        // 1. 페이드 아웃 (투명해짐)
+        Color color = myRenderer.color;
+        while (color.a > 0.0f)
+        {
+            color.a -= Time.deltaTime;
+            myRenderer.color = color;
+            transform.Translate(Vector2.up * Time.deltaTime * 0.3f); // 이동 효과
+            yield return null;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
