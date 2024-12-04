@@ -40,6 +40,8 @@ public struct Stat
     public float parryingTime;
     public float parryingCool;
 
+    public int CanJump;
+
     public int needExp;
     public int curExp;
 
@@ -79,13 +81,33 @@ public class CharacterStatus : AnimatorProperty
     public void UpdateStatus()
     {
         characterStat.totalAtk = characterStat.baseAtk + characterStat.atkPoint;
+        characterStat.moveSpeed = 5;
+        characterStat.atkSpeed = 1;
+        characterStat.CanJump = 1;
+        if(characterStat.atkOption1 == true)
+        {
+            characterStat.totalAtk *= 1.2f;
+        }
+        if (characterStat.atkOption2 == true)
+        {
+            characterStat.atkSpeed *= 1.2f;
+            characterStat.moveSpeed *= 1.2f;
+        }
         characterStat.maxHP = characterStat.baseHP+ characterStat.hpPoint *2;
         if (characterStat.hpOption1 == true)
         {
             characterStat.maxHP += 20;
         }
         characterStat.curHP = characterStat.maxHP;
-        
+        if(characterStat.utilOption1 == true)
+        {
+            characterStat.moveSpeed *= 1.5f;
+        }
+        if (characterStat.utilOption2 == true)
+        {
+            characterStat.CanJump += 1;
+        }
+
     }
 
     

@@ -107,6 +107,9 @@ public class StatusUI : MonoBehaviour
     public void UpdateStatusUI()
     {
         OnOffHpOption();
+        OnOffAtkOption();
+        OnOffUtilOption();
+        player.UpdateStatus();
         leftPoint = player.characterStat.totalPoint - player.characterStat.hpPoint - player.characterStat.atkPoint - player.characterStat.utilPoint;
         textLeft.text = $"Left Point : {leftPoint}";
         textHp.text = player.characterStat.hpPoint.ToString();
@@ -174,6 +177,7 @@ public class StatusUI : MonoBehaviour
         player.characterStat.dodgeCool = 5.0f;
         player.characterStat.parryingTime = 0.2f;
         player.characterStat.parryingCool = 2.0f;
+        player.characterStat.CanJump = 1;
         player.characterStat.needExp = 10;
         player.characterStat.curExp = 0;
         player.characterStat.eqiupCard = new int[3] { 0, 0, 0 };
@@ -218,22 +222,98 @@ public class StatusUI : MonoBehaviour
         {
             player.characterStat.hpOption1 = true;
             player.UpdateStatus();
-            Options[0] += HPOptions[0] + "\n";
         }
         if (player.characterStat.hpPoint == 20 && player.characterStat.hpOption2 == false)
         {
-            textPointOption.text += HPOptions[1] + "\n";
+            player.characterStat.hpOption2 = true;
             player.characterStat.hpRegen += 0.1f;
             player.characterStat.hitRecover += 1;
         }
         if (player.characterStat.hpPoint == 30 && player.characterStat.hpOption3 == false)
         {
-            hpMaxPoint = true;
-            textPointOption.text += HPOptions[2] + "\n";
+            player.characterStat.hpOption3 = true;
         }
-        foreach (var option in Options)
+
+        if (player.characterStat.hpPoint == 9 && player.characterStat.hpOption1 == true)
         {
-            textPointOption.text += Options;
+            player.characterStat.hpOption1 = false;
+            player.UpdateStatus();
+        }
+        if (player.characterStat.hpPoint == 19 && player.characterStat.hpOption2 == true)
+        {
+            player.characterStat.hpOption2 = false;
+            player.characterStat.hpRegen -= 0.1f;
+            player.characterStat.hitRecover -= 1;
+        }
+        if (player.characterStat.hpPoint == 29 && player.characterStat.hpOption3 == true)
+        {
+            player.characterStat.hpOption3 = false;
+        }
+    }
+
+    public void OnOffAtkOption()
+    {
+        if (player.characterStat.atkPoint == 10 && player.characterStat.atkOption1 == false)
+        {
+            player.characterStat.atkOption1 = true;
+            player.UpdateStatus();
+        }
+        if (player.characterStat.atkPoint == 20 && player.characterStat.atkOption2 == false)
+        {
+            player.characterStat.atkOption2 = true;
+
+        }
+        if (player.characterStat.atkPoint == 30 && player.characterStat.atkOption3 == false)
+        {
+            player.characterStat.atkOption3 = true;
+        }
+
+        if (player.characterStat.atkPoint == 9 && player.characterStat.atkOption1 == true)
+        {
+            player.characterStat.atkOption1 = false;
+            player.UpdateStatus();
+        }
+        if (player.characterStat.atkPoint == 19 && player.characterStat.atkOption2 == true)
+        {
+            player.characterStat.atkOption2 = false;
+
+        }
+        if (player.characterStat.atkPoint == 29 && player.characterStat.atkOption3 == true)
+        {
+            player.characterStat.atkOption3 = false;
+        }
+    }
+
+    public void OnOffUtilOption()
+    {
+        if (player.characterStat.utilPoint == 10 && player.characterStat.utilOption1 == false)
+        {
+            player.characterStat.utilOption1 = true;
+            player.UpdateStatus();
+        }
+        if (player.characterStat.utilPoint == 20 && player.characterStat.utilOption2 == false)
+        {
+            player.characterStat.utilOption2 = true;
+
+        }
+        if (player.characterStat.utilPoint == 30 && player.characterStat.utilOption3 == false)
+        {
+            player.characterStat.utilOption3 = true;
+        }
+
+        if (player.characterStat.utilPoint == 9 && player.characterStat.utilOption1 == true)
+        {
+            player.characterStat.utilOption1 = false;
+            player.UpdateStatus();
+        }
+        if (player.characterStat.utilPoint == 19 && player.characterStat.utilOption2 == true)
+        {
+            player.characterStat.utilOption2 = false;
+
+        }
+        if (player.characterStat.utilPoint == 29 && player.characterStat.utilOption3 == true)
+        {
+            player.characterStat.utilOption3 = false;
         }
     }
 
