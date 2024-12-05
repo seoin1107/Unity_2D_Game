@@ -175,8 +175,8 @@ MonoBehaviour:
     baseHP: 10
     maxHP: 10
     curHP: 10
-    baseAtk: 5
-    totalAtk: 5
+    baseAtk: 1
+    totalAtk: 1
     moveSpeed: 1
     atkSpeed: 1
     attackRange: 0.1

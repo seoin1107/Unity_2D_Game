@@ -7,10 +7,12 @@ public class Boss2D : BattleSystem2D
     Vector2 originalPosition; // 몬스터의 원래 위치를 저장할 변수
     public CharacterStatus monsterStatus;
 
-    public GameObject GhoulPrefab; // 구울 프리펩
-    public Transform summonPoint; // 구울 소환위치
-    public GameObject LightingPrefab; //번개 프리펩
-    public Transform effectPoint; // 번개 생성위치
+    public GameObject GhoulPrefab;      // 구울 프리펩
+    public Transform summonPoint;       // 구울 소환위치
+    public GameObject LightingPrefab;   // 번개 프리펩
+    public Transform effectPoint;       // 번개 생성위치
+    public Transform tpPos1;             // 순간이동위치
+    public Transform tpPos2;
     public enum State
     {
         Create, Normal, Battle, Dead
@@ -83,25 +85,36 @@ public class Boss2D : BattleSystem2D
                         playTime = 0.0f;
 
                         //랜덤기믹
-                        int randomAction = Random.Range(0, 4);
-                        if(randomAction == 0) // 일반공격패턴
+                        int randomAction = Random.Range(0,5);
+                        if (isTeleporting != true)
                         {
-                            myAnim.SetTrigger(animData.OnAttack); 
+                            if (randomAction == 0) // 일반공격패턴
+                            {
+                                myAnim.SetTrigger(animData.OnAttack);
+                            }
+                            if (randomAction == 1) // 일반공격패턴 + 일반공격을 좀더 자주하도록
+                            {
+                                myAnim.SetTrigger(animData.OnAttack);
+                            }
+                            if (randomAction == 2) // 구울소환
+                            {
+                                SummonGhoul();
+                            }
+                            if (randomAction == 3)
+                            {
+                                //장판 아래서 위로 쏘는 불기둥?
+                                EffectLighting();
+                            }
                         }
-                        if(randomAction == 1) // 구울소환
+                        if (randomAction == 4)
                         {
-                            SummonGhoul();
-                        }
-                        if(randomAction == 2)
-                        {
-                            //장판 아래서 위로 쏘는 불기둥?
-                            EffectLighting();
-                        }
-                        if(randomAction == 3)
-                        {
-                            //스프라이트 순간 사라지면서 랜덤한 위치로 텔레포트?
+                            StartCoroutine(TP());
                         }
                         // 추가로 체력이 30퍼 가되면 플레이어가 닿을수없는 위치로 이동해서 천천히 체력회복
+                        if(monsterStatus.characterStat.curHP < 50)
+                        {
+                            StartCoroutine(healing());
+                        }
                         // 중간에 망령스프라이트 생성하여 처치시, 보스가 밟고있는 지반 스프라이트 제거후 약간의 프리딜타임 후, 일반배틀상태로 변경
                     }
                 }
@@ -124,18 +137,42 @@ public class Boss2D : BattleSystem2D
             Instantiate(LightingPrefab, effectPoint.position, Quaternion.identity);
         }
     }
-
+    private bool isTeleporting = false; // 순간 이동 중인지 확인
     IEnumerator TP()
     {
+        // 다른 동작이 중단되도록 설정
+        isTeleporting = true;
         // 1. 페이드 아웃 (투명해짐)
+        yield return new WaitForSeconds(1.0f);
         Color color = myRenderer.color;
         while (color.a > 0.0f)
         {
             color.a -= Time.deltaTime;
             myRenderer.color = color;
-            transform.Translate(Vector2.up * Time.deltaTime * 0.3f); // 이동 효과
             yield return null;
         }
+        // 2. 타겟 위치로 이동
+        if (myTarget != null)
+        {
+            Transform chosenPosition = Random.Range(0, 2) == 0 ? tpPos1 : tpPos2;
+            transform.position = chosenPosition.position; // 선택된 위치로 이동
+            yield return new WaitForSeconds(1.5f);
+        }
+        // 3. 페이드 인 (색 복구)
+        while (color.a < 1.0f)
+        {
+            color.a += Time.deltaTime; // 알파값 증가
+            myRenderer.color = color;  // 색상 적용
+            yield return null;         // 다음 프레임 대기
+        }
+        // 다른 동작이 다시 가능하도록 설정
+        isTeleporting = false;
+    }
+
+    IEnumerator healing()
+    {
+        
+        yield return null;
     }
 
     // Start is called before the first frame update
