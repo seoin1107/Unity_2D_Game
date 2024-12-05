@@ -7,6 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.IO;
+using Unity.VisualScripting;
 
 
 
@@ -40,14 +41,15 @@ public class StatusUI : MonoBehaviour
 
 
     public UnityAction closeAlram;
-   
+
     public CharacterStatus player;
-    
+
     private void Start()
     {
         Instance = this;
         gameObject.SetActive(false);
-        if (!File.Exists(Application.dataPath + "/Data/Save/tempSave.dat")) {
+        if (!File.Exists(Application.dataPath + "/Data/Save/tempSave.dat"))
+        {
             PlayerInitialize();
         }
         else
@@ -87,12 +89,12 @@ public class StatusUI : MonoBehaviour
         {
             hpDownButton.interactable = false;
         }
-        else hpDownButton.interactable = true; 
+        else hpDownButton.interactable = true;
         if (player.characterStat.atkPoint == 0)
         {
             atkDownButton.interactable = false;
         }
-        else atkDownButton.interactable = true; 
+        else atkDownButton.interactable = true;
         if (player.characterStat.utilPoint == 0)
         {
             utilDownButton.interactable = false;
@@ -110,22 +112,17 @@ public class StatusUI : MonoBehaviour
         OnOffAtkOption();
         OnOffUtilOption();
         player.UpdateStatus();
-        leftPoint = player.characterStat.totalPoint - player.characterStat.hpPoint - player.characterStat.atkPoint - player.characterStat.utilPoint;
-        textLeft.text = $"Left Point : {leftPoint}";
-        textHp.text = player.characterStat.hpPoint.ToString();
-        textAtk.text = player.characterStat.atkPoint.ToString();
-        textUtil.text = player.characterStat.utilPoint.ToString();
-        textTotalAtk.text = $"Total Atk : {player.characterStat.totalAtk}";
-        textMaxHp.text = $"Max Hp : {player.characterStat.maxHP}";
+        TextUpdate();
     }
 
-    public  void AddHp()
-    {  
+
+    public void AddHp()
+    {
         player.characterStat.hpPoint++;
         player.UpdateStatus();
-        UpdateStatusUI(); 
+        UpdateStatusUI();
     }
-    public  void AddAtk()
+    public void AddAtk()
     {
         player.characterStat.atkPoint++;
         player.UpdateStatus();
@@ -193,32 +190,83 @@ public class StatusUI : MonoBehaviour
         player.characterStat.utilOption1 = false;
         player.characterStat.utilOption2 = false;
         player.characterStat.utilOption3 = false;
-}
+    }
 
 
     private string[] HPOptions = new string[]
     {
-        "최대 체력 +20",//0
-        "체력 재생 +1%, 피격시 무적 +1s",//1
-        "3번째 공격마다 최대체력 25% 추가 데미지"//2
+        "최대 체력 +20\n",//0
+        "체력 재생 +1%, 피격시 무적 +1s\n",//1
+        "3번째 공격마다 최대체력 25% 추가 데미지\n"//2
     };
     private string[] ATKOptions = new string[]
     {
-        "추가 공격력 +20%",//3
-        "공격/이동 속도 +20%",//4
-        "5회 공격 명중 시 공격력 +10 / 공격 속도 +20%"//5
+        "추가 공격력 +20%\n",//3
+        "공격/이동 속도 +20%\n",//4
+        "5회 공격 명중 시 공격력 +10 / 공격 속도 +20%\n"//5
     };
     private string[] UtilOptions = new string[]
     {
-        "이동 속도 +50%",//6
-        "더블 점프",//7
-        "회피 무적 시간 +0.1s / 패링, 회피 쿨타임 -50%"//8
+        "이동 속도 +50%\n",//6
+        "더블 점프\n",//7
+        "회피 무적 시간 +0.1s / 패링, 회피 쿨타임 -50%\n"//8
     };
-    private string[] Options = new string[9];
+
+
+
+    public void TextUpdate()
+    {
+        string Options = null;
+        if (player.characterStat.hpOption1 == true)
+        {
+            Options += HPOptions[0];
+        }
+        if (player.characterStat.hpOption2 == true)
+        {
+            Options += HPOptions[1];
+        }
+        if (player.characterStat.hpOption3 == true)
+        {
+            Options += HPOptions[2];
+        }
+        if (player.characterStat.atkOption1 == true)
+        {
+            Options += ATKOptions[0];
+        }
+        if (player.characterStat.atkOption2 == true)
+        {
+            Options += ATKOptions[1];
+        }
+        if (player.characterStat.atkOption3 == true)
+        {
+            Options += ATKOptions[2];
+        }
+        if (player.characterStat.utilOption1 == true)
+        {
+            Options += UtilOptions[0];
+        }
+        if (player.characterStat.utilOption2 == true)
+        {
+            Options += UtilOptions[1];
+        }
+        if (player.characterStat.utilOption3 == true)
+        {
+            Options += UtilOptions[2];
+        }
+        leftPoint = player.characterStat.totalPoint - player.characterStat.hpPoint - player.characterStat.atkPoint - player.characterStat.utilPoint;
+        textLeft.text = $"Left Point : {leftPoint}";
+        textHp.text = player.characterStat.hpPoint.ToString();
+        textAtk.text = player.characterStat.atkPoint.ToString();
+        textUtil.text = player.characterStat.utilPoint.ToString();
+        textTotalAtk.text = $"Total Atk : {player.characterStat.totalAtk}";
+        textMaxHp.text = $"Max Hp : {player.characterStat.maxHP}";
+        textPointOption.text = Options;
+    }
+
 
     public void OnOffHpOption()
     {
-        if(player.characterStat.hpPoint == 10 && player.characterStat.hpOption1 == false)
+        if (player.characterStat.hpPoint == 10 && player.characterStat.hpOption1 == false)
         {
             player.characterStat.hpOption1 = true;
             player.UpdateStatus();
@@ -316,52 +364,5 @@ public class StatusUI : MonoBehaviour
             player.characterStat.utilOption3 = false;
         }
     }
-
-    public void checkStatPoint()
-    {
-        if (player.characterStat.hpPoint >= 10)
-        {
-            player.characterStat.maxHP += 20;
-            player.characterStat.curHP = player.characterStat.maxHP;
-            player.UpdateStatus();
-           textPointOption.text += HPOptions[0] + "\n";
-
-
-            if (player.characterStat.hpPoint >= 20)
-            {
-                textPointOption.text += HPOptions[1] + "\n";
-                player.characterStat.hpRegen += 0.1f;
-                player.characterStat.hitRecover += 1;
-                if (player.characterStat.hpPoint >= 30)
-                {
-                    textPointOption.text += HPOptions[2] + "\n";
-                    hpMaxPoint = true;
-                }
-            }
-        }
-
-        if (player.characterStat.atkPoint >= 10)
-        {
-            if (player.characterStat.atkPoint >= 20)
-            {
-                if (player.characterStat.atkPoint >= 30)
-                {
-
-                }
-            }
-        }
-
-        if (player.characterStat.utilPoint >= 10)
-        {
-            if (player.characterStat.utilPoint >= 20)
-            {
-                if (player.characterStat.utilPoint >= 30)
-                {
-
-                }
-            }
-        }
-    }
-
 }
 
