@@ -205,9 +205,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStat:
-    baseHP: 1000
-    maxHP: 1000
-    curHP: 1000
+    baseHP: 100
+    maxHP: 100
+    curHP: 100
     baseAtk: 1
     totalAtk: 1
     moveSpeed: 1
@@ -241,7 +241,9 @@ MonoBehaviour:
   effectPoint: {fileID: 0}
   tpPos1: {fileID: 0}
   tpPos2: {fileID: 0}
+  HpPos: {fileID: 0}
   myState: 0
+  healingAmount: 5
 --- !u!70 &3175706962891907730
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

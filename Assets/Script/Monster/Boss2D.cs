@@ -13,6 +13,7 @@ public class Boss2D : BattleSystem2D
     public Transform effectPoint;       // 번개 생성위치
     public Transform tpPos1;             // 순간이동위치
     public Transform tpPos2;
+    public Transform HpPos;             //체력 50퍼 되면 순간이동위치
     public enum State
     {
         Create, Normal, Battle, Dead
@@ -169,10 +170,50 @@ public class Boss2D : BattleSystem2D
         isTeleporting = false;
     }
 
+    private bool IsHealing = false;
+    public float healingAmount = 5f; // 초당 회복량
     IEnumerator healing()
     {
-        
-        yield return null;
+        //이동위치 설정 추가할것.
+        if(myTarget != null)
+        {
+            // 다른 동작이 중단되도록 설정
+            isTeleporting = true;
+            // 1. 페이드 아웃 (투명해짐)
+            yield return new WaitForSeconds(1.0f);
+            Color color = myRenderer.color;
+            while (color.a > 0.0f)
+            {
+                color.a -= Time.deltaTime;
+                myRenderer.color = color;
+                yield return null;
+            }
+            // 2. 타겟 위치로 이동
+            if (myTarget != null)
+            {
+                transform.position = HpPos.position; // 선택된 위치로 이동
+                yield return new WaitForSeconds(1.5f);
+            }
+            // 3. 페이드 인 (색 복구)
+            while (color.a < 1.0f)
+            {
+                color.a += Time.deltaTime; // 알파값 증가
+                myRenderer.color = color;  // 색상 적용
+                yield return null;         // 다음 프레임 대기
+            }
+            // 다른 동작이 다시 가능하도록 설정
+            isTeleporting = false;
+        }
+
+        IsHealing = true;
+        while (monsterStatus.characterStat.curHP < monsterStatus.characterStat.maxHP)
+        {
+            monsterStatus.characterStat.curHP += healingAmount;
+            monsterStatus.characterStat.curHP =
+                Mathf.Min(monsterStatus.characterStat.curHP, monsterStatus.characterStat.maxHP);
+            yield return new WaitForSeconds(1.0f);
+        }
+        IsHealing = false;
     }
 
     // Start is called before the first frame update
