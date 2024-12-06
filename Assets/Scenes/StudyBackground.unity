@@ -374,7 +374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 1691772458}
   backgroundCamera: {fileID: 187561532}
-  xMovementRatio: 0.5
+  xMovementRatio: 0.3
   yMovementRatio: 0.09
   yOffset: 0
 --- !u!1 &461705943
@@ -1385,7 +1385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!60 &1330629157
 PolygonCollider2D:
   m_ObjectHideFlags: 0
