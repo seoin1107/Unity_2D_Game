@@ -7,6 +7,7 @@ public class InfiniteScrollBackground : MonoBehaviour
     public Transform cameraTransform;  // 카메라의 Transform
     public GameObject backgroundPrefab;  // 배경 프리팹
     public float backgroundWidth = 17.92f;  // 배경의 너비 (설정 필요)
+    public float YOffset = 0f;              // 배경의 Y축 초기 위치
 
     private LinkedList<BackgroundNode> backgroundList;
 
@@ -17,7 +18,7 @@ public class InfiniteScrollBackground : MonoBehaviour
         // 배경 생성
         for (int i = -1; i <= 1; i++)
         {
-            GameObject bg = Instantiate(backgroundPrefab, new Vector3(i * backgroundWidth, 0, 0), Quaternion.identity);
+            GameObject bg = Instantiate(backgroundPrefab, new Vector3(i * backgroundWidth, YOffset, 0), Quaternion.identity);
             BackgroundNode node = new BackgroundNode(bg);
 
             if (backgroundList.Count > 0)
