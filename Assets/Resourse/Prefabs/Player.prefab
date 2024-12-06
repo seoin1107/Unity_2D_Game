@@ -76,9 +76,19 @@ MonoBehaviour:
     dodgeCool: 0
     parryingTime: 0
     parryingCool: 0
+    CanJump: 0
     needExp: 0
     curExp: 0
     eqiupCard: 
+    hpOption1: 0
+    hpOption2: 0
+    hpOption3: 0
+    atkOption1: 0
+    atkOption2: 0
+    atkOption3: 0
+    utilOption1: 0
+    utilOption2: 0
+    utilOption3: 0
   lookDir: 0
   rid: {fileID: 0}
   curSpaceCool: 5
@@ -330,7 +340,7 @@ Transform:
   m_GameObject: {fileID: 5742439689403939997}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.588333, y: 0.99693996, z: -10}
+  m_LocalPosition: {x: 0, y: 3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -345,8 +355,8 @@ Camera:
   m_GameObject: {fileID: 5742439689403939997}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.63529414, g: 0.63529414, b: 0.63529414, a: 0.019607844}
+  m_ClearFlags: 3
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -354,12 +364,12 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 19.094229
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
   m_Anamorphism: 0
-  m_SensorSize: {x: 36, y: 24}
+  m_SensorSize: {x: 1, y: 1}
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -367,15 +377,15 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: -1
-  far clip plane: 1000
-  field of view: 60
+  near clip plane: 3
+  far clip plane: 5000
+  field of view: 3
   orthographic: 1
-  orthographic size: 5
-  m_Depth: -1
+  orthographic size: 8
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 12215
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -402,7 +412,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5742439689403939997}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &6391231372758766935
 MonoBehaviour:
   m_ObjectHideFlags: 0
