@@ -5,7 +5,7 @@
     "baseAtk": 10.0,
     "totalAtk": 11.0,
     "moveSpeed": 5.0,
-    "atkSpeed": 0.0,
+    "atkSpeed": 1.0,
     "attackRange": 1.0,
     "level": 1,
     "hpRegen": 0.0,
@@ -21,11 +21,21 @@
     "dodgeCool": 5.0,
     "parryingTime": 0.20000000298023225,
     "parryingCool": 2.0,
+    "CanJump": 1,
     "needExp": 10,
     "curExp": 0,
     "eqiupCard": [
         0,
         0,
         0
-    ]
+    ],
+    "hpOption1": false,
+    "hpOption2": false,
+    "hpOption3": false,
+    "atkOption1": false,
+    "atkOption2": false,
+    "atkOption3": false,
+    "utilOption1": false,
+    "utilOption2": false,
+    "utilOption3": false
 }

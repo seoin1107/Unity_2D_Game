@@ -30,6 +30,13 @@ public class Movement2D : SpriteProperty
         }
     }
 
+    public enum SPRITEDIR
+    {
+        right, left
+    }
+
+    public SPRITEDIR lookDir = SPRITEDIR.right;
+
     [SerializeField] Rigidbody2D rid;
     /*    public float moveSpeed = 2.0f;*/
     public float curSpaceCool = 0.0f; // 회피 쿨타임 계산
@@ -50,10 +57,15 @@ public class Movement2D : SpriteProperty
 
     }
 
+    bool GetFlip()
+    {
+        return lookDir == SPRITEDIR.right;
+    }
+
     // Update is called once per frame
     protected void OnUpdate()
     {
-        myRenderer.flipX = moveDir.x < 0.0f ? true : moveDir.x > 0.0f ? false : myRenderer.flipX;        //0보다 작을땐 x값을 ture(바라보기전환)
+        myRenderer.flipX = moveDir.x < 0.0f ? GetFlip() : moveDir.x > 0.0f ? !GetFlip() : myRenderer.flipX;        //0보다 작을땐 x값을 ture(바라보기전환)
         myAnim.SetBool(animData.IsMove, moveDir.x != 0.0f ? true : false);
         deltaDist = Time.deltaTime * characterStat.moveSpeed;
         transform.Translate(moveDir * deltaDist);

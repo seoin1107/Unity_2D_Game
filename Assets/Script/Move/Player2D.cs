@@ -57,7 +57,7 @@ public class Player2D : BattleSystem2D
                 }
             }
 
-            if (Input.GetMouseButtonDown(1) && !myAnim.GetBool("IsAir"))           // 패링                                   // 패링키
+            if (Input.GetMouseButtonDown(1) && !myAnim.GetBool("IsAir") && !myAnim.GetBool("IsAttack"))           // 패링                                   // 패링키
             {
                 OnParry();
             }
@@ -91,12 +91,16 @@ public class Player2D : BattleSystem2D
 
     public void OnAttack() // 공격범위 설정
     {
-
+        float addHpAtk = 0;
+        if (playerStatus.characterStat.hpPoint >=30)
+        {
+            addHpAtk = characterStat.maxHP * 0.25f;
+        }
         Vector2 dir = new Vector2(myRenderer.flipX ? -1.0f : 1.0f, 0.0f);
         Collider2D[] list = Physics2D.OverlapCircleAll((Vector2)transform.position + dir, 1.0f, myEnemy);
         foreach (Collider2D col in list)
         {
-            col.GetComponent<IDamage>()?.OnDamage(characterStat.totalAtk);
+            col.GetComponent<IDamage>()?.OnDamage(characterStat.totalAtk + addHpAtk);
         }
     }
 
