@@ -54,32 +54,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStat:
-    baseHP: 0
-    maxHP: 0
-    curHP: 0
-    baseAtk: 0
-    totalAtk: 0
+    baseHP: 20
+    maxHP: 20
+    curHP: 20
+    baseAtk: 10
+    totalAtk: 11
     moveSpeed: 5
-    atkSpeed: 0
-    attackRange: 0
-    level: 0
+    atkSpeed: 1
+    attackRange: 1
+    level: 1
     hpRegen: 0
-    totalPoint: 0
-    atkPoint: 0
+    totalPoint: 1
+    atkPoint: 1
     hpPoint: 0
     utilPoint: 0
-    hitRecover: 0
-    skillCool: 0
-    skillDamage: 0
+    hitRecover: 0.5
+    skillCool: 1
+    skillDamage: 1
     drain: 0
-    dodgeTime: 0
-    dodgeCool: 0
-    parryingTime: 0
-    parryingCool: 0
-    CanJump: 0
-    needExp: 0
+    dodgeTime: 0.2
+    dodgeCool: 5
+    parryingTime: 0.2
+    parryingCool: 2
+    CanJump: 1
+    needExp: 10
     curExp: 0
-    eqiupCard: 
+    eqiupCard: 000000000000000000000000
     hpOption1: 0
     hpOption2: 0
     hpOption3: 0
@@ -340,7 +340,7 @@ Transform:
   m_GameObject: {fileID: 5742439689403939997}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: -10}
+  m_LocalPosition: {x: 4.2, y: 23, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -379,7 +379,7 @@ Camera:
     height: 1
   near clip plane: 3
   far clip plane: 5000
-  field of view: 3
+  field of view: 60
   orthographic: 1
   orthographic size: 8
   m_Depth: 0

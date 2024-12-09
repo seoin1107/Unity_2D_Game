@@ -47,3 +47,4 @@ MonoBehaviour:
   cameraTransform: {fileID: 0}
   backgroundPrefab: {fileID: 3941519704616913292, guid: d6206034bae378a41881289d5d41e23e, type: 3}
   backgroundWidth: 21.504
+  YOffset: 6
