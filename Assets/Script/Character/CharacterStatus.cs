@@ -37,8 +37,10 @@ public struct Stat
 
     public float dodgeTime;
     public float dodgeCool;
+    public float curDodgeCool;
     public float parryingTime;
     public float parryingCool;
+    public float curParryingCool;
 
     public int CanJump;
 

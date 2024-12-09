@@ -39,8 +39,6 @@ public class Movement2D : SpriteProperty
 
     [SerializeField] Rigidbody2D rid;
     /*    public float moveSpeed = 2.0f;*/
-    public float curSpaceCool = 0.0f; // 회피 쿨타임 계산
-    public float spaceCoolDown = 5.0f;
 
     protected Vector2 moveDir;
     protected float deltaDist;
@@ -71,9 +69,13 @@ public class Movement2D : SpriteProperty
         transform.Translate(moveDir * deltaDist);
 
         // 구르기 쿨타임이 지나면 증가
-        if (curSpaceCool < spaceCoolDown)
+        if (characterStat.curDodgeCool < characterStat.dodgeCool)
         {
-            curSpaceCool += Time.deltaTime;
+            characterStat.curDodgeCool += Time.deltaTime;
+        }
+        if (characterStat.curParryingCool < characterStat.parryingCool)
+        {
+            characterStat.curParryingCool += Time.deltaTime;
         }
     }
 
@@ -85,7 +87,7 @@ public class Movement2D : SpriteProperty
 
     IEnumerator Jumping()
     {
-        myRigid.AddForce(Vector2.up * 400.0f);
+        myRigid.AddForce(Vector2.up * 600.0f);
         yield return new WaitForFixedUpdate();
 
         myColider.isTrigger = true;
@@ -129,7 +131,7 @@ public class Movement2D : SpriteProperty
 
     IEnumerator Dodging() //스페이스바 입력시 회피 코루틴
     {
-        if (curSpaceCool >= spaceCoolDown)
+        if (characterStat.curDodgeCool >= characterStat.dodgeCool)
         {
             myColider.isTrigger = false;
             float duration = 0.5f; // 이동 시간
@@ -137,7 +139,7 @@ public class Movement2D : SpriteProperty
             Vector2 rl = myRenderer.flipX ? Vector2.left : Vector2.right;
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"));
             myAnim.SetTrigger(animData.OnDodge);
-            curSpaceCool = 0.0f;
+            characterStat.curDodgeCool = 0.0f;
             while (elapsed < duration)
             {
                 transform.Translate(rl * 10 * Time.deltaTime);
@@ -158,6 +160,7 @@ public class Movement2D : SpriteProperty
         if (myAnim.GetBool(animData.IsParry)) yield break; // 이미 활성화된 경우 무시
 
         myAnim.SetTrigger(animData.OnParry);
+        characterStat.curParryingCool = 0.0f;
         myAnim.SetBool(animData.IsParry, true);
         yield return new WaitForSeconds(0.75f); // 1초 대기
         myAnim.SetBool(animData.IsParry, false); // IsParry 비활성화

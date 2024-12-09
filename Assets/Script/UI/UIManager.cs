@@ -7,6 +7,7 @@ using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
+    public CharacterStatus player;
     public StatusUI myStatusUI;
    
 
