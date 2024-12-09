@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeathBringer2D : BattleSystem2D
+public class DB_normal2D : BattleSystem2D
 {
     Transform myTarget;
     Vector2 originalPosition; // 몬스터의 원래 위치를 저장할 변수
@@ -61,13 +61,6 @@ public class DeathBringer2D : BattleSystem2D
                 }
                 break;
             case State.Battle:
-                /*            if (myTarget == null)
-                            {
-                                Debug.LogWarning("myTarget이 null입니다.");
-                                ChangeState(State.Normal);
-                                return;
-                            }*/
-
                 playTime += Time.deltaTime;
                 moveDir.x = myTarget.position.x > transform.position.x ? 1.0f :
                     myTarget.position.x < transform.position.x ? -1.0f : 0.0f;
@@ -105,17 +98,6 @@ public class DeathBringer2D : BattleSystem2D
             Debug.LogWarning("Ground transform is null.");
             return;
         }
-        /*        curGround = tr;
-                float halfDist = tr.localScale.x * 0.5f; // 발판의절반거리
-                float dist = tr.position.x - transform.position.x;
-                if (moveDir.x < 0.0f)
-                {
-                    maxDist = halfDist - dist;
-                }
-                else
-                {
-                    maxDist = halfDist + dist;
-                }*/
     }
 
     public void OnFindTarget(Transform tr)
@@ -153,14 +135,13 @@ public class DeathBringer2D : BattleSystem2D
     }
     IEnumerator DisApearing()
     {
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(0.8f);
 
         Color color = myRenderer.color;
         while (color.a > 0.0f)
         {
             color.a -= Time.deltaTime;
             myRenderer.color = color;
-            transform.Translate(Vector2.up * Time.deltaTime * 0.3f);
             yield return null;
         }
         Destroy(gameObject);

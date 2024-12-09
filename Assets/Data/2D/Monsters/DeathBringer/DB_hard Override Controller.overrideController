@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DeathBringer Override Controller
+  m_Name: DB_hard Override Controller
   m_Controller: {fileID: 9100000, guid: 4ec83cae5463ecc4fa2595431e49ac47, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 1945443fb1eb3d742bb3f470aff3b3e3, type: 2}
