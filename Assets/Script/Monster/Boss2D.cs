@@ -130,6 +130,15 @@ public class Boss2D : BattleSystem2D
             Instantiate(GhoulPrefab, summonPoint.position, Quaternion.identity);
         }
     }
+
+    void SummonDeathBringer()
+    {
+        if (GhoulPrefab != null && summonPoint != null)
+        {
+            //수호자소환
+            //Instantiate(GhoulPrefab, summonPoint.position, Quaternion.identity);
+        }
+    }
     void EffectLighting()
     {
         if(GhoulPrefab != null && effectPoint != null)
