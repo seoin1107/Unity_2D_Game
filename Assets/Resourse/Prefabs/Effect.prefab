@@ -194,9 +194,19 @@ MonoBehaviour:
     dodgeCool: 0
     parryingTime: 0
     parryingCool: 0
+    CanJump: 0
     needExp: 0
     curExp: 0
     eqiupCard: 
+    hpOption1: 0
+    hpOption2: 0
+    hpOption3: 0
+    atkOption1: 0
+    atkOption2: 0
+    atkOption3: 0
+    utilOption1: 0
+    utilOption2: 0
+    utilOption3: 0
   lookDir: 0
   rid: {fileID: 0}
   curSpaceCool: 0

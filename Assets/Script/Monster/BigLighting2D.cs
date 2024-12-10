@@ -20,9 +20,9 @@ public class BigLighting2D : BattleSystem2D
         switch (myState)
         {
             case State.Normal:
+                StartCoroutine(DisApearingAfterDelay(2.5f));
                 break;
             case State.Battle:
-                StartCoroutine(DisApearingAfterDelay(2.5f));
                 break;
             case State.Dead:
                 break;
@@ -89,9 +89,6 @@ public class BigLighting2D : BattleSystem2D
     IEnumerator DisApearingAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        if (myState == State.Battle) // 삭제 전 상태 확인
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }
