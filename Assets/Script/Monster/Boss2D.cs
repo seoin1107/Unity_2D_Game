@@ -135,7 +135,7 @@ public class Boss2D : BattleSystem2D
 
     void SummonDeathBringer()
     {
-        if (GhoulPrefab != null && DBPoint != null)
+        if (DeathBringer != null && DBPoint != null)
         {
             //수호자소환
             Instantiate(DeathBringer, DBPoint.position, Quaternion.identity);
@@ -143,7 +143,7 @@ public class Boss2D : BattleSystem2D
     }
     void EffectLighting()
     {
-        if(GhoulPrefab != null && effectPoint != null)
+        if(LightingPrefab != null && effectPoint != null)
         {
             //번개소환
             Instantiate(LightingPrefab, effectPoint.position, Quaternion.identity);

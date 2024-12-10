@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DB_hard2D : BattleSystem2D
+public class DB_patten2D : BattleSystem2D
 {
     Transform myTarget;
-    Vector2 originalPosition; // 몬스터의 원래 위치를 저장할 변수
     public CharacterStatus monsterStatus;
+    public GameObject LightingPrefab;   // 번개 프리팹
+    public Transform effectPoint1;       // 번개 생성위치
+    public Transform effectPoint2;       // 번개 생성위치
+    public Transform effectPoint3;       // 번개 생성위치
+
     public enum State
     {
         Create, Normal, Battle, Dead
     }
     public State myState = State.Create;
-    //float maxDist = 0.0f;
     Transform curGround = null;
     void ChangeState(State s)
     {
@@ -44,43 +47,20 @@ public class DB_hard2D : BattleSystem2D
         switch (myState)
         {
             case State.Normal:
-                myAnim.SetBool("IsAir", false);
-                if (!myAnim.GetBool("IsAir"))
-                {
-                    if (Mathf.Abs(transform.position.x - originalPosition.x) > 0.1f)
-                    {
-                        // X축 방향만 계산 (y 값은 무시)
-                        Vector2 direction = new Vector2(originalPosition.x - transform.position.x, 0).normalized;
-                        moveDir = direction;
-                    }
-                    else
-                    {
-                        moveDir = Vector2.zero;
-                    }
-
-                }
+                StartCoroutine(Energy());
                 break;
             case State.Battle:
-                playTime += Time.deltaTime;
-                moveDir.x = myTarget.position.x > transform.position.x ? 1.0f :
-                    myTarget.position.x < transform.position.x ? -1.0f : 0.0f;
-
-                if (Vector2.Distance(myTarget.position, transform.position) <= monsterStatus.characterStat.attackRange)
-                {
-                    moveDir.x = 0.0f;
-                    if (playTime >= monsterStatus.characterStat.atkSpeed)
-                    {
-                        playTime = 0.0f;
-                        myAnim.SetTrigger(animData.OnAttack);
-                    }
-                }
                 break;
         }
+    }
+    IEnumerator Energy()
+    {
+        yield return new WaitForSeconds(2.0f);
+        myAnim.SetBool("IsEnergy", false);
     }
     // Start is called before the first frame update
     void Start()
     {
-        originalPosition = transform.position; // 시작 위치를 저장
         ChangeState(State.Normal);
     }
 
@@ -99,24 +79,6 @@ public class DB_hard2D : BattleSystem2D
             return;
         }
     }
-
-    public void OnFindTarget(Transform tr)
-    {
-        if (myState == State.Dead) return;
-        if (tr.GetComponent<ILive>().IsLive)
-        {
-            myTarget = tr;
-            myTarget.GetComponent<IDeathAlarm>().deathAlarm += () => ChangeState(State.Normal);
-            ChangeState(State.Battle);
-        }
-    }
-
-    public void OnLostTarget()
-    {
-        if (myState == State.Dead) return;
-        myTarget = null;
-        ChangeState(State.Normal);
-    }
     public void OnAttack()
     {
         myTarget.GetComponent<IDamage>()?.OnDamage(monsterStatus.characterStat.totalAtk);
@@ -131,6 +93,9 @@ public class DB_hard2D : BattleSystem2D
 
     public void OnDisApear()
     {
+        EffectLighting1();
+        EffectLighting2();
+        EffectLighting3();
         StartCoroutine(DisApearing());
     }
     IEnumerator DisApearing()
@@ -145,5 +110,29 @@ public class DB_hard2D : BattleSystem2D
             yield return null;
         }
         Destroy(gameObject);
+    }
+    void EffectLighting1()
+    {
+        if (LightingPrefab != null && effectPoint1 != null)
+        {
+            //번개소환
+            Instantiate(LightingPrefab, effectPoint1.position, Quaternion.identity);
+        }
+    }
+    void EffectLighting2()
+    {
+        if (LightingPrefab != null && effectPoint2 != null)
+        {
+            //번개소환
+            Instantiate(LightingPrefab, effectPoint2.position, Quaternion.identity);
+        }
+    }
+    void EffectLighting3()
+    {
+        if (LightingPrefab != null && effectPoint3 != null)
+        {
+            //번개소환
+            Instantiate(LightingPrefab, effectPoint3.position, Quaternion.identity);
+        }
     }
 }

@@ -135,7 +135,7 @@ public class DB_normal2D : BattleSystem2D
     }
     IEnumerator DisApearing()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.6f);
 
         Color color = myRenderer.color;
         while (color.a > 0.0f)
