@@ -36,12 +36,11 @@ public class Player2D : BattleSystem2D
                 moveDir.x = Input.GetAxisRaw("Horizontal");                                     // ÁÂ¿ìÀÌµ¿
                 if (Input.GetKeyDown(KeyCode.W) && !myAnim.GetBool("IsAir"))          // À­Á¡ÇÁ
                 {
-                    OnJump();
-                    if(player.characterStat.CanJump == 2 && Input.GetKeyDown(KeyCode.W))
-                    {
-                        OnJump();
-
-                    }
+                    OnJump();                 
+                }
+                if (Input.GetKeyDown(KeyCode.W) && myAnim.GetBool("IsAir"))          // À­Á¡ÇÁ
+                {
+                    OnDoubleJump();
                 }
 
                 if (Input.GetKeyDown(KeyCode.S) && !myAnim.GetBool("IsAir"))          // ¾Æ·§Á¡ÇÁ

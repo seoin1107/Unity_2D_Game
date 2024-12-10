@@ -82,19 +82,47 @@ public class Movement2D : SpriteProperty
     protected void OnJump()
     {
         StopAllCoroutines();
-        StartCoroutine(Jumping());
+        StartCoroutine(Jumping()); 
+       
     }
 
-    IEnumerator Jumping()
+    protected void OnDoubleJump()
     {
-        myRigid.AddForce(Vector2.up * 600.0f);
-        yield return new WaitForFixedUpdate();
+        StopAllCoroutines();
+        StartCoroutine(DoubleJumping());
+    }
 
+    IEnumerator DoubleJumping()
+    {
+        int jumpCount = 1;
+
+        if (Input.GetKeyDown(KeyCode.W) && characterStat.utilOption2 == true && jumpCount <characterStat.CanJump)
+        {
+            myRigid.AddForce(Vector2.up * 600.0f);
+            jumpCount++;
+        }
         myColider.isTrigger = true;
         while (myRigid.velocity.y >= 0.0f) //위로올라가는중
         {
             yield return null;
         }
+
+        myColider.isTrigger = false;
+
+    }
+
+    IEnumerator Jumping()
+    {
+        myRigid.AddForce(Vector2.up * 600.0f);
+      
+        yield return new WaitForFixedUpdate();
+  
+        myColider.isTrigger = true;
+        while (myRigid.velocity.y >= 0.0f) //위로올라가는중
+        {
+            yield return null;
+        }
+     
         myColider.isTrigger = false;
 
     }
@@ -134,6 +162,7 @@ public class Movement2D : SpriteProperty
         if (characterStat.curDodgeCool >= characterStat.dodgeCool)
         {
             myColider.isTrigger = false;
+            myRigid.gravityScale = 0.0f;
             float duration = 0.5f; // 이동 시간
             float elapsed = 0f;  //이동 시간 계산
             Vector2 rl = myRenderer.flipX ? Vector2.left : Vector2.right;
@@ -147,6 +176,8 @@ public class Movement2D : SpriteProperty
                 yield return null;
             }
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"), false);
+            myRigid.gravityScale = 5.0f;
+
         }
     }
     protected void OnParry()
