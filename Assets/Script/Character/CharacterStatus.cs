@@ -43,6 +43,7 @@ public struct Stat
     public float curParryingCool;
 
     public int CanJump;
+    public int jumpCount;
 
     public int needExp;
     public int curExp;

@@ -94,12 +94,12 @@ public class Movement2D : SpriteProperty
 
     IEnumerator DoubleJumping()
     {
-        int jumpCount = 1;
 
-        if (Input.GetKeyDown(KeyCode.W) && characterStat.utilOption2 == true && jumpCount <characterStat.CanJump)
+        if (Input.GetKeyDown(KeyCode.W) && characterStat.jumpCount < characterStat.CanJump)
         {
             myRigid.AddForce(Vector2.up * 600.0f);
-            jumpCount++;
+            characterStat.jumpCount++;
+            Debug.Log(characterStat.CanJump + " " + characterStat.jumpCount);
         }
         myColider.isTrigger = true;
         while (myRigid.velocity.y >= 0.0f) //위로올라가는중
@@ -113,9 +113,9 @@ public class Movement2D : SpriteProperty
 
     IEnumerator Jumping()
     {
-        myRigid.AddForce(Vector2.up * 600.0f);
-      
-        yield return new WaitForFixedUpdate();
+        myRigid.AddForce(Vector2.up * 800.0f);
+        characterStat.jumpCount++;
+          yield return new WaitForFixedUpdate();
   
         myColider.isTrigger = true;
         while (myRigid.velocity.y >= 0.0f) //위로올라가는중
@@ -124,7 +124,6 @@ public class Movement2D : SpriteProperty
         }
      
         myColider.isTrigger = false;
-
     }
 
     protected void OnDownJump()
@@ -141,7 +140,7 @@ public class Movement2D : SpriteProperty
         yield return new WaitForFixedUpdate();
 
         myColider.isTrigger = true;
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.2f);
         myColider.isTrigger = false;
         while (myRigid.velocity.y < 0.0f) //내려가기
         {
@@ -216,11 +215,13 @@ public class Movement2D : SpriteProperty
         {
             myAnim.SetBool("IsAir", false);
             OnCheckGround(collision.transform);
+            characterStat.jumpCount = 0;
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
         {
             isFloor = true;     //floor에있을때
             myAnim.SetBool("IsAir", false);
+            characterStat.jumpCount = 0;
             /*            OnCheckGround(collision.transform);*/
         }
     }

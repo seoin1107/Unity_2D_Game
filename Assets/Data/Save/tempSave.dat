@@ -1,7 +1,7 @@
 {
     "baseHP": 20.0,
     "maxHP": 20.0,
-    "curHP": 20.0,
+    "curHP": 19.0,
     "baseAtk": 10.0,
     "totalAtk": 11.0,
     "moveSpeed": 5.0,
@@ -19,11 +19,11 @@
     "drain": 0.0,
     "dodgeTime": 0.20000000298023225,
     "dodgeCool": 5.0,
-    "curDodgeCool": 5.004668712615967,
+    "curDodgeCool": 5.001084327697754,
     "parryingTime": 0.20000000298023225,
     "parryingCool": 2.0,
-    "curParryingCool": 2.0052194595336916,
-    "CanJump": 1,
+    "curParryingCool": 2.0035324096679689,
+    "CanJump": 2,
     "needExp": 10,
     "curExp": 0,
     "eqiupCard": [
@@ -38,6 +38,6 @@
     "atkOption2": false,
     "atkOption3": false,
     "utilOption1": false,
-    "utilOption2": false,
+    "utilOption2": true,
     "utilOption3": false
 }
