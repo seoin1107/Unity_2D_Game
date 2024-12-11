@@ -210,7 +210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4569534882105735296}
-  - component: {fileID: 165246860132369394}
+  - component: {fileID: 2430535860010776368}
   - component: {fileID: 3175706962891907730}
   - component: {fileID: 6103359976641070283}
   m_Layer: 9
@@ -238,7 +238,7 @@ Transform:
   - {fileID: 5276697951951470034}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &165246860132369394
+--- !u!114 &2430535860010776368
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4378380278815144764}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b5c6833aa6e6c54aa02f97b355b39c1, type: 3}
+  m_Script: {fileID: 11500000, guid: f3f1463b24953fa47958db0bb24b167b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterStat:
@@ -290,11 +290,15 @@ MonoBehaviour:
   rid: {fileID: 0}
   curSpaceCool: 0
   spaceCoolDown: 5
-  monsterStatus: {fileID: 165246860132369394}
+  monsterStatus: {fileID: 2430535860010776368}
   LightingPrefab: {fileID: 4378380278815144764, guid: 7387a0c04dd7d55449d863e41ebc32d6, type: 3}
   effectPoint1: {fileID: 5459697358046490325}
   effectPoint2: {fileID: 0}
   effectPoint3: {fileID: 8242479764054641435}
+  effectPoint4: {fileID: 0}
+  effectPoint5: {fileID: 0}
+  DB_HardPrefab: {fileID: 4378380278815144764, guid: 3572ee73bcacb7649a2fdf41271f1892, type: 3}
+  DB_HardPoint: {fileID: 0}
   myState: 0
 --- !u!70 &3175706962891907730
 CapsuleCollider2D:
@@ -668,9 +672,9 @@ MonoBehaviour:
   attackAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DB_normal2D, Assembly-CSharp
-        m_MethodName: OnAttack
+      - m_Target: {fileID: 2430535860010776368}
+        m_TargetAssemblyTypeName: DB_real2D, Assembly-CSharp
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -683,9 +687,9 @@ MonoBehaviour:
   deadAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DB_normal2D, Assembly-CSharp
-        m_MethodName: OnDisApear
+      - m_Target: {fileID: 2430535860010776368}
+        m_TargetAssemblyTypeName: DB_real2D, Assembly-CSharp
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

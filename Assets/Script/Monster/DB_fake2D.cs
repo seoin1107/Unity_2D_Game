@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DB_patten2D : BattleSystem2D
+public class DB_fake2D : BattleSystem2D
 {
     Transform myTarget;
     public CharacterStatus monsterStatus;
@@ -10,6 +10,11 @@ public class DB_patten2D : BattleSystem2D
     public Transform effectPoint1;       // 번개 생성위치
     public Transform effectPoint2;       // 번개 생성위치
     public Transform effectPoint3;       // 번개 생성위치
+    public Transform effectPoint4;       // 번개 생성위치
+    public Transform effectPoint5;       // 번개 생성위치
+
+    public GameObject DB_HardPrefab;
+    public Transform DB_HardPoint;
 
     public enum State
     {
@@ -48,9 +53,32 @@ public class DB_patten2D : BattleSystem2D
         {
             case State.Normal:
                 StartCoroutine(Energy());
+                StartCoroutine(TimeOver());
                 break;
             case State.Battle:
                 break;
+        }
+    }
+    IEnumerator TimeOver()
+    {
+        yield return new WaitForSeconds(7.0f);
+        myAnim.SetTrigger(animData.OnDead);
+        Color color = myRenderer.color;
+        while (color.a > 0.0f)
+        {
+            color.a -= Time.deltaTime;
+            myRenderer.color = color;
+            yield return null;
+        }
+        Destroy(gameObject);
+    }
+
+    void SummonDB_Hard()
+    {
+        if (DB_HardPrefab != null && DB_HardPoint != null)
+        {
+            //하드수호자 소환
+            Instantiate(DB_HardPrefab, DB_HardPoint.position, Quaternion.identity);
         }
     }
     IEnumerator Energy()
@@ -96,7 +124,10 @@ public class DB_patten2D : BattleSystem2D
         EffectLighting1();
         EffectLighting2();
         EffectLighting3();
+        EffectLighting4();
+        EffectLighting5();
         StartCoroutine(DisApearing());
+        SummonDB_Hard();
     }
     IEnumerator DisApearing()
     {
@@ -133,6 +164,22 @@ public class DB_patten2D : BattleSystem2D
         {
             //번개소환
             Instantiate(LightingPrefab, effectPoint3.position, Quaternion.identity);
+        }
+    }
+    void EffectLighting4()
+    {
+        if (LightingPrefab != null && effectPoint4 != null)
+        {
+            //번개소환
+            Instantiate(LightingPrefab, effectPoint4.position, Quaternion.identity);
+        }
+    }
+    void EffectLighting5()
+    {
+        if (LightingPrefab != null && effectPoint5 != null)
+        {
+            //번개소환
+            Instantiate(LightingPrefab, effectPoint5.position, Quaternion.identity);
         }
     }
 }

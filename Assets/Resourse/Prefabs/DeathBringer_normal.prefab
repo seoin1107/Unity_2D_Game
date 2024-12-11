@@ -213,6 +213,10 @@ MonoBehaviour:
   curSpaceCool: 0
   spaceCoolDown: 5
   monsterStatus: {fileID: 4737674997407788063}
+  DB_realPrefab: {fileID: 0}
+  DB_realPoint: {fileID: 0}
+  DB_fakePrefab: {fileID: 4378380278815144764, guid: 80f9a02d4ce67244f8a5ca3b263f99bc, type: 3}
+  DB_fakePoint: {fileID: 0}
   myState: 0
 --- !u!70 &3175706962891907730
 CapsuleCollider2D:

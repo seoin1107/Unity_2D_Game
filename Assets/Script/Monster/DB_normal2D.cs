@@ -7,6 +7,11 @@ public class DB_normal2D : BattleSystem2D
     Transform myTarget;
     Vector2 originalPosition; // 몬스터의 원래 위치를 저장할 변수
     public CharacterStatus monsterStatus;
+
+    public GameObject DB_realPrefab;
+    public Transform DB_realPoint;
+    public GameObject DB_fakePrefab;
+    public Transform DB_fakePoint;
     public enum State
     {
         Create, Normal, Battle, Dead
@@ -133,6 +138,23 @@ public class DB_normal2D : BattleSystem2D
     {
         StartCoroutine(DisApearing());
     }
+
+    void SummonDB_real()
+    {
+        if (DB_realPrefab != null && DB_realPoint != null)
+        {
+            //진짜
+            Instantiate(DB_realPrefab, DB_realPoint.position, Quaternion.identity);
+        }
+    }
+    void SummonDB_fake()
+    {
+        if (DB_fakePrefab != null && DB_fakePoint != null)
+        {
+            //가짜
+            Instantiate(DB_fakePrefab, DB_fakePoint.position, Quaternion.identity);
+        }
+    }
     IEnumerator DisApearing()
     {
         yield return new WaitForSeconds(0.6f);
@@ -145,5 +167,7 @@ public class DB_normal2D : BattleSystem2D
             yield return null;
         }
         Destroy(gameObject);
+        SummonDB_real();
+        SummonDB_fake();
     }
 }

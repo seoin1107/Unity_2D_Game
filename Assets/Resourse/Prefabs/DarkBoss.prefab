@@ -207,7 +207,7 @@ MonoBehaviour:
   characterStat:
     baseHP: 100
     maxHP: 100
-    curHP: 100
+    curHP: 60
     baseAtk: 1
     totalAtk: 1
     moveSpeed: 1
@@ -227,9 +227,19 @@ MonoBehaviour:
     dodgeCool: 0
     parryingTime: 0
     parryingCool: 0
+    CanJump: 0
     needExp: 0
     curExp: 0
     eqiupCard: 
+    hpOption1: 0
+    hpOption2: 0
+    hpOption3: 0
+    atkOption1: 0
+    atkOption2: 0
+    atkOption3: 0
+    utilOption1: 0
+    utilOption2: 0
+    utilOption3: 0
   lookDir: 0
   rid: {fileID: 0}
   curSpaceCool: 0
@@ -237,6 +247,8 @@ MonoBehaviour:
   monsterStatus: {fileID: 7498088306867702604}
   GhoulPrefab: {fileID: 4378380278815144764, guid: 7f0abc442aa0591439db4754ceb4df69, type: 3}
   summonPoint: {fileID: 877734434673730377}
+  DeathBringer: {fileID: 0}
+  DBPoint: {fileID: 0}
   LightingPrefab: {fileID: 4378380278815144764, guid: 41124806950600940bbbbdc4ac0830a6, type: 3}
   effectPoint: {fileID: 0}
   tpPos1: {fileID: 0}
