@@ -7,9 +7,11 @@ public class Boss2D : BattleSystem2D
     Vector2 originalPosition; // 몬스터의 원래 위치를 저장할 변수
     public CharacterStatus monsterStatus;
 
-    public GameObject GhoulPrefab;      // 구울 프리펩
+    public GameObject GhoulPrefab;      // 구울 프리팹
     public Transform summonPoint;       // 구울 소환위치
-    public GameObject LightingPrefab;   // 번개 프리펩
+    public GameObject DeathBringer;     // 수호자 프리팹
+    public Transform DBPoint;          // 수호자 소환위치      
+    public GameObject LightingPrefab;   // 번개 프리팹
     public Transform effectPoint;       // 번개 생성위치
     public Transform tpPos1;             // 순간이동위치
     public Transform tpPos2;
@@ -130,9 +132,18 @@ public class Boss2D : BattleSystem2D
             Instantiate(GhoulPrefab, summonPoint.position, Quaternion.identity);
         }
     }
+
+    void SummonDeathBringer()
+    {
+        if (DeathBringer != null && DBPoint != null)
+        {
+            //수호자소환
+            Instantiate(DeathBringer, DBPoint.position, Quaternion.identity);
+        }
+    }
     void EffectLighting()
     {
-        if(GhoulPrefab != null && effectPoint != null)
+        if(LightingPrefab != null && effectPoint != null)
         {
             //번개소환
             Instantiate(LightingPrefab, effectPoint.position, Quaternion.identity);
@@ -193,6 +204,7 @@ public class Boss2D : BattleSystem2D
             {
                 transform.position = HpPos.position; // 선택된 위치로 이동
                 yield return new WaitForSeconds(1.5f);
+                SummonDeathBringer();
             }
             // 3. 페이드 인 (색 복구)
             while (color.a < 1.0f)

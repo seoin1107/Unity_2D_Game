@@ -19,6 +19,7 @@ public struct AnimParameterData
     public int OnParry; //패링 트리거
     public int IsParry; //패링 동작구분
     public int OnParring;
+    public int IsEnergy;
 
 
     public void Initialize()
@@ -37,6 +38,7 @@ public struct AnimParameterData
         OnParry = Animator.StringToHash("OnParry");
         IsParry = Animator.StringToHash("IsParry");
         OnParring = Animator.StringToHash("OnParring");
+        IsEnergy = Animator.StringToHash("IsEnergy");
     }
 }
 
