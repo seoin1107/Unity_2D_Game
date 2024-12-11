@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class SaveGameUI : UIManager
 {
-   public CharacterStatus mySave;
    public string filePath = Application.dataPath + "/Data/Save/"; //세이브 파일 경로
 
     public static SaveGameUI Instance;
@@ -32,15 +31,15 @@ public class SaveGameUI : UIManager
 
     public void OnSave1()
     {
-        FileManager.SaveToJson<Stat>(filePath+"Save1.dat", mySave.characterStat);
+        FileManager.SaveToJson<Stat>(filePath+"Save1.dat", player.characterStat);
     }
     public void OnSave2()
     {
-        FileManager.SaveToJson<Stat>(filePath+"Save2.dat", mySave.characterStat);
+        FileManager.SaveToJson<Stat>(filePath+"Save2.dat", player.characterStat);
     }
     public void OnSave3()
     {
-        FileManager.SaveToJson<Stat>(filePath+"Save3.dat", mySave.characterStat);
+        FileManager.SaveToJson<Stat>(filePath+"Save3.dat", player.characterStat);
     }
 
  

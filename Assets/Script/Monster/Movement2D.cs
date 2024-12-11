@@ -39,8 +39,6 @@ public class Movement2D : SpriteProperty
 
     [SerializeField] Rigidbody2D rid;
     /*    public float moveSpeed = 2.0f;*/
-    public float curSpaceCool = 0.0f; // 회피 쿨타임 계산
-    public float spaceCoolDown = 5.0f;
 
     protected Vector2 moveDir;
     protected float deltaDist;
@@ -71,30 +69,61 @@ public class Movement2D : SpriteProperty
         transform.Translate(moveDir * deltaDist);
 
         // 구르기 쿨타임이 지나면 증가
-        if (curSpaceCool < spaceCoolDown)
+        if (characterStat.curDodgeCool < characterStat.dodgeCool)
         {
-            curSpaceCool += Time.deltaTime;
+            characterStat.curDodgeCool += Time.deltaTime;
+        }
+        if (characterStat.curParryingCool < characterStat.parryingCool)
+        {
+            characterStat.curParryingCool += Time.deltaTime;
         }
     }
 
     protected void OnJump()
     {
         StopAllCoroutines();
-        StartCoroutine(Jumping());
+        StartCoroutine(Jumping()); 
+       
     }
 
-    IEnumerator Jumping()
+    protected void OnDoubleJump()
     {
-        myRigid.AddForce(Vector2.up * 400.0f);
-        yield return new WaitForFixedUpdate();
+        StopAllCoroutines();
+        StartCoroutine(DoubleJumping());
+    }
 
+    IEnumerator DoubleJumping()
+    {
+
+        if (Input.GetKeyDown(KeyCode.W) && characterStat.jumpCount < characterStat.CanJump)
+        {
+            myRigid.AddForce(Vector2.up * 600.0f);
+            characterStat.jumpCount++;
+            Debug.Log(characterStat.CanJump + " " + characterStat.jumpCount);
+        }
         myColider.isTrigger = true;
         while (myRigid.velocity.y >= 0.0f) //위로올라가는중
         {
             yield return null;
         }
+
         myColider.isTrigger = false;
 
+    }
+
+    IEnumerator Jumping()
+    {
+        myRigid.AddForce(Vector2.up * 800.0f);
+        characterStat.jumpCount++;
+          yield return new WaitForFixedUpdate();
+  
+        myColider.isTrigger = true;
+        while (myRigid.velocity.y >= 0.0f) //위로올라가는중
+        {
+            yield return null;
+        }
+     
+        myColider.isTrigger = false;
     }
 
     protected void OnDownJump()
@@ -111,7 +140,7 @@ public class Movement2D : SpriteProperty
         yield return new WaitForFixedUpdate();
 
         myColider.isTrigger = true;
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.2f);
         myColider.isTrigger = false;
         while (myRigid.velocity.y < 0.0f) //내려가기
         {
@@ -129,7 +158,7 @@ public class Movement2D : SpriteProperty
 
     IEnumerator Dodging() //스페이스바 입력시 회피 코루틴
     {
-        if (curSpaceCool >= spaceCoolDown)
+        if (characterStat.curDodgeCool >= characterStat.dodgeCool)
         {
             myColider.isTrigger = false;
             float duration = 0.5f; // 이동 시간
@@ -137,7 +166,7 @@ public class Movement2D : SpriteProperty
             Vector2 rl = myRenderer.flipX ? Vector2.left : Vector2.right;
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"));
             myAnim.SetTrigger(animData.OnDodge);
-            curSpaceCool = 0.0f;
+            characterStat.curDodgeCool = 0.0f;
             while (elapsed < duration)
             {
                 transform.Translate(rl * 10 * Time.deltaTime);
@@ -145,6 +174,7 @@ public class Movement2D : SpriteProperty
                 yield return null;
             }
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"), false);
+
         }
     }
     protected void OnParry()
@@ -158,6 +188,7 @@ public class Movement2D : SpriteProperty
         if (myAnim.GetBool(animData.IsParry)) yield break; // 이미 활성화된 경우 무시
 
         myAnim.SetTrigger(animData.OnParry);
+        characterStat.curParryingCool = 0.0f;
         myAnim.SetBool(animData.IsParry, true);
         yield return new WaitForSeconds(0.75f); // 1초 대기
         myAnim.SetBool(animData.IsParry, false); // IsParry 비활성화
@@ -182,11 +213,13 @@ public class Movement2D : SpriteProperty
         {
             myAnim.SetBool("IsAir", false);
             OnCheckGround(collision.transform);
+            characterStat.jumpCount = 0;
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
         {
             isFloor = true;     //floor에있을때
             myAnim.SetBool("IsAir", false);
+            characterStat.jumpCount = 0;
             /*            OnCheckGround(collision.transform);*/
         }
     }

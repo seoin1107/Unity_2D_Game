@@ -16,12 +16,12 @@ public class Player2D : BattleSystem2D
 
     public LayerMask myEnemy;
 
-    public CharacterStatus playerStatus;
+    public CharacterStatus player;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerStatus = this;
+        player = this;
         UpdateStatus();
     }
 
@@ -36,7 +36,11 @@ public class Player2D : BattleSystem2D
                 moveDir.x = Input.GetAxisRaw("Horizontal");                                     // 좌우이동
                 if (Input.GetKeyDown(KeyCode.W) && !myAnim.GetBool("IsAir"))          // 윗점프
                 {
-                    OnJump();
+                    OnJump();                 
+                }
+                if (Input.GetKeyDown(KeyCode.W) && myAnim.GetBool("IsAir"))          // 윗점프
+                {
+                    OnDoubleJump();
                 }
 
                 if (Input.GetKeyDown(KeyCode.S) && !myAnim.GetBool("IsAir"))          // 아랫점프
@@ -59,13 +63,16 @@ public class Player2D : BattleSystem2D
 
             if (Input.GetMouseButtonDown(1) && !myAnim.GetBool("IsAir") && !myAnim.GetBool("IsAttack"))           // 패링                                   // 패링키
             {
-                OnParry();
+                if (characterStat.curParryingCool >= characterStat.parryingCool)
+                {
+                    OnParry();
+                }
             }
 
 
             if (Input.GetKeyDown(KeyCode.Space))                                   // 회피(구르기&대쉬)
             {
-                if (curSpaceCool >= spaceCoolDown)
+                if (characterStat.curDodgeCool >= characterStat.dodgeCool)
                 {
                     OnDodge();
                 }
@@ -75,7 +82,7 @@ public class Player2D : BattleSystem2D
             if (Input.GetKeyDown(KeyCode.G))
             {
             
-                FileManager.SaveToJson<Stat>(Application.dataPath + "/Data/Save/tempSave.dat", playerStatus.characterStat);
+                FileManager.SaveToJson<Stat>(Application.dataPath + "/Data/Save/tempSave.dat", player.characterStat);
                 Interactable?.Interact(this);
             }
 
@@ -92,7 +99,7 @@ public class Player2D : BattleSystem2D
     public void OnAttack() // 공격범위 설정
     {
         float addHpAtk = 0;
-        if (playerStatus.characterStat.hpPoint >=30)
+        if (player.characterStat.hpPoint >=30)
         {
             addHpAtk = characterStat.maxHP * 0.25f;
         }

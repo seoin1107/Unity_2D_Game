@@ -175,6 +175,7 @@ public class StatusUI : MonoBehaviour
         player.characterStat.parryingTime = 0.2f;
         player.characterStat.parryingCool = 2.0f;
         player.characterStat.CanJump = 1;
+        player.characterStat.jumpCount = 0;
         player.characterStat.needExp = 10;
         player.characterStat.curExp = 0;
         player.characterStat.eqiupCard = new int[3] { 0, 0, 0 };

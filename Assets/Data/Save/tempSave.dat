@@ -19,9 +19,12 @@
     "drain": 0.0,
     "dodgeTime": 0.20000000298023225,
     "dodgeCool": 5.0,
+    "curDodgeCool": 2.0258305072784426,
     "parryingTime": 0.20000000298023225,
     "parryingCool": 2.0,
-    "CanJump": 1,
+    "curParryingCool": 2.0035324096679689,
+    "CanJump": 2,
+    "jumpCount": 0,
     "needExp": 10,
     "curExp": 0,
     "eqiupCard": [
@@ -36,6 +39,6 @@
     "atkOption2": false,
     "atkOption3": false,
     "utilOption1": false,
-    "utilOption2": false,
+    "utilOption2": true,
     "utilOption3": false
 }
