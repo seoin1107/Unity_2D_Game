@@ -161,7 +161,6 @@ public class Movement2D : SpriteProperty
         if (characterStat.curDodgeCool >= characterStat.dodgeCool)
         {
             myColider.isTrigger = false;
-            myRigid.gravityScale = 0.0f;
             float duration = 0.5f; // 이동 시간
             float elapsed = 0f;  //이동 시간 계산
             Vector2 rl = myRenderer.flipX ? Vector2.left : Vector2.right;
@@ -175,7 +174,6 @@ public class Movement2D : SpriteProperty
                 yield return null;
             }
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Monster"), false);
-            myRigid.gravityScale = 5.0f;
 
         }
     }
