@@ -59,7 +59,7 @@ MonoBehaviour:
     curHP: 0
     baseAtk: 0
     totalAtk: 0
-    moveSpeed: 5
+    moveSpeed: 0
     atkSpeed: 0
     attackRange: 0
     level: 0
@@ -74,9 +74,12 @@ MonoBehaviour:
     drain: 0
     dodgeTime: 0
     dodgeCool: 0
+    curDodgeCool: 0
     parryingTime: 0
     parryingCool: 0
+    curParryingCool: 0
     CanJump: 0
+    jumpCount: 0
     needExp: 0
     curExp: 0
     eqiupCard: 
@@ -91,14 +94,12 @@ MonoBehaviour:
     utilOption3: 0
   lookDir: 0
   rid: {fileID: 0}
-  curSpaceCool: 5
-  spaceCoolDown: 5
   dialogueUI: {fileID: 0}
   potal: {fileID: 0}
   myEnemy:
     serializedVersion: 2
     m_Bits: 512
-  playerStatus: {fileID: 0}
+  player: {fileID: 0}
 --- !u!50 &1453877723513498148
 Rigidbody2D:
   serializedVersion: 4
@@ -114,7 +115,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -340,7 +341,7 @@ Transform:
   m_GameObject: {fileID: 5742439689403939997}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: -10}
+  m_LocalPosition: {x: 5.5959263, y: 0.99693996, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -377,11 +378,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 3
-  far clip plane: 5000
-  field of view: 3
+  near clip plane: -1
+  far clip plane: 1000
+  field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

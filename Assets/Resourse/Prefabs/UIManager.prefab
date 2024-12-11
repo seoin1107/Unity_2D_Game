@@ -3506,10 +3506,10 @@ RectTransform:
   - {fileID: 4689590300600217048}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2021937405131489853
 MonoBehaviour:
@@ -3523,6 +3523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aa0105bae0a41240bcda0abfbb11ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   myStatusUI: {fileID: 8066983806883802932}
 --- !u!1 &3306801344504038180
 GameObject:
@@ -4221,8 +4222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04db9c277202164d928e5739029d6c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   myStatusUI: {fileID: 8066983806883802932}
-  mySave: {fileID: 0}
   filePath: "F:/\uBC29\uC120\uC6C5/Unity_2D_Game/Assets/Data/Save/"
   saveButton1: {fileID: 3452569123751631222}
   saveButton2: {fileID: 8283650375696972206}
@@ -5765,6 +5766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  myStatusUI: {fileID: 0}
   hpBar: {fileID: 4379496263583620112}
 --- !u!1 &5894756725124463062
 GameObject:
@@ -6613,6 +6615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d72d15167e648741bc8550308b7d4f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   myStatusUI: {fileID: 8066983806883802932}
 --- !u!1 &6977813709703142461
 GameObject:
@@ -7465,6 +7468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  myStatusUI: {fileID: 0}
   skillImage: {fileID: 0}
   dodgeImage: {fileID: 3449194333523707420}
   parringImage: {fileID: 3704864511231977577}
