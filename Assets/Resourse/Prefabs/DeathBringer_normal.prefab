@@ -193,9 +193,12 @@ MonoBehaviour:
     drain: 0
     dodgeTime: 0
     dodgeCool: 0
+    curDodgeCool: 0
     parryingTime: 0
     parryingCool: 0
+    curParryingCool: 0
     CanJump: 0
+    jumpCount: 0
     needExp: 0
     curExp: 0
     eqiupCard: 
@@ -210,8 +213,6 @@ MonoBehaviour:
     utilOption3: 0
   lookDir: 1
   rid: {fileID: 0}
-  curSpaceCool: 0
-  spaceCoolDown: 5
   monsterStatus: {fileID: 4737674997407788063}
   DB_realPrefab: {fileID: 0}
   DB_realPoint: {fileID: 0}
