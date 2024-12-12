@@ -1200,6 +1200,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 619726009459161175, guid: d499738d4c8a64c41bf750e5a69a7de5, type: 3}
   m_PrefabInstance: {fileID: 1997148774}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1012510742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4378380278815144764, guid: 2c17c6512e414a646bb5092d329e9d3f, type: 3}
+  m_PrefabInstance: {fileID: 1915455216}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1521436270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1978,6 +1983,10 @@ PrefabInstance:
     - target: {fileID: 4378380278815144764, guid: 2c17c6512e414a646bb5092d329e9d3f, type: 3}
       propertyPath: m_Name
       value: DeathBringer_normal
+      objectReference: {fileID: 0}
+    - target: {fileID: 4378380278815144764, guid: 2c17c6512e414a646bb5092d329e9d3f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4569534882105735296, guid: 2c17c6512e414a646bb5092d329e9d3f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9089,6 +9098,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc338b4a812f347ab02107d446685d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &2069890813 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8967020168096534470, guid: d499738d4c8a64c41bf750e5a69a7de5, type: 3}
+  m_PrefabInstance: {fileID: 1997148774}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2090576470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9164,11 +9178,11 @@ PrefabInstance:
     - target: {fileID: 7498088306867702604, guid: 4c1f2c3278a4f504eac71f897f6b15b2, type: 3}
       propertyPath: effectPoint
       value: 
-      objectReference: {fileID: 4569534882105735296, guid: 7387a0c04dd7d55449d863e41ebc32d6, type: 3}
+      objectReference: {fileID: 2069890813}
     - target: {fileID: 7498088306867702604, guid: 4c1f2c3278a4f504eac71f897f6b15b2, type: 3}
       propertyPath: DeathBringer
       value: 
-      objectReference: {fileID: 4378380278815144764, guid: 2c17c6512e414a646bb5092d329e9d3f, type: 3}
+      objectReference: {fileID: 1012510742}
     - target: {fileID: 7498088306867702604, guid: 4c1f2c3278a4f504eac71f897f6b15b2, type: 3}
       propertyPath: LightingPrefab
       value: 
