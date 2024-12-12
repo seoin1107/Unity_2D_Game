@@ -7,6 +7,7 @@ public class DB_hard2D : BattleSystem2D
     Transform myTarget;
     Vector2 originalPosition; // 몬스터의 원래 위치를 저장할 변수
     public CharacterStatus monsterStatus;
+    public GameObject deletGround;
     public enum State
     {
         Create, Normal, Battle, Dead
@@ -145,5 +146,10 @@ public class DB_hard2D : BattleSystem2D
             yield return null;
         }
         Destroy(gameObject);
+        if(deletGround != null)
+        {
+            Destroy(deletGround);
+        }
+
     }
 }

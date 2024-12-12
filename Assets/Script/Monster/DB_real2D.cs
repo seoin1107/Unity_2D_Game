@@ -81,6 +81,11 @@ public class DB_real2D : BattleSystem2D
             Instantiate(DB_HardPrefab, DB_HardPoint.position, Quaternion.identity);
         }
     }
+
+    IEnumerator SummonDelay()
+    {
+        yield return new WaitForSeconds(2.0f);
+    }
     IEnumerator Energy()
     {
         yield return new WaitForSeconds(2.0f);
@@ -127,6 +132,7 @@ public class DB_real2D : BattleSystem2D
         EffectLighting4();
         EffectLighting5();
         StartCoroutine(DisApearing());
+        StartCoroutine(SummonDelay());
         SummonDB_Hard();
     }
     IEnumerator DisApearing()
