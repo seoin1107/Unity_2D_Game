@@ -11,4 +11,6 @@ public class Card : MonoBehaviour
 
     public CardData[] cardList = new CardData[100];
 
+
+
 }
