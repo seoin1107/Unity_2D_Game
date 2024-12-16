@@ -88,3 +88,6 @@ MonoBehaviour:
   monsterStatus: {fileID: 5985397977602992419}
   orgRazer: {fileID: 0}
   myRazerPoint: {fileID: 6840582912104909894}
+  minRazerCount: 1
+  maxRazerCount: 10
+  spawnDelay: 5

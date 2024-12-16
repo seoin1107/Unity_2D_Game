@@ -4160,11 +4160,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6840582912104909894, guid: 6070fabaa051567478c463a2338b8488, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.381187
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 6840582912104909894, guid: 6070fabaa051567478c463a2338b8488, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.94
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6840582912104909894, guid: 6070fabaa051567478c463a2338b8488, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4202,14 +4202,6 @@ PrefabInstance:
       propertyPath: orgRazer
       value: 
       objectReference: {fileID: 447845100}
-    - target: {fileID: 7068270894116133342, guid: 6070fabaa051567478c463a2338b8488, type: 3}
-      propertyPath: spawnDelay
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7068270894116133342, guid: 6070fabaa051567478c463a2338b8488, type: 3}
-      propertyPath: maxRazerCount
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11594,21 +11586,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: RazerPoint_Left
       objectReference: {fileID: 0}
-    - target: {fileID: 567504119074383889, guid: ce80c565b282205429c47b1ab1713563, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5985397977602992419, guid: ce80c565b282205429c47b1ab1713563, type: 3}
       propertyPath: orgRazer
       value: 
       objectReference: {fileID: 1450185382}
     - target: {fileID: 6840582912104909894, guid: ce80c565b282205429c47b1ab1713563, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.93
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 6840582912104909894, guid: ce80c565b282205429c47b1ab1713563, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.94
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6840582912104909894, guid: ce80c565b282205429c47b1ab1713563, type: 3}
       propertyPath: m_LocalPosition.z
