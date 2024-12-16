@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &567504119074383889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6840582912104909894}
+  - component: {fileID: 7068270894116133342}
+  m_Layer: 0
+  m_Name: RazerPoint_Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6840582912104909894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567504119074383889}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -18.381187, y: 0.94, z: -0.18487178}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7068270894116133342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567504119074383889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4dff4ad5bbb644ae0b6a8f9b58958, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterStat:
+    baseHP: 100
+    maxHP: 100
+    curHP: 100
+    baseAtk: 2
+    totalAtk: 10
+    moveSpeed: 2
+    atkSpeed: 2
+    attackRange: 2
+    level: 0
+    hpRegen: 0
+    totalPoint: 0
+    atkPoint: 0
+    hpPoint: 0
+    utilPoint: 0
+    hitRecover: 0
+    skillCool: 0
+    skillDamage: 0
+    drain: 0
+    dodgeTime: 0
+    dodgeCool: 0
+    curDodgeCool: 0
+    parryingTime: 0
+    parryingCool: 0
+    curParryingCool: 0
+    CanJump: 0
+    jumpCount: 0
+    needExp: 0
+    curExp: 0
+    eqiupCard: 
+    hpOption1: 0
+    hpOption2: 0
+    hpOption3: 0
+    atkOption1: 0
+    atkOption2: 0
+    atkOption3: 0
+    utilOption1: 0
+    utilOption2: 0
+    utilOption3: 0
+  lookDir: 0
+  rid: {fileID: 0}
+  monsterStatus: {fileID: 7068270894116133342}
+  orgRazer: {fileID: 0}
+  myRazerPoint: {fileID: 6840582912104909894}

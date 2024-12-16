@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Razer : RazerPoint
+public class RazerLeft : RazerPoint
 {
     public LayerMask crashMask; // 충돌 마스크
     private bool isRazer = false;
@@ -37,7 +37,7 @@ public class Razer : RazerPoint
                 return; // 더 이상 이동하지 않음
             }
 
-            transform.Translate(moveDirection * dist); // 우측 방향으로 이동
+            transform.Translate(moveDirection * -dist); // 좌측 방향으로 이동
             traveledDistance += dist; // 이동한 거리 누적
             if (traveledDistance >= maxDistance)
             {
