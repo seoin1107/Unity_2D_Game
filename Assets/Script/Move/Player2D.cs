@@ -111,4 +111,14 @@ public class Player2D : BattleSystem2D
         }
     }
 
+    public void OnDieDamage(float percent)
+    {
+        float damage = characterStat.maxHP * percent;  // 최대 체력을 기준으로 대미지 계산
+        characterStat.curHP -= damage;
+
+        if (characterStat.curHP < 0)
+            characterStat.curHP = 0;  // 체력은 0 이하로 내려가지 않음
+    }
+
+
 }

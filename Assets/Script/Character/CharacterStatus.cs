@@ -124,4 +124,8 @@ public class CharacterStatus : AnimatorProperty
             stat.totalPoint += 1;
         }       
     }
+    public Stat GetStat()
+    {
+        return characterStat;
+    }
 }
