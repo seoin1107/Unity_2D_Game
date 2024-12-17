@@ -1,62 +1,55 @@
+using System.Collections;
 using UnityEngine;
 
 public class VisibleTrap : MonoBehaviour
 {
-    public float damage = 10.0f;  // 가시가 줄 대미지
-    public float damageInterval = 1.0f;  // 대미지를 주는 간격 (1초)    
-    private float timeSinceLastDamage = 0.0f;  // 마지막 대미지에서 경과한 시간
-    private GameObject Player = null;  // 현재 가시에 올라와 있는 플레이어 객체
+    public float trapDamage = 10.0f; // 지속 대미지
+    public float instantDeadPercent = 100.0f; // 즉사 대미지 비율
+    private bool isPlayerOnTrap = false; // 플레이어가 함정 위에 있는지 여부
+    private Coroutine damageCoroutine; // 코루틴 참조
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        var player = collision.GetComponent<Player2D>();
+        if (player != null && !isPlayerOnTrap)
         {
-            var damageable = collision.GetComponent<IDamage>();
-            if (damageable != null)
-            {
-                damageable.OnDamage(damage);  // 처음 가시에 밟을 때 대미지 주기
-            }
-        }
-    }
+            isPlayerOnTrap = true;
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            // 플레이어 객체를 추적
-            Player = collision.gameObject;
+            // 처음 밟았을 때 대미지 처리 (즉사 또는 지속 대미지 시작)
+            if (instantDeadPercent >= 100.0f)
+            {
+                player.OnDieTrap(instantDeadPercent); // 즉사 대미지
+            }
+            else
+            {
+                player.OnTrapDamage(trapDamage); // 처음 대미지 적용
+                damageCoroutine = StartCoroutine(ApplyContinuousDamage(player)); // 지속 대미지 시작
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        var player = collision.GetComponent<Player2D>();
+        if (player != null && isPlayerOnTrap)
         {
-            // 플레이어가 가시에서 벗어나면 상태 초기화
-            Player = null;
-            timeSinceLastDamage = 0.0f;
+            isPlayerOnTrap = false;
+
+            // 지속 대미지 중단
+            if (damageCoroutine != null)
+            {
+                StopCoroutine(damageCoroutine);
+                damageCoroutine = null;
+            }
         }
     }
 
-    private void Update()
+    private IEnumerator ApplyContinuousDamage(Player2D player)
     {
-        if (Player != null)
+        while (isPlayerOnTrap)
         {
-            // 시간이 누적되고, 1초 간격으로 대미지 주기
-            timeSinceLastDamage += Time.deltaTime;
-
-            if (timeSinceLastDamage >= damageInterval)
-            {
-                // 대미지 주기
-                var damageable = Player.GetComponent<IDamage>();
-                if (damageable != null)
-                {
-                    damageable.OnDamage(damage);  // 대미지 주기
-                }
-
-                // 타이머 초기화
-                timeSinceLastDamage = 0.0f;
-            }
+            yield return new WaitForSeconds(1.0f); // 1초 간격으로 대미지 적용
+            player.OnTrapDamage(trapDamage); // 지속 대미지
         }
     }
 }

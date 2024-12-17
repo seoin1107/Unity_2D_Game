@@ -111,14 +111,50 @@ public class Player2D : BattleSystem2D
         }
     }
 
-    public void OnDieDamage(float percent)
+    public void OnDieTrap(float percent)
     {
-        float damage = characterStat.maxHP * percent;  // 최대 체력을 기준으로 대미지 계산
+        float damage = characterStat.maxHP * percent / 100;  // 최대 체력을 기준으로 대미지 계산
         characterStat.curHP -= damage;
 
         if (characterStat.curHP < 0)
             characterStat.curHP = 0;  // 체력은 0 이하로 내려가지 않음
+        myAnim.SetTrigger("OnDead");
+        OnDead();
+        DisablePlayerControls();
     }
 
+    public void OnTrapDamage(float dmg)
+    {
+        characterStat.curHP -= dmg;
 
+        if (characterStat.curHP > 0)
+        {
+            myAnim.SetTrigger("OnDamage");
+        }
+        else
+        {
+            characterStat.curHP = 0;
+            myAnim.SetTrigger("OnDead");
+            OnDead();
+            DisablePlayerControls();
+        }
+    }
+
+    // 플레이어 컨트롤 비활성화 메서드
+    private void DisablePlayerControls()
+    {
+        // Player2D 컨트롤 스크립트 비활성화
+        Player2D playerScript = gameObject.GetComponent<Player2D>();
+        Picking pickingScript = gameObject.GetComponent<Picking>();
+        if (playerScript != null)
+        {
+            playerScript.enabled = false; // Player2D 스크립트 비활성화
+        }
+        if (pickingScript != null)
+        {
+            pickingScript.enabled = false;
+        }
+        gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+        myRigid.gravityScale = 0.0f;
+    }
 }
