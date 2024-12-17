@@ -8,10 +8,15 @@ public class DB_real2D : BattleSystem2D
     public CharacterStatus monsterStatus;
     public GameObject LightingPrefab;   // 번개 프리팹
     public Transform effectPoint1;       // 번개 생성위치
-    public Transform effectPoint2;       // 번개 생성위치
     public Transform effectPoint3;       // 번개 생성위치
-    public Transform effectPoint4;       // 번개 생성위치
-    public Transform effectPoint5;       // 번개 생성위치
+
+    public GameObject RazerPrefab_left;
+    public GameObject RazerPrefab_right;
+    public Transform RazerPoint_left1;
+    public Transform RazerPoint_left2;
+    public Transform RazerPoint_right1;
+    public Transform RazerPoint_right2;
+
 
     public GameObject DB_HardPrefab;
     public Transform DB_HardPoint;
@@ -81,11 +86,6 @@ public class DB_real2D : BattleSystem2D
             Instantiate(DB_HardPrefab, DB_HardPoint.position, Quaternion.identity);
         }
     }
-
-    IEnumerator SummonDelay()
-    {
-        yield return new WaitForSeconds(2.0f);
-    }
     IEnumerator Energy()
     {
         yield return new WaitForSeconds(2.0f);
@@ -127,12 +127,12 @@ public class DB_real2D : BattleSystem2D
     public void OnDisApear()
     {
         EffectLighting1();
-        EffectLighting2();
         EffectLighting3();
-        EffectLighting4();
-        EffectLighting5();
+        Razer_Left1();
+        Razer_Left2();
+        Razer_Right1();
+        Razer_Right2();
         StartCoroutine(DisApearing());
-        StartCoroutine(SummonDelay());
         SummonDB_Hard();
     }
     IEnumerator DisApearing()
@@ -156,14 +156,6 @@ public class DB_real2D : BattleSystem2D
             Instantiate(LightingPrefab, effectPoint1.position, Quaternion.identity);
         }
     }
-    void EffectLighting2()
-    {
-        if (LightingPrefab != null && effectPoint2 != null)
-        {
-            //번개소환
-            Instantiate(LightingPrefab, effectPoint2.position, Quaternion.identity);
-        }
-    }
     void EffectLighting3()
     {
         if (LightingPrefab != null && effectPoint3 != null)
@@ -172,20 +164,32 @@ public class DB_real2D : BattleSystem2D
             Instantiate(LightingPrefab, effectPoint3.position, Quaternion.identity);
         }
     }
-    void EffectLighting4()
+    void Razer_Left1()
     {
-        if (LightingPrefab != null && effectPoint4 != null)
+        if(RazerPrefab_left != null && RazerPoint_left1 != null)
         {
-            //번개소환
-            Instantiate(LightingPrefab, effectPoint4.position, Quaternion.identity);
+            Instantiate(RazerPrefab_left, RazerPoint_left1.position, Quaternion.identity);
         }
     }
-    void EffectLighting5()
+    void Razer_Left2()
     {
-        if (LightingPrefab != null && effectPoint5 != null)
+        if (RazerPrefab_left != null && RazerPoint_left2 != null)
         {
-            //번개소환
-            Instantiate(LightingPrefab, effectPoint5.position, Quaternion.identity);
+            Instantiate(RazerPrefab_left, RazerPoint_left2.position, Quaternion.identity);
+        }
+    }
+    void Razer_Right1()
+    {
+        if (RazerPrefab_right != null && RazerPoint_right1 != null)
+        {
+            Instantiate(RazerPrefab_right, RazerPoint_right1.position, Quaternion.identity);
+        }
+    }
+    void Razer_Right2()
+    {
+        if (RazerPrefab_right != null && RazerPoint_right2 != null)
+        {
+            Instantiate(RazerPrefab_right, RazerPoint_right2.position, Quaternion.identity);
         }
     }
 }
