@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-public class InvenUI : MonoBehaviour
+public class InvenUI : Card
 {
     public CharacterStatus characterStatus;
 
@@ -13,7 +13,7 @@ public class InvenUI : MonoBehaviour
         get; set;
     }
 
-    public Card[] equipCard = new Card[3];
+    public Card[] equipCard = new Card[3] ;
 
     public CardInventory cardInven;
 
