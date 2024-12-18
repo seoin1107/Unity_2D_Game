@@ -113,7 +113,7 @@ public class Player2D : BattleSystem2D
 
     public void OnDieTrap(float percent)
     {
-        float damage = characterStat.maxHP * percent / 100;  // 최대 체력을 기준으로 대미지 계산
+        float damage = characterStat.maxHP * percent;  // 최대 체력을 기준으로 대미지 계산
         characterStat.curHP -= damage;
 
         if (characterStat.curHP < 0)

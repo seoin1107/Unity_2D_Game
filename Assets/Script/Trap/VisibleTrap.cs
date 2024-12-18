@@ -4,7 +4,7 @@ using UnityEngine;
 public class VisibleTrap : MonoBehaviour
 {
     public float trapDamage = 10.0f; // 지속 대미지
-    public float instantDeadPercent = 100.0f; // 즉사 대미지 비율
+    public ushort IsDieTrap = 0; // 즉사 대미지 비율
     private bool isPlayerOnTrap = false; // 플레이어가 함정 위에 있는지 여부
     private Coroutine damageCoroutine; // 코루틴 참조
 
@@ -16,9 +16,9 @@ public class VisibleTrap : MonoBehaviour
             isPlayerOnTrap = true;
 
             // 처음 밟았을 때 대미지 처리 (즉사 또는 지속 대미지 시작)
-            if (instantDeadPercent >= 100.0f)
+            if (IsDieTrap == 1)
             {
-                player.OnDieTrap(instantDeadPercent); // 즉사 대미지
+                player.OnDieTrap(IsDieTrap); // 즉사 대미지
             }
             else
             {

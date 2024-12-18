@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fb9afb6fea6b5764b8aa27b1fb5662ac
+guid: 2d35280001651954cb1696e1905283ff
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,34 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HTrap_R1_11
-      rect:
-        serializedVersion: 2
-        x: 520
-        y: 0
-        width: 91
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d60f1e439eaca9742865be607a05c168
-      internalID: 487604957
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HTrap_R1_0
+      name: HTrap R1 re_0
       rect:
         serializedVersion: 2
         x: 0
         y: 59
-        width: 93
-        height: 48
+        width: 91
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cacf922cb85bc4a459ae817e18914a6c
-      internalID: 1047924679
+      spriteID: 3c769adb3cc455a44ba328fd06b7ebd5
+      internalID: -195033344
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HTrap_R1_1
+      name: HTrap R1 re_1
       rect:
         serializedVersion: 2
         x: 104
         y: 59
-        width: 93
-        height: 48
+        width: 91
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33568952cc8e7f94ba9968ef7146ecce
-      internalID: -255500621
+      spriteID: c04dcd3dca0b19f419d9f9d2987d8a04
+      internalID: 1135389284
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HTrap_R1_2
+      name: HTrap R1 re_2
       rect:
         serializedVersion: 2
         x: 208
         y: 59
-        width: 92
-        height: 48
+        width: 91
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f9d9d11bc94f194d9e265d464ace5d7
-      internalID: -1959273824
+      spriteID: ebc0a56bccd43f0429c0e56a82145034
+      internalID: -1834737128
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HTrap_R1_3
+      name: HTrap R1 re_3
       rect:
         serializedVersion: 2
         x: 312
         y: 59
-        width: 92
-        height: 48
+        width: 91
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d32a059c368682e4c97cd266cbff7fa8
-      internalID: -2006526742
+      spriteID: e20322b21bbe3a3408cd6935327004a7
+      internalID: 226070748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HTrap_R1_4
+      name: HTrap R1 re_4
       rect:
         serializedVersion: 2
         x: 416
         y: 59
-        width: 92
-        height: 48
+        width: 91
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0408e982e06f92a44a5c7431660e2544
-      internalID: -441500852
+      spriteID: 8cf57b57b2f41324b8b3bac63ace38ed
+      internalID: -1397082721
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HTrap_R1_5
+      name: HTrap R1 re_5
       rect:
         serializedVersion: 2
         x: 520
         y: 59
         width: 91
-        height: 48
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +216,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c189973b16fe0c046a7eece754a2b6cf
-      internalID: -337059194
+      spriteID: e1accd5b5f986f54fba8fd286565391d
+      internalID: -882051426
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HTrap_R1_6
+      name: HTrap R1 re_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 92
-        height: 48
+        width: 91
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,20 +237,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 599385480a7f00a4c8bfb813740c2934
-      internalID: 1168742394
+      spriteID: fbd46072b0617914999bd3e9407ac47c
+      internalID: 714042313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HTrap_R1_7
+      name: HTrap R1 re_7
       rect:
         serializedVersion: 2
         x: 104
         y: 0
-        width: 92
-        height: 48
+        width: 91
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,20 +258,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2e1608e08dbf3f4a8bded95d25a0ea5
-      internalID: -446593175
+      spriteID: 5f321aad8f72921479e61f8c8a785873
+      internalID: -302428078
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HTrap_R1_8
+      name: HTrap R1 re_8
       rect:
         serializedVersion: 2
         x: 208
         y: 0
-        width: 92
-        height: 48
+        width: 91
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,20 +279,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05f8d901a4c11164a9948a7fc1a141b2
-      internalID: 1316516212
+      spriteID: 4d15ba2f772c2fc47942c55227638a7a
+      internalID: -1009053070
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HTrap_R1_9
+      name: HTrap R1 re_9
       rect:
         serializedVersion: 2
         x: 312
         y: 0
-        width: 92
-        height: 48
+        width: 91
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,20 +300,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47a96cf10876dbe408c7e7bc1b429d22
-      internalID: 441032245
+      spriteID: 48b43d4cbb04869469b5ea2f7c6fe0b8
+      internalID: 981706134
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HTrap_R1_10
+      name: HTrap R1 re_10
       rect:
         serializedVersion: 2
         x: 416
         y: 0
-        width: 92
-        height: 48
+        width: 91
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -342,8 +321,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 457b3036536842743a483f7391b9f3a1
-      internalID: 1190804511
+      spriteID: 7c31f9c6b526f2f44a2e64236575fb07
+      internalID: -1546981310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HTrap R1 re_11
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 0
+        width: 91
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 880c053880adad34abd6949c1609d7de
+      internalID: -769755021
       vertices: []
       indices: 
       edges: []
@@ -359,18 +359,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      HTrap_R1_0: 1047924679
-      HTrap_R1_1: -255500621
-      HTrap_R1_10: 1190804511
-      HTrap_R1_11: 487604957
-      HTrap_R1_2: -1959273824
-      HTrap_R1_3: -2006526742
-      HTrap_R1_4: -441500852
-      HTrap_R1_5: -337059194
-      HTrap_R1_6: 1168742394
-      HTrap_R1_7: -446593175
-      HTrap_R1_8: 1316516212
-      HTrap_R1_9: 441032245
+      HTrap R1 re_0: -195033344
+      HTrap R1 re_1: 1135389284
+      HTrap R1 re_10: -1546981310
+      HTrap R1 re_11: -769755021
+      HTrap R1 re_2: -1834737128
+      HTrap R1 re_3: 226070748
+      HTrap R1 re_4: -1397082721
+      HTrap R1 re_5: -882051426
+      HTrap R1 re_6: 714042313
+      HTrap R1 re_7: -302428078
+      HTrap R1 re_8: -1009053070
+      HTrap R1 re_9: 981706134
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

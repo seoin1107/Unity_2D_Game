@@ -19,6 +19,7 @@ public class HiddingTrap : MonoBehaviour
         {
             isTrapActive = true;
             animator.SetTrigger("OnRise"); // 가시 솟아오르는 애니메이션 실행
+            //animator.SetBool("IsActive", true);
 
             // 플레이어에 대미지 주기
             Player2D player = collision.GetComponent<Player2D>();
@@ -30,6 +31,11 @@ public class HiddingTrap : MonoBehaviour
             // 가시가 다시 내려가도록 타이머 실행
             Invoke("ResetTrap", resetTime);
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        
     }
 
     private void ResetTrap()
