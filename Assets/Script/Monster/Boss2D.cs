@@ -301,6 +301,21 @@ public class Boss2D : BattleSystem2D
     public void OnDisApear()
     {
         StartCoroutine(DisApearing());
+        StartCoroutine(OpenWall());
+    }
+    IEnumerator OpenWall()
+    {
+        // BattleWall 오브젝트 삭제
+        GameObject battleWall = GameObject.Find("BattleWall");
+        GameObject battleWall2 = GameObject.Find("BattleWall2");
+
+        if (battleWall != null && battleWall2 != null)
+        {
+            Destroy(battleWall);
+            Destroy(battleWall2);
+        }
+        yield return new WaitForSeconds(3.0f);
+
     }
     IEnumerator DisApearing()
     {
@@ -315,7 +330,7 @@ public class Boss2D : BattleSystem2D
             yield return null;
         }
         Destroy(gameObject);
-        if(RazerPoint1 != null && RazerPoint2 != null && RazerPoint3 != null && RazerPoint4 != null)
+        if (RazerPoint1 != null && RazerPoint2 != null && RazerPoint3 != null && RazerPoint4 != null)
         {
             Destroy(RazerPoint1);
             Destroy(RazerPoint2);
