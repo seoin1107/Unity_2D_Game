@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4218522583133949756}
   - component: {fileID: 5693665319556381832}
   - component: {fileID: 8784790630971308262}
-  m_Layer: 0
-  m_Name: Trigger
+  m_Layer: 16
+  m_Name: StalactiteTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946267202835078098}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.65, y: 0.27999973, z: -0.20701356}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -91,9 +91,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf25913891190334f94e4faca3e1b688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trapPrefab: {fileID: 0}
-  triggerArea: {fileID: 4218522583133949756}
-  spawnHeight: 10
 --- !u!1 &3015628128816626241
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,8 +104,8 @@ GameObject:
   - component: {fileID: 4863813062257102681}
   - component: {fileID: 4451676563746726342}
   - component: {fileID: 1418280143149264109}
-  m_Layer: 0
-  m_Name: "\uC885\uC720\uC11D"
+  m_Layer: 16
+  m_Name: Stalactite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,7 +167,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bfecf0d019ded5f4f96bd5ee10fde4ef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9bfc701c6a5d8214fa47c7e3a6eb2f09, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -254,4 +251,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
