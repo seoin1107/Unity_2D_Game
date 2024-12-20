@@ -6,6 +6,10 @@ public class BattleWall : Sencor
 {
     public float fallSpeed;  // 떨어지는 속도
     private Sencor sencor;
+
+    private bool isRising = false;
+
+
     void Start()
     {
         sencor = GetComponentInChildren<Sencor>(); // Sencor 컴포넌트를 가져옴
@@ -26,15 +30,22 @@ public class BattleWall : Sencor
                 transform.position = correctedPosition;
             }
         }
-        if(sencor.isFalling == false && transform.position.y <5)
+        
+/*        if(isRising)
         {
             transform.Translate(0, fallSpeed * Time.deltaTime, 0);
-            if(transform.position.y > 5)
+
+            if (transform.position.y >= 5.0f)
             {
                 Vector3 correctedPosition = transform.position;
-                correctedPosition.y = 5; // y 값을 0으로 설정
+                correctedPosition.y = 5.0f; // 목표 높이에서 멈춤
                 transform.position = correctedPosition;
+                isRising = false; // 더 이상 올라가지 않도록 설정
             }
-        }
+        }*/
     }
+/*    public void StartRising()
+    {
+        isRising = true;
+    }*/
 }

@@ -185,7 +185,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.7, y: 2}
@@ -262,7 +262,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.7, y: 2}
@@ -339,7 +339,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.7, y: 2}
@@ -425,9 +425,12 @@ MonoBehaviour:
     drain: 0
     dodgeTime: 0
     dodgeCool: 0
+    curDodgeCool: 0
     parryingTime: 0
     parryingCool: 0
+    curParryingCool: 0
     CanJump: 0
+    jumpCount: 0
     needExp: 0
     curExp: 0
     eqiupCard: 
@@ -442,8 +445,6 @@ MonoBehaviour:
     utilOption3: 0
   lookDir: 1
   rid: {fileID: 0}
-  curSpaceCool: 0
-  spaceCoolDown: 5
   monsterStatus: {fileID: 1035229124178310043}
   LightingPrefab: {fileID: 4378380278815144764, guid: 7387a0c04dd7d55449d863e41ebc32d6, type: 3}
   effectPoint1: {fileID: 5459697358046490325}
@@ -613,7 +614,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.7, y: 2}
@@ -690,7 +691,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.7, y: 2}

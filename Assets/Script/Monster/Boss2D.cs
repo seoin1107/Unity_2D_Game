@@ -305,17 +305,42 @@ public class Boss2D : BattleSystem2D
     }
     IEnumerator OpenWall()
     {
-        // BattleWall 오브젝트 삭제
         GameObject battleWall = GameObject.Find("BattleWall");
         GameObject battleWall2 = GameObject.Find("BattleWall2");
+        float targetHeight = 5.0f; // 목표 높이
+        float moveSpeed = 3.0f;    // 이동 속도
 
-        if (battleWall != null && battleWall2 != null)
+        if (battleWall != null)
         {
-            Destroy(battleWall);
-            Destroy(battleWall2);
-        }
-        yield return new WaitForSeconds(3.0f);
+            Transform wallTransform = battleWall.transform;
 
+            // 천천히 위로 이동
+            while (wallTransform.position.y < targetHeight)
+            {
+                // 현재 위치를 가져와서 Vector2로 이동 처리
+                Vector2 currentPosition = wallTransform.position;
+                currentPosition.y += moveSpeed * Time.deltaTime; // y 값을 증가
+                wallTransform.position = currentPosition; // 새 위치 적용
+
+                yield return null; // 다음 프레임 대기
+            }
+        }
+
+        if (battleWall2 != null)
+        {
+            Transform wallTransform2 = battleWall2.transform;
+
+            // 천천히 위로 이동
+            while (wallTransform2.position.y < targetHeight)
+            {
+                // 현재 위치를 가져와서 Vector2로 이동 처리
+                Vector2 currentPosition = wallTransform2.position;
+                currentPosition.y += moveSpeed * Time.deltaTime; // y 값을 증가
+                wallTransform2.position = currentPosition; // 새 위치 적용
+
+                yield return null; // 다음 프레임 대기
+            }
+        }
     }
     IEnumerator DisApearing()
     {
@@ -330,12 +355,5 @@ public class Boss2D : BattleSystem2D
             yield return null;
         }
         Destroy(gameObject);
-        if (RazerPoint1 != null && RazerPoint2 != null && RazerPoint3 != null && RazerPoint4 != null)
-        {
-            Destroy(RazerPoint1);
-            Destroy(RazerPoint2);
-            Destroy(RazerPoint3);
-            Destroy(RazerPoint4);
-        }
     }
 }
