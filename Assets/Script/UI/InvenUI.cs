@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-public class InvenUI : Card
+public class InvenUI : MonoBehaviour
 {
     public CharacterStatus characterStatus;
 

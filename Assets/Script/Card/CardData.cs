@@ -6,10 +6,11 @@ using UnityEngine;
 
 
 
+[CreateAssetMenu(fileName = "CardData", menuName = "/CardData", order = 1)]
 
-public class CardData : MonoBehaviour
+public class CardData : ScriptableObject
 {
-
+    public Sprite icon;
     //카드 정보
     protected int cardNo;
     protected int cardRarity;
