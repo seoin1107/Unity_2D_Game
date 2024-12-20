@@ -67,12 +67,11 @@ public struct Stat
 public class CharacterStatus : AnimatorProperty
 {
     public Stat characterStat;
- 
-
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+      
     }
 
     // Update is called once per frame
@@ -83,6 +82,7 @@ public class CharacterStatus : AnimatorProperty
 
     public void UpdateStatus()
     {
+        
         characterStat.totalAtk = characterStat.baseAtk + characterStat.atkPoint;
         characterStat.moveSpeed = 5;
         characterStat.atkSpeed = 1;
@@ -110,6 +110,8 @@ public class CharacterStatus : AnimatorProperty
         {
             characterStat.CanJump += 1;
         }
+
+        
 
     }
 
