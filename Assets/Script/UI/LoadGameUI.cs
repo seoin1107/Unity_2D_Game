@@ -35,15 +35,15 @@ public class LoadGameUI : StartUI
 
     public void OnLoadSave1()
     {
-        mySave.characterStat = FileManager.LoadFromJson<Stat>(filePath+"Save.dat");
+        mySave.characterStat = FileManager.LoadFromJson<Stat>(filePath+"Save1.dat");
     }
     public void OnLoadSave2()
     {
-        mySave.characterStat = FileManager.LoadFromJson<Stat>(filePath+"Save.dat");
+        mySave.characterStat = FileManager.LoadFromJson<Stat>(filePath+"Save2.dat");
     }
     public void OnLoadSave3()
     {
-        mySave.characterStat = FileManager.LoadFromJson<Stat>(filePath+"Save.dat");
+        mySave.characterStat = FileManager.LoadFromJson<Stat>(filePath+"Save3.dat");
     }
 
 
