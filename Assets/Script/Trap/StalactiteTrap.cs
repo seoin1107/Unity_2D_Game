@@ -13,13 +13,6 @@ public class StalactiteTrap : MonoBehaviour
     {
         rb.velocity = Vector2.zero;
         rb.gravityScale = 1.0f; // 중력 적용
-
-        // 종유석 자식 오브젝트가 비활성화되었을 경우, 활성화
-        Transform stalactite = transform.Find("Stalactite"); // 자식 오브젝트 이름이 "Stalactite"인 경우
-        if (stalactite != null && !stalactite.gameObject.activeSelf)
-        {
-            stalactite.gameObject.SetActive(true); // 자식 종유석 활성화
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -45,5 +38,6 @@ public class StalactiteTrap : MonoBehaviour
     {
         // 종유석 파괴 후 다시 비활성화
         gameObject.SetActive(false);
+        gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
     }
 }
