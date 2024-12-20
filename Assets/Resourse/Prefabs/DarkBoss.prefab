@@ -76,7 +76,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 20, y: 7}
+  m_Size: {x: 25, y: 7}
   m_EdgeRadius: 0
 --- !u!114 &2634813153602994988
 MonoBehaviour:
@@ -225,9 +225,12 @@ MonoBehaviour:
     drain: 0
     dodgeTime: 0
     dodgeCool: 0
+    curDodgeCool: 0
     parryingTime: 0
     parryingCool: 0
+    curParryingCool: 0
     CanJump: 0
+    jumpCount: 0
     needExp: 0
     curExp: 0
     eqiupCard: 
@@ -242,20 +245,18 @@ MonoBehaviour:
     utilOption3: 0
   lookDir: 0
   rid: {fileID: 0}
-  curSpaceCool: 0
-  spaceCoolDown: 5
   monsterStatus: {fileID: 7498088306867702604}
-  GhoulPrefab: {fileID: 4378380278815144764, guid: 7f0abc442aa0591439db4754ceb4df69, type: 3}
+  GhoulPrefab: {fileID: 4378380278815144764, guid: 60a5b61696691374ea925d50af331097, type: 3}
   summonPoint: {fileID: 877734434673730377}
   DeathBringer: {fileID: 0}
   DBPoint: {fileID: 0}
-  LightingPrefab: {fileID: 4378380278815144764, guid: 41124806950600940bbbbdc4ac0830a6, type: 3}
+  LightingPrefab: {fileID: 4378380278815144764, guid: 9bec20d0f30bac744a668c79cbc1e6ed, type: 3}
   effectPoint: {fileID: 0}
   tpPos1: {fileID: 0}
   tpPos2: {fileID: 0}
   HpPos: {fileID: 0}
-  myState: 0
   healingAmount: 5
+  myState: 0
 --- !u!70 &3175706962891907730
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

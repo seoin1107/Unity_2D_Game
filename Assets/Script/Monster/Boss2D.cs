@@ -16,6 +16,15 @@ public class Boss2D : BattleSystem2D
     public Transform tpPos1;             // 순간이동위치
     public Transform tpPos2;
     public Transform HpPos;             //체력 50퍼 되면 순간이동위치
+
+    public GameObject RazerPoint1;
+    public GameObject RazerPoint2;
+    public GameObject RazerPoint3;
+    public GameObject RazerPoint4;
+
+    private bool IsHealing = false;
+    private bool hasHealedOnce = false; // 힐링이 한 번 진행되었는지 여부
+    public float healingAmount = 5f; // 초당 회복량
     public enum State
     {
         Create, Normal, Battle, Dead
@@ -114,7 +123,7 @@ public class Boss2D : BattleSystem2D
                             StartCoroutine(TP());
                         }
                         // 추가로 체력이 30퍼 가되면 플레이어가 닿을수없는 위치로 이동해서 천천히 체력회복
-                        if(monsterStatus.characterStat.curHP < 50)
+                        if(monsterStatus.characterStat.curHP < 50 && !hasHealedOnce)
                         {
                             StartCoroutine(healing());
                         }
@@ -181,12 +190,18 @@ public class Boss2D : BattleSystem2D
         isTeleporting = false;
     }
 
-    private bool IsHealing = false;
-    public float healingAmount = 5f; // 초당 회복량
     IEnumerator healing()
     {
+        // 이미 힐링이 진행되었거나 한 번 힐링한 적이 있으면 종료
+        if (IsHealing || hasHealedOnce)
+        {
+            yield break;
+        }
+
+        IsHealing = true; // 힐링 상태로 변경
+        hasHealedOnce = true; // 한 번 힐링한 것으로 설정
         //이동위치 설정 추가할것.
-        if(myTarget != null)
+        if (myTarget != null)
         {
             // 다른 동작이 중단되도록 설정
             isTeleporting = true;
@@ -216,14 +231,17 @@ public class Boss2D : BattleSystem2D
             // 다른 동작이 다시 가능하도록 설정
             isTeleporting = false;
         }
-
-        IsHealing = true;
+        GameObject deletGround = GameObject.Find("deletGround");
         while (monsterStatus.characterStat.curHP < monsterStatus.characterStat.maxHP)
         {
+            if(deletGround == null)
+            {
+                break;
+            }
             monsterStatus.characterStat.curHP += healingAmount;
             monsterStatus.characterStat.curHP =
                 Mathf.Min(monsterStatus.characterStat.curHP, monsterStatus.characterStat.maxHP);
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(1.5f);
         }
         IsHealing = false;
     }
@@ -283,6 +301,46 @@ public class Boss2D : BattleSystem2D
     public void OnDisApear()
     {
         StartCoroutine(DisApearing());
+        StartCoroutine(OpenWall());
+    }
+    IEnumerator OpenWall()
+    {
+        GameObject battleWall = GameObject.Find("BattleWall");
+        GameObject battleWall2 = GameObject.Find("BattleWall2");
+        float targetHeight = 5.0f; // 목표 높이
+        float moveSpeed = 3.0f;    // 이동 속도
+
+        if (battleWall != null)
+        {
+            Transform wallTransform = battleWall.transform;
+
+            // 천천히 위로 이동
+            while (wallTransform.position.y < targetHeight)
+            {
+                // 현재 위치를 가져와서 Vector2로 이동 처리
+                Vector2 currentPosition = wallTransform.position;
+                currentPosition.y += moveSpeed * Time.deltaTime; // y 값을 증가
+                wallTransform.position = currentPosition; // 새 위치 적용
+
+                yield return null; // 다음 프레임 대기
+            }
+        }
+
+        if (battleWall2 != null)
+        {
+            Transform wallTransform2 = battleWall2.transform;
+
+            // 천천히 위로 이동
+            while (wallTransform2.position.y < targetHeight)
+            {
+                // 현재 위치를 가져와서 Vector2로 이동 처리
+                Vector2 currentPosition = wallTransform2.position;
+                currentPosition.y += moveSpeed * Time.deltaTime; // y 값을 증가
+                wallTransform2.position = currentPosition; // 새 위치 적용
+
+                yield return null; // 다음 프레임 대기
+            }
+        }
     }
     IEnumerator DisApearing()
     {
