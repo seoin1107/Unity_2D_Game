@@ -38,7 +38,6 @@ public class CardInventory : MonoBehaviour
     void Start()
     {
         Instance = this;
-        gameObject.SetActive(false);
         mySlots = GetComponentsInChildren<CardSlot>();
     }
 
