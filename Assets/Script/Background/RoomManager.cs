@@ -74,6 +74,7 @@ public class RoomManager : MonoBehaviour
     }
 
     // 폴리곤 콜라이더를 벗어나면 기본 카메라로 전환
+
     public void CheckExitRoom(Collider2D playerCollider)
     {
         if (isRoomCleared && !roomCollider.bounds.Contains(playerCollider.bounds.min))
