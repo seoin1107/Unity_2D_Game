@@ -1,12 +1,11 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class RoomEnter : MonoBehaviour
+public class RoomExit : MonoBehaviour
 {
     public RoomManager roomManager;
-    public GameObject roomEnter;
     public GameObject roomExit;
-    private bool Iscome;
+    private bool Isclear;
 
     void Start()
     {
@@ -15,10 +14,10 @@ public class RoomEnter : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && Iscome == false)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && Isclear == false)
         {
-            roomManager.EnterRoom(); // 방에 들어갈 때
-            Iscome = true;
+            roomManager.ExitRoom(); // 방을 나갈 때 처리
+            Isclear = true;
         }
     }
 }
