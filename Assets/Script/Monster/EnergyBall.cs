@@ -2,16 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBall : MonoBehaviour
+public class EnergyBall : MonoBehaviour
 {
     public LayerMask crashMask; // 충돌 마스크
-    private bool isFire = false; // 파이어볼이 발사되었는지 여부
+    private bool isFire = false; //발사되었는지 여부
 
     public float speed = 5.0f;
     public float damage = 10.0f;
     private Vector2 moveDirection = Vector2.right; // 기본 이동 방향
     public float maxDistance = 10f;  // 파이어볼이 이동할 최대 거리
     private float traveledDistance = 0f;  // 현재까지 이동한 거리
+
+    private SpriteRenderer spriteRenderer;
+
+    void Awake()
+    {
+        // SpriteRenderer 컴포넌트 초기화
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
     void Update()
     {
         if (isFire)
@@ -19,7 +27,7 @@ public class FireBall : MonoBehaviour
             // 파이어볼 이동 처리
             float dist = speed * Time.deltaTime; // 이동 거리 계산
             RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, dist, crashMask);
-            if (hit.collider != null && hit.collider.gameObject.layer 
+            if (hit.collider != null && hit.collider.gameObject.layer
                 == LayerMask.NameToLayer("Player"))
             {
                 // 충돌 대상에서 IDamage 인터페이스 확인
@@ -48,6 +56,11 @@ public class FireBall : MonoBehaviour
         isFire = true;
         transform.parent = null;
         moveDirection = direction.normalized; // 방향 설정 및 정규화
+                                              
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.flipX = direction.x < 0; // 왼쪽으로 발사하면 뒤집기
+        }
     }
 
     void DestroyObject(Vector2 pos)
