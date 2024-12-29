@@ -1,7 +1,7 @@
 {
     "baseHP": 20.0,
     "maxHP": 22.0,
-    "curHP": 22.0,
+    "curHP": 10.0,
     "baseAtk": 10.0,
     "totalAtk": 10.0,
     "moveSpeed": 5.0,
@@ -22,7 +22,7 @@
     "curDodgeCool": 5.005583763122559,
     "parryingTime": 0.20000000298023225,
     "parryingCool": 2.0,
-    "curParryingCool": 2.003467082977295,
+    "curParryingCool": 2.0201163291931154,
     "CanJump": 2,
     "jumpCount": 0,
     "needExp": 10,

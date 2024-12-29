@@ -142,7 +142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4569534882105735296
 Transform:
   m_ObjectHideFlags: 0
@@ -193,13 +193,26 @@ MonoBehaviour:
     drain: 0
     dodgeTime: 0
     dodgeCool: 0
+    curDodgeCool: 0
     parryingTime: 0
     parryingCool: 0
+    curParryingCool: 0
+    CanJump: 0
+    jumpCount: 0
     needExp: 0
     curExp: 0
+    eqiupCard: 
+    hpOption1: 0
+    hpOption2: 0
+    hpOption3: 0
+    atkOption1: 0
+    atkOption2: 0
+    atkOption3: 0
+    utilOption1: 0
+    utilOption2: 0
+    utilOption3: 0
+  lookDir: 0
   rid: {fileID: 0}
-  curSpaceCool: 5
-  spaceCoolDown: 5
   monsterStatus: {fileID: 7584236381206534913}
   myState: 0
 --- !u!70 &3175706962891907730
