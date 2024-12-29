@@ -30,10 +30,10 @@ public class RoomManager : MonoBehaviour
 
     public virtual void ExitRoom()
     {
-        if (!isRoomCleared) return;
-
         SetCameraPriority(defaultCamera, HighPriority); // 기본 카메라 활성화
         SetCameraPriority(virtualCamera, LowPriority); // 방 카메라 비활성화
+
+        if (!isRoomCleared) return;
     }
 
     public virtual void ClearRoom()

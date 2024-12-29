@@ -5,7 +5,6 @@ public class RoomEnter : MonoBehaviour
 {
     public RoomManager roomManager;
     public GameObject roomEnter;
-    public GameObject roomExit;
     private bool Iscome;
 
     void Start()
