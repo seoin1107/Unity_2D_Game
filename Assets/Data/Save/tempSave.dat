@@ -1,7 +1,7 @@
 {
     "baseHP": 20.0,
     "maxHP": 22.0,
-    "curHP": 10.0,
+    "curHP": 20.0,
     "baseAtk": 10.0,
     "totalAtk": 10.0,
     "moveSpeed": 5.0,
@@ -19,7 +19,7 @@
     "drain": 0.0,
     "dodgeTime": 0.20000000298023225,
     "dodgeCool": 5.0,
-    "curDodgeCool": 5.005583763122559,
+    "curDodgeCool": 2.1411497592926027,
     "parryingTime": 0.20000000298023225,
     "parryingCool": 2.0,
     "curParryingCool": 2.0201163291931154,

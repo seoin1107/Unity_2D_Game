@@ -140,7 +140,7 @@ public class Movement2D : SpriteProperty
         yield return new WaitForFixedUpdate();
 
         myColider.isTrigger = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         myColider.isTrigger = false;
         while (myRigid.velocity.y < 0.0f) //내려가기
         {
