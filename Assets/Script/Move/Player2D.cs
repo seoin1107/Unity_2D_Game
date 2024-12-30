@@ -121,6 +121,7 @@ public class Player2D : BattleSystem2D
         myAnim.SetTrigger("OnDead");
         OnDead();
         DisablePlayerControls();
+        myRigid.velocity = Vector2.zero;
     }
 
     public void OnTrapDamage(float dmg)

@@ -22,6 +22,7 @@ public class BackCameraManager : MonoBehaviour
         // x축: 플레이어의 이동량에 비례한 배경 카메라의 x축 이동
         float playerXMovement = playerTransform.position.x - previousPlayerPosition.x;
         float targetX = backgroundCamera.position.x + playerXMovement * xMovementRatio;
+        //float targetX = playerXMovement * xMovementRatio + xOffset;
 
         // y축: 플레이어의 y축 이동량에 대한 비율로 배경 카메라가 이동하도록 설정
         float playerYMovement = playerTransform.position.y;
