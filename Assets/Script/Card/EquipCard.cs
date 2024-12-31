@@ -2,20 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EquipCard : MonoBehaviour
+public class EquipCard : CardIcon
 {
-
-    public Transform equipCard1;
-    public Transform equipCard2;
-    public Transform equipCard3;
-    public DragCard dragCard;
+    public CharacterStatus player;
+    public CardData[] cardDataList;
+    public CardSlot[] equipCard;
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    // Update is called once per frame  
     void Update()
     {
         
@@ -23,9 +21,6 @@ public class EquipCard : MonoBehaviour
 
     void CheckEquipeCard()
     {
-        if (dragCard = equipCard1.GetComponentInChildren<DragCard>())
-        {
-          
-        }
+        //player.equipCard[0].myChild.GetComponent<CardIcon>().myData
     }
 }
