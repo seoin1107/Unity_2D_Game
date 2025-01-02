@@ -5,6 +5,26 @@ using UnityEngine;
 public class moveWall : MonoBehaviour
 {
     public GameObject deletGround;
+    public GameObject targetObj;
+
+    private bool Inpotal = false;
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            targetObj = collision.gameObject;
+            Inpotal = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            Inpotal = false;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +34,7 @@ public class moveWall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.G))
+        if(Inpotal && Input.GetKeyDown(KeyCode.G))
         {
             StartCoroutine(movingWall());
         }
