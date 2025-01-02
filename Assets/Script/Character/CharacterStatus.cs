@@ -48,6 +48,13 @@ public struct Stat
     public int needExp;
     public int curExp;
 
+    public float addHp;
+    public float mulHp;
+    public float addAtk;
+    public float mulAtk;
+    public float mulMove;
+
+
     public int[] eqiupCard;
 
     public bool hpOption1;
@@ -67,7 +74,9 @@ public struct Stat
 public class CharacterStatus : AnimatorProperty
 {
     public Stat characterStat;
-    
+    public CardInventory cardInventory;
+    public EquipCard equipCard;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,40 +91,61 @@ public class CharacterStatus : AnimatorProperty
 
     public void UpdateStatus()
     {
-        
-        characterStat.totalAtk = characterStat.baseAtk + characterStat.atkPoint;
+
         characterStat.moveSpeed = 5;
         characterStat.atkSpeed = 1;
         characterStat.CanJump = 1;
-        if(characterStat.atkOption1 == true)
+        characterStat.addHp = 0;
+        characterStat.mulHp = 1;
+        characterStat.addAtk=0;
+        characterStat.mulAtk = 1;
+        characterStat.mulMove = 1;
+
+
+
+        if (characterStat.atkOption1 == true)
         {
-            characterStat.totalAtk *= 1.2f;
+            characterStat.totalAtk += 0.2f;
         }
         if (characterStat.atkOption2 == true)
         {
-            characterStat.atkSpeed *= 1.2f;
-            characterStat.moveSpeed *= 1.2f;
+            characterStat.atkSpeed += 0.2f;
+            characterStat.moveSpeed += 0.2f;
         }
-        characterStat.maxHP = characterStat.baseHP+ characterStat.hpPoint *2;
         if (characterStat.hpOption1 == true)
         {
             characterStat.maxHP += 20;
         }
-        characterStat.curHP = characterStat.maxHP;
         if(characterStat.utilOption1 == true)
         {
-            characterStat.moveSpeed *= 1.5f;
+            characterStat.mulMove += 0.5f;
         }
         if (characterStat.utilOption2 == true)
         {
             characterStat.CanJump += 1;
         }
 
-        
+       
+
+
+        characterStat.totalAtk = characterStat.baseAtk + characterStat.atkPoint;
+        characterStat.maxHP = characterStat.baseHP + characterStat.hpPoint * 2;
+
+        equipCard.CheckEquipeCard(characterStat.eqiupCard[0]);
+
+
+
+        characterStat.totalAtk += characterStat.addAtk;
+        characterStat.maxHP += characterStat.addHp;
+        characterStat.totalAtk *= characterStat.mulAtk;
+        characterStat.maxHP *= characterStat.mulHp;
+        characterStat.moveSpeed *= characterStat.mulMove;
+
+        characterStat.curHP = characterStat.maxHP;
 
     }
 
-    
+
     public void LevelUp(Stat stat)
     {
         while (stat.needExp <= stat.curExp)

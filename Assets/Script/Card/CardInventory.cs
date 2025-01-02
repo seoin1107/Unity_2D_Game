@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CardInventory : MonoBehaviour
 {
+    public CharacterStatus player;
     public static CardInventory Instance
     {
         get; private set;
@@ -33,22 +34,48 @@ public class CardInventory : MonoBehaviour
         return null; 
     }
 
+    public void GetCardInfoFromSlots()
+    {
+        int[] targetSlots = { 0, 1, 2 }; 
+        foreach (int slotIndex in targetSlots)
+        {
+            if (slotIndex >= 0 && slotIndex < mySlots.Length)
+            {
+                CardSlot slot = mySlots[slotIndex];
+                if (slot.myChild != null)
+                {                 
+                    CardIcon cardIcon = slot.myChild.GetComponent<CardIcon>();
+                    if (cardIcon != null)
+                    {
+                        player.characterStat.eqiupCard[slotIndex] = cardIcon.myData.cardNo;
+                    }
+                    
+                }
+                else
+                {
+                    player.characterStat.eqiupCard[slotIndex] = 0;
+                }
+
+            }            
+        }
+    }
+
+   
     public void AddItem(int i)
     {
-        CardSlot slot = FindBlankSlot(); // 빈 슬롯 찾기
+        CardSlot slot = FindBlankSlot();
 
-        // 빈 슬롯을 찾지 못한 경우
         if (slot == null)
         {
             Debug.LogError("No blank slot found!");
-            return; // 빈 슬롯이 없으면 더 이상 진행하지 않음
+            return;
         }
 
-        // 카드 아이콘 인스턴스를 슬롯에 생성
+       
         GameObject cardIconObject = Instantiate(Resources.Load<GameObject>("Prefabs/CardIcon"), slot.transform);
         cardIconObject.GetComponent<CardIcon>().SetData(cardDataList[i]);
 
-        // DragCard 컴포넌트 가져오기
+     
         DragCard dragCard = cardIconObject.GetComponent<DragCard>();
         if (dragCard == null)
         {
@@ -56,32 +83,15 @@ public class CardInventory : MonoBehaviour
             return;
         }
 
-        // myChild가 CardIcon 타입인지 확인 후 안전하게 SetData 호출
-        //CardIcon cardIcon = slot.myChild as CardIcon;  // myChild가 CardIcon 타입으로 캐스팅
-        //if (cardIcon == null)
-        //{
-        //    Debug.LogError("Slot's myChild is not a CardIcon or is null!");
-        //    return; // myChild가 CardIcon이 아니라면 처리 중단
-        //}
-
-        // 카드 데이터 설정
-        //cardIcon.SetData(cardDataList[i]);
+      
     }
-    //public void AddItem(int i)
-    //{
-    //    CardSlot slot = FindBlankSlot();
-    //    if (slot != null)
-    //    {
-    //        Instantiate(Resources.Load<GameObject>("Prefabs/CardIcon"), slot.transform).GetComponent<DragCard>();
-    //        (slot.myChild as CardIcon).SetData(cardDataList[i]);
-    //    }
-    //}
-    // Start is called before the first frame update
+   
     void Start()
     {
          Instance = this;
         gameObject.SetActive(false);
         mySlots = GetComponentsInChildren<CardSlot>();
+        GetCardInfoFromSlots();
     }
 
     // Update is called once per frame
@@ -89,7 +99,8 @@ public class CardInventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F8))
         {
-            AddItem(UnityEngine.Random.Range(3, cardDataList.Length));
+            AddItem(UnityEngine.Random.Range(0, cardDataList.Length));
         }
+        GetCardInfoFromSlots();
     }
 }

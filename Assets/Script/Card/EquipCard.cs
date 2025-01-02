@@ -16,11 +16,17 @@ public class EquipCard : CardIcon
     // Update is called once per frame  
     void Update()
     {
-        
+
     }
 
-    void CheckEquipeCard()
+    public void CheckEquipeCard(int i)
     {
-        //player.equipCard[0].myChild.GetComponent<CardIcon>().myData
+        if (i != 0)
+        {
+            
+            player.characterStat.addAtk += CardInventory.Instance.cardDataList[i-1].atk_add;
+            player.characterStat.addHp += CardInventory.Instance.cardDataList[i-1].hp_add;
+
+        }
     }
 }
