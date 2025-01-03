@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ToBase : MonoBehaviour
 {
+    public BattleSystem2D battleSystem2d;
+    public CharacterStatus characterStat;
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -22,7 +24,7 @@ public class ToBase : MonoBehaviour
                 
                 Loading.nScene = 2;
                 SceneManager.LoadScene(1);
-            }
+            }            
             yield return null;
         }
     }
@@ -33,4 +35,6 @@ public class ToBase : MonoBehaviour
             StopAllCoroutines();
         }
     }
+
+
 }
