@@ -135,6 +135,7 @@ public class CharacterStatus : AnimatorProperty
 
 
 
+
         characterStat.totalAtk += characterStat.addAtk;
         characterStat.maxHP += characterStat.addHp;
         characterStat.totalAtk *= characterStat.mulAtk;
