@@ -30,7 +30,7 @@ public class LoadGameUI : StartUI
     // Update is called once per frame
     void Update()
     {
-
+       
     }
 
     public void OnLoadSave1()

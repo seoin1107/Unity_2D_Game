@@ -22,6 +22,7 @@ public class Player2D : BattleSystem2D
     void Start()
     {
         player = this;
+        player.
         UpdateStatus();
     }
 

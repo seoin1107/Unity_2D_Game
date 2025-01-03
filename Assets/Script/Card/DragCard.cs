@@ -14,7 +14,7 @@ public class DragCard : ImageProperty, IBeginDragHandler, IDragHandler, IEndDrag
     {
         dragOffset = (Vector2)transform.position - eventData.position;
         myParent = transform.parent;
-        transform.SetParent(transform.parent.parent);
+        transform.SetParent(transform.parent.parent.parent.parent.parent);
         myImage.raycastTarget = false;
     }
 
