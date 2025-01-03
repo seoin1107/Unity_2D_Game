@@ -102,5 +102,6 @@ public class CardInventory : MonoBehaviour
             AddItem(UnityEngine.Random.Range(0, cardDataList.Length));
         }
         GetCardInfoFromSlots();
+        player.UpdateStatus();
     }
 }
