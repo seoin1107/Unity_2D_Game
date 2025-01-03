@@ -18,11 +18,14 @@ public class Player2D : BattleSystem2D
 
     public CharacterStatus player;
 
+    private PlayerDead playerdead;
+
     // Start is called before the first frame update
     void Start()
     {
         player = this;
         UpdateStatus();
+        playerdead = GetComponent<PlayerDead>();
     }
 
     // Update is called once per frame
@@ -122,6 +125,7 @@ public class Player2D : BattleSystem2D
         OnDead();
         DisablePlayerControls();
         myRigid.velocity = Vector2.zero;
+        
     }
 
     public void OnTrapDamage(float dmg)
@@ -138,6 +142,7 @@ public class Player2D : BattleSystem2D
             myAnim.SetTrigger("OnDead");
             OnDead();
             DisablePlayerControls();
+            
         }
     }
 
