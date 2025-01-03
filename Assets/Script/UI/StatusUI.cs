@@ -54,6 +54,7 @@ public class StatusUI : MonoBehaviour
         }
         else
         {
+            PlayerInitialize();
             player.characterStat = FileManager.LoadFromJson<Stat>(Application.dataPath + "/Data/Save/tempSave.dat");
         }
         player.UpdateStatus();

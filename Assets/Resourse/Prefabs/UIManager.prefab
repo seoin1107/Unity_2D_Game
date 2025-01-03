@@ -6153,7 +6153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c1a5343f32bd04fb8c489bfa0753da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySlots: []
+  player: {fileID: 0}
+  mySlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardDataList:
   - {fileID: 11400000, guid: 030d462dbc6c6ec449d57eedf1298ab8, type: 2}
   - {fileID: 11400000, guid: de5279e8ec70c79488b44d277553b6e5, type: 2}
