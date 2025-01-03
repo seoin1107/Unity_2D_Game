@@ -178,7 +178,16 @@ public class StatusUI : MonoBehaviour
         player.characterStat.jumpCount = 0;
         player.characterStat.needExp = 10;
         player.characterStat.curExp = 0;
-        player.characterStat.eqiupCard = new int[3] { 0, 0, 0 };
+
+        player.characterStat.addHp =0;
+        player.characterStat.mulHp=1;
+        player.characterStat.addAtk=0;
+        player.characterStat.mulAtk=1;
+        player.characterStat.mulMove=1;
+
+    player.characterStat.eqiupCard = new int[3] { 0, 0, 0 };
+
+
 
         player.characterStat.hpOption1 = false;
         player.characterStat.hpOption2 = false;

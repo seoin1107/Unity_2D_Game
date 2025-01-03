@@ -11,11 +11,16 @@ public class CardIcon : DragCard
     {
         myData = data;
         myImage.sprite = myData.icon;
+        transform.parent.GetComponent<CardSlot>().myChild = this;
+    }
+    public CardData GetCardData()
+    {
+        return myData;
     }
     // Start is called before the first frame update
     void Start()
     {
-
+        SetData(myData);
     }
 
     // Update is called once per frame

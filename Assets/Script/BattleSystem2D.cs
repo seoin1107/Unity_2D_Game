@@ -76,6 +76,7 @@ public class BattleSystem2D : Movement2D, IDamage, IDeathAlarm, ILive
             }
             gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
             myRigid.gravityScale = 0.0f;
+            myRigid.velocity = Vector2.zero;
         }
     }
     //public void UpdateBattleStat()

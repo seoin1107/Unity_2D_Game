@@ -55,19 +55,4 @@ public class FireBall : MonoBehaviour
         // 현재 오브젝트 삭제
         Destroy(gameObject);
     }
-/*    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            // 충돌 대상에서 IDamage 인터페이스 확인
-            IDamage target = collision.GetComponent<IDamage>();
-            if (target != null)
-            {
-                target.OnDamage(damage); // 데미지 전달
-            }
-
-            // FireBall 파괴
-            //Destroy(gameObject);
-        }
-    }*/
 }

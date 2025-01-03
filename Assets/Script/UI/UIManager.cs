@@ -54,9 +54,9 @@ public class UIManager : MonoBehaviour
 
     public void OnOffInvenUI()
     {
-        if (InvenUI.Instance != null)
+        if (CardInventory.Instance != null)
         {
-            InvenUI.Instance.gameObject.SetActive(!InvenUI.Instance.gameObject.activeSelf);
+            CardInventory.Instance.gameObject.SetActive(!CardInventory.Instance.gameObject.activeSelf);
         }
     }
 
