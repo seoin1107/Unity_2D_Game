@@ -100,7 +100,8 @@ public class CharacterStatus : AnimatorProperty
         characterStat.addAtk=0;
         characterStat.mulAtk = 1;
         characterStat.mulMove = 1;
-
+        characterStat.drain = 0;
+        characterStat.hitRecover = 0.5f;
 
 
         if (characterStat.atkOption1 == true)
