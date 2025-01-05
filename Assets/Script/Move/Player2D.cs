@@ -40,16 +40,19 @@ public class Player2D : BattleSystem2D
                 moveDir.x = Input.GetAxisRaw("Horizontal");                                     // ÁÂ¿ìÀÌµ¿
                 if (Input.GetKeyDown(KeyCode.W) && !myAnim.GetBool("IsAir"))          // À­Á¡ÇÁ
                 {
-                    OnJump();                 
+                    OnJump();
+                    SFXManager.Instance.PlaySound(SFXManager.Instance.playerJump);
                 }
                 if (Input.GetKeyDown(KeyCode.W) && myAnim.GetBool("IsAir"))          // À­Á¡ÇÁ
                 {
                     OnDoubleJump();
+                    SFXManager.Instance.PlaySound(SFXManager.Instance.playerJump);
                 }
 
                 if (Input.GetKeyDown(KeyCode.S) && !myAnim.GetBool("IsAir"))          // ¾Æ·§Á¡ÇÁ
                 {
                     OnDownJump();
+                    SFXManager.Instance.PlaySound(SFXManager.Instance.playerJump);
                 }
             }
             else
@@ -62,6 +65,7 @@ public class Player2D : BattleSystem2D
                 if (Input.GetMouseButtonDown(0) && !myAnim.GetBool("IsAir"))          // °ø°Ý                                        // °ø°ÝÅ°
                 {
                     OnPlayerAttack();
+                    SFXManager.Instance.PlaySound(SFXManager.Instance.playerAttack);
                 }
             }
 
@@ -70,6 +74,7 @@ public class Player2D : BattleSystem2D
                 if (characterStat.curParryingCool >= characterStat.parryingCool)
                 {
                     OnParry();
+                    SFXManager.Instance.PlaySound(SFXManager.Instance.playerParry);
                 }
             }
 
