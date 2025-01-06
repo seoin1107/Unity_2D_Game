@@ -185,8 +185,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 75, y: 52.6}
-  m_SizeDelta: {x: 120, y: 25}
+  m_AnchoredPosition: {x: 100.889404, y: 52.6}
+  m_SizeDelta: {x: 171.7788, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &32225898017881309
 CanvasRenderer:
@@ -733,7 +733,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 339cc990a5c09b144bbc29aff8b5fa61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myData: {fileID: 0}
   player: {fileID: 0}
   cardDataList:
   - {fileID: 11400000, guid: 030d462dbc6c6ec449d57eedf1298ab8, type: 2}
@@ -4239,8 +4238,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 75, y: 80.106544}
-  m_SizeDelta: {x: 120, y: 25}
+  m_AnchoredPosition: {x: 100.89, y: 80.106544}
+  m_SizeDelta: {x: 171.78, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5299996414893039390
 CanvasRenderer:
