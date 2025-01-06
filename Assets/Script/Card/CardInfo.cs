@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CardInfo : ImageProperty//, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class CardInfo : MonoBehaviour//, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] public TMPro.TMP_Text textCardInfo;
     public CardIcon myData;
