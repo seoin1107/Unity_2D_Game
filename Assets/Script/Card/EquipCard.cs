@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EquipCard : CardIcon
+public class EquipCard : MonoBehaviour
 {
     public CharacterStatus player;
     public CardData[] cardDataList;
