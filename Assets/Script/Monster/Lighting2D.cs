@@ -52,6 +52,7 @@ public class Lighting2D : BattleSystem2D
     // Start is called before the first frame update
     void Start()
     {
+        EFFECTManager.Instance.PlaySound(EFFECTManager.Instance.EffectAttack);
         ChangeState(State.Normal);
     }
 

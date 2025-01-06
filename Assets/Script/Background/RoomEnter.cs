@@ -9,6 +9,7 @@ public class RoomEnter : MonoBehaviour
 
     void Start()
     {
+        BGMManager.Instance.StopSound();
         if (roomManager == null) roomManager = GetComponentInParent<RoomManager>();
     }
 
@@ -18,6 +19,7 @@ public class RoomEnter : MonoBehaviour
         {
             roomManager.EnterRoom(); // 방에 들어갈 때
             Iscome = true;
+            BGMManager.Instance.PlaySound(BGMManager.Instance.BoosRoomBgm);
         }
     }
 }

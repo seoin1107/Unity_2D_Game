@@ -34,6 +34,7 @@ public class EnergyBall : MonoBehaviour
                 IDamage target = hit.collider.GetComponent<IDamage>();
                 if (target != null)
                 {
+                    EFFECTManager.Instance.PlaySound(EFFECTManager.Instance.EffectAttack);
                     target.OnDamage(damage); // 데미지 전달
                 }
                 DestroyObject(hit.point); // 충돌 위치에서 오브젝트 처리

@@ -22,7 +22,7 @@ public class ImageProperty : MonoBehaviour
                     }
                     else
                     {
-                        _img = list[list.Length - 1];
+                        _img = list[0];//list[list.Length - 1];
                     }
                 }
             }

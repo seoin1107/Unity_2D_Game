@@ -124,6 +124,7 @@ public class DB_normal2D : BattleSystem2D
     }
     public void OnAttack()
     {
+        EFFECTManager.Instance.PlaySound(EFFECTManager.Instance.DarkBringerAttak);
         myTarget.GetComponent<IDamage>()?.OnDamage(monsterStatus.characterStat.totalAtk);
     }
 

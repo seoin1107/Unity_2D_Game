@@ -433,6 +433,11 @@ MonoBehaviour:
     jumpCount: 0
     needExp: 0
     curExp: 0
+    addHp: 0
+    mulHp: 0
+    addAtk: 0
+    mulAtk: 0
+    mulMove: 0
     eqiupCard: 
     hpOption1: 0
     hpOption2: 0
@@ -443,8 +448,11 @@ MonoBehaviour:
     utilOption1: 0
     utilOption2: 0
     utilOption3: 0
+  cardInventory: {fileID: 0}
+  equipCard: {fileID: 0}
   lookDir: 1
   rid: {fileID: 0}
+  IsPlayer: 0
   monsterStatus: {fileID: 1035229124178310043}
   LightingPrefab: {fileID: 4378380278815144764, guid: 7387a0c04dd7d55449d863e41ebc32d6, type: 3}
   effectPoint1: {fileID: 5459697358046490325}

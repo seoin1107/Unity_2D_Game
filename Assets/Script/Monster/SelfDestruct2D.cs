@@ -136,6 +136,7 @@ public class SelfDestruct2D : BattleSystem2D
     }
     IEnumerator DisApearing()
     {
+        EFFECTManager.Instance.PlaySound(EFFECTManager.Instance.GhoulAttack);
         yield return new WaitForSeconds(0.7f);
         Destroy(gameObject);
     }

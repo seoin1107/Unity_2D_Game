@@ -179,7 +179,6 @@ MonoBehaviour:
   - {fileID: 1954717258146795794}
   virtualCamera: {fileID: 7258429021410542908}
   defaultCamera: {fileID: 0}
-  roomCollider: {fileID: 8291196102610086506}
   isRoomCleared: 0
 --- !u!1 &7088795269638999752
 GameObject:
@@ -354,6 +353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomManager: {fileID: 7452543082077463668}
+  roomEnter: {fileID: 0}
 --- !u!1001 &2981633536571390594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -409,6 +409,14 @@ PrefabInstance:
     - target: {fileID: 5610356330473029566, guid: 7fdc6896559f44548a65cbfac6856c90, type: 3}
       propertyPath: m_Lens.OrthographicSize
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033624445537970116, guid: 7fdc6896559f44548a65cbfac6856c90, type: 3}
+      propertyPath: m_FollowOffset.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033624445537970116, guid: 7fdc6896559f44548a65cbfac6856c90, type: 3}
+      propertyPath: m_FollowOffset.y
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5170124377399550592, guid: 7fdc6896559f44548a65cbfac6856c90, type: 3}

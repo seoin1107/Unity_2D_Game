@@ -176,8 +176,8 @@ MonoBehaviour:
     baseHP: 10
     maxHP: 10
     curHP: 10
-    baseAtk: 2
-    totalAtk: 2
+    baseAtk: 3
+    totalAtk: 3
     moveSpeed: 2
     atkSpeed: 2
     attackRange: 1
@@ -201,6 +201,11 @@ MonoBehaviour:
     jumpCount: 0
     needExp: 0
     curExp: 0
+    addHp: 0
+    mulHp: 0
+    addAtk: 0
+    mulAtk: 0
+    mulMove: 0
     eqiupCard: 
     hpOption1: 0
     hpOption2: 0
@@ -211,8 +216,11 @@ MonoBehaviour:
     utilOption1: 0
     utilOption2: 0
     utilOption3: 0
+  cardInventory: {fileID: 0}
+  equipCard: {fileID: 0}
   lookDir: 0
   rid: {fileID: 0}
+  IsPlayer: 0
   monsterStatus: {fileID: 3228680054108741970}
   myState: 0
 --- !u!70 &3175706962891907730

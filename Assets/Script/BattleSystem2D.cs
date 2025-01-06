@@ -32,6 +32,7 @@ public class BattleSystem2D : Movement2D, IDamage, IDeathAlarm, ILive
     //public Stat battleStat;
     /*    public CharacterStatus characterStatus;*/
     protected float playTime;
+    public bool IsPlayer = false;
 
     public UnityAction deathAlarm { get; set; }
 
@@ -59,6 +60,10 @@ public class BattleSystem2D : Movement2D, IDamage, IDeathAlarm, ILive
         if (characterStat.curHP > 0.0f)
         {
             myAnim.SetTrigger(animData.OnDamage);
+            if(IsPlayer == true)
+            {
+                SFXManager.Instance.PlaySound(SFXManager.Instance.playerDamage);
+            }
         }
         else
         {
@@ -77,12 +82,11 @@ public class BattleSystem2D : Movement2D, IDamage, IDeathAlarm, ILive
             gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
             myRigid.gravityScale = 0.0f;
             myRigid.velocity = Vector2.zero;
+            if(IsPlayer == true)
+            {
+                SFXManager.Instance.PlaySound(SFXManager.Instance.playerDead);
+            }
         }
     }
-    //public void UpdateBattleStat()
-    //{
-    //    battleStat = characterStat;
-        
-    //}
 }
 

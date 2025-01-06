@@ -173,9 +173,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStat:
-    baseHP: 100
-    maxHP: 100
-    curHP: 100
+    baseHP: 40
+    maxHP: 40
+    curHP: 40
     baseAtk: 8
     totalAtk: 8
     moveSpeed: 2
@@ -201,6 +201,11 @@ MonoBehaviour:
     jumpCount: 0
     needExp: 0
     curExp: 0
+    addHp: 0
+    mulHp: 0
+    addAtk: 0
+    mulAtk: 0
+    mulMove: 0
     eqiupCard: 
     hpOption1: 0
     hpOption2: 0
@@ -211,8 +216,11 @@ MonoBehaviour:
     utilOption1: 0
     utilOption2: 0
     utilOption3: 0
+  cardInventory: {fileID: 0}
+  equipCard: {fileID: 0}
   lookDir: 0
   rid: {fileID: 0}
+  IsPlayer: 0
   monsterStatus: {fileID: 7584236381206534913}
   myState: 0
 --- !u!70 &3175706962891907730

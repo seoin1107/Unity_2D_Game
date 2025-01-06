@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Boss2D : BattleSystem2D
 {
+
     Transform myTarget;
     Vector2 originalPosition; // 몬스터의 원래 위치를 저장할 변수
     public CharacterStatus monsterStatus;
@@ -32,6 +33,7 @@ public class Boss2D : BattleSystem2D
     public State myState = State.Create;
     //float maxDist = 0.0f;
     Transform curGround = null;
+
     void ChangeState(State s)
     {
         if (myState == s) return;
@@ -102,10 +104,12 @@ public class Boss2D : BattleSystem2D
                         {
                             if (randomAction == 0) // 일반공격패턴
                             {
+                                EFFECTManager.Instance.PlaySound(EFFECTManager.Instance.BossAttack);
                                 myAnim.SetTrigger(animData.OnAttack);
                             }
                             if (randomAction == 1) // 일반공격패턴 + 일반공격을 좀더 자주하도록
                             {
+                                EFFECTManager.Instance.PlaySound(EFFECTManager.Instance.BossAttack);
                                 myAnim.SetTrigger(animData.OnAttack);
                             }
                             if (randomAction == 2) // 구울소환
@@ -256,6 +260,7 @@ public class Boss2D : BattleSystem2D
     // Update is called once per frame
     void Update()
     {
+
         StateProcess();
         base.OnUpdate();
     }
@@ -300,6 +305,7 @@ public class Boss2D : BattleSystem2D
 
     public void OnDisApear()
     {
+        EFFECTManager.Instance.PlaySound(EFFECTManager.Instance.BossDead);
         StartCoroutine(DisApearing());
         StartCoroutine(OpenWall());
     }

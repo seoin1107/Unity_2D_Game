@@ -91,7 +91,7 @@ public class CharacterStatus : AnimatorProperty
 
     public void UpdateStatus()
     {
-
+        
         characterStat.moveSpeed = 5;
         characterStat.atkSpeed = 1;
         characterStat.CanJump = 1;
@@ -100,8 +100,16 @@ public class CharacterStatus : AnimatorProperty
         characterStat.addAtk=0;
         characterStat.mulAtk = 1;
         characterStat.mulMove = 1;
+        characterStat.drain = 0;
+        characterStat.hitRecover = 0.5f;
 
-
+        characterStat.skillCool = 1.0f;
+        characterStat.skillDamage = 1.0f;
+        characterStat.dodgeTime = 0.2f;
+        characterStat.dodgeCool = 5.0f;
+        characterStat.parryingTime = 0.2f;
+        characterStat.parryingCool = 2.0f;
+        characterStat.hpRegen = 0.0f;
 
         if (characterStat.atkOption1 == true)
         {
@@ -132,8 +140,8 @@ public class CharacterStatus : AnimatorProperty
         characterStat.maxHP = characterStat.baseHP + characterStat.hpPoint * 2;
 
         equipCard.CheckEquipeCard(characterStat.eqiupCard[0]);
-
-
+        equipCard.CheckEquipeCard(characterStat.eqiupCard[1]);
+        equipCard.CheckEquipeCard(characterStat.eqiupCard[2]);
 
 
         characterStat.totalAtk += characterStat.addAtk;
