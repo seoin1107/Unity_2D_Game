@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 342672050582970913}
   - component: {fileID: 3625285189880537892}
-  - component: {fileID: 4597556738771206732}
   - component: {fileID: 8603333501692881591}
   m_Layer: 0
   m_Name: BackgroundCamera
@@ -85,14 +84,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &4597556738771206732
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5182956302838591920}
-  m_Enabled: 1
 --- !u!114 &8603333501692881591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,5 +99,6 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   backgroundCamera: {fileID: 342672050582970913}
   xMovementRatio: 0.3
-  yMovementRatio: 0.09
-  yOffset: 2
+  yMovementRatio: 0
+  xOffset: 0
+  yOffset: 6
