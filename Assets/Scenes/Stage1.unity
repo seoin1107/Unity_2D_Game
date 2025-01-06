@@ -1142,6 +1142,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8203662766110647078, guid: 4d3932f152d171742800784ed230f340, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1970989609}
     - target: {fileID: 9143916708376096779, guid: 4d3932f152d171742800784ed230f340, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1475,6 +1479,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 305172097}
     m_Modifications:
+    - target: {fileID: 3716020485787937, guid: 249456f9063d9db41b76d74ad54d549b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.305
+      objectReference: {fileID: 0}
     - target: {fileID: 4378380278815144764, guid: 249456f9063d9db41b76d74ad54d549b, type: 3}
       propertyPath: m_Name
       value: Wizard (5)
@@ -3280,7 +3288,7 @@ PrefabInstance:
       objectReference: {fileID: 1432245158}
     - target: {fileID: 4221899053118089325, guid: d499738d4c8a64c41bf750e5a69a7de5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.858109
+      value: 8.851838
       objectReference: {fileID: 0}
     - target: {fileID: 4221899053118089325, guid: d499738d4c8a64c41bf750e5a69a7de5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6969,6 +6977,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 305172097}
     m_Modifications:
+    - target: {fileID: 3716020485787937, guid: 249456f9063d9db41b76d74ad54d549b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.167
+      objectReference: {fileID: 0}
     - target: {fileID: 4378380278815144764, guid: 249456f9063d9db41b76d74ad54d549b, type: 3}
       propertyPath: m_Name
       value: Wizard (3)
@@ -6979,7 +6991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4569534882105735296, guid: 249456f9063d9db41b76d74ad54d549b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.305925
+      value: 8.144
       objectReference: {fileID: 0}
     - target: {fileID: 4569534882105735296, guid: 249456f9063d9db41b76d74ad54d549b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7036,6 +7048,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 305172097}
     m_Modifications:
+    - target: {fileID: 3716020485787937, guid: 249456f9063d9db41b76d74ad54d549b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.168
+      objectReference: {fileID: 0}
     - target: {fileID: 4378380278815144764, guid: 249456f9063d9db41b76d74ad54d549b, type: 3}
       propertyPath: m_Name
       value: Wizard
@@ -7322,6 +7338,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 305172097}
     m_Modifications:
+    - target: {fileID: 3716020485787937, guid: 249456f9063d9db41b76d74ad54d549b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.119
+      objectReference: {fileID: 0}
     - target: {fileID: 4378380278815144764, guid: 249456f9063d9db41b76d74ad54d549b, type: 3}
       propertyPath: m_Name
       value: Wizard (4)
@@ -31976,6 +31996,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 305172097}
     m_Modifications:
+    - target: {fileID: 3716020485787937, guid: 249456f9063d9db41b76d74ad54d549b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.59
+      objectReference: {fileID: 0}
     - target: {fileID: 4378380278815144764, guid: 249456f9063d9db41b76d74ad54d549b, type: 3}
       propertyPath: m_Name
       value: Wizard (1)
@@ -32648,6 +32672,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4569534882105735296, guid: ef4e4887fd089f1499f4bee1558be586, type: 3}
   m_PrefabInstance: {fileID: 2143346895}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1652447362
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5439255454394427268, guid: 220b730c28265e548b5da6fea11c4756, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 70.071976
+      objectReference: {fileID: 0}
+    - target: {fileID: 5439255454394427268, guid: 220b730c28265e548b5da6fea11c4756, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.2392566
+      objectReference: {fileID: 0}
+    - target: {fileID: 5439255454394427268, guid: 220b730c28265e548b5da6fea11c4756, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.031220702
+      objectReference: {fileID: 0}
+    - target: {fileID: 5439255454394427268, guid: 220b730c28265e548b5da6fea11c4756, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5439255454394427268, guid: 220b730c28265e548b5da6fea11c4756, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5439255454394427268, guid: 220b730c28265e548b5da6fea11c4756, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5439255454394427268, guid: 220b730c28265e548b5da6fea11c4756, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5439255454394427268, guid: 220b730c28265e548b5da6fea11c4756, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5439255454394427268, guid: 220b730c28265e548b5da6fea11c4756, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5439255454394427268, guid: 220b730c28265e548b5da6fea11c4756, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828593711131236016, guid: 220b730c28265e548b5da6fea11c4756, type: 3}
+      propertyPath: m_Name
+      value: SFMManager_Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 220b730c28265e548b5da6fea11c4756, type: 3}
 --- !u!1 &1653589164
 GameObject:
   m_ObjectHideFlags: 0
@@ -33310,6 +33391,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 305172097}
     m_Modifications:
+    - target: {fileID: 3716020485787937, guid: 249456f9063d9db41b76d74ad54d549b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.987
+      objectReference: {fileID: 0}
     - target: {fileID: 4378380278815144764, guid: 249456f9063d9db41b76d74ad54d549b, type: 3}
       propertyPath: m_Name
       value: Wizard (2)
@@ -34154,3 +34239,4 @@ SceneRoots:
   - {fileID: 1999914009}
   - {fileID: 305172097}
   - {fileID: 454655449}
+  - {fileID: 1652447362}

@@ -109,6 +109,7 @@ public class CharacterStatus : AnimatorProperty
         characterStat.dodgeCool = 5.0f;
         characterStat.parryingTime = 0.2f;
         characterStat.parryingCool = 2.0f;
+        characterStat.hpRegen = 0.0f;
 
         if (characterStat.atkOption1 == true)
         {
