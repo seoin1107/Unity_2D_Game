@@ -74,6 +74,7 @@ public class BigLighting2D : BattleSystem2D
     }
     public void OnAttack()
     {
+        EFFECTManager.Instance.PlaySound(EFFECTManager.Instance.lighting);
         myTarget.GetComponent<IDamage>()?.OnDamage(monsterStatus.characterStat.totalAtk);
     }
 

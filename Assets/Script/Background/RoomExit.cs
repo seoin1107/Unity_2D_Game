@@ -18,6 +18,8 @@ public class RoomExit : MonoBehaviour
         {
             roomManager.ExitRoom(); // 방을 나갈 때 처리
             Isclear = true;
+            BGMManager.Instance.StopSound();
+            //BGMManager.Instance.PlaySound(BGMManager.Instance.ClearBgm);
         }
     }
 }

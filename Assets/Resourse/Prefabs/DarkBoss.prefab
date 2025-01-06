@@ -233,6 +233,11 @@ MonoBehaviour:
     jumpCount: 0
     needExp: 0
     curExp: 0
+    addHp: 0
+    mulHp: 0
+    addAtk: 0
+    mulAtk: 0
+    mulMove: 0
     eqiupCard: 
     hpOption1: 0
     hpOption2: 0
@@ -243,8 +248,11 @@ MonoBehaviour:
     utilOption1: 0
     utilOption2: 0
     utilOption3: 0
+  cardInventory: {fileID: 0}
+  equipCard: {fileID: 0}
   lookDir: 0
   rid: {fileID: 0}
+  IsPlayer: 0
   monsterStatus: {fileID: 7498088306867702604}
   GhoulPrefab: {fileID: 4378380278815144764, guid: 60a5b61696691374ea925d50af331097, type: 3}
   summonPoint: {fileID: 877734434673730377}
@@ -255,6 +263,10 @@ MonoBehaviour:
   tpPos1: {fileID: 0}
   tpPos2: {fileID: 0}
   HpPos: {fileID: 0}
+  RazerPoint1: {fileID: 0}
+  RazerPoint2: {fileID: 0}
+  RazerPoint3: {fileID: 0}
+  RazerPoint4: {fileID: 0}
   healingAmount: 5
   myState: 0
 --- !u!70 &3175706962891907730

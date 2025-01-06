@@ -6,7 +6,8 @@ public class BGMManager : MonoBehaviour
 {
     public static BGMManager Instance { get; private set; }
 
-    public AudioClip bgm;
+    public AudioClip BoosRoomBgm;
+    //public AudioClip ClearBgm;
     AudioSource audioSource;
 
     private void Awake()
@@ -20,12 +21,17 @@ public class BGMManager : MonoBehaviour
         audioSource.volume = 0.5f;
         audioSource.loop = true;
 
-        PlaySound(bgm);
+        PlaySound(BoosRoomBgm);
     }
 
     public void PlaySound(AudioClip audioClip)
     {
         audioSource.clip = audioClip;
         audioSource.Play();
+    }
+
+    public void StopSound()
+    { 
+        audioSource.Stop();
     }
 }

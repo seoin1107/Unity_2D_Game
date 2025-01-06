@@ -23,6 +23,7 @@ public class Player2D : BattleSystem2D
     // Start is called before the first frame update
     void Start()
     {
+        IsPlayer = true;
         player = this;
         player.
         UpdateStatus();

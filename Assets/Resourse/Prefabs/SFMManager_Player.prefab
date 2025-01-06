@@ -145,3 +145,4 @@ MonoBehaviour:
   playerParry: {fileID: 8300000, guid: a04a2eaf4ad0d7d49aef3d11420c4fd3, type: 3}
   playerDead: {fileID: 8300000, guid: f674f522e2d8ab24ba70358fb52a4172, type: 3}
   playerDamage: {fileID: 8300000, guid: 548300966fd2cc14cbbb4aaf2a7da729, type: 3}
+  playerJump: {fileID: 8300000, guid: 236ffd454374def439ba469d56cd4640, type: 3}
