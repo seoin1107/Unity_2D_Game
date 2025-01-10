@@ -77,6 +77,21 @@ public class Movement2D : SpriteProperty
         {
             characterStat.curParryingCool += Time.deltaTime;
         }
+        if(characterStat.curHpReCool < 1.0f)
+        {
+            characterStat.curHpReCool += Time.deltaTime;
+            if(characterStat.curHpReCool >= 1.0f)
+            {////////////////////////////////////////////////////////////////////////////////////////////////체력 재생 체젠
+                characterStat.curHpReCool = 0.0f;
+                if(characterStat.curHP- characterStat.maxHP * characterStat.hpRegen <= characterStat.maxHP){
+                    characterStat.curHP += characterStat.maxHP * characterStat.hpRegen;
+                }
+                else
+                {
+                    characterStat.curHP = characterStat.maxHP;
+                }
+            }
+        }
     }
 
     protected void OnJump()

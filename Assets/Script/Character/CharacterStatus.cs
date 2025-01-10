@@ -41,6 +41,7 @@ public struct Stat
     public float parryingTime;
     public float parryingCool;
     public float curParryingCool;
+    public float curHpReCool;
 
     public int CanJump;
     public int jumpCount;

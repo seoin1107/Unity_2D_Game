@@ -29,8 +29,6 @@ interface ILive
 
 public class BattleSystem2D : Movement2D, IDamage, IDeathAlarm, ILive
 {
-    //public Stat battleStat;
-    /*    public CharacterStatus characterStatus;*/
     protected float playTime;
     public bool IsPlayer = false;
 

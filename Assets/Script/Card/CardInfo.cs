@@ -65,6 +65,10 @@ public class CardInfo : MonoBehaviour//, IBeginDragHandler, IDragHandler, IEndDr
         {
             textCardInfo.text += $"피격시 무적 : +{myData.myData.hit_re}초\n";
         }
+        if(myData.myData.hp_re != 0)
+        {
+            textCardInfo.text += $"체력 재생 : +{myData.myData.hp_re * 100}%\n";
+        }
         Instance = this;
         gameObject.SetActive(false);
         

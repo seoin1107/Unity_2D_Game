@@ -70,6 +70,7 @@ public class StartUI : MonoBehaviour
         mySave.characterStat.dodgeCool = 5.0f;
         mySave.characterStat.parryingTime = 0.2f;
         mySave.characterStat.parryingCool = 2.0f;
+        mySave.characterStat.hpReCool = 1.0f;
         mySave.characterStat.needExp = 10;
         mySave.characterStat.curExp = 0;
         mySave.characterStat.eqiupCard = new int[3] {0,0,0};
